@@ -1,8 +1,8 @@
 {
-  "name": "health-en",
+  "name": "health_en",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://SonGlad.github.io/HEALTH-EN/",
+  "homepage": "https://SonGlad.github.io/HEALTH_EN/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
