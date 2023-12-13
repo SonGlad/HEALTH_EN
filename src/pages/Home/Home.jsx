@@ -12,6 +12,7 @@ const HomePage = () => {
     return (
 
         <WelcomePage/>
+        // <MainPage/>
 
     );
 };

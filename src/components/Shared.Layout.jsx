@@ -9,7 +9,7 @@ import { Loading } from './CustomLoaders/CustomLoaders';
 export const SharedLayout = () => {
 
   return(
-      <>
+    <>
       <Header />
       <Suspense fallback={<Loading/>}>
         <main>
