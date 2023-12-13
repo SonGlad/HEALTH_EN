@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/253.4ed8f0a3.chunk.js","mappings":"8HAWA,UARqB,WACjB,OACIA,EAAAA,EAAAA,KAAAC,EAAAA,SAAA,GAGR,C","sources":["pages/Settings/Settings.jsx"],"sourcesContent":["\n\n\nconst SettingsPage = () => {\n    return(\n        <>\n        </>\n    );\n};\n\n\nexport default SettingsPage;"],"names":["_jsx","_Fragment"],"sourceRoot":""}

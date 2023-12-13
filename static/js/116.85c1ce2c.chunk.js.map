@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/116.85c1ce2c.chunk.js","mappings":"8HAWA,UAR2B,WACvB,OACIA,EAAAA,EAAAA,KAAAC,EAAAA,SAAA,GAGR,C","sources":["pages/ForgotPassword/ForgotPassword.jsx"],"sourcesContent":["\n\n\nconst ForgotPasswordPage = () => {\n    return(\n        <>\n        </>\n    );\n};\n\n\nexport default ForgotPasswordPage;"],"names":["_jsx","_Fragment"],"sourceRoot":""}
