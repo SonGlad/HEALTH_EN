@@ -5,25 +5,32 @@ import { YourGoal } from "components/Register/YourGoal/YourGoal";
 import { SelectGender } from "components/Register/SelectGender/SelectGender";
 import { BodyParametrs } from "components/Register/BodyParametrs/BodyParametrs";
 import { YourActivity } from "components/Register/YourActivity/YourActivity";
-
-
+import { useState } from "react";
 
 const RegisterPage = () => {
+  const [currentComponent, setCurrentComponent] = useState(0);
 
+  const handleNext = () => {
+    setCurrentComponent((current) => current + 1);
+  };
 
-    return(
-        <Section>
-            <Container>
-                <h1>Welcome to the HealthyHub REGISTER Page</h1>
-                <SignUp/>
-                <YourGoal/> 
-                <SelectGender/> 
-                <BodyParametrs/>  
-                <YourActivity/>
-            </Container>
-        </Section>
-    );
+  const handleBack = () => {
+    setCurrentComponent((current) => current - 1);
+  };
+
+  const components = [
+    <SignUp onNext={handleNext} />,
+    <YourGoal onNext={handleNext} onBack={handleBack} />,
+    <SelectGender onNext={handleNext} onBack={handleBack} />,
+    <BodyParametrs onNext={handleNext} onBack={handleBack} />,
+    <YourActivity onBack={handleBack} />,
+  ];
+
+  return (
+    <Section>
+      <Container>{components[currentComponent]}</Container>
+    </Section>
+  );
 };
-
 
 export default RegisterPage;
