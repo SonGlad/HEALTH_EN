@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import 'modern-normalize';
-
+import "modern-normalize";
 
 export const GlobalStyle = createGlobalStyle`
    
@@ -12,8 +11,8 @@ export const GlobalStyle = createGlobalStyle`
     letter-spacing: 0.02em;
     /* color: #FFFFFF; */
     /* background-color: #050505; */
-    color: ${props => props.theme.color.primary_white};
-    background-color: ${props => props.theme.color.primary_black};
+    color: ${(props) => props.theme.color.primary_white};
+    background-color: ${(props) => props.theme.color.primary_black};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     }
@@ -49,4 +48,4 @@ export const GlobalStyle = createGlobalStyle`
     *{
     box-sizing: border-box;
     }
-`
+`;
