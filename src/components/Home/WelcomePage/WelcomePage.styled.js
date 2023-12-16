@@ -14,6 +14,7 @@ export const Container = styled.div`
 
   @media screen and (min-width: 834px) {
     max-width: 834px;
+    padding: 0 27px;
     align-items: center;
   }
 
