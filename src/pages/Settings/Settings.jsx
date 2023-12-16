@@ -29,14 +29,14 @@ const ValidationSchema = yup.object({
   name: yup
     .string()
     .min(2, 'Name must be at least 2 characters long.')
-    .max(50, 'Name must be no more than 50 characters.')
+    .max(30, 'Name must be no more than 30 characters.')
     .required('Name is required')
     .trim('Name cannot include leading and trailing spaces')
     .strict(true),
   age: yup
     .number()
-    .min(14, 'Age must be at least 14 years old')
-    .max(110, 'Age must be no more than 110 years old')
+    .min(8, 'Age must be at least 8 years old')
+    .max(120, 'Age must be no more than 120 years old')
     .required('Age is required')
     .integer('Age must be an integer'),
   height: yup
@@ -47,12 +47,20 @@ const ValidationSchema = yup.object({
     .integer('Height must be an integer'),
   weight: yup
     .number()
-    .min(40, 'Weight must be at least 40kg')
-    .max(200, 'Weight must be no more than 200kg')
+    .min(4, 'Weight must be at least 4kg')
+    .max(300, 'Weight must be no more than 300kg')
     .required('Weight is required')
     .test('maxDigitsAfterDecimal', 'Must have 1 digits after decimal', number =>
       /^\d+(\.\d{1})?$/.test(number)
     ),
+  newPassword: yup
+    .string()
+    .min(8, 'Password must be at least 8 characters long.')
+    .required('Password is required'),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('newPassword'), null], 'Passwords must match')
+    .required('Password confirmation is required'),
 });
 const SettingsPage = () => {
   const initialValues = {
@@ -90,7 +98,7 @@ const SettingsPage = () => {
                     type="text"
                     required
                   />
-                  <ErrorMsg name="namel" component="div" />
+                  <ErrorMsg name="name" component="div" />
                 </Label>
                 <FileContainer>
                   Your photo
@@ -105,7 +113,6 @@ const SettingsPage = () => {
                     </DownloadPhoto>
                   </Label>
                 </FileContainer>
-
                 <Label>
                   Your age
                   <Input
@@ -116,7 +123,6 @@ const SettingsPage = () => {
                   />
                   <ErrorMsg name="age" component="div" />
                 </Label>
-
                 <FormGroup role="group" aria-labelledby="gender-head">
                   <FormGroupLabel id="gender-head">Gender</FormGroupLabel>
                   <WrapperRadioButton>
@@ -153,6 +159,26 @@ const SettingsPage = () => {
                     required
                   />
                   <ErrorMsg name="weight" component="div" />
+                </Label>
+                <Label>
+                  New password
+                  <Input
+                    name="newPassword"
+                    type="password"
+                    placeholder="Enter new password"
+                    required
+                  />
+                  <ErrorMsg name="newPassword" component="div" />
+                </Label>
+                <Label>
+                  Confirm password
+                  <Input
+                    name="confirmPassword"
+                    type="password"
+                    placeholder="Duplicate password"
+                    required
+                  />
+                  <ErrorMsg name="confirmPassword" component="div" />
                 </Label>
                 <FormGroup role="group" aria-labelledby="activity-head">
                   <FormGroupLabel id="activity-head">

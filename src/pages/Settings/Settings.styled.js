@@ -46,6 +46,11 @@ export const FormFormik = styled(Form)`
     column-gap: 60px;
     width: 491px;
 
+    -webkit-box-pack: justify;
+    -webkit-box-align: start;
+    -ms-flex-pack: justify;
+    -ms-flex-align: start;
+
     // & > :not(div[aria-labelledby='activity-head']) {
     //   width: calc((100% - 60px) / 2);
     // }
@@ -77,9 +82,13 @@ export const Input = styled(Field)`
   padding: 8px 10px;
   border-radius: 12px;
   border: 1px solid ${props => props.theme.color.primary_grey};
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active {
     border-color: ${props => props.theme.color.primary_green_lite};
+    border: 1px solid ${props => props.theme.color.primary_green_lite};
   }
 
   &[type='file'] {
@@ -149,6 +158,7 @@ export const CancelButton = styled.button`
   border: 1px solid transparent;
   border-radius: 12px;
   cursor: pointer;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     border: 1px solid ${p => p.theme.color.primary_green_lite};
@@ -197,7 +207,7 @@ export const FormGroup = styled.div`
   flex-direction: column;
 
   & > label {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 20px;
 
