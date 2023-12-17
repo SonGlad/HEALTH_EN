@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import YourActivityMobile from "../../../images/images/YourActivityMobile-min.png";
-import YourActivityTablet from "../../../images/images/YourActivityTablet-2-min.png";
-import YourActivityComputer from "../../../images/images/YourActivityComputer-3-min.png";
+import styled from 'styled-components';
+import YourActivityMobile from '../../../images/images/YourActivityMobile-min.png';
+import YourActivityTablet from '../../../images/images/YourActivityTablet-2-min.png';
+import YourActivityComputer from '../../../images/images/YourActivityComputer-3-min.png';
 
 export const DivYourActivity = styled.div`
   padding: 24px 0px;
@@ -77,7 +77,7 @@ export const DivYourActivity = styled.div`
   }
 
   .TitleText {
-    color: ${(props) => props.theme.color.primary_grey};
+    color: ${props => props.theme.color.primary_grey};
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -123,25 +123,25 @@ export const DivYourActivity = styled.div`
     margin-right: 8px;
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       width: 12px;
       height: 12px;
       border-radius: 50%;
       transform: translate(-50%, -50%);
-      background-color: ${(props) => props.theme.color.primary_black_2};
-      border: 1px solid ${(props) => props.theme.color.primary_grey};
+      background-color: ${props => props.theme.color.primary_black_2};
+      border: 1px solid ${props => props.theme.color.primary_grey};
     }
 
     &:checked::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background-color: ${(props) => props.theme.color.primary_green_lite};
+      background-color: ${props => props.theme.color.primary_green_lite};
       transform: translate(-50%, -50%);
       visibility: visible;
     }
@@ -168,7 +168,7 @@ export const DivYourActivity = styled.div`
     display: flex;
     justify-content: center;
     border-radius: 12px;
-    background: ${(props) => props.theme.color.primary_green_lite};
+    background: ${props => props.theme.color.primary_green_lite};
     padding: 8px 10px;
     font-weight: 500;
     font-size: 14px;
@@ -193,10 +193,11 @@ export const DivYourActivity = styled.div`
       width: 212px;
       margin-left: 0px;
     }
+
   }
 
   .ButtonBack {
-    color: ${(props) => props.theme.color.primary_grey};
+    color: ${props => props.theme.color.primary_grey};
     border: none;
     background-color: transparent;
     font-size: 14px;
@@ -210,20 +211,22 @@ export const DivYourActivity = styled.div`
 
     &:hover {
       background-color: transparent;
-      color: ${(props) => props.theme.color.primary_green_lite};
+      color: ${props => props.theme.color.primary_green_lite};
     }
     &:active {
       background-color: transparent;
       color: ${(props) => props.theme.color.primary_green_lite};
+
     }
     &:disabled {
       background-color: transparent;
-      color: ${(props) => props.theme.color.primary_grey};
+      color: ${props => props.theme.color.primary_grey};
       pointer-events: none;
     }
 
     @media only screen and (min-width: 1440px) {
       width: 212px;
     }
+
   }
 `;

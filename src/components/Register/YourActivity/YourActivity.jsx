@@ -1,3 +1,4 @@
+
 import { useFormik } from "formik";
 import { DivYourActivity } from "./YourActivity.styled";
 import { YourActivitySchema } from "../../../utils/validationSchemas";
@@ -54,6 +55,7 @@ export const YourActivity = ({ onBack }) => {
   //   );
   // };
 
+
   return (
     <DivYourActivity>
       <div className="ImageContainet">
@@ -66,7 +68,9 @@ export const YourActivity = ({ onBack }) => {
             To correctly calculate calorie and water intake
           </p>
         </div>
+
         <form className="FormRadioButton" onSubmit={handleSubmit}>
+
           <label className="LabelActivity">
             <input
               className="Input"
@@ -77,6 +81,8 @@ export const YourActivity = ({ onBack }) => {
               value="1.2"
               onBlur={handleBlur}
               checked={values.activity === "1.2"}
+
+
             />
             1.2 - if you do not have physical activity and sedentary work
           </label>
@@ -119,7 +125,7 @@ export const YourActivity = ({ onBack }) => {
               onBlur={handleBlur}
               checked={values.activity === "1.725"}
             />
-            1.725 ​​- if you train fully 6-7 times a week
+            1.725 - if you train fully 6-7 times a week
           </label>
 
           <label className="LabelActivity">
