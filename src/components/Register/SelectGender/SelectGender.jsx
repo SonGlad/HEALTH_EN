@@ -1,17 +1,58 @@
 import { useFormik } from "formik";
 import { DivSelectGender } from "./SelectGender.styled";
+import { SelectGenderSchemas } from "../../../utils/validationSchemas";
+// import { updateGenderAgeForm } from "../../../redux/Auth/auth-slice";
+// import { useDispatch } from "react-redux";
+// import { useAuth } from "hooks/useAuth";
 
 export const SelectGender = ({ onNext, onBack }) => {
-  const formik = useFormik({
+  // const dispatch = useDispatch();
+  // const { userGender, userAge } = useAuth();
+  const {
+    values,
+    errors,
+    touched,
+    isValid,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+  } = useFormik({
     initialValues: {
-      gender: "",
-      age: "",
+      // gender: userGender || "",
+      // age: userAge || "",
     },
+
+    validationSchema: SelectGenderSchemas,
+
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      console.log(formik.values);
+      // dispatch(updateGenderAgeForm(values));
     },
   });
+
+  const getInputClass = (fieldName) => {
+    return !values[fieldName]
+      ? "TextInput"
+      : touched && errors[fieldName]
+      ? "ErrorInput"
+      : "SuccessInput";
+  };
+
+  const getInputAlert = (fieldName) => {
+    return !values[fieldName] ? (
+      ""
+    ) : touched && errors[fieldName] ? (
+      <>
+        <p className="ErrorText">{errors[fieldName]}</p>
+        <div className="ImgError" />
+      </>
+    ) : (
+      <>
+        <p className="SuccessText">{`${fieldName} is correct`}</p>
+        <div className="ImgCorrect" />
+      </>
+    );
+  };
+
   return (
     <DivSelectGender>
       <div className="ImageContainet">
@@ -24,7 +65,7 @@ export const SelectGender = ({ onNext, onBack }) => {
             Choose a goal so that we can help you effectively
           </p>
         </div>
-        <form className="Form" onSubmit={formik.handleSubmit}>
+        <form className="Form" onSubmit={handleSubmit}>
           <div className="DivRadioButton">
             <p className="LabelGenderButton">Gender</p>
             <div className="RadioButtonsContainer">
@@ -34,8 +75,10 @@ export const SelectGender = ({ onNext, onBack }) => {
                   id="Male"
                   name="gender"
                   type="radio"
-                  onChange={formik.handleChange}
-                  value="Male"
+                  onChange={handleChange}
+                  value="male"
+                  onBlur={handleBlur}
+                  checked={values.gender === "male"}
                 />
                 Male
               </label>
@@ -45,35 +88,53 @@ export const SelectGender = ({ onNext, onBack }) => {
                   id="Female"
                   name="gender"
                   type="radio"
-                  onChange={formik.handleChange}
-                  value="Female"
+                  onChange={handleChange}
+                  value="female"
+                  onBlur={handleBlur}
+                  checked={values.gender === "female"}
                 />
                 Female
               </label>
             </div>
-
-            <p className="LabelInput">Your age</p>
-            <input
-              className="TextInput"
-              placeholder="Enter your age"
-              id="YourAge"
-              name="age"
-              type="text"
-              onChange={formik.handleChange}
-              value={formik.values.lastName}
-            />
+            <div className="DivInput">
+              <p className="LabelInput">Your age</p>
+              <input
+                className={getInputClass("age")}
+                placeholder="Enter your age"
+                id="YourAge"
+                name="age"
+                type="text"
+                onChange={handleChange}
+                value={values.age}
+                onBlur={handleBlur}
+              />
+              {getInputAlert("age")}
+            </div>
           </div>
-
-          <button className="ButtonNext" type="submit" onClick={onNext}>
+          <button
+            className="ButtonNext"
+            type="submit"
+            name="BtnNext"
+            disabled={!touched.gender || !isValid}
+            onClick={(e) => {
+              handleSubmit(e);
+              onNext();
+            }}
+          >
             Next
           </button>
-        </form>
-
-        <div className="DivButtonBack">
-          <button className="ButtonBack" onClick={onBack}>
+          <button
+            className="ButtonBack"
+            type="submit"
+            name="BtnBack"
+            onClick={(e) => {
+              handleSubmit(e);
+              onBack();
+            }}
+          >
             Back
           </button>
-        </div>
+        </form>
       </div>
     </DivSelectGender>
   );
