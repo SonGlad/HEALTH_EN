@@ -175,32 +175,25 @@ export const DivYourActivity = styled.div`
     line-height: 20px;
     cursor: pointer;
     width: 100%;
-
     margin-bottom: 16px;
+
+    &:active,
+    &:hover {
+      color: ${(props) => props.theme.color.primary_grey};
+    }
 
     @media only screen and (min-width: 834px) {
       width: 360px;
       margin-left: auto;
       margin-right: auto;
+      margin-bottom: 20px;
     }
 
     @media only screen and (min-width: 1440px) {
-      width: 192px;
+      width: 212px;
       margin-left: 0px;
     }
-  }
 
-  .DivButtonBack {
-    display: flex;
-    justify-content: center;
-
-    @media only screen and (min-width: 834px) {
-      align-items: baseline;
-    }
-
-    @media only screen and (min-width: 1440px) {
-      width: 192px;
-    }
   }
 
   .ButtonBack {
@@ -211,18 +204,29 @@ export const DivYourActivity = styled.div`
     font-weight: 400;
     line-height: 20px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
     &:hover {
       background-color: transparent;
-      color: ${props => props.theme.color.primary_grey};
+      color: ${props => props.theme.color.primary_green_lite};
     }
     &:active {
       background-color: transparent;
-      color: ${props => props.theme.color.primary_grey};
+      color: ${(props) => props.theme.color.primary_green_lite};
+
     }
     &:disabled {
       background-color: transparent;
       color: ${props => props.theme.color.primary_grey};
       pointer-events: none;
     }
+
+    @media only screen and (min-width: 1440px) {
+      width: 212px;
+    }
+
   }
 `;

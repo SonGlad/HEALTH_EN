@@ -2,6 +2,8 @@ import styled from "styled-components";
 import SelectGenderMobile from "../../../images/images/SelectGenderMobile-min.png";
 import SelectGenderTablet from "../../../images/images/SelectGenderTablet-min.png";
 import SelectGenderComputer from "../../../images/images/SelectGenderComputer-min.png";
+import error from "../../../images/svgIcon/error.svg";
+import correct from "../../../images/svgIcon/correct.svg";
 
 export const DivSelectGender = styled.div`
   padding-bottom: 24px;
@@ -136,6 +138,10 @@ export const DivSelectGender = styled.div`
     line-height: 20px;
   }
 
+  .DivInput {
+    position: relative;
+  }
+
   .TextInput {
     width: 100%;
     margin-top: 12px;
@@ -157,6 +163,102 @@ export const DivSelectGender = styled.div`
     }
   }
 
+  .ErrorInput {
+    border: 1px solid #e74a3b;
+    width: 100%;
+    margin-top: 12px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    background: ${(props) => props.theme.color.primary_black_2};
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: ${(props) => props.theme.color.primary_white};
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    @media only screen and (min-width: 1440px) {
+      width: 212px;
+    }
+  }
+
+  .SuccessInput {
+    border: 1px solid #3cbc81;
+    width: 100%;
+    margin-top: 12px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    background: ${(props) => props.theme.color.primary_black_2};
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: ${(props) => props.theme.color.primary_white};
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    @media only screen and (min-width: 1440px) {
+      width: 212px;
+    }
+  }
+
+  .ImgError {
+    position: absolute;
+    right: 10px;
+    top: 57%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-image: url(${error});
+
+    @media only screen and (min-width: 1440px) {
+      top: 66%;
+    }
+  }
+
+  .ImgCorrect {
+    position: absolute;
+    right: 10px;
+    top: 57%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-image: url(${correct});
+
+    @media only screen and (min-width: 1440px) {
+      top: 66%;
+    }
+  }
+
+  .ErrorText {
+    margin-top: 4px;
+    margin-left: 10px;
+    color: #e74a3b;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+
+    @media only screen and (min-width: 1440px) {
+      max-width: 200px;
+    }
+  }
+
+  .SuccessText {
+    margin-top: 4px;
+    margin-left: 10px;
+    color: #3cbc81;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+
+    @media only screen and (min-width: 1440px) {
+      max-width: 200px;
+    }
+  }
+
   input::placeholder {
     color: ${(props) => props.theme.color.primary_grey};
   }
@@ -171,6 +273,7 @@ export const DivSelectGender = styled.div`
     cursor: pointer;
     width: 100%;
     margin-top: 40px;
+    margin-bottom: 20px;
 
     @media only screen and (min-width: 1440px) {
       width: 212px;
@@ -238,30 +341,23 @@ export const DivSelectGender = styled.div`
     font-weight: 400;
     line-height: 20px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
     &:hover {
       background-color: transparent;
-      color: ${(props) => props.theme.color.primary_grey};
+      color: ${(props) => props.theme.color.primary_green_lite};
     }
     &:active {
       background-color: transparent;
-      color: ${(props) => props.theme.color.primary_grey};
+      color: ${(props) => props.theme.color.primary_green_lite};
     }
     &:disabled {
       background-color: transparent;
       color: ${(props) => props.theme.color.primary_grey};
       pointer-events: none;
-    }
-  }
-
-  .DivButtonBack {
-    justify-content: center;
-    display: flex;
-    margin-top: 20px;
-
-    @media only screen and (min-width: 834px) {
-      display: flex;
-      align-items: baseline;
-      gap: 16px;
     }
 
     @media only screen and (min-width: 1440px) {
