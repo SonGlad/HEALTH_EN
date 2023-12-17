@@ -127,6 +127,7 @@ export const DivYourGoal = styled.div`
 
   .ButtonNext {
     border-radius: 12px;
+    color: ${(props) => props.theme.color.primary_black_2};
     background: ${(props) => props.theme.color.primary_green_lite};
     padding: 8px 10px;
     font-weight: 500;
@@ -135,6 +136,12 @@ export const DivYourGoal = styled.div`
     cursor: pointer;
     width: 100%;
     margin-top: 24px;
+    margin-bottom: 20px;
+
+    &:active,
+    &:hover {
+      color: ${(props) => props.theme.color.primary_grey};
+    }
 
     @media only screen and (min-width: 1440px) {
       width: 212px;
@@ -196,34 +203,23 @@ export const DivYourGoal = styled.div`
     font-weight: 400;
     line-height: 20px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
     &:hover {
       background-color: transparent;
-      color: ${(props) => props.theme.color.primary_grey};
+      color: ${(props) => props.theme.color.primary_green_lite};
     }
     &:active {
       background-color: transparent;
-      color: ${(props) => props.theme.color.primary_grey};
+      color: ${(props) => props.theme.color.primary_green_lite};
     }
     &:disabled {
       background-color: transparent;
       color: ${(props) => props.theme.color.primary_grey};
       pointer-events: none;
-    }
-  }
-
-  .DivButtonBack {
-    justify-content: center;
-    display: flex;
-    margin-top: 20px;
-
-    @media only screen and (min-width: 834px) {
-      display: flex;
-      align-items: baseline;
-      gap: 16px;
-    }
-
-    @media only screen and (min-width: 1440px) {
-      width: 212px;
     }
   }
 `;
