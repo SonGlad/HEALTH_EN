@@ -1,59 +1,61 @@
-
 import { useFormik } from "formik";
 import { DivYourActivity } from "./YourActivity.styled";
 import { YourActivitySchema } from "../../../utils/validationSchemas";
-// import { updateActivityForm } from "../../../redux/Auth/auth-slice";
-// import { useDispatch } from "react-redux";
-// import { useAuth } from "hooks/useAuth";
-// import { register } from "../../../redux/Auth/auth-operations";
+import { updateActivityForm } from "../../../redux/Auth/auth-slice";
+import { useDispatch } from "react-redux";
+import { useAuth } from "hooks/useAuth";
+import { register } from "../../../redux/Auth/auth-operations";
+
 
 export const YourActivity = ({ onBack }) => {
-  // const dispatch = useDispatch();
-  // const {
-  //   userActivity,
-  //   userName,
-  //   userEmail,
-  //   userPassword,
-  //   userGoal,
-  //   userGender,
-  //   userAge,
-  //   userHeight,
-  //   userWeight,
-  //   createdAt,
-  // } = useAuth();
+  const dispatch = useDispatch();
+  const {
+    userActivity,
+    userName,
+    userEmail,
+    userPassword,
+    userGoal,
+    userGender,
+    userAge,
+    userHeight,
+    userWeight,
+    createdAt,
+  } = useAuth();
   const { touched, values, handleBlur, handleChange, handleSubmit } = useFormik(
     {
       initialValues: {
-        // activity: userActivity?.activity || "",
+        activity: userActivity?.activity || "",
       },
 
       validationSchema: YourActivitySchema,
 
+
       onSubmit: (values) => {
-        // dispatch(updateActivityForm(values));
+        dispatch(updateActivityForm(values));
       },
     }
   );
 
-  // const handleSecondSubmit = (event) => {
-  //   event.preventDefault();
-  //   dispatch(
-  //     register({
-  //       name: userName,
-  //       email: userEmail,
-  //       password: userPassword,
-  //       goal: userGoal.goal,
-  //       gender: userGender,
-  //       age: userAge,
-  //       height: userHeight,
-  //       weight: {
-  //         kg: userWeight,
-  //         createdAt: createdAt,
-  //       },
-  //       activity: values.activity || userActivity,
-  //     })
-  //   );
-  // };
+
+  const handleSecondSubmit = (event) => {
+    event.preventDefault();
+    dispatch(
+      register({
+        name: userName,
+        email: userEmail,
+        password: userPassword,
+        goal: userGoal.goal,
+        gender: userGender,
+        age: userAge,
+        height: userHeight,
+        weight: {
+          kg: userWeight,
+          createdAt: createdAt,
+        },
+        activity: values.activity || userActivity,
+      })
+    );
+  };
 
 
   return (
@@ -146,7 +148,7 @@ export const YourActivity = ({ onBack }) => {
           <button
             className="ButtonSingUp"
             type="button"
-            // onClick={handleSecondSubmit}
+            onClick={handleSecondSubmit}
             disabled={!touched.activity}
           >
             Sing Up

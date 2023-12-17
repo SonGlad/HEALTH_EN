@@ -1,13 +1,14 @@
 import { useFormik } from "formik";
 import { DivBodyParametrs } from "./BodyParametrs.styled";
 import { BodyParametrsSchema } from "../../../utils/validationSchemas";
-// import { updateBodyParamForm } from "../../../redux/Auth/auth-slice";
-// import { useDispatch } from "react-redux";
-// import { useAuth } from "hooks/useAuth";
+import { updateBodyParamForm } from "../../../redux/Auth/auth-slice";
+import { useDispatch } from "react-redux";
+import { useAuth } from "hooks/useAuth";
+
 
 export const BodyParametrs = ({ onNext, onBack }) => {
-  // const dispatch = useDispatch();
-  // const { userHeight, userWeight } = useAuth();
+  const dispatch = useDispatch();
+  const { userHeight, userWeight } = useAuth();
   const {
     values,
     errors,
@@ -18,16 +19,20 @@ export const BodyParametrs = ({ onNext, onBack }) => {
     handleSubmit,
   } = useFormik({
     initialValues: {
-      // height: userHeight || "",
-      // weight: userWeight || "",
+      height: userHeight || "",
+      weight: userWeight || "",
     },
+
 
     validationSchema: BodyParametrsSchema,
 
+
     onSubmit: (values) => {
-      // dispatch(updateBodyParamForm(values));
+      dispatch(updateBodyParamForm(values));
     },
+
   });
+
 
   const getInputClass = (fieldName) => {
     return !values[fieldName]
@@ -36,6 +41,7 @@ export const BodyParametrs = ({ onNext, onBack }) => {
       ? "ErrorInput"
       : "SuccessInput";
   };
+
 
   const getInputAlert = (fieldName) => {
     return !values[fieldName] ? (
@@ -52,6 +58,7 @@ export const BodyParametrs = ({ onNext, onBack }) => {
       </>
     );
   };
+
 
   return (
     <DivBodyParametrs>

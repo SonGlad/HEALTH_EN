@@ -1,13 +1,14 @@
 import { useFormik } from "formik";
 import { DivSelectGender } from "./SelectGender.styled";
 import { SelectGenderSchemas } from "../../../utils/validationSchemas";
-// import { updateGenderAgeForm } from "../../../redux/Auth/auth-slice";
-// import { useDispatch } from "react-redux";
-// import { useAuth } from "hooks/useAuth";
+import { updateGenderAgeForm } from "../../../redux/Auth/auth-slice";
+import { useDispatch } from "react-redux";
+import { useAuth } from "hooks/useAuth";
+
 
 export const SelectGender = ({ onNext, onBack }) => {
-  // const dispatch = useDispatch();
-  // const { userGender, userAge } = useAuth();
+  const dispatch = useDispatch();
+  const { userGender, userAge } = useAuth();
   const {
     values,
     errors,
@@ -18,16 +19,18 @@ export const SelectGender = ({ onNext, onBack }) => {
     handleSubmit,
   } = useFormik({
     initialValues: {
-      // gender: userGender || "",
-      // age: userAge || "",
+      gender: userGender || "",
+      age: userAge || "",
     },
 
     validationSchema: SelectGenderSchemas,
 
+
     onSubmit: (values) => {
-      // dispatch(updateGenderAgeForm(values));
+      dispatch(updateGenderAgeForm(values));
     },
   });
+
 
   const getInputClass = (fieldName) => {
     return !values[fieldName]
@@ -36,6 +39,7 @@ export const SelectGender = ({ onNext, onBack }) => {
       ? "ErrorInput"
       : "SuccessInput";
   };
+
 
   const getInputAlert = (fieldName) => {
     return !values[fieldName] ? (
@@ -53,6 +57,7 @@ export const SelectGender = ({ onNext, onBack }) => {
     );
   };
 
+  
   return (
     <DivSelectGender>
       <div className="ImageContainet">

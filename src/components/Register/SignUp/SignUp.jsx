@@ -2,16 +2,16 @@ import { useFormik } from "formik";
 import { DivSingUp } from "./SignUp.styled";
 import { NavLink } from "react-router-dom";
 import { SignupSchema } from "../../../utils/validationSchemas";
-// import { saveSignUpForm } from "../../../redux/Auth/auth-slice";
-// import { useDispatch } from "react-redux";
-// import { useAuth } from "hooks/useAuth";
+import { saveSignUpForm } from "../../../redux/Auth/auth-slice";
+import { useDispatch } from "react-redux";
+import { useAuth } from "hooks/useAuth";
 import { useState } from "react";
 
-export const SignUp = ({ onNext }) => {
-  // const dispatch = useDispatch();
-  // const { userName, userEmail, userPassword } = useAuth();
-  const [showPassword, setShowPassword] = useState(false);
 
+export const SignUp = ({ onNext }) => {
+  const dispatch = useDispatch();
+  const { userName, userEmail, userPassword } = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
   const {
     values,
     errors,
@@ -22,25 +22,26 @@ export const SignUp = ({ onNext }) => {
     handleSubmit,
   } = useFormik({
     initialValues: {
-      // name: userName || "",
-      // email: userEmail || "",
-      // password: userPassword || "",
+      name: userName || "",
+      email: userEmail || "",
+      password: userPassword || "",
     },
+
     validationSchema: SignupSchema,
 
+
     onSubmit: (values) => {
-      // dispatch(saveSignUpForm(values));
+      dispatch(saveSignUpForm(values));
       onNext();
     },
 
-    onBlur: (e) => {
-      console.log(e);
-    },
   });
+
 
   const handleTogglePassword = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
+
 
   const getInputClass = (fieldName) => {
     return !values[fieldName]
@@ -49,6 +50,7 @@ export const SignUp = ({ onNext }) => {
       ? "ErrorInput"
       : "SuccessInput";
   };
+
 
   const getInputAlert = (fieldName) => {
     return !values[fieldName] ? (
@@ -66,6 +68,7 @@ export const SignUp = ({ onNext }) => {
     );
   };
 
+
   const getHidePassword = () => {
     return (
       <div
@@ -75,6 +78,7 @@ export const SignUp = ({ onNext }) => {
     );
   };
 
+  
   return (
     <DivSingUp>
       <div className="ImageContainet">
