@@ -5,21 +5,26 @@ import { updateGoalForm } from "../../../redux/Auth/auth-slice";
 import { useDispatch } from "react-redux";
 import { useAuth } from "hooks/useAuth";
 
+
 export const YourGoal = ({ onNext, onBack }) => {
   const dispatch = useDispatch();
   const { userGoal } = useAuth();
-  const { values, handleBlur, handleChange, handleSubmit } = useFormik({
-    initialValues: {
-      goal: userGoal?.goal || "",
-    },
+  const { touched, values, handleBlur, handleChange, handleSubmit } = useFormik(
+    {
+      initialValues: {
+        goal: userGoal?.goal || "",
+      },
 
-    validationSchema: YourGoalSchema,
+      validationSchema: YourGoalSchema,
 
-    onSubmit: (values) => {
-      dispatch(updateGoalForm(values));
-    },
-  });
 
+      onSubmit: (values) => {
+        dispatch(updateGoalForm(values));
+      },
+    }
+  );
+
+  
   return (
     <DivYourGoal>
       <div className="ImageContainet">
@@ -79,7 +84,7 @@ export const YourGoal = ({ onNext, onBack }) => {
             className="ButtonNext"
             type="submit"
             name="BtnNext"
-            disabled={!values.goal}
+            disabled={!touched.goal}
             onClick={(e) => {
               handleSubmit(e);
               onNext();
