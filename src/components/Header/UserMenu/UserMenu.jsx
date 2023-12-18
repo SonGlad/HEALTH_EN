@@ -30,9 +30,11 @@ export const UserMenu = () => {
       <Info>
         <ButtonsBlock />
         <UserBlock>
-          {'User'}
-          <AvaImg src={avatar} alt="avatar" />
-          <ArrowSvg src={arrowDown} alt="arrow down"></ArrowSvg>
+          <p className='user-name'>User</p>
+          <button type='button' className='user-menu-btn'>
+            <AvaImg src={avatar} alt="avatar" />
+            <ArrowSvg src={arrowDown} alt="arrow down"></ArrowSvg>
+          </button>
         </UserBlock>
       </Info>
     </Container>

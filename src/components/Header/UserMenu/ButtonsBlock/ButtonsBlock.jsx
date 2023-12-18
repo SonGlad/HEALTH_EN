@@ -9,13 +9,14 @@ import {
   WeightKg,
   EditSvg,
 } from './ButtonsBlock.styled';
-
 import weightIcon from '../../../../images/images/headreImg/Waight-image.svg';
 import edit from '../../../../images/images/headreImg/edit-2.svg';
 import fatMen from '../../../../images/images/headreImg/Lose-fat-image-men.svg';
 import arrowDown from '../../../../images/images/headreImg/arrow-down.svg';
 
 export const ButtonsBlock = () => {
+
+
   return (
     <InfoOptions>
       {' '}

@@ -2,6 +2,14 @@ import styled from 'styled-components';
 
 export const InfoOptions = styled.div`
   display: flex;
+
+  @media screen and (min-width: 834px) {
+    margin-left: auto;
+    margin-right: 73px;
+  }
+  @media screen and (min-width: 834px) {
+    margin-right: 124px;
+  }
 `;
 
 export const InfoBlock = styled.div`
