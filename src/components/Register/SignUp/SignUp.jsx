@@ -7,7 +7,6 @@ import { useDispatch } from "react-redux";
 import { useAuth } from "hooks/useAuth";
 import { useState } from "react";
 
-
 export const SignUp = ({ onNext }) => {
   const dispatch = useDispatch();
   const { userName, userEmail, userPassword } = useAuth();
@@ -29,19 +28,15 @@ export const SignUp = ({ onNext }) => {
 
     validationSchema: SignupSchema,
 
-
     onSubmit: (values) => {
       dispatch(saveSignUpForm(values));
       onNext();
     },
-
   });
-
 
   const handleTogglePassword = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
-
 
   const getInputClass = (fieldName) => {
     return !values[fieldName]
@@ -50,7 +45,6 @@ export const SignUp = ({ onNext }) => {
       ? "ErrorInput"
       : "SuccessInput";
   };
-
 
   const getInputAlert = (fieldName) => {
     return !values[fieldName] ? (
@@ -68,7 +62,6 @@ export const SignUp = ({ onNext }) => {
     );
   };
 
-
   const getHidePassword = () => {
     return (
       <div
@@ -78,7 +71,6 @@ export const SignUp = ({ onNext }) => {
     );
   };
 
-  
   return (
     <DivSingUp>
       <div className="ImageContainet">
@@ -132,11 +124,7 @@ export const SignUp = ({ onNext }) => {
             {getHidePassword()}
           </div>
 
-          <button
-            className="ButtonNext"
-            type="submit"
-            disabled={!touched.name || !isValid}
-          >
+          <button className="ButtonNext" type="submit" disabled={!isValid}>
             Next
           </button>
         </form>
