@@ -6,7 +6,6 @@ export const ContainersStyle = styled.div`
   max-width: 320px;
   padding: 0 10px;
 
-  background-color: ${p => p.theme.color.primary_black_2};
   outline: 2px solid red;
   outline-offset: -2px;
 

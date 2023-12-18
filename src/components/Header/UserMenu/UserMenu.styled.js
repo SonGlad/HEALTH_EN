@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
+
+
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  /* position: relative; */
+  width: 100%;
+  margin-left: 8px;
 `;
 
 export const Info = styled.div`
@@ -47,20 +50,25 @@ export const AvaImg = styled.img`
 `;
 
 export const MenuBox = styled.div`
-  /* margin-left: 8px;
-  position: absolute;
-  top: 3px;
-  left: -120px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: auto;
 
   @media screen and (min-width: 834px) {
     display: none;
   }
 `;
 
+
 export const MenuImg = styled.img`
   width: 16px;
 `;
+
+
 export const MenuButton = styled.button`
   background-color: transparent;
   border: none;
+  cursor: pointer;
+  padding: 0;
 `;
