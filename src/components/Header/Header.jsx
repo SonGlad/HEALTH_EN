@@ -1,17 +1,18 @@
-import { Container } from "../Container/Container";
+import { Container } from '../Container/Container';
 import { HeaderStyled } from './Header.styled';
-
-
+import { Navigation } from './Navigation/Navigation';
+// import { AuthNav } from './AuthNav/AuthNav';
+import { UserMenu } from './UserMenu/UserMenu';
 
 export const Header = () => {
+  return (
+    <Container>
+      <HeaderStyled>
+        <Navigation />
 
-  
-    
-    return (
-        <Container>
-            <HeaderStyled>
-                <h1>Its me - HEADER</h1>
-            </HeaderStyled>
-        </Container>
-    );
+        <UserMenu />
+        {/* <AuthNav /> */}
+      </HeaderStyled>
+    </Container>
+  );
 };
