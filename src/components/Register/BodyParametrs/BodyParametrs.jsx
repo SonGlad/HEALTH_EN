@@ -5,6 +5,7 @@ import { updateBodyParamForm } from "../../../redux/Auth/auth-slice";
 import { useDispatch } from "react-redux";
 import { useAuth } from "hooks/useAuth";
 
+
 export const BodyParametrs = ({ onNext, onBack }) => {
   const dispatch = useDispatch();
   const { userHeight, userWeight } = useAuth();
@@ -22,12 +23,16 @@ export const BodyParametrs = ({ onNext, onBack }) => {
       weight: userWeight || "",
     },
 
+
     validationSchema: BodyParametrsSchema,
+
 
     onSubmit: (values) => {
       dispatch(updateBodyParamForm(values));
     },
+
   });
+
 
   const getInputClass = (fieldName) => {
     return !values[fieldName]
@@ -36,6 +41,7 @@ export const BodyParametrs = ({ onNext, onBack }) => {
       ? "ErrorInput"
       : "SuccessInput";
   };
+
 
   const getInputAlert = (fieldName) => {
     return !values[fieldName] ? (
@@ -52,6 +58,7 @@ export const BodyParametrs = ({ onNext, onBack }) => {
       </>
     );
   };
+
 
   return (
     <DivBodyParametrs>
@@ -101,7 +108,7 @@ export const BodyParametrs = ({ onNext, onBack }) => {
             className="ButtonNext"
             type="submit"
             name="BtnNext"
-            disabled={!values.height || !isValid}
+            disabled={!touched.height || !isValid}
             onClick={(e) => {
               handleSubmit(e);
               onNext();
