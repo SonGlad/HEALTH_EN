@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/HEALTH_EN/static/css/main.301db928.css",
-    "main.js": "/HEALTH_EN/static/js/main.9741515e.js",
+    "main.js": "/HEALTH_EN/static/js/main.7b156afc.js",
     "static/js/698.522f99d1.chunk.js": "/HEALTH_EN/static/js/698.522f99d1.chunk.js",
     "static/js/820.4d8c9c97.chunk.js": "/HEALTH_EN/static/js/820.4d8c9c97.chunk.js",
     "static/js/427.bf15492c.chunk.js": "/HEALTH_EN/static/js/427.bf15492c.chunk.js",
@@ -12,7 +12,10 @@
     "static/js/453.29874fe6.chunk.js": "/HEALTH_EN/static/js/453.29874fe6.chunk.js",
     "static/js/306.2c75648e.chunk.js": "/HEALTH_EN/static/js/306.2c75648e.chunk.js",
     "static/media/setings-page-png.png": "/HEALTH_EN/static/media/setings-page-png.f1d82cc7595a1839568b.png",
+    "static/media/avatar-7236095.png": "/HEALTH_EN/static/media/avatar-7236095.9a880847bdcdce84dbf4.png",
     "static/media/main-page-img-desc.png": "/HEALTH_EN/static/media/main-page-img-desc.9ae292fdb8b61e565201.png",
+    "static/media/Waight-image.svg": "/HEALTH_EN/static/media/Waight-image.77cd4e76c2c3f67e31c01416852989e1.svg",
+    "static/media/Lose-fat-image-men.svg": "/HEALTH_EN/static/media/Lose-fat-image-men.2cde9eb7d237396c08892b2c25268000.svg",
     "static/media/YourGoalComputer-min.png": "/HEALTH_EN/static/media/YourGoalComputer-min.626e188c1dcc27a455cc.png",
     "static/media/YourActivityComputer-3-min.png": "/HEALTH_EN/static/media/YourActivityComputer-3-min.40522e95eb7ed60d280b.png",
     "static/media/SelectGenderComputer-min.png": "/HEALTH_EN/static/media/SelectGenderComputer-min.96aa7dabf7c6c4b4765c.png",
@@ -23,16 +26,19 @@
     "static/media/SelectGenderTablet-min.png": "/HEALTH_EN/static/media/SelectGenderTablet-min.5862507bf23c44abd4a6.png",
     "static/media/BodyParametersTablet-min.png": "/HEALTH_EN/static/media/BodyParametersTablet-min.748e310a1052a002442e.png",
     "static/media/YourGoalMobile-min.png": "/HEALTH_EN/static/media/YourGoalMobile-min.32848210be69ec0de07c.png",
+    "static/media/menu.svg": "/HEALTH_EN/static/media/menu.9e56ac36387055e21a8971872b994615.svg",
     "index.html": "/HEALTH_EN/index.html",
     "static/media/profile-circle.svg": "/HEALTH_EN/static/media/profile-circle.9e57febe1477df0f67e1362708390d54.svg",
     "static/media/download-new-photo.svg": "/HEALTH_EN/static/media/download-new-photo.9ca8a34221a8f13c50c4d1a19f3a88fa.svg",
+    "static/media/edit-2.svg": "/HEALTH_EN/static/media/edit-2.9b966bb2899c1ade6c6ce14e12270a08.svg",
     "static/media/eye-off.svg": "/HEALTH_EN/static/media/eye-off.3eeefa01255069975a3030e4adf6f59a.svg",
     "static/media/error.svg": "/HEALTH_EN/static/media/error.61e13a53a3b33302d8a9d981674b9012.svg",
     "static/media/eye.svg": "/HEALTH_EN/static/media/eye.8c80d662bba4fd9d7b96345f55e44dfe.svg",
     "static/media/correct.svg": "/HEALTH_EN/static/media/correct.f951abc33a082eef0ae77b954eda0542.svg",
+    "static/media/arrow-down.svg": "/HEALTH_EN/static/media/arrow-down.8cf3438f3dbcde251e8bc48b07aab667.svg",
     "static/media/ellipse-icon.svg": "/HEALTH_EN/static/media/ellipse-icon.53a4a4e40ec5e9f0ea3effec7d64ee58.svg",
     "main.301db928.css.map": "/HEALTH_EN/static/css/main.301db928.css.map",
-    "main.9741515e.js.map": "/HEALTH_EN/static/js/main.9741515e.js.map",
+    "main.7b156afc.js.map": "/HEALTH_EN/static/js/main.7b156afc.js.map",
     "698.522f99d1.chunk.js.map": "/HEALTH_EN/static/js/698.522f99d1.chunk.js.map",
     "820.4d8c9c97.chunk.js.map": "/HEALTH_EN/static/js/820.4d8c9c97.chunk.js.map",
     "427.bf15492c.chunk.js.map": "/HEALTH_EN/static/js/427.bf15492c.chunk.js.map",
@@ -45,6 +51,6 @@
   },
   "entrypoints": [
     "static/css/main.301db928.css",
-    "static/js/main.9741515e.js"
+    "static/js/main.7b156afc.js"
   ]
 }
