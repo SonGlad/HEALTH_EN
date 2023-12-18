@@ -5,7 +5,6 @@ import { updateGenderAgeForm } from "../../../redux/Auth/auth-slice";
 import { useDispatch } from "react-redux";
 import { useAuth } from "hooks/useAuth";
 
-
 export const SelectGender = ({ onNext, onBack }) => {
   const dispatch = useDispatch();
   const { userGender, userAge } = useAuth();
@@ -25,12 +24,10 @@ export const SelectGender = ({ onNext, onBack }) => {
 
     validationSchema: SelectGenderSchemas,
 
-
     onSubmit: (values) => {
       dispatch(updateGenderAgeForm(values));
     },
   });
-
 
   const getInputClass = (fieldName) => {
     return !values[fieldName]
@@ -39,7 +36,6 @@ export const SelectGender = ({ onNext, onBack }) => {
       ? "ErrorInput"
       : "SuccessInput";
   };
-
 
   const getInputAlert = (fieldName) => {
     return !values[fieldName] ? (
@@ -57,7 +53,6 @@ export const SelectGender = ({ onNext, onBack }) => {
     );
   };
 
-  
   return (
     <DivSelectGender>
       <div className="ImageContainet">
@@ -120,7 +115,7 @@ export const SelectGender = ({ onNext, onBack }) => {
             className="ButtonNext"
             type="submit"
             name="BtnNext"
-            disabled={!touched.gender || !isValid}
+            disabled={!values.gender || !isValid}
             onClick={(e) => {
               handleSubmit(e);
               onNext();
