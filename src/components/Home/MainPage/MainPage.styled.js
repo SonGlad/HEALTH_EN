@@ -58,7 +58,7 @@ export const DashboardLink = styled(NavLink)`
   line-height: 1.4;
   justify-content: center;
   align-items: center;
-  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media screen and (min-width: 834px) {
     font-size: 16px;
@@ -73,6 +73,13 @@ export const DashboardLink = styled(NavLink)`
   }
 
   &:hover {
+    color: ${props => props.theme.color.primary_lite_green};
+    & svg {
+      stroke: ${props => props.theme.color.primary_lite_green};
+    }
+  }
+
+  &:focus {
     color: ${props => props.theme.color.primary_lite_green};
     & svg {
       stroke: ${props => props.theme.color.primary_lite_green};

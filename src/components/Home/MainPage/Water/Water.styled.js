@@ -62,6 +62,10 @@ export const ClearButton = styled.button`
     &:hover {
       stroke: ${props => props.theme.color.primary_lite_green};
     }
+
+    &:focus {
+      stroke: ${props => props.theme.color.primary_lite_green};
+    }
   }
 `;
 
@@ -136,7 +140,7 @@ export const AddButton = styled.button`
   gap: 8px;
   border-radius: 12px;
   border: none;
-  background: ${props => props.theme.color.primary_lite_green};
+  background: ${props => props.theme.color.primary_green_lite};
   color: ${props => props.theme.color.primary_black};
   font-size: 14px;
   font-weight: 500;
@@ -151,6 +155,13 @@ export const AddButton = styled.button`
   }
 
   &:hover {
+    color: ${props => props.theme.color.primary_grey};
+    & svg {
+      stroke: ${props => props.theme.color.primary_grey};
+    }
+  }
+
+  &:focus {
     color: ${props => props.theme.color.primary_grey};
     & svg {
       stroke: ${props => props.theme.color.primary_grey};

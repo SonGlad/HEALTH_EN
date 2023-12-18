@@ -1,17 +1,14 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  overflow-x: auto;
-`;
-
 export const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   margin-bottom: 6px;
 
   @media screen and (min-width: 834px) {
     justify-content: start;
+    align-items: baseline;
     gap: 40px;
   }
 
@@ -39,16 +36,36 @@ export const TitleWrapper = styled.div`
 `;
 
 export const GraphWrapper = styled.div`
-  width: 676px;
-  height: 382px;
-  border-radius: 12px;
-  background: ${props => props.theme.color.primary_black_2};
+  overflow-x: auto;
 
-  @media screen and (min-width: 834px) {
-    width: 780px;
+  &::-webkit-scrollbar {
+    height: 8px;
   }
 
-  @media screen and (min-width: 1440px) {
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    width: 94px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 12px;
+    background-color: ${props => props.theme.color.primary_black_2};
+  }
+
+  div {
     width: 676px;
+    height: 382px;
+    border-radius: 12px;
+    background: ${props => props.theme.color.primary_black_2};
+    margin-bottom: 8px;
+
+    @media screen and (min-width: 834px) {
+      width: 780px;
+    }
+
+    @media screen and (min-width: 1440px) {
+      width: 676px;
+    }
   }
 `;
