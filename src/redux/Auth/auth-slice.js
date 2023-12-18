@@ -64,13 +64,10 @@ const authSlice = createSlice({
                 ...state.bodyParamForm,
                 height: action.payload.height,
                 weight: {
-                    kg: action.payload.weight.kg,
+                    kg: action.payload.weight,
                     createdAt: new Date().toISOString(),
                 },
             }
-            console.log('Redux state updated:', state.bodyParamForm.weight.kg);
-            console.log('Redux state updated:', state.bodyParamForm.weight.createdAt);
-
         },
         updateActivityForm: (state, action) => {
             state.activityForm = {

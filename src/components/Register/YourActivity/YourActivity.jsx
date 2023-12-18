@@ -19,7 +19,7 @@ export const YourActivity = ({ onBack }) => {
     userAge,
     userHeight,
     userWeight,
-    createdAt,
+    userWeightCurrentDate,
   } = useAuth();
   const { touched, values, handleBlur, handleChange, handleSubmit } = useFormik(
     {
@@ -50,7 +50,7 @@ export const YourActivity = ({ onBack }) => {
         height: userHeight,
         weight: {
           kg: userWeight,
-          createdAt: createdAt,
+          createdAt: userWeightCurrentDate,
         },
         activity: values.activity || userActivity,
       })
@@ -83,8 +83,6 @@ export const YourActivity = ({ onBack }) => {
               value="1.2"
               onBlur={handleBlur}
               checked={values.activity === "1.2"}
-
-
             />
             1.2 - if you do not have physical activity and sedentary work
           </label>
