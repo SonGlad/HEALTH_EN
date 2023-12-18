@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/HEALTH_EN/static/css/main.301db928.css",
-    "main.js": "/HEALTH_EN/static/js/main.6157b861.js",
+    "main.js": "/HEALTH_EN/static/js/main.9741515e.js",
     "static/js/698.522f99d1.chunk.js": "/HEALTH_EN/static/js/698.522f99d1.chunk.js",
-    "static/js/820.473c7bb1.chunk.js": "/HEALTH_EN/static/js/820.473c7bb1.chunk.js",
+    "static/js/820.4d8c9c97.chunk.js": "/HEALTH_EN/static/js/820.4d8c9c97.chunk.js",
     "static/js/427.bf15492c.chunk.js": "/HEALTH_EN/static/js/427.bf15492c.chunk.js",
     "static/js/116.c8f532ca.chunk.js": "/HEALTH_EN/static/js/116.c8f532ca.chunk.js",
     "static/js/566.081dc8ff.chunk.js": "/HEALTH_EN/static/js/566.081dc8ff.chunk.js",
@@ -32,9 +32,9 @@
     "static/media/correct.svg": "/HEALTH_EN/static/media/correct.f951abc33a082eef0ae77b954eda0542.svg",
     "static/media/ellipse-icon.svg": "/HEALTH_EN/static/media/ellipse-icon.53a4a4e40ec5e9f0ea3effec7d64ee58.svg",
     "main.301db928.css.map": "/HEALTH_EN/static/css/main.301db928.css.map",
-    "main.6157b861.js.map": "/HEALTH_EN/static/js/main.6157b861.js.map",
+    "main.9741515e.js.map": "/HEALTH_EN/static/js/main.9741515e.js.map",
     "698.522f99d1.chunk.js.map": "/HEALTH_EN/static/js/698.522f99d1.chunk.js.map",
-    "820.473c7bb1.chunk.js.map": "/HEALTH_EN/static/js/820.473c7bb1.chunk.js.map",
+    "820.4d8c9c97.chunk.js.map": "/HEALTH_EN/static/js/820.4d8c9c97.chunk.js.map",
     "427.bf15492c.chunk.js.map": "/HEALTH_EN/static/js/427.bf15492c.chunk.js.map",
     "116.c8f532ca.chunk.js.map": "/HEALTH_EN/static/js/116.c8f532ca.chunk.js.map",
     "566.081dc8ff.chunk.js.map": "/HEALTH_EN/static/js/566.081dc8ff.chunk.js.map",
@@ -45,6 +45,6 @@
   },
   "entrypoints": [
     "static/css/main.301db928.css",
-    "static/js/main.6157b861.js"
+    "static/js/main.9741515e.js"
   ]
 }
