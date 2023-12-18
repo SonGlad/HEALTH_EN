@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/HEALTH_EN/static/css/main.301db928.css",
-    "main.js": "/HEALTH_EN/static/js/main.7b156afc.js",
+    "main.js": "/HEALTH_EN/static/js/main.0696bd45.js",
     "static/js/698.522f99d1.chunk.js": "/HEALTH_EN/static/js/698.522f99d1.chunk.js",
     "static/js/820.4d8c9c97.chunk.js": "/HEALTH_EN/static/js/820.4d8c9c97.chunk.js",
     "static/js/427.bf15492c.chunk.js": "/HEALTH_EN/static/js/427.bf15492c.chunk.js",
@@ -26,6 +26,7 @@
     "static/media/SelectGenderTablet-min.png": "/HEALTH_EN/static/media/SelectGenderTablet-min.5862507bf23c44abd4a6.png",
     "static/media/BodyParametersTablet-min.png": "/HEALTH_EN/static/media/BodyParametersTablet-min.748e310a1052a002442e.png",
     "static/media/YourGoalMobile-min.png": "/HEALTH_EN/static/media/YourGoalMobile-min.32848210be69ec0de07c.png",
+    "static/media/HealthyHub.svg": "/HEALTH_EN/static/media/HealthyHub.f16f3f06957733cec007338a4852c839.svg",
     "static/media/menu.svg": "/HEALTH_EN/static/media/menu.9e56ac36387055e21a8971872b994615.svg",
     "index.html": "/HEALTH_EN/index.html",
     "static/media/profile-circle.svg": "/HEALTH_EN/static/media/profile-circle.9e57febe1477df0f67e1362708390d54.svg",
@@ -38,7 +39,7 @@
     "static/media/arrow-down.svg": "/HEALTH_EN/static/media/arrow-down.8cf3438f3dbcde251e8bc48b07aab667.svg",
     "static/media/ellipse-icon.svg": "/HEALTH_EN/static/media/ellipse-icon.53a4a4e40ec5e9f0ea3effec7d64ee58.svg",
     "main.301db928.css.map": "/HEALTH_EN/static/css/main.301db928.css.map",
-    "main.7b156afc.js.map": "/HEALTH_EN/static/js/main.7b156afc.js.map",
+    "main.0696bd45.js.map": "/HEALTH_EN/static/js/main.0696bd45.js.map",
     "698.522f99d1.chunk.js.map": "/HEALTH_EN/static/js/698.522f99d1.chunk.js.map",
     "820.4d8c9c97.chunk.js.map": "/HEALTH_EN/static/js/820.4d8c9c97.chunk.js.map",
     "427.bf15492c.chunk.js.map": "/HEALTH_EN/static/js/427.bf15492c.chunk.js.map",
@@ -51,6 +52,6 @@
   },
   "entrypoints": [
     "static/css/main.301db928.css",
-    "static/js/main.7b156afc.js"
+    "static/js/main.0696bd45.js"
   ]
 }
