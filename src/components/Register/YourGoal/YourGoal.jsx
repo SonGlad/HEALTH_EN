@@ -9,7 +9,7 @@ import { useAuth } from "hooks/useAuth";
 export const YourGoal = ({ onNext, onBack }) => {
   const dispatch = useDispatch();
   const { userGoal } = useAuth();
-  const { touched, values, handleBlur, handleChange, handleSubmit } = useFormik(
+  const {values, handleBlur, handleChange, handleSubmit } = useFormik(
     {
       initialValues: {
         goal: userGoal?.goal || "",
@@ -84,7 +84,7 @@ export const YourGoal = ({ onNext, onBack }) => {
             className="ButtonNext"
             type="submit"
             name="BtnNext"
-            disabled={!touched.goal}
+            disabled={!values.goal}
             onClick={(e) => {
               handleSubmit(e);
               onNext();

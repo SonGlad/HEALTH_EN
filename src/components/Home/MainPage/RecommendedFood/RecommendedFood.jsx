@@ -1,9 +1,9 @@
 import { Section } from 'components/Section/Section';
 
-import { ReactComponent as ArrowIcon } from '../../../../images/svgIcon/arrow-right-icon.svg';
+import { ReactComponent as ArrowIcon } from '../../../../images/icons-linear/arrow-right.svg';
+import SnacksImg from '../../../../images/svgIcon/snack-img.svg';
 
 import { Container, ContentWrapper, FoodLink } from './RecommendedFood.styled';
-import SnacksImg from '../../../../images/svgIcon/snack-img.svg';
 
 export const RecommendedFood = () => {
   return (

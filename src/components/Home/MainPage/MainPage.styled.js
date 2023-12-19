@@ -74,6 +74,13 @@ export const DashboardLink = styled(NavLink)`
       stroke: ${props => props.theme.color.primary_green_lite};
     }
   }
+
+  &:focus {
+    color: ${props => props.theme.color.primary_lite_green};
+    & svg {
+      stroke: ${props => props.theme.color.primary_lite_green};
+    }
+  }
 `;
 
 export const GoalsContainer = styled.div`

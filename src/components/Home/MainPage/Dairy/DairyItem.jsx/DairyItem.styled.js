@@ -42,5 +42,9 @@ export const ClearButton = styled.button`
     &:hover {
       stroke: ${props => props.theme.color.primary_lite_green};
     }
+
+    &:focus {
+      stroke: ${props => props.theme.color.primary_lite_green};
+    }
   }
 `;

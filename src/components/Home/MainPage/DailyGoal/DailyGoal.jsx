@@ -1,6 +1,6 @@
 import { Section } from 'components/Section/Section';
-import bubbleIcon from '../../../../images/svgIcon/bubble-icon.svg';
-import bottleIcon from '../../../../images/svgIcon/bottle-icon.svg';
+import { ReactComponent as BubbleIcon } from '../../../../images/icons-linear/bubble.svg';
+import { ReactComponent as BottleIcon } from '../../../../images/icons-linear/milk.svg';
 import { Container } from './DailyGoal.styled';
 
 export const DailyGoal = () => {
@@ -10,14 +10,14 @@ export const DailyGoal = () => {
         <h2>Daily goal</h2>
         <ul>
           <li>
-            <img src={bubbleIcon} alt="Bubbles" />
+            <BubbleIcon alt="Bubbles" />
             <div>
               <h3>Calories</h3>
               <p>1700</p>
             </div>
           </li>
           <li>
-            <img src={bottleIcon} alt="Bottle" />
+            <BottleIcon alt="Bottle" />
             <div>
               <h3>Water</h3>
               <p>

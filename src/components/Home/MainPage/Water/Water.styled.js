@@ -84,6 +84,10 @@ export const ClearButton = styled.button`
     &:hover {
       stroke: ${props => props.theme.color.primary_lite_green};
     }
+
+    &:focus {
+      stroke: ${props => props.theme.color.primary_lite_green};
+    }
   }
 `;
 
@@ -173,6 +177,13 @@ export const AddButton = styled.button`
   }
 
   &:hover {
+    color: ${props => props.theme.color.primary_grey};
+    & svg {
+      stroke: ${props => props.theme.color.primary_grey};
+    }
+  }
+
+  &:focus {
     color: ${props => props.theme.color.primary_grey};
     & svg {
       stroke: ${props => props.theme.color.primary_grey};

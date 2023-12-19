@@ -1,6 +1,6 @@
 import { Section } from 'components/Section/Section';
-import { ReactComponent as AddIcon } from '../../../../images/svgIcon/add-icon.svg';
-import { ReactComponent as ClearIcon } from '../../../../images/svgIcon/clear-icon.svg';
+import { ReactComponent as AddIcon } from '../../../../images/icons-linear/add.svg';
+import { ReactComponent as ClearIcon } from '../../../../images/icons-linear/trash.svg';
 
 import {
   AddButton,

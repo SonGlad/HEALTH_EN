@@ -1,18 +1,20 @@
 import { Section } from 'components/Section/Section';
-import { Container, GraphWrapper, TitleWrapper } from './WeightGraph.styled';
+import { GraphWrapper, TitleWrapper } from './WeightGraph.styled';
 
 export const WeightGraph = () => {
   return (
     <Section>
-      <Container>
+      <div>
         <TitleWrapper>
           <h2>Weights</h2>
           <p>
             Average value: <span>68 kg</span>
           </p>
         </TitleWrapper>
-        <GraphWrapper />
-      </Container>
+        <GraphWrapper>
+          <div></div>
+        </GraphWrapper>
+      </div>
     </Section>
   );
 };
