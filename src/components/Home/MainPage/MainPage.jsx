@@ -28,7 +28,9 @@ export const MainPage = () => {
           </DashboardLink>
         </TitleWrapper>
         <GoalsContainer>
-          <DailyGoal />
+          <GoalItem>
+            <DailyGoal />
+          </GoalItem>
           <GoalItem>
             <Water />
           </GoalItem>
