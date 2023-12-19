@@ -26,6 +26,9 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
+  div {
+    position: relative;
+  }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -64,12 +67,12 @@ export const ButtonWrapper = styled.div`
   }
   &:hover {
     svg {
-      stroke: ${props => props.theme.color.primary_lite_green};
+      stroke: ${props => props.theme.color.primary_green_lite};
     }
   }
   &:focus {
     svg {
-      stroke: ${props => props.theme.color.primary_lite_green};
+      stroke: ${props => props.theme.color.primary_green_lite};
     }
   }
 `;
@@ -98,60 +101,69 @@ export const BackLink = styled(NavLink)`
 
   &:hover {
     svg {
-      stroke: ${props => props.theme.color.primary_lite_green};
+      stroke: ${props => props.theme.color.primary_green_lite};
     }
   }
   &:focus {
     svg {
-      stroke: ${props => props.theme.color.primary_lite_green};
+      stroke: ${props => props.theme.color.primary_green_lite};
     }
   }
 `;
 
 export const List = styled.ul`
-  display: flex;
-  flex-direction: column;
-  padding-top: 12px;
-  gap: 6px;
-  position: absolute;
-  width: 212px;
-  height: 144px;
-  border-radius: 12px;
-  background: ${props => props.theme.color.primary_black_2};
-  overflow-y: auto;
-  visibility: ${props => (props.isOptionsListActive ? 'visible' : 'hidden')};
-  z-index: ${props => (props.isOptionsListActive ? '1' : '0')};
-  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &.hidden {
+    display: flex;
+    flex-direction: column;
+    padding-top: 12px;
+    gap: 6px;
+    width: 212px;
+    height: 144px;
+    border-radius: 12px;
+    background: ${props => props.theme.color.primary_black_2};
+    overflow-y: auto;
+    position: absolute;
+    box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+    visibility: hidden;
+    opacity: 0;
+
+    li {
+      font-weight: 400;
+      line-height: 20px;
+      cursor: pointer;
+    }
+
+    p {
+      color: ${props => props.theme.color.primary_grey};
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.4;
+      text-align: start;
+      width: 100%;
+      padding-left: 16px;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.03);
+        color: ${props => props.theme.color.primary_green_lite};
+      }
+
+      &:focus {
+        background: rgba(255, 255, 255, 0.03);
+        color: ${props => props.theme.color.primary_green_lite};
+      }
+    }
+  }
+
+  &.active {
+    z-index: 1;
+    visibility: visible;
+    opacity: 1;
+  }
 
   &::-webkit-scrollbar {
     display: none;
-  }
-
-  li {
-    font-weight: 400;
-    line-height: 20px;
-    cursor: pointer;
-  }
-
-  p {
-    color: ${props => props.theme.color.primary_grey};
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.4;
-    text-align: start;
-    width: 100%;
-    padding-left: 16px;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.03);
-      color: ${props => props.theme.color.primary_lite_green};
-    }
-
-    &:focus {
-      background: rgba(255, 255, 255, 0.03);
-      color: ${props => props.theme.color.primary_lite_green};
-    }
   }
 `;

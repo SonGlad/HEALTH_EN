@@ -76,9 +76,9 @@ export const DashboardLink = styled(NavLink)`
   }
 
   &:focus {
-    color: ${props => props.theme.color.primary_lite_green};
+    color: ${props => props.theme.color.primary_green_lite};
     & svg {
-      stroke: ${props => props.theme.color.primary_lite_green};
+      stroke: ${props => props.theme.color.primary_green_lite};
     }
   }
 `;
@@ -110,6 +110,7 @@ export const GoalsContainer = styled.div`
 export const GoalItem = styled.div`
   flex: 1;
   width: 100%;
+
   @media screen and (min-width: 834px) and (max-width: 1439px) {
     &:nth-child(2),
     &:nth-child(3) {

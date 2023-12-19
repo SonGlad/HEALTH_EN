@@ -11,14 +11,17 @@ import { ReactComponent as ArrowDown } from '../../../images/icons-linear/arrow-
 import month from '../../../utils/months.json';
 
 export const MonthSelector = () => {
-  const [isOptionsListActive, setIsOptionsListActive] = useState(false);
+  const [isOptionsListActive, setIsOptionsListActive] = useState(true);
   const [arrowUp, setArrowUp] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState('December');
   const dropdownRef = useRef(null);
+  const optionListRef = useRef(null);
 
   const handleButtonClick = () => {
     setIsOptionsListActive(!isOptionsListActive);
+    setArrowUp(true);
   };
+
   const rotateButton = () => {
     setArrowUp(rotateButton => !rotateButton);
   };
@@ -26,7 +29,7 @@ export const MonthSelector = () => {
   const handleMonthClick = month => {
     setSelectedMonth(month);
     setIsOptionsListActive(false);
-    setArrowUp();
+    setArrowUp(false);
   };
 
   const handleBackgroundClick = event => {
@@ -66,9 +69,16 @@ export const MonthSelector = () => {
                 />
               </button>
             </ButtonWrapper>
-            <List isOptionsListActive={isOptionsListActive}>
+            <List
+              ref={optionListRef}
+              className={`active ${isOptionsListActive ? 'active' : 'hidden'}`}
+            >
               {month.map(month => (
-                <li key={month} onClick={() => handleMonthClick(month)}>
+                <li
+                  className="hidden"
+                  key={month}
+                  onClick={() => handleMonthClick(month)}
+                >
                   <p> {month}</p>
                 </li>
               ))}
