@@ -2,30 +2,27 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  min-width: 300px;
+  width: 320px;
   margin: 0 auto;
-  max-width: 320px;
-  padding: 0 10px;
-  margin-bottom: 80px;
+  padding: 0 10px 80px;
 
   outline: 2px solid red;
   outline-offset: -2px;
 
   @media screen and (min-width: 834px) {
-    max-width: 834px;
-    padding: 0 27px;
+    width: 834px;
+    padding: 0px 27px 40px;
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 1440px;
-    padding: 0 34px;
+    width: 1440px;
+    padding: 0 34px 52px;
   }
 `;
 
 export const TitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 16px 0 20px;
 
   @media screen and (min-width: 834px) {
@@ -56,9 +53,8 @@ export const DashboardLink = styled(NavLink)`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.4;
-  justify-content: center;
   align-items: center;
-  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media screen and (min-width: 834px) {
     font-size: 16px;
@@ -73,9 +69,9 @@ export const DashboardLink = styled(NavLink)`
   }
 
   &:hover {
-    color: ${props => props.theme.color.primary_lite_green};
+    color: ${props => props.theme.color.primary_green_lite};
     & svg {
-      stroke: ${props => props.theme.color.primary_lite_green};
+      stroke: ${props => props.theme.color.primary_green_lite};
     }
   }
 `;
@@ -122,6 +118,5 @@ export const CardWrapper = styled.div`
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     justify-content: space-between;
-    gap: 138px;
   }
 `;
