@@ -168,10 +168,10 @@ export const SingUpLink = styled(NavLink)`
   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    color: ${props => props.theme.color.primary_lite_green};
+    color: ${props => props.theme.color.primary_green_lite};
   }
 
   &:focus {
-    color: ${props => props.theme.color.primary_lite_green};
+    color: ${props => props.theme.color.primary_green_lite};
   }
 `;
