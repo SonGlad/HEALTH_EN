@@ -135,7 +135,7 @@ export const SignUp = ({ onNext }) => {
           <button
             className="ButtonNext"
             type="submit"
-            disabled={!touched.name || !isValid}
+            disabled={!isValid}
           >
             Next
           </button>

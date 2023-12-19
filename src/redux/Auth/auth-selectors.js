@@ -12,11 +12,11 @@ export const selectUserAge = state => state.auth.genderAgeForm.age;
 
 export const selectUserHeight = state => state.auth.bodyParamForm.height;
 
-export const selectUserWeight = state => state.auth.bodyParamForm.weight.kg;
-
-export const selectUserWeightCurrentDate = state => state.auth.bodyParamForm.weight.createdAt;
+export const selectUserWeight = state => state.auth.bodyParamForm.weight;
 
 export const selectUserActivity = state => state.auth.activityForm.activity;
+
+export const selectUserAvatarURL = state => state.auth.avatarURL;
 
 export const selectLoggedUser = state => state.auth.isLoggedIn;
 

@@ -4,6 +4,10 @@ import { NavLink } from 'react-router-dom';
 export const Container = styled.div`
   margin-bottom: 20px;
 
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 0px;
+  }
+
   h2 {
     font-size: 18px;
     font-weight: 400;
@@ -56,7 +60,12 @@ export const DairyLink = styled(NavLink)`
   font-size: 14px;
   line-height: 1.4;
   font-weight: 500;
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    color: ${props => props.theme.color.primary_green_lite};
+  }
+
 
   @media screen and (min-width: 834px) {
     font-size: 16px;
@@ -85,7 +94,7 @@ export const AddButton = styled.button`
   gap: 8px;
   border: none;
   background-color: transparent;
-  color: ${props => props.theme.color.primary_white};
+  color: ${props => props.theme.color.primary_green_lite};
   font-size: 14px;
   font-weight: 500;
   line-height: 1.4;
@@ -94,7 +103,7 @@ export const AddButton = styled.button`
   svg {
     width: 16px;
     height: 16px;
-    stroke: ${props => props.theme.color.primary_white};
+    stroke: ${props => props.theme.color.primary_green_lite};
     transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 

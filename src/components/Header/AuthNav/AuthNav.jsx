@@ -8,11 +8,11 @@ export const AuthNav = () => {
   return (
     <AuthNavStyles>
       <NavLink className="link" to="/signin">
-        Sing In
+        Sing in
       </NavLink>
       <span className='header-span'>/</span>
-      <NavLink className="link" to="/singup">
-        Sing Up
+      <NavLink className="link" to="/signup">
+        Sing up
       </NavLink>
       <AvatarImg src={avatar} alt="Your avatar" width={28} />
     </AuthNavStyles>

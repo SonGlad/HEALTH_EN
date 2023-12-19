@@ -120,7 +120,7 @@ export const SelectGender = ({ onNext, onBack }) => {
             className="ButtonNext"
             type="submit"
             name="BtnNext"
-            disabled={!touched.gender || !isValid}
+            disabled={!values.gender || !isValid}
             onClick={(e) => {
               handleSubmit(e);
               onNext();

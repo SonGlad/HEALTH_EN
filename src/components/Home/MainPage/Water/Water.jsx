@@ -10,8 +10,18 @@ import {
   Container,
   InfoWrapper,
   LeftInfo,
+  Percentage,
+  Statistics,
+  StatisticsVisually,
   TotalInfo,
 } from './Water.styled';
+
+//замінити на дані % води з бека в змінну randomStatistic.
+function generateRandomNumber() {
+  return Math.floor(Math.random() * 101);
+}
+const randomStatistic = generateRandomNumber();
+//*
 
 export const Water = () => {
   const waterGoal = 1500;
@@ -66,7 +76,6 @@ export const Water = () => {
             }}
           />
         </ChartWrapper>
-
         <div>
           <h3>Water consumption</h3>
           <ClearButton onClick={clear}>

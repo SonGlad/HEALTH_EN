@@ -108,7 +108,7 @@ export const BodyParametrs = ({ onNext, onBack }) => {
             className="ButtonNext"
             type="submit"
             name="BtnNext"
-            disabled={!touched.height || !isValid}
+            disabled={!values.height || !isValid}
             onClick={(e) => {
               handleSubmit(e);
               onNext();
