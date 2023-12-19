@@ -1,21 +1,33 @@
 import { useFormik } from 'formik';
 import { DivSingIn } from './SignIn.styled';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { logIn } from '../../../redux/Auth/auth-operations';
+
 
 const initialState = {
   email: '',
   password: '',
 };
 
-export const SignIn = ({ onSubmit }) => {
+
+export const SignIn = () => {
+  const dispatch = useDispatch();
+
+
   const formik = useFormik({
     initialValues: initialState,
     onSubmit: values => {
-      onSubmit(values);
+      dispatch(
+        logIn(values)
+      )
     },
   });
 
+
   return (
+
+    
     <DivSingIn>
       <div className="ImageContainet">
         <span className="ImgSingIn" />
