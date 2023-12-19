@@ -95,4 +95,11 @@ export const AddButton = styled.button`
       stroke: ${props => props.theme.color.primary_lite_green};
     }
   }
+
+  &:focus {
+    color: ${props => props.theme.color.primary_lite_green};
+    & svg {
+      stroke: ${props => props.theme.color.primary_lite_green};
+    }
+  }
 `;

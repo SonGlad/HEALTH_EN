@@ -3,6 +3,7 @@ import { MainPage } from 'components/Home/MainPage/MainPage';
 import { useAuth } from "hooks/useAuth";
 
 
+
 const HomePage = () => {
   const { isLoggedIn } = useAuth();
 

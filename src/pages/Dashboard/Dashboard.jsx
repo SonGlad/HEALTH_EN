@@ -1,16 +1,15 @@
 import { Section } from 'components/Section/Section';
 import { Container } from 'components/Container/Container';
-import { CaloriesGraph } from 'components/CaloriesGraph/CaloriesGraph';
-import { WaterGraph } from 'components/WaterGraph/WaterGraph';
-import { WeightGraph } from 'components/WeightGraph/WeightGraph';
-import { MonthSelector } from './MonthSelector/MonthSelector';
-import { ContentWrapper, Title } from './Dashboard.styled';
+import { CaloriesGraph } from 'components/Dashboard/CaloriesGraph/CaloriesGraph';
+import { WaterGraph } from 'components/Dashboard/WaterGraph/WaterGraph';
+import { WeightGraph } from 'components/Dashboard/WeightGraph/WeightGraph';
+import { ContentWrapper } from './Dashboard.styled';
+import { MonthSelector } from 'components/Dashboard/MonthSelector/MonthSelector';
 
 const DashboardPage = () => {
   return (
     <Section>
       <Container>
-        <Title>DASHBOARD</Title>
         <MonthSelector />
         <ContentWrapper>
           <CaloriesGraph />
