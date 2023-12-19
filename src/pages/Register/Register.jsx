@@ -7,16 +7,20 @@ import { BodyParametrs } from "components/Register/BodyParametrs/BodyParametrs";
 import { YourActivity } from "components/Register/YourActivity/YourActivity";
 import { useState } from "react";
 
+
 const RegisterPage = () => {
   const [currentComponent, setCurrentComponent] = useState(0);
+
 
   const handleNext = () => {
     setCurrentComponent((current) => current + 1);
   };
 
+
   const handleBack = () => {
     setCurrentComponent((current) => current - 1);
   };
+
 
   const components = [
     <SignUp onNext={handleNext} />,

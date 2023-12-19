@@ -1,17 +1,65 @@
 import { useFormik } from "formik";
 import { DivBodyParametrs } from "./BodyParametrs.styled";
+import { BodyParametrsSchema } from "../../../utils/validationSchemas";
+import { updateBodyParamForm } from "../../../redux/Auth/auth-slice";
+import { useDispatch } from "react-redux";
+import { useAuth } from "hooks/useAuth";
+
 
 export const BodyParametrs = ({ onNext, onBack }) => {
-  const formik = useFormik({
+  const dispatch = useDispatch();
+  const { userHeight, userWeight } = useAuth();
+  const {
+    values,
+    errors,
+    touched,
+    isValid,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+  } = useFormik({
     initialValues: {
-      height: "",
-      weight: "",
+      height: userHeight || "",
+      weight: userWeight || "",
     },
+
+
+    validationSchema: BodyParametrsSchema,
+
+
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      console.log(formik.values);
+      dispatch(updateBodyParamForm(values));
     },
+
   });
+
+
+  const getInputClass = (fieldName) => {
+    return !values[fieldName]
+      ? ""
+      : touched && errors[fieldName]
+      ? "ErrorInput"
+      : "SuccessInput";
+  };
+
+
+  const getInputAlert = (fieldName) => {
+    return !values[fieldName] ? (
+      ""
+    ) : touched && errors[fieldName] ? (
+      <>
+        <p className="ErrorText">{errors[fieldName]}</p>
+        <div className="ImgError" />
+      </>
+    ) : (
+      <>
+        <p className="SuccessText">{`${fieldName} is correct`}</p>
+        <div className="ImgCorrect" />
+      </>
+    );
+  };
+
+
   return (
     <DivBodyParametrs>
       <div className="ImageContainet">
@@ -24,44 +72,62 @@ export const BodyParametrs = ({ onNext, onBack }) => {
             Enter your parameters for correct performance tracking
           </p>
         </div>
-        <form className="Form" onSubmit={formik.handleSubmit}>
+        <form className="Form" onSubmit={handleSubmit}>
           <div className="DivInputContainet">
             <label className="LabelInput">
               Height
               <input
-                className="TextInput"
+                className={getInputClass("height")}
                 placeholder="Enter your height"
                 id="Height"
                 name="height"
                 type="text"
-                onChange={formik.handleChange}
-                value={formik.values.lastName}
+                onChange={handleChange}
+                value={values.height}
+                onBlur={handleBlur}
               />
+              {getInputAlert("height")}
             </label>
 
             <label className="LabelInput">
               Weight
               <input
-                className="TextInput"
+                className={getInputClass("weight")}
                 placeholder="Enter your weight"
                 id="Weight"
                 name="weight"
                 type="text"
-                onChange={formik.handleChange}
-                value={formik.values.lastName}
+                onChange={handleChange}
+                value={values.weight}
+                onBlur={handleBlur}
               />
+              {getInputAlert("weight")}
             </label>
           </div>
-          <button className="ButtonNext" type="submit" onClick={onNext}>
+          <button
+            className="ButtonNext"
+            type="submit"
+            name="BtnNext"
+            disabled={!values.height || !isValid}
+            onClick={(e) => {
+              handleSubmit(e);
+              onNext();
+            }}
+          >
             Next
           </button>
-        </form>
-
-        <div className="DivButtonBack">
-          <button className="ButtonBack" onClick={onBack}>
+          <button
+            className="ButtonBack"
+            type="submit"
+            name="BtnBack"
+            onClick={(e) => {
+              handleSubmit(e);
+              onBack();
+            }}
+          >
             Back
           </button>
-        </div>
+        </form>
       </div>
     </DivBodyParametrs>
   );

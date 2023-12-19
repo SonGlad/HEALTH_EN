@@ -1,17 +1,30 @@
 import { useFormik } from "formik";
 import { DivYourGoal } from "./YourGoal.styled";
+import { YourGoalSchema } from "../../../utils/validationSchemas";
+import { updateGoalForm } from "../../../redux/Auth/auth-slice";
+import { useDispatch } from "react-redux";
+import { useAuth } from "hooks/useAuth";
+
 
 export const YourGoal = ({ onNext, onBack }) => {
-  const formik = useFormik({
-    initialValues: {
-      goal: "",
-    },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      console.log(formik.values);
-    },
-  });
+  const dispatch = useDispatch();
+  const { userGoal } = useAuth();
+  const {values, handleBlur, handleChange, handleSubmit } = useFormik(
+    {
+      initialValues: {
+        goal: userGoal?.goal || "",
+      },
 
+      validationSchema: YourGoalSchema,
+
+
+      onSubmit: (values) => {
+        dispatch(updateGoalForm(values));
+      },
+    }
+  );
+
+  
   return (
     <DivYourGoal>
       <div className="ImageContainet">
@@ -24,7 +37,7 @@ export const YourGoal = ({ onNext, onBack }) => {
             Choose a goal so that we can help you effectively
           </p>
         </div>
-        <form className="Form" onSubmit={formik.handleSubmit}>
+        <form className="Form" onSubmit={handleSubmit}>
           <div className="DivRadioButton">
             <label className="LabelGoal">
               <input
@@ -32,8 +45,10 @@ export const YourGoal = ({ onNext, onBack }) => {
                 id="LoseFat"
                 name="goal"
                 type="radio"
-                onChange={formik.handleChange}
-                value="Lose Fat"
+                onChange={handleChange}
+                value="lose fat"
+                onBlur={handleBlur}
+                checked={values.goal === "lose fat"}
               />
               Lose Fat
             </label>
@@ -43,8 +58,10 @@ export const YourGoal = ({ onNext, onBack }) => {
                 id="Maintain"
                 name="goal"
                 type="radio"
-                onChange={formik.handleChange}
-                value="Main tain"
+                onChange={handleChange}
+                value="maintain"
+                onBlur={handleBlur}
+                checked={values.goal === "maintain"}
               />
               Maintain
             </label>
@@ -55,23 +72,38 @@ export const YourGoal = ({ onNext, onBack }) => {
                 id="GainMuscle"
                 name="goal"
                 type="radio"
-                onChange={formik.handleChange}
-                value="Gain Muscle"
+                onChange={handleChange}
+                value="gain muscle"
+                onBlur={handleBlur}
+                checked={values.goal === "gain muscle"}
               />
               Gain Muscle
             </label>
           </div>
-
-          <button className="ButtonNext" type="submit" onClick={onNext}>
+          <button
+            className="ButtonNext"
+            type="submit"
+            name="BtnNext"
+            disabled={!values.goal}
+            onClick={(e) => {
+              handleSubmit(e);
+              onNext();
+            }}
+          >
             Next
           </button>
-        </form>
-
-        <div className="DivButtonBack">
-          <button className="ButtonBack" onClick={onBack}>
+          <button
+            className="ButtonBack"
+            type="submit"
+            name="BtnBack"
+            onClick={(e) => {
+              handleSubmit(e);
+              onBack();
+            }}
+          >
             Back
           </button>
-        </div>
+        </form>
       </div>
     </DivYourGoal>
   );
