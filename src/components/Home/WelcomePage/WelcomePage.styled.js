@@ -106,6 +106,7 @@ export const Wrapper = styled.div`
     flex-direction: column;
     gap: 16px;
     max-width: 444px;
+    align-items: flex-start;
 
     @media screen and (min-width: 834px) {
       flex-direction: row;
