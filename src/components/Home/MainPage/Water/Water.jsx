@@ -9,15 +9,30 @@ import {
   Graph,
   InfoWrapper,
   LeftInfo,
+  Percentage,
+  Statistics,
+  StatisticsVisually,
   TotalInfo,
 } from './Water.styled';
+
+//замінити на дані % води з бека в змінну randomStatistic.
+function generateRandomNumber() {
+  return Math.floor(Math.random() * 101);
+}
+const randomStatistic = generateRandomNumber();
+//*
 
 export const Water = () => {
   return (
     <Section>
       <h2>Water</h2>
       <Container>
-        <Graph></Graph>
+        <Graph>
+          <Statistics percentage={randomStatistic} />
+          <StatisticsVisually percentage={randomStatistic}>
+            <Percentage>{randomStatistic}%</Percentage>
+          </StatisticsVisually>
+        </Graph>
         <div>
           <h3>Water consumption</h3>
           <ClearButton>
