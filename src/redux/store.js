@@ -19,11 +19,11 @@ const authPersistConfig = {
   storage,
   whitelist: [
     'token', 
-    'userForm', 
-    'goalForm', 
-    'genderAgeForm', 
-    'bodyParamForm',
-    'activityForm',
+    // 'userForm', 
+    // 'goalForm', 
+    // 'genderAgeForm', 
+    // 'bodyParamForm',
+    // 'activityForm',
   ],
 };
 
