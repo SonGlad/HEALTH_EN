@@ -142,7 +142,7 @@ export const DivSelectGender = styled.div`
     position: relative;
   }
 
-  .TextInput {
+  input[type="text"] {
     width: 100%;
     margin-top: 12px;
     padding: 8px 10px;
