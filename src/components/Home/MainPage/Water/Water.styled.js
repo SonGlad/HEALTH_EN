@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  justify-content: center;
   align-items: center;
   border-radius: 12px;
   padding: 16px 22px 16px 12px;
@@ -23,7 +24,7 @@ export const Container = styled.div`
   h3 {
     font-size: 16px;
     font-weight: 500;
-    line-height: 1.4;
+    line-height: 1.3;
     margin-bottom: 12px;
     letter-spacing: 1px;
 
@@ -40,32 +41,9 @@ export const ChartWrapper = styled.div`
   justify-content: center;
   border-radius: 20px;
   border: 1px solid #292928;
-  background: ${props => props.theme.color.primary_black_2};
+  background-color: ${props => props.theme.color.primary_black};
   width: 80px;
   height: 192px;
-  padding: 8px;
-  position: relative;
-
-  p {
-    position: absolute;
-    top: 28px;
-    color: ${props => props.theme.color.primary_violet};
-    height: ${props => props.height}%;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.4;
-  }
-`;
-
-export const ColoredArea = styled.div`
-  border-radius: 20px;
-  background: ${props => props.theme.color.primary_violet};
-  box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.12),
-    0px 4px 8px 0px rgba(0, 0, 0, 0.12) inset;
-  width: 100%;
-  height: ${props => props.height}%;
-  transition: height 0.5s ease-in-out;
 `;
 
 export const ClearButton = styled.button`
@@ -82,7 +60,7 @@ export const ClearButton = styled.button`
 
   svg {
     width: 20px;
-    stroke: ${props => props.theme.color.primary_white};
+    stroke: ${props => props.theme.color.primary_green_lite};
     transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
@@ -177,7 +155,7 @@ export const AddButton = styled.button`
   svg {
     width: 16px;
     stroke: ${props => props.theme.color.primary_black};
-    transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: stroke color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover {

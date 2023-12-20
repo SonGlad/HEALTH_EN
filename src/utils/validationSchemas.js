@@ -1,6 +1,8 @@
 import * as Yup from "yup";
 
-const passwordRules = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+// const passwordRules = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const passwordRules =  /^[a-zA-Z\d@$!%*?&]{8,}$/;
+
 
 // Длина пароля должна быть не менее 8 символов.
 // Пароль должен содержать хотя бы одну заглавную букву.
@@ -17,7 +19,7 @@ const SignupSchema = Yup.object().shape({
   password: Yup.string()
     .min(8, "Must be at least 8 characters")
     .max(50, "Too Long!")
-    .matches(passwordRules, "Must be Az, 1-9 & @ # $ %")
+    .matches(passwordRules, "Must be A-z, 1-9")
     .required("Required"),
 });
 
