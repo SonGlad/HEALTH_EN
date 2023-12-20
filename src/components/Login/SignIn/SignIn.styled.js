@@ -3,6 +3,7 @@ import login_mobile from '../../../images/images/login_mobile-min.png';
 import login_tablet from '../../../images/images/login_tablet-min.png';
 import login_computer from '../../../images/images/login_computer-min.png';
 
+
 export const DivSingIn = styled.div`
   padding-bottom: 40px;
   padding-top: 24px;
@@ -87,23 +88,24 @@ export const DivSingIn = styled.div`
   }
 
   .Form {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin-top: 24px;
-    gap: 20px;
+    width: 100%;
 
     @media only screen and (min-width: 834px) {
-      padding-left: 24px;
-      padding-right: 24px;
+      width: 380px;
     }
 
     @media only screen and (min-width: 1440px) {
-      padding-left: 0px;
-      padding-right: 232px;
+      width: 212px;
     }
   }
 
   .ButtonNext {
-    margin-top: 12px;
+    margin-top: 20px;
+    margin-bottom: 14px;
     border-radius: 12px;
     background: ${props => props.theme.color.primary_green_lite};
     padding: 8px 10px;
@@ -111,6 +113,29 @@ export const DivSingIn = styled.div`
     font-size: 14px;
     line-height: 20px;
     cursor: pointer;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+
+    &:hover, &:focus {
+      color: ${props => props.theme.color.primary_grey};
+    }
+
+    @media only screen and (min-width: 834px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  .link-color{
+    color: ${props => props.theme.color.primary_grey};
+  }
+
+  .link{
+    margin: 0 auto;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover, &:focus {
+      color: ${props => props.theme.color.primary_green_lite};
+    }
   }
 
   .Input {
@@ -121,6 +146,7 @@ export const DivSingIn = styled.div`
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
+    margin-bottom: 20px;
     color: ${props => props.theme.color.primary_white};
     &:focus {
       outline: none;
@@ -134,32 +160,38 @@ export const DivSingIn = styled.div`
 
   .DivContainerSingUp {
     margin-top: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 
     @media only screen and (min-width: 834px) {
-      display: flex;
+      justify-content: flex-start;
       align-items: baseline;
       gap: 16px;
-      margin-top: 206px;
-      padding-left: 24px;
+      margin-top: 222px;
     }
 
     @media only screen and (min-width: 1440px) {
       padding-left: 0px;
-      margin-top: 168px;
+      margin-top: 184px;
     }
   }
 
   .SingUpText {
     color: ${props => props.theme.color.primary_grey};
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 20px;
+
+    @media only screen and (min-width: 1440px) {
+      font-size: 14px;
+    }
   }
 
   .LinkToSingUp {
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
-    margin-top: 16px;
   }
 `;

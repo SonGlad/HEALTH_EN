@@ -60,13 +60,13 @@ export const SignIn = () => {
           <button className="ButtonNext" type="submit">
             Sign In
           </button>
-          <NavLink to="/forgot-password">Forgot your password?</NavLink>
+          <NavLink className="link link-color" to="/forgot-password">Forgot your password?</NavLink>
         </form>
 
         <div className="DivContainerSingUp">
           <p className="SingUpText">If you don't have an account yet</p>
           <div className="LinkToSingUp">
-            <NavLink to="/signup">Sign up</NavLink>
+            <NavLink className="link" to="/signup">Sign up</NavLink>
           </div>
         </div>
       </div>
