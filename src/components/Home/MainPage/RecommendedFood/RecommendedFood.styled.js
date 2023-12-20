@@ -109,9 +109,9 @@ export const FoodLink = styled(NavLink)`
   }
 
   &:focus {
-    color: ${props => props.theme.color.primary_green_lite};
+    color: ${props => props.theme.color.primary_lite_green};
     & svg {
-      stroke: ${props => props.theme.color.primary_green_lite};
+      stroke: ${props => props.theme.color.primary_lite_green};
     }
   }
 `;

@@ -1,23 +1,22 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 100%;
+  img {
+    width: 80px;
+    height: 80px;
+  }
+
   ul {
     display: flex;
     flex-direction: column;
     border-radius: 12px;
-    padding: 16px 22px 16px 12px;
+    padding: 16px 12px;
     background: ${props => props.theme.color.primary_black_2};
     gap: 20px;
-    width: 100%;
 
     @media screen and (min-width: 834px) {
-      padding: 24px 138px 24px 40px;
+      padding: 24px 40px;
       gap: 32px;
-    }
-
-    @media screen and (min-width: 1440px) {
-      padding: 24px 86px 24px 40px;
     }
   }
 
