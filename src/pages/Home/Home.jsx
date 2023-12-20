@@ -1,15 +1,22 @@
-// import { WelcomePage } from 'components/Home/WelcomePage/WelcomePage';
+import { WelcomePage } from 'components/Home/WelcomePage/WelcomePage';
 import { MainPage } from 'components/Home/MainPage/MainPage';
+import { useAuth } from "hooks/useAuth";
 
-// import { useAuth } from "hooks/useAuth";
+
 
 const HomePage = () => {
-  return (
-    <div>
-      {/* <WelcomePage /> */}
+  const { isLoggedIn } = useAuth();
+
+
+  return isLoggedIn ? (
       <MainPage />
-    </div>
+    ) : (
+      <WelcomePage />
   );
 };
 
 export default HomePage;
+
+
+
+

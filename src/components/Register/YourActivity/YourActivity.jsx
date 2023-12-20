@@ -18,8 +18,8 @@ export const YourActivity = ({ onBack }) => {
     userAge,
     userHeight,
     userWeight,
-    userWeightCurrentDate,
   } = useAuth();
+
   const { values, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
       activity: userActivity?.activity || "",
@@ -43,10 +43,7 @@ export const YourActivity = ({ onBack }) => {
         gender: userGender,
         age: userAge,
         height: userHeight,
-        weight: {
-          kg: userWeight,
-          createdAt: userWeightCurrentDate,
-        },
+        weight: userWeight,
         activity: values.activity || userActivity,
       })
     );

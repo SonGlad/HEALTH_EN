@@ -1,20 +1,19 @@
-import { Section } from "components/Section/Section";
-import { Container } from "components/Container/Container";
-
-
+import { Section } from 'components/Section/Section';
+import { Container } from 'components/Container/Container';
+import { SignIn } from 'components/Login/SignIn/SignIn';
 
 
 const LoginPage = () => {
 
-    
-    return(
-        <Section>
-            <Container>
-               <h1>Welcome to the HealthyHub LOGIN Page</h1>    
-            </Container>
-        </Section>
-    );
-};
+  
+  return (
+    <Section>
+      <Container>
+        <SignIn />
+      </Container>
+    </Section>
+  );
 
+};
 
 export default LoginPage;

@@ -1,6 +1,9 @@
 import * as Yup from "yup";
 
-const passwordRules = /^[a-zA-Z\d@$!%*?&]{8,}$/;
+
+// const passwordRules = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const passwordRules =  /^[a-zA-Z\d@$!%*?&]{8,}$/;
+
 
 const weightRules = /^\d+(\.\d{1})?$/;
 

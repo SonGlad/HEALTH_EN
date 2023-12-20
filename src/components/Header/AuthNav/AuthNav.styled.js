@@ -20,12 +20,12 @@ export const AuthNavStyles = styled.div`
 
     &:hover,
     &:focus {
-      color: #9bb537;
+      color: ${p => p.theme.color.primary_green_lite};
     }
   }
 
   .link.active {
-    color: #9bb537;
+    color: ${p => p.theme.color.primary_white_green_lite};
   }
 
   .header-span{
