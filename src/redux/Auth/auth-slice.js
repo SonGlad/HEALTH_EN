@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, logIn, logOut, refreshCurrentUser, forgotPassword } from "./auth-operations";
+import { register, logIn, logOut, refreshCurrentUser } from "./auth-operations";
 
 
 const initialState = {
@@ -80,18 +80,18 @@ const authSlice = createSlice({
       state.error = null;
     })
     .addCase(register.fulfilled, (state, { payload }) => {
-      state.isLoading = false;
       state.userForm = {
-        name: payload.name,
+        name: payload.data.name,
       };
       state.goalForm = {
-        goal: payload.goal,
+        goal: payload.data.goal,
       };
       state.bodyParamForm = {
-        weight: payload.weight,
+        weight: payload.data.weight,
       };
-      state.avatarURL = payload.avatarURL;
+      state.avatarURL = payload.data.avatarURL;
       state.token = payload.token;
+      state.isLoading = false;
       state.isLoggedIn = true;
       state.error = null;
     })
@@ -108,18 +108,18 @@ const authSlice = createSlice({
       state.error = null;
     })
     .addCase(logIn.fulfilled, (state, {payload}) => {
-      state.isLoading = false;
       state.userForm = {
-        name: payload.name,
+        name: payload.data.name,
       };
       state.bodyParamForm = {
-        weight: payload.weight,
+        weight: payload.data.weight,
       };
       state.goalForm = {
-        goal: payload.goal,
+        goal: payload.data.goal,
       };
+      state.avatarURL = payload.data.avatarURL;
       state.token = payload.token;
-      state.avatarURL = payload.avatarURL;
+      state.isLoading = false;
       state.isLoggedIn = true;
       state.error = null;
     })
@@ -135,7 +135,6 @@ const authSlice = createSlice({
       state.error = null;
     })
     .addCase(logOut.fulfilled, (state, { payload }) => {
-      state.isLoading = false;
       state.userForm = {
         name: null,
         email: null,
@@ -157,6 +156,7 @@ const authSlice = createSlice({
       };
       state.avatarURL = null;
       state.token = null;
+      state.isLoading = false;
       state.isLoggedIn = false;
       state.error = null;
     })
@@ -172,50 +172,34 @@ const authSlice = createSlice({
       state.isRefreshing = true;
     })
     .addCase(refreshCurrentUser.fulfilled, (state, { payload }) => {
-      state.isLoading = false;
       state.userForm = {
-        name: payload.name,
-        email: payload.email,
-        password: payload.password,
+        name: payload.data.name,
+        email: payload.data.email,
+        password: payload.data.password,
       };
       state.goalForm = {
-        goal: payload.goal,
+        goal: payload.data.goal,
       };
       state.genderAgeForm = {
-        gender: payload.gender,
-        age: payload.age,
+        gender: payload.data.gender,
+        age: payload.data.age,
       };
       state.bodyParamForm = {
-        height: payload.height,
-        weight: payload.weight,
+        height: payload.data.height,
+        weight: payload.data.weight,
       };
       state.activityForm = {
-        activity: payload.activity,
+        activity: payload.data.activity,
       };
-      state.avatarURL = payload.avatarURL;
-      state.token = payload.token;
+      state.avatarURL = payload.data.avatarURL;
       state.isLoggedIn = true;
+      state.isRefreshing = false;
+      state.isLoading = false;
       state.error = null;
     })
     .addCase(refreshCurrentUser.rejected, (state, { payload }) => {
       state.isLoading = false;
       state.isRefreshing = false;
-      state.error = payload;
-    })
-
-
-      // FORGOTPASSWORD
-    .addCase(forgotPassword.pending, state => {
-      state.isLoading = true;
-      state.error = null;
-    })
-    .addCase(forgotPassword.fulfilled, (state, {payload}) => {
-      state.userForm = {
-        email: payload.email,
-      };
-    })
-    .addCase(forgotPassword.rejected, (state, {payload}) =>{
-      state.isLoading = false;
       state.error = payload;
     })
   } 

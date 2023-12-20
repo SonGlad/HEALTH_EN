@@ -11,7 +11,7 @@ export const register = createAsyncThunk(
             const response = await axios.post('/api/auth/signup', credentials);
             token.set(response.data.token);
             toast.success(`Welcome! You have been successfully registered!`);
-            return response.data.data;
+            return response.data;
         }
         catch(error) {
             toast.error('Oops. Something went wrong. Please try again.');
@@ -28,7 +28,7 @@ export const logIn = createAsyncThunk(
             const response = await axios.post('api/auth/signin', credentials);
             token.set(response.data.token);
             toast.success(`Welcome!`);
-            return response.data.data;
+            return response.data;
         }
         catch(error){
             toast.error('Oops. Your email or password is not valid');
@@ -94,20 +94,3 @@ export const forgotPassword= createAsyncThunk(
 // LOGOUT BUTTON FOR USER MENU/////
 /* <button onClick={() => dispatch(logOut())}>LOGOUT</button> */
 
-
-// LOGIN PAGE CONNECTION///////
-// const dispatch = useDispatch();
-
-
-// const handleSubmit = (event) => {
-//   event.preventDefault();
-//   const form = event.currentTarget;
-//   dispatch(
-//     logIn({
-//       email: form.elements.email.value.toString(),
-//       password: form.elements.password.value.toString(),
-//     })
-//   );
-//   form.reset();
-
-// };

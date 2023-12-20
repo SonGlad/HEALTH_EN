@@ -127,7 +127,7 @@ export const TotalInfo = styled.p`
   }
 `;
 
-export const LeftInfo = styled.p`
+export const LeftInfo = styled.div`
   display: flex;
   font-size: 14px;
   font-weight: 400;
