@@ -60,7 +60,15 @@ export const DairyLink = styled(NavLink)`
   font-size: 14px;
   line-height: 1.4;
   font-weight: 500;
+<<<<<<<<< Temporary merge branch 1
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    color: ${props => props.theme.color.primary_green_lite};
+  }
+=========
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+>>>>>>>>> Temporary merge branch 2
 
   @media screen and (min-width: 834px) {
     font-size: 16px;
