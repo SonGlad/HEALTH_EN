@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { useAuth } from "hooks/useAuth";
 import { register } from "../../../redux/Auth/auth-operations";
 
-
 export const YourActivity = ({ onBack }) => {
   const dispatch = useDispatch();
   const {
@@ -20,21 +19,18 @@ export const YourActivity = ({ onBack }) => {
     userHeight,
     userWeight,
   } = useAuth();
-  const { values, handleBlur, handleChange, handleSubmit } = useFormik(
-    {
-      initialValues: {
-        activity: userActivity?.activity || "",
-      },
 
-      validationSchema: YourActivitySchema,
+  const { values, handleBlur, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      activity: userActivity?.activity || "",
+    },
 
+    validationSchema: YourActivitySchema,
 
-      onSubmit: (values) => {
-        dispatch(updateActivityForm(values));
-      },
-    }
-  );
-
+    onSubmit: (values) => {
+      dispatch(updateActivityForm(values));
+    },
+  });
 
   const handleSecondSubmit = (event) => {
     event.preventDefault();
@@ -53,7 +49,6 @@ export const YourActivity = ({ onBack }) => {
     );
   };
 
-
   return (
     <DivYourActivity>
       <div className="ImageContainet">
@@ -68,7 +63,6 @@ export const YourActivity = ({ onBack }) => {
         </div>
 
         <form className="FormRadioButton" onSubmit={handleSubmit}>
-
           <label className="LabelActivity">
             <input
               className="Input"

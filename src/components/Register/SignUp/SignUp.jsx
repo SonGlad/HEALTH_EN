@@ -5,13 +5,11 @@ import { SignupSchema } from "../../../utils/validationSchemas";
 import { saveSignUpForm } from "../../../redux/Auth/auth-slice";
 import { useDispatch } from "react-redux";
 import { useAuth } from "hooks/useAuth";
-import { useState } from "react";
-
+import { ShowRules } from "utils/showRules";
 
 export const SignUp = ({ onNext }) => {
   const dispatch = useDispatch();
   const { userName, userEmail, userPassword } = useAuth();
-  const [showPassword, setShowPassword] = useState(false);
   const {
     values,
     errors,
@@ -29,56 +27,19 @@ export const SignUp = ({ onNext }) => {
 
     validationSchema: SignupSchema,
 
-
     onSubmit: (values) => {
       dispatch(saveSignUpForm(values));
       onNext();
     },
-
   });
 
+  const {
+    showPassword,
+    getInputClass,
+    getInputAlert,
+    getHidePassword,
+  } = ShowRules(values, touched, errors);
 
-  const handleTogglePassword = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
-
-
-  const getInputClass = (fieldName) => {
-    return !values[fieldName]
-      ? ""
-      : touched && errors[fieldName]
-      ? "ErrorInput"
-      : "SuccessInput";
-  };
-
-
-  const getInputAlert = (fieldName) => {
-    return !values[fieldName] ? (
-      ""
-    ) : touched && errors[fieldName] ? (
-      <>
-        <p className="ErrorText">{errors[fieldName]}</p>
-        <div className="ImgError" />
-      </>
-    ) : (
-      <>
-        <p className="SuccessText">{`${fieldName} is correct`}</p>
-        <div className="ImgCorrect" />
-      </>
-    );
-  };
-
-
-  const getHidePassword = () => {
-    return (
-      <div
-        className={showPassword ? "HidePassword" : "ShowPassword"}
-        onClick={handleTogglePassword}
-      />
-    );
-  };
-
-  
   return (
     <DivSingUp>
       <div className="ImageContainet">
@@ -131,7 +92,6 @@ export const SignUp = ({ onNext }) => {
             {getInputAlert("password")}
             {getHidePassword()}
           </div>
-
           <button
             className="ButtonNext"
             type="submit"
