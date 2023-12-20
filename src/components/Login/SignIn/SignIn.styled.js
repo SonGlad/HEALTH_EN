@@ -1,8 +1,11 @@
-import styled from 'styled-components';
-import login_mobile from '../../../images/images/login_mobile-min.png';
-import login_tablet from '../../../images/images/login_tablet-min.png';
-import login_computer from '../../../images/images/login_computer-min.png';
-
+import styled from "styled-components";
+import login_mobile from "../../../images/images/login_mobile-min.png";
+import login_tablet from "../../../images/images/login_tablet-min.png";
+import login_computer from "../../../images/images/login_computer-min.png";
+import eye from "../../../images/svgIcon/eye.svg";
+import eye_off from "../../../images/svgIcon/eye-off.svg";
+import error from "../../../images/svgIcon/error.svg";
+import correct from "../../../images/svgIcon/correct.svg";
 
 export const DivSingIn = styled.div`
   padding-bottom: 40px;
@@ -62,7 +65,7 @@ export const DivSingIn = styled.div`
   }
 
   .TitleText {
-    color: ${props => props.theme.color.primary_grey};
+    color: ${(props) => props.theme.color.primary_grey};
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -103,11 +106,16 @@ export const DivSingIn = styled.div`
     }
   }
 
+  .InputContainer {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
   .ButtonNext {
     margin-top: 20px;
     margin-bottom: 14px;
     border-radius: 12px;
-    background: ${props => props.theme.color.primary_green_lite};
+    background: ${(props) => props.theme.color.primary_green_lite};
     padding: 8px 10px;
     font-weight: 500;
     font-size: 14px;
@@ -115,9 +123,9 @@ export const DivSingIn = styled.div`
     cursor: pointer;
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-
-    &:hover, &:focus {
-      color: ${props => props.theme.color.primary_grey};
+    &:hover,
+    &:focus {
+      color: ${(props) => props.theme.color.primary_grey};
     }
 
     @media only screen and (min-width: 834px) {
@@ -125,29 +133,32 @@ export const DivSingIn = styled.div`
     }
   }
 
-  .link-color{
-    color: ${props => props.theme.color.primary_grey};
+  .link-color {
+    color: ${(props) => props.theme.color.primary_grey};
   }
 
-  .link{
+  .link {
     margin: 0 auto;
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    &:hover, &:focus {
-      color: ${props => props.theme.color.primary_green_lite};
+    &:hover,
+    &:focus {
+      color: ${(props) => props.theme.color.primary_green_lite};
     }
   }
 
-  .Input {
+  input {
+    position: relative;
     padding: 8px 10px;
     border-radius: 12px;
-    border: 1px solid ${props => props.theme.color.primary_green_lite};
-    background: ${props => props.theme.color.primary_black_2};
+    border: 1px solid ${(props) => props.theme.color.primary_green_lite};
+    background: ${(props) => props.theme.color.primary_black_2};
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-    margin-bottom: 20px;
-    color: ${props => props.theme.color.primary_white};
+
+    width: 100%;
+    color: ${(props) => props.theme.color.primary_white};
     &:focus {
       outline: none;
       box-shadow: none;
@@ -155,7 +166,99 @@ export const DivSingIn = styled.div`
   }
 
   input::placeholder {
-    color: ${props => props.theme.color.primary_grey};
+    color: ${(props) => props.theme.color.primary_grey};
+  }
+
+  .ErrorInput {
+    border: 1px solid #e74a3b;
+  }
+
+  .SuccessInput {
+    border: 1px solid #3cbc81;
+  }
+
+  .ImgError {
+    position: absolute;
+    right: 10px;
+    top: 33%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-image: url(${error});
+  }
+
+  .ImgCorrect {
+    position: absolute;
+    right: 10px;
+    top: 33%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-image: url(${correct});
+  }
+
+  .ErrorText {
+    margin-top: 4px;
+    margin-left: 10px;
+    color: #e74a3b;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+
+    @media only screen and (min-width: 1440px) {
+      max-width: 200px;
+    }
+  }
+
+  .SuccessText {
+    margin-top: 4px;
+    margin-left: 10px;
+    color: #3cbc81;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+
+    @media only screen and (min-width: 1440px) {
+      max-width: 200px;
+    }
+  }
+
+  .ShowPassword {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 18px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-image: url(${eye_off});
+  }
+
+  .HidePassword {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 18px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-image: url(${eye});
+  }
+
+  .InputContainer:hover .ShowPassword,
+  .InputContainer:hover .HidePassword {
+    display: block;
+  }
+
+  .InputContainer:hover input[name="password"] {
+    border: 1px solid ${(props) => props.theme.color.primary_green_lite};
+  }
+
+  .InputContainer[id="password"]:hover .ImgError,
+  .InputContainer[id="password"]:hover .ImgCorrect,
+  .InputContainer[id="password"]:hover .ErrorText,
+  .InputContainer[id="password"]:hover .SuccessText {
+    display: none;
   }
 
   .DivContainerSingUp {
@@ -179,7 +282,7 @@ export const DivSingIn = styled.div`
   }
 
   .SingUpText {
-    color: ${props => props.theme.color.primary_grey};
+    color: ${(props) => props.theme.color.primary_grey};
     font-size: 13px;
     font-weight: 400;
     line-height: 20px;

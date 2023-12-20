@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-import { Field } from 'formik';
+import styled from "styled-components";
 
 export const RadioMark = styled.span`
   min-width: 12px;
@@ -9,10 +8,10 @@ export const RadioMark = styled.span`
   position: relative;
 
   &:after {
-    content: '';
+    content: "";
     min-width: 6px;
     min-height: 6px;
-    background-color: ${props => props.theme.color.secondary_color_yellow};
+    background-color: ${(props) => props.theme.color.primary_green_lite};
     border-radius: 50%;
     position: absolute;
     opacity: 0;
@@ -22,7 +21,7 @@ export const RadioMark = styled.span`
   }
 `;
 
-export const RadioInput = styled(Field)`
+export const RadioInput = styled.input`
   display: none;
   margin-right: 8px;
 
@@ -37,10 +36,6 @@ export const LabelRadio = styled.label`
   display: flex;
   align-items: center;
   gap: 10px;
-  /* width: 100%; */
-  cursor: pointer;
 
-  &:hover > ${RadioMark} {
-    border-color: ${props => props.theme.color.primary_green_lite};
-  }
+  cursor: pointer;
 `;
