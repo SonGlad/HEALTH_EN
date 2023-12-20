@@ -66,7 +66,6 @@ export const DairyLink = styled(NavLink)`
     color: ${props => props.theme.color.primary_green_lite};
   }
 
-
   @media screen and (min-width: 834px) {
     font-size: 16px;
     line-height: 1.8;
