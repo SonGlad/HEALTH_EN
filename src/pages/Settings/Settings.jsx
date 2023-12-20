@@ -174,7 +174,7 @@ const SettingsPage = () => {
                 onBlur={handleBlur}
                 required
               />
-              {getHidePassword()}
+              {values.newPassword && getHidePassword()}
               {getInputAlert("newPassword")}
             </label>
             <label className="Label" id="password">
@@ -189,7 +189,7 @@ const SettingsPage = () => {
                 onBlur={handleBlur}
                 required
               />
-              {getHidePassword()}
+              {values.confirmPassword && getHidePassword()}
               {getInputAlert("confirmPassword")}
             </label>
             <div

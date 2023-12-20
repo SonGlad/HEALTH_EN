@@ -90,13 +90,9 @@ export const SignUp = ({ onNext }) => {
               onKeyDown={handleChange}
             />
             {getInputAlert("password")}
-            {getHidePassword()}
+            {values.password && getHidePassword()}
           </div>
-          <button
-            className="ButtonNext"
-            type="submit"
-            disabled={!isValid}
-          >
+          <button className="ButtonNext" type="submit" disabled={!isValid}>
             Next
           </button>
         </form>

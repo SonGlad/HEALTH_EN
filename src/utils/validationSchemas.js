@@ -1,9 +1,7 @@
 import * as Yup from "yup";
 
-
 // const passwordRules = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-const passwordRules =  /^[a-zA-Z\d@$!%*?&]{8,}$/;
-
+const passwordRules = /^[a-zA-Z\d@$!%*?&]{8,}$/;
 
 const weightRules = /^\d+(\.\d{1})?$/;
 
@@ -18,6 +16,11 @@ const SignupSchema = Yup.object().shape({
     .max(50, "Too Long!")
     .matches(passwordRules, "Must be A-z, 1-9")
     .required("Required"),
+});
+
+const SigninSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Required"),
+  password: Yup.string().required("Required"),
 });
 
 const YourGoalSchema = Yup.object().shape({
@@ -89,6 +92,7 @@ const ValidationSchema = Yup.object({
 
 export {
   SignupSchema,
+  SigninSchema,
   YourGoalSchema,
   SelectGenderSchemas,
   BodyParametrsSchema,
