@@ -9,7 +9,10 @@ import downloadPhoto from "../../images/svgIcon/download-new-photo.svg";
 import { ValidationSchema } from "../../utils/validationSchemas";
 import { ShowRules } from "utils/showRules";
 
+
 const SettingsPage = () => {
+
+
   const {
     values,
     errors,
@@ -38,12 +41,14 @@ const SettingsPage = () => {
     },
   });
 
+
   const {
     showPassword,
     getInputClass,
     getInputAlert,
     getHidePassword,
   } = ShowRules(values, touched, errors);
+  
 
   return (
     <Section>
@@ -263,5 +268,6 @@ const SettingsPage = () => {
     </Section>
   );
 };
+
 
 export default SettingsPage;
