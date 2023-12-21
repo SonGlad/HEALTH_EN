@@ -102,7 +102,7 @@ export const DivSingIn = styled.div`
     }
   }
 
-  .ButtonNext {
+  .Button {
     margin-top: 12px;
     border-radius: 12px;
     background: ${props => props.theme.color.primary_green_lite};

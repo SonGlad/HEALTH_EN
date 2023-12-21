@@ -45,7 +45,7 @@ export const SignIn = ({ onSubmit }) => {
             value={formik.values.password}
           />
 
-          <button className="ButtonNext" type="submit">
+          <button className="Button" type="submit">
             Sign In
           </button>
           <NavLink to="/forgot-password">Forgot your password?</NavLink>
