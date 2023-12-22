@@ -89,11 +89,11 @@ const ValidationSchema = Yup.object({
     .min(8, "Must be 8 characters")
     .max(50, "Too Long!")
     .matches(passwordRules, "Must be A-z, 1-9")
-    .required("Required"),
+    .oneOf([Yup.ref("confirmPassword"), null], "Passwords must match"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("newPassword"), null], "Passwords must match")
-    .required("Password is required"),
 });
+
 
 export {
   SignupSchema,

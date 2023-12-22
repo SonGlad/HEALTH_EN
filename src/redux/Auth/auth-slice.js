@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, logIn, logOut, refreshCurrentUser } from "./auth-operations";
+import { register, logIn, logOut, refreshCurrentUser, initialDataUserInfo } from "./auth-operations";
 
 
 const initialState = {
@@ -7,6 +7,7 @@ const initialState = {
     name: null,
     email: null,
     password: null,
+    newPassword: null,
   },
   goalForm: {
     goal: null,
@@ -27,6 +28,7 @@ const initialState = {
   isLoggedIn: false,
   isLoading: false,
   isRefreshing: false,
+  isInitial: false,
   error: null,
 };
 
@@ -70,6 +72,27 @@ const authSlice = createSlice({
         activity: action.payload,
       }
     },
+    updateUserData: (state, action) => {
+      state.userForm = {
+        ...state.userForm,
+        name: action.payload.name,
+        newPassword: action.payload.newPassword,
+      };
+      state.genderAgeForm = {
+        ...state.genderAgeForm,
+        gender: action.payload.gender,
+        age: action.payload.age,
+      }
+      state.bodyParamForm ={
+        ...state.bodyParamForm,
+        height: action.payload.height,
+        weight: action.payload.weight,
+      }
+      state.activityForm = {
+        ...state.activityForm,
+        activity: action.payload.activity,
+      }
+    }
   },
 
   extraReducers: builder => {
@@ -78,6 +101,7 @@ const authSlice = createSlice({
     .addCase(register.pending, state =>{
       state.isLoading = true;
       state.error = null;
+      state.isInitial = true;
     })
     .addCase(register.fulfilled, (state, { payload }) => {
       state.userForm = {
@@ -93,10 +117,12 @@ const authSlice = createSlice({
       state.token = payload.token;
       state.isLoading = false;
       state.isLoggedIn = true;
+      state.isInitial = true;
       state.error = null;
     })
     .addCase(register.rejected, (state, {payload}) => {
       state.isLoading = false;
+      state.isInitial = false;
       state.token = null;
       state.error = payload;
     })
@@ -106,6 +132,7 @@ const authSlice = createSlice({
     .addCase(logIn.pending, state => {
       state.isLoading = true;
       state.error = null;
+      state.isInitial = true;
     })
     .addCase(logIn.fulfilled, (state, {payload}) => {
       state.userForm = {
@@ -121,9 +148,37 @@ const authSlice = createSlice({
       state.token = payload.token;
       state.isLoading = false;
       state.isLoggedIn = true;
+      state.isInitial = true;
       state.error = null;
     })
     .addCase(logIn.rejected, (state, {payload}) => {
+      state.isLoading = false;
+      state.isInitial = false;
+      state.error = payload;
+    })
+
+
+    // INITIAL CURRENT USER////////
+    .addCase(initialDataUserInfo.pending, state => {
+      state.isLoading = true;
+      state.error = null;
+    })
+    .addCase(initialDataUserInfo.fulfilled, (state, { payload }) => {
+      state.genderAgeForm = {
+        gender: payload.data.gender,
+        age: payload.data.age,
+      };
+      state.bodyParamForm = {
+        weight: payload.data.weight,
+      };
+      state.activityForm = {
+        activity: payload.data.activity,
+      };
+      state.isLoggedIn = true;
+      state.isLoading = false;
+      state.error = null;
+    })
+    .addCase(initialDataUserInfo.rejected, (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     })
@@ -159,6 +214,7 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.isLoggedIn = false;
       state.error = null;
+      state.isInitial = false;
     })
     .addCase(logOut.rejected, (state, {payload}) => {
       state.isLoading = false;
@@ -170,12 +226,12 @@ const authSlice = createSlice({
     .addCase(refreshCurrentUser.pending, state => {
       state.isLoading = true;
       state.isRefreshing = true;
+      state.isInitial = false;
     })
     .addCase(refreshCurrentUser.fulfilled, (state, { payload }) => {
       state.userForm = {
         name: payload.data.name,
         email: payload.data.email,
-        password: payload.data.password,
       };
       state.goalForm = {
         goal: payload.data.goal,
@@ -195,11 +251,13 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.isRefreshing = false;
       state.isLoading = false;
+      state.isInitial = false;
       state.error = null;
     })
     .addCase(refreshCurrentUser.rejected, (state, { payload }) => {
       state.isLoading = false;
       state.isRefreshing = false;
+      state.isInitial = false;
       state.error = payload;
     })
   } 
@@ -215,6 +273,7 @@ export const {
   updateGenderAgeForm,
   updateBodyParamForm,
   updateActivityForm,
+  updateUserData,
 
 } = authSlice.actions;
 

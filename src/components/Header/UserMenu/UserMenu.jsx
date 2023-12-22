@@ -1,5 +1,4 @@
 import {
-  ArrowSvg,
   Container,
   Info,
   UserBlock,
@@ -9,7 +8,7 @@ import {
   MenuButton,
 } from './UserMenu.styled';
 import { ButtonsBlock } from './ButtonsBlock/ButtonsBlock';
-import arrowDown from '../../../images/images/headreImg/arrow-down.svg';
+import {ReactComponent as ArrowDown} from "../../../images/svgIcon/arrow-down.svg"
 import menu from '../../../images/images/headreImg/menu.svg';
 import { NavLink } from 'react-router-dom';
 
@@ -42,8 +41,10 @@ export const UserMenu = () => {
         <UserBlock>
           <p className='user-name'>{userName}</p>
           <button type='button' className='user-menu-btn'>
-            <AvaImg src={userAvatarURL} alt="avatar" />
-            <ArrowSvg src={arrowDown} alt="arrow down"></ArrowSvg>
+            <div className='for-user-avater'>
+              <AvaImg src={userAvatarURL} alt="avatar" />
+            </div>
+            <ArrowDown className='arrow-svg' width={14} height={14}/>
           </button>
           <button onClick={() => dispatch(logOut())}>LOGOUT</button>
           <NavLink className="link" to="/settings">

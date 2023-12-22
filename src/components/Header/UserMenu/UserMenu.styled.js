@@ -56,26 +56,45 @@ export const UserBlock = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
     cursor: pointer;
     outline: none;
     border: none;
     background-color: transparent;
     padding: 0;
     margin-left: 6px;
-  }
+    transition: stroke 1000ms cubic-bezier(0.4, 0, 0.2, 1);
 
+    .for-user-avater{
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 4px;
+
+      @media screen and (min-width: 834px) {
+        width: 28px;
+        height: 28px;
+      }
+    }
+
+    .arrow-svg{
+      stroke: ${(props) => props.theme.color.primary_green_lite};
+    }
+
+  }
+  .user-menu-btn:hover .arrow-svg,
+  .user-menu-btn:focus .arrow-svg {
+    stroke: ${(props) => props.theme.color.primary_white};
+  }
+`;
+
+export const AvaImg = styled.img`
+ display: block;
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
 `;
 
 export const ArrowSvg = styled.img`
   width: 14px;
-`;
-
-export const AvaImg = styled.img`
-  width: 24px;
-  border-radius: 50%;
-
-  @media screen and (min-width: 834px) {
-    width: 28px;
-  }
 `;

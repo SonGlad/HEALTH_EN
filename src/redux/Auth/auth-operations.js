@@ -38,6 +38,45 @@ export const logIn = createAsyncThunk(
 );
 
 
+export const forgotPassword= createAsyncThunk(
+    'api/auth/forgot-password',
+    async (credentials, thunkApi) => {
+        try{
+            const response = await axios.post('api/auth/forgot-password', credentials);
+            toast.success(`Email has been sended!  Please check you MailBox!`);
+            return response.data;
+        }
+        catch(error){
+            toast.error('Oops. Your email is not valid');
+            return thunkApi.rejectWithValue(error.message);
+        }
+    }
+);
+
+
+export const initialDataUserInfo = createAsyncThunk(
+    'api/auth/initial',
+    async (_, thunkApi) => {
+        const state = thunkApi.getState();
+        const persistedToken = state.auth.token;
+        if(persistedToken === null){
+            return thunkApi.rejectWithValue('Unable to fetch user');
+        }
+
+        try{
+            token.set(persistedToken);
+            const response = await axios.get('api/user/current');
+            toast.success(`YOUR INITIAL DATA LOADED!!!`);
+            return response.data;
+        }
+        catch(error){
+            toast.error('Oops. Something went wrong. Please try again.');
+            return thunkApi.rejectWithValue(error.message);
+        }
+    }
+);
+
+
 export const logOut = createAsyncThunk(
     'api/auth/signout',
     async (_, thunkApi) => {
@@ -75,22 +114,34 @@ export const refreshCurrentUser = createAsyncThunk(
 );
 
 
-export const forgotPassword= createAsyncThunk(
-    'api/auth/forgot-password',
-    async (credentials, thunkApi) => {
-        try{
-            const response = await axios.post('api/auth/forgot-password', credentials);
-            toast.success(`Email has been sended!  Please check you MailBox!`);
-            return response.data;
-        }
-        catch(error){
-            toast.error('Oops. Your email is not valid');
-            return thunkApi.rejectWithValue(error.message);
-        }
+export const updateUserInfo = createAsyncThunk(
+    'api/user/update',
+    async (userData, thunkApi) => {
+      try {
+        const response = await axios.put(`api/user/update`, userData);
+        toast.success('Your User information has been successfully updated');
+        return response.data;
+      } catch (error) {
+        toast.error('Oops. Something went wrong. Please try again.');
+        return thunkApi.rejectWithValue(error.message);
+      }
     }
 );
 
 
+
 // LOGOUT BUTTON FOR USER MENU/////
 /* <button onClick={() => dispatch(logOut())}>LOGOUT</button> */
+
+
+// const handleSubmit = (event) => {
+//     event.preventDefault();
+//     const form = event.currentTarget;
+//     dispatch(
+//       forgotPassword({
+//         email: form.elements.email.value.toString(),
+//       })
+//     );
+//     form.reset();
+//   };
 
