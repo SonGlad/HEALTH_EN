@@ -1,38 +1,35 @@
-import { useFormik } from 'formik';
-import { NavLink } from 'react-router-dom';
-import {
-  DivForgotPassword,
-  Label,
-  Attention,
-  SingInText,
-  Input,
-} from './ForgotPassword.styled';
+import { useFormik } from "formik";
+import { NavLink } from "react-router-dom";
+import { DivForgotPassword, SingInText } from "./ForgotPassword.styled";
+import { ForgotPasswordSchema } from "utils/validationSchemas";
+import { ShowRules } from "utils/showRules";
 // import { useDispatch } from "react-redux";
 // import { forgotPassword } from "../../../redux/Auth/auth-operations";
-
 
 export const ForgotPassword = () => {
   // const dispatch = useDispatch();
 
-  
-  const { values, errors, touched, handleBlur, handleChange } = useFormik({
+  const {
+    isValid,
+    values,
+    errors,
+    touched,
+    handleSubmit,
+    handleBlur,
+    handleChange,
+  } = useFormik({
     initialValues: {
-      email: '',
+      email: "",
+    },
+    validationSchema: ForgotPasswordSchema,
+
+    onSubmit: (values) => {
+      // dispatch(saveSignUpForm(values));
+      // onNext();
     },
   });
 
-  
-  const handleSubmit = e => {
-    // e.preventDefault();
-    // const form = e.currentTarget;
-
-    // const data = {
-    //   email: form.elements.email.value,
-    // };
-    // localStorage.setItem('reg', JSON.stringify(data));
-  };
-
-
+  const { getInputClass, getInputAlert } = ShowRules(values, touched, errors);
 
   return (
     <DivForgotPassword>
@@ -47,24 +44,21 @@ export const ForgotPassword = () => {
           </p>
         </div>
         <form className="Form" onSubmit={handleSubmit}>
-          <Label className={errors.email && touched.email ? 'input-error' : ''}>
-            <Input
-              className="Input"
-              required
+          <div className="DivInput">
+            <input
+              className={getInputClass("email")}
               id="email"
               name="email"
               placeholder="E-mail"
               type="email"
-              onBlur={handleBlur}
               onChange={handleChange}
               value={values.email}
+              onBlur={handleBlur}
             />
-          </Label>
-          {errors.email && touched.email && (
-            <Attention>{errors.email}</Attention>
-          )}
+            {getInputAlert("email")}
+          </div>
 
-          <button className="Button" type="submit">
+          <button className="Button" type="submit" disabled={!isValid}>
             Send
           </button>
         </form>

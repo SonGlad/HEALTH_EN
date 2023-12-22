@@ -1,7 +1,9 @@
-import styled from 'styled-components';
-import login_mobile from '../../images/images/login_mobile-min.png';
-import login_tablet from '../../images/images/login_tablet-min.png';
-import login_computer from '../../images/images/login_computer-min.png';
+import styled from "styled-components";
+import login_mobile from "../../images/images/login_mobile-min.png";
+import login_tablet from "../../images/images/login_tablet-min.png";
+import login_computer from "../../images/images/login_computer-min.png";
+import error from "../../images/svgIcon/error.svg";
+import correct from "../../images/svgIcon/correct.svg";
 
 export const DivForgotPassword = styled.div`
   padding-bottom: 40px;
@@ -62,7 +64,7 @@ export const DivForgotPassword = styled.div`
   }
 
   .TitleText {
-    color: ${props => props.theme.color.primary_grey};
+    color: ${(props) => props.theme.color.primary_grey};
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -95,7 +97,6 @@ export const DivForgotPassword = styled.div`
   .Form {
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin-top: 24px;
     gap: 40px;
 
@@ -112,16 +113,97 @@ export const DivForgotPassword = styled.div`
     }
   }
 
+  .DivInput {
+    position: relative;
+  }
+
+  input {
+    position: relative;
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 12px;
+    border: 1px solid ${(props) => props.theme.color.primary_green_lite};
+    background: ${(props) => props.theme.color.primary_black_2};
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: ${(props) => props.theme.color.primary_white};
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  .ErrorInput {
+    border: 1px solid #e74a3b;
+  }
+
+  .SuccessInput {
+    border: 1px solid #3cbc81;
+  }
+
+  .ImgError {
+    position: absolute;
+    right: 10px;
+    top: 35%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-image: url(${error});
+  }
+
+  .ImgCorrect {
+    position: absolute;
+    right: 10px;
+    top: 35%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-image: url(${correct});
+  }
+
+  .ErrorText {
+    margin-top: 4px;
+    margin-left: 10px;
+    color: #e74a3b;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+
+    @media only screen and (min-width: 1440px) {
+      max-width: 200px;
+    }
+  }
+
+  .SuccessText {
+    margin-top: 4px;
+    margin-left: 10px;
+    color: #3cbc81;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+
+    @media only screen and (min-width: 1440px) {
+      max-width: 200px;
+    }
+  }
+
   .Button {
     padding: 8px 10px;
     border-radius: 12px;
-    background: ${props => props.theme.color.primary_green_lite};
+    background: ${(props) => props.theme.color.primary_green_lite};
     width: 100%;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: 20px;
+
+    &:active,
+    &:hover {
+      color: ${(props) => props.theme.color.primary_grey};
+    }
   }
+
   @media only screen and (min-width: 834px) {
     font-size: 18px;
   }
@@ -158,60 +240,8 @@ export const DivForgotPassword = styled.div`
 `;
 export const SingInText = styled.p`
   font-size: 14px;
-  color: ${props => props.theme.color.primary_grey};
+  color: ${(props) => props.theme.color.primary_grey};
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
-`;
-
-export const Attention = styled.p`
-  color: #e74a3b;
-  text-align: left;
-  font-family: Poppins;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 14px;
-  padding-top: 4px;
-  padding-bottom: 14px;
-`;
-export const Label = styled.label`
-  padding: 8px 10px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-  width: 300px;
-  border-radius: 12px;
-  border: 1px solid ${props => props.theme.color.primary_green_lite};
-  background: ${props => props.theme.color.primary_black_2};
-  &.input-error {
-    border-color: #e74a3b;
-  }
-  @media screen and (min-width: 834px) {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  @media screen and (min-width: 1440px) {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-`;
-
-export const Input = styled.input`
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 20px;
-  background-color: transparent;
-  width: 100%;
-  border: none;
-  color: ${props => props.theme.color.primary_white};
-
-  &:focus {
-    outline: none;
-  }
 `;
