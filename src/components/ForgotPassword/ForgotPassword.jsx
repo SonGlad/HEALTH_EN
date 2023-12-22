@@ -1,5 +1,4 @@
 import { useFormik } from 'formik';
-
 import { NavLink } from 'react-router-dom';
 import {
   DivForgotPassword,
@@ -8,22 +7,32 @@ import {
   SingInText,
   Input,
 } from './ForgotPassword.styled';
+// import { useDispatch } from "react-redux";
+// import { forgotPassword } from "../../../redux/Auth/auth-operations";
+
 
 export const ForgotPassword = () => {
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
+  // const dispatch = useDispatch();
 
-    const data = {
-      email: form.elements.email.value,
-    };
-    localStorage.setItem('reg', JSON.stringify(data));
-  };
+  
   const { values, errors, touched, handleBlur, handleChange } = useFormik({
     initialValues: {
       email: '',
     },
   });
+
+  
+  const handleSubmit = e => {
+    // e.preventDefault();
+    // const form = e.currentTarget;
+
+    // const data = {
+    //   email: form.elements.email.value,
+    // };
+    // localStorage.setItem('reg', JSON.stringify(data));
+  };
+
+
 
   return (
     <DivForgotPassword>

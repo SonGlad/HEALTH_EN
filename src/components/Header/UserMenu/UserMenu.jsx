@@ -4,14 +4,12 @@ import {
   UserBlock,
   AvaImg,
   MenuBox,
-  MenuImg,
   MenuButton,
 } from './UserMenu.styled';
 import { ButtonsBlock } from './ButtonsBlock/ButtonsBlock';
 import {ReactComponent as ArrowDown} from "../../../images/svgIcon/arrow-down.svg"
-import menu from '../../../images/images/headreImg/menu.svg';
+import { ReactComponent as MenuIcon} from "../../../images/svgIcon/menu.svg";
 import { NavLink } from 'react-router-dom';
-
 import { useDispatch } from 'react-redux';
 import { useAuth } from '../../../hooks/useAuth';
 import { logOut } from '../../../redux/Auth/auth-operations';
@@ -54,12 +52,9 @@ export const UserMenu = () => {
     <Container>
       <MenuBox className="menu-box">
         <MenuButton onClick={handleClickByIconMenu}>
-          <MenuImg src={menu} alt="menu"></MenuImg>
+          <MenuIcon className='menu-icon' width={16} height={16}/>
         </MenuButton>
-        <div
-          ref={refBackdrop}
-          className={`dropdownList ${toggleShowOptionsMenu()}`}
-        >
+        <div ref={refBackdrop} className={`dropdownList ${toggleShowOptionsMenu()}`}>
           <ButtonsBlock />
           <button
             type="button"
