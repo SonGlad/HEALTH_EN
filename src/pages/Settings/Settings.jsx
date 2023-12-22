@@ -13,9 +13,15 @@ import { updateUserData } from "../../redux/Auth/auth-slice"
 
 
 const SettingsPage = () => {
-  const {userName, userAvatarURL, userAge, userGender, userHeight, userWeight,
-    userActivity } = useAuth();
   const dispatch = useDispatch();
+  const {userName, 
+    userAvatarURL, 
+    userAge, 
+    userGender, 
+    userHeight, 
+    userWeight,
+    userActivity 
+  } = useAuth();
 
 
   const {

@@ -169,6 +169,7 @@ const authSlice = createSlice({
         age: payload.data.age,
       };
       state.bodyParamForm = {
+        height: payload.data.height,
         weight: payload.data.weight,
       };
       state.activityForm = {
