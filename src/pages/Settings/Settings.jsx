@@ -4,12 +4,26 @@ import setingsPage from "../../images/images/setings-page-png.png";
 import { TitlePage, ProfileContainer } from "./Settings.styled";
 import { useFormik } from "formik";
 import RadioButton from "components/RadioButton/RadioButton";
-import avatar from "../../images/svgIcon/profile-circle.svg";
-import downloadPhoto from "../../images/svgIcon/download-new-photo.svg";
+import {ReactComponent as DownloadIcon} from "../../images/svgIcon/download-new-photo.svg";
 import { ValidationSchema } from "../../utils/validationSchemas";
 import { ShowRules } from "utils/showRules";
+import { useAuth } from "hooks/useAuth";
+import { useDispatch } from "react-redux";
+import { updateUserData } from "../../redux/Auth/auth-slice"
+
 
 const SettingsPage = () => {
+  const dispatch = useDispatch();
+  const {userName, 
+    userAvatarURL, 
+    userAge, 
+    userGender, 
+    userHeight, 
+    userWeight,
+    userActivity 
+  } = useAuth();
+
+
   const {
     values,
     errors,
@@ -18,15 +32,16 @@ const SettingsPage = () => {
     handleBlur,
     handleChange,
     handleSubmit,
+    resetForm,
   } = useFormik({
     initialValues: {
-      name: "",
-      photo: "",
-      age: "",
-      gender: "",
-      height: "",
-      weight: "",
-      activity: "",
+      name: userName || '',
+      // photo: userAvatarURL || '',
+      age: userAge || '',
+      gender: userGender || '',
+      height: userHeight || '',
+      weight: userWeight || '',
+      activity: userActivity || '',
       newPassword: "",
       confirmPassword: "",
     },
@@ -34,9 +49,30 @@ const SettingsPage = () => {
     validationSchema: ValidationSchema,
 
     onSubmit: (values) => {
-      console.log(values);
+      const isNewPasswordEmpty = !values.newPassword.trim();
+      const dataToSend = {
+        name: values.name,
+        age: values.age,
+        gender: values.gender,
+        height: values.height,
+        weight: values.weight,
+        activity: values.activity,
+      };
+    
+      if (!isNewPasswordEmpty) {
+        dataToSend.newPassword = values.newPassword;
+      }
+    
+      dispatch(updateUserData(dataToSend));
+      console.log(dataToSend);
     },
   });
+
+
+  const handleCancel = () => {
+    resetForm();
+  };
+
 
   const {
     showPassword,
@@ -44,6 +80,7 @@ const SettingsPage = () => {
     getInputAlert,
     getHidePassword,
   } = ShowRules(values, touched, errors);
+
 
   return (
     <Section>
@@ -72,21 +109,21 @@ const SettingsPage = () => {
             <div className="FileContainer">
               Your photo
               <input
-                className="Input"
+                className="Input "
                 name="photo"
                 type="file"
                 id="photo"
                 accept="image/*"
                 onChange={handleChange}
-                value={values.photo}
+                // value={values.photo}
                 onBlur={handleBlur}
               />
-              <label className="Label" htmlFor="photo">
+              <label className="Label label-for-avatar" htmlFor="photo">
                 <div className="Thumb">
-                  <img className="AvaImg" src={avatar} alt="userAvatar" />
+                  <img className="AvaImg" src={userAvatarURL} alt="userAvatar" />
                 </div>
                 <div className="DownloadPhoto">
-                  <img src={downloadPhoto} alt="Select File" />
+                  <DownloadIcon className="download-svg"/>
                   Download new photo
                 </div>
               </label>
@@ -116,21 +153,25 @@ const SettingsPage = () => {
               <div className="WrapperRadioButton">
                 <RadioButton
                   id="Male"
-                  name="gender"
-                  value="Male"
-                  selectedValue={values.gender}
                   text="Male"
+                  name="gender"
+                  type="radio"
+                  value="male"
+                  selectedValue={values.gender}
                   onPush={handleChange}
                   onBlure={handleBlur}
+                  checked={values.gender === "male"}
                 />
                 <RadioButton
                   id="Female"
+                  text="Female"
                   name="gender"
-                  value="Female"
+                  type="radio"
+                  value="female"
                   selectedValue={values.gender}
                   onPush={handleChange}
                   onBlure={handleBlur}
-                  text="Female"
+                  checked={values.gender === "female"}
                 />
               </div>
             </div>
@@ -172,7 +213,6 @@ const SettingsPage = () => {
                 value={values.newPassword}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                required
               />
               {values.newPassword && getHidePassword()}
               {getInputAlert("newPassword")}
@@ -183,11 +223,10 @@ const SettingsPage = () => {
                 className={getInputClass("confirmPassword")}
                 name="confirmPassword"
                 type={showPassword ? "text" : "password"}
-                placeholder="Duplicate password"
-                value={values.confPassword}
+                placeholder="Confirm new password"
+                value={values.confirmPassword}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                required
               />
               {values.confirmPassword && getHidePassword()}
               {getInputAlert("confirmPassword")}
@@ -201,48 +240,59 @@ const SettingsPage = () => {
                 Your activity
               </p>
               <RadioButton
-                name="activity"
-                value="1.2"
                 id="1.2"
-                selectedValue={values.activity}
                 text="1.2 - if you do not have physical activity and sedentary work"
+                name="activity"
+                type="radio"
+                value="1.2"
+                selectedValue={String(values.activity)}
                 onPush={handleChange}
                 onBlure={handleBlur}
+                checked={values.activity === "1.2"}
               />
               <RadioButton
-                name="activity"
                 id="1.375"
+                text="1.375 - if you do short runs or light gymnastics 1-3 times a week"
+                name="activity"
+                type="radio"
                 value="1.375"
-                selectedValue={values.activity}
-                text="1,375 - if you do short runs or light gymnastics 1-3 times a week"
+                selectedValue={String(values.activity)}
                 onPush={handleChange}
                 onBlure={handleBlur}
+                checked={values.activity === "1.375"}
               />
               <RadioButton
-                name="activity"
                 id="1.55"
-                value="1.55"
-                selectedValue={values.activity}
                 text="1.55 - if you play sports with average loads 3-5 times a week"
+                name="activity"
+                type="radio"
+                value="1.55"
+                selectedValue={String(values.activity)}
                 onPush={handleChange}
                 onBlure={handleBlur}
+                checked={values.activity === "1.55"}
               />
               <RadioButton
+                id="1.725"
+                text="1.725 - if you train fully 6-7 times a week"
                 name="activity"
+                type="radio"
                 value="1.725"
-                selectedValue={values.activity}
-                text="1,725 - if you train fully 6-7 times a week"
+                selectedValue={String(values.activity)}
                 onPush={handleChange}
                 onBlure={handleBlur}
+                checked={values.activity === "1.725"}
               />
               <RadioButton
-                name="activity"
-                value="1.9"
                 id="1.9"
-                selectedValue={values.activity}
                 text="1.9 - if your work is related to physical labor, you train 2 times a day and include strength exercises in your training program"
+                name="activity"
+                type="radio"
+                value="1.9"
+                selectedValue={String(values.activity)}
                 onPush={handleChange}
                 onBlure={handleBlur}
+                checked={values.activity === "1.9"}
               />
             </div>
             <div className="ButtonContainer">
@@ -253,7 +303,7 @@ const SettingsPage = () => {
               >
                 Save
               </button>
-              <button className="CancelButton" type="button">
+              <button className="CancelButton" type="button" onClick={handleCancel}>
                 Cancel
               </button>
             </div>
@@ -263,5 +313,6 @@ const SettingsPage = () => {
     </Section>
   );
 };
+
 
 export default SettingsPage;

@@ -240,16 +240,32 @@ export const ProfileContainer = styled.div`
     font-size: 13px;
     font-weight: 400;
     line-height: 20px;
-
     display: flex;
     align-items: center;
     gap: 6px;
 
-    & > img {
+    & > .download-svg {
       width: 16px;
       height: 16px;
+      stroke:  ${(props) => props.theme.color.primary_green_lite};
     }
   }
+
+  .label-for-avatar{
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .label-for-avatar:hover .DownloadPhoto,
+  .label-for-avatar:focus .DownloadPhoto{
+    color: ${(props) => props.theme.color.primary_green_lite};
+  }
+
+  .label-for-avatar:hover .DownloadPhoto > .download-svg,
+  .label-for-avatar:focus .DownloadPhoto > .download-svg {
+    stroke: ${(props) => props.theme.color.primary_white};
+  }
+  
 
   .FormGroup {
     display: flex;
@@ -301,12 +317,16 @@ export const ProfileContainer = styled.div`
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
-
     width: 212px;
     border: 1px solid ${(p) => p.theme.color.primary_green_lite};
     border-radius: 12px;
     padding: 8px;
     cursor: pointer;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      color: ${(props) => props.theme.color.primary_grey};
+    }
 
     @media screen and (max-width: 834px) {
       width: 100%;
@@ -315,7 +335,7 @@ export const ProfileContainer = styled.div`
 
   .CancelButton {
     background-color: ${(props) => props.theme.color.primary_black};
-    color: ${(props) => props.theme.color.primary_white};
+    color: ${(props) => props.theme.color.primary_grey};
     font-family: Poppins;
     font-size: 14px;
     font-weight: 400;
@@ -325,10 +345,10 @@ export const ProfileContainer = styled.div`
     border: 1px solid transparent;
     border-radius: 12px;
     cursor: pointer;
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
-      border: 1px solid ${(p) => p.theme.color.primary_green_lite};
+      color: ${(props) => props.theme.color.primary_green_lite};
     }
 
     @media screen and (min-width: 834px) {

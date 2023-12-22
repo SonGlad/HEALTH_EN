@@ -7,6 +7,7 @@ import { SigninSchema } from "utils/validationSchemas";
 import { useEffect } from "react";
 import { ShowRules } from "utils/showRules";
 
+
 export const SignIn = () => {
   const dispatch = useDispatch();
 
@@ -31,9 +32,10 @@ export const SignIn = () => {
     },
   });
 
+
   useEffect(() => {
-    console.log(errors.email, values);
   }, [errors, values]);
+
 
   const {
     showPassword,
@@ -41,6 +43,7 @@ export const SignIn = () => {
     getInputAlert,
     getHidePassword,
   } = ShowRules(values, touched, errors);
+
 
   return (
     <DivSingIn>
@@ -92,7 +95,6 @@ export const SignIn = () => {
             Forgot your password?
           </NavLink>
         </form>
-
         <div className="DivContainerSingUp">
           <p className="SingUpText">If you don't have an account yet</p>
           <div className="LinkToSingUp">

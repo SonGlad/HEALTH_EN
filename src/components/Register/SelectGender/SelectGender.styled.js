@@ -159,7 +159,7 @@ export const DivSelectGender = styled.div`
     }
 
     @media only screen and (min-width: 1440px) {
-      width: 212px;
+      width: 212px; 
     }
   }
 
