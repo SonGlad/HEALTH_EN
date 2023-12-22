@@ -1,54 +1,25 @@
 import { Section } from 'components/Section/Section';
-import { Container, Graph, ItemGraph, ItemWrapper } from './Food.styled';
+import { Container } from './Food.styled';
+import { CaloriesChart } from './CaloriesChart/CaloriesChart';
+import { CarbonohidratesChart } from './CarbonohidratesChart/CarbonohidratesChart';
+import { ProteinChart } from './ProteinChart/ProteinChart';
+import { FatChart } from './FatChart/FatChart';
 
 export const Food = () => {
   return (
     <Section>
       <h2>Food</h2>
       <Container>
-        <Graph></Graph>
+        <CaloriesChart />
         <ul>
           <li>
-            <ItemGraph></ItemGraph>
-            <div>
-              <h3> Carbonohidrates</h3>
-              <ItemWrapper>
-                <p>
-                  Goal: <span>170</span>
-                </p>
-                <p>
-                  left:<span>8</span>
-                </p>
-              </ItemWrapper>
-            </div>
+            <CarbonohidratesChart />
           </li>
           <li>
-            <ItemGraph></ItemGraph>
-            <div>
-              <h3> Protein</h3>
-              <ItemWrapper>
-                <p>
-                  Goal:<span>170</span>
-                </p>
-                <p>
-                  left:<span>8</span>
-                </p>
-              </ItemWrapper>
-            </div>
+            <ProteinChart />
           </li>
           <li>
-            <ItemGraph></ItemGraph>
-            <div>
-              <h3> Fat</h3>
-              <ItemWrapper>
-                <p>
-                  Goal:<span>170</span>
-                </p>
-                <p>
-                  left:<span>8</span>
-                </p>
-              </ItemWrapper>
-            </div>
+            <FatChart />
           </li>
         </ul>
       </Container>

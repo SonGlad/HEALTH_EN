@@ -36,15 +36,15 @@ export const ClearButton = styled.button`
   svg {
     width: 20px;
     height: 20px;
-    stroke: ${props => props.theme.color.primary_green_lite};
+    stroke: ${props => props.theme.color.primary_white};
     transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
-      stroke: ${props => props.theme.color.primary_lite_green};
+      stroke: ${props => props.theme.color.primary_green_lite};
     }
 
     &:focus {
-      stroke: ${props => props.theme.color.primary_lite_green};
+      stroke: ${props => props.theme.color.primary_green_lite};
     }
   }
 `;

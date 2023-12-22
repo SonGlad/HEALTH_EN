@@ -1,11 +1,9 @@
 import { Section } from 'components/Section/Section';
-
 import { ReactComponent as ArrowIcon } from '../../../images/svgIcon/arrow-right-icon.svg';
 import { DailyGoal } from './DailyGoal/DailyGoal';
 import { Water } from './Water/Water';
 import { Food } from './Food/Food';
 import { Dairy } from './Dairy/Dairy';
-
 import { RecommendedFood } from './RecommendedFood/RecommendedFood';
 import {
   CardWrapper,
@@ -15,8 +13,24 @@ import {
   GoalsContainer,
   TitleWrapper,
 } from './MainPage.styled';
+import { initialDataUserInfo } from '../../../redux/Auth/auth-operations';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useAuth } from "../../../hooks/useAuth";
+
 
 export const MainPage = () => {
+  const dispatch = useDispatch();
+  const {isInitial} = useAuth();
+
+
+  useEffect(() => {
+    if (isInitial) {
+      dispatch(initialDataUserInfo());
+    }
+  }, [dispatch, isInitial]);
+
+
   return (
     <Section>
       <Container>
@@ -28,9 +42,7 @@ export const MainPage = () => {
           </DashboardLink>
         </TitleWrapper>
         <GoalsContainer>
-          <GoalItem>
-            <DailyGoal />
-          </GoalItem>
+          <DailyGoal />
           <GoalItem>
             <Water />
           </GoalItem>

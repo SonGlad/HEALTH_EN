@@ -4,7 +4,7 @@ import { SelectGenderSchemas } from "../../../utils/validationSchemas";
 import { updateGenderAgeForm } from "../../../redux/Auth/auth-slice";
 import { useDispatch } from "react-redux";
 import { useAuth } from "hooks/useAuth";
-
+import { ShowRules } from "utils/showRules";
 
 export const SelectGender = ({ onNext, onBack }) => {
   const dispatch = useDispatch();
@@ -25,39 +25,13 @@ export const SelectGender = ({ onNext, onBack }) => {
 
     validationSchema: SelectGenderSchemas,
 
-
     onSubmit: (values) => {
       dispatch(updateGenderAgeForm(values));
     },
   });
 
+  const { getInputClass, getInputAlert } = ShowRules(values, touched, errors);
 
-  const getInputClass = (fieldName) => {
-    return !values[fieldName]
-      ? "TextInput"
-      : touched && errors[fieldName]
-      ? "ErrorInput"
-      : "SuccessInput";
-  };
-
-
-  const getInputAlert = (fieldName) => {
-    return !values[fieldName] ? (
-      ""
-    ) : touched && errors[fieldName] ? (
-      <>
-        <p className="ErrorText">{errors[fieldName]}</p>
-        <div className="ImgError" />
-      </>
-    ) : (
-      <>
-        <p className="SuccessText">{`${fieldName} is correct`}</p>
-        <div className="ImgCorrect" />
-      </>
-    );
-  };
-
-  
   return (
     <DivSelectGender>
       <div className="ImageContainet">

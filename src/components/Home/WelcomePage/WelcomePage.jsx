@@ -14,7 +14,6 @@ export const WelcomePage = () => {
   return (
     <Section>
       <Container>
-        <></>
         <Image src={welcomeImage} alt="Welcome Page" />
         <Wrapper>
           <h1>Set goals and achieve them</h1>

@@ -24,6 +24,7 @@ const authPersistConfig = {
     'genderAgeForm', 
     'bodyParamForm',
     'activityForm',
+    'isInitial',
   ],
 };
 
