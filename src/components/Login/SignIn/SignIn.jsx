@@ -95,7 +95,6 @@ export const SignIn = () => {
             Forgot your password?
           </NavLink>
         </form>
-
         <div className="DivContainerSingUp">
           <p className="SingUpText">If you don't have an account yet</p>
           <div className="LinkToSingUp">
