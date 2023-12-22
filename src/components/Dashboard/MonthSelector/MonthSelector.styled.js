@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 16px 0;
 
@@ -14,28 +13,22 @@ export const Container = styled.div`
   @media screen and (min-width: 1440px) {
     padding-top: 20px;
   }
-
-  h2 {
-    display: flex;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.4;
-  }
 `;
 
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  div {
-    position: relative;
-  }
-`;
+  justify-content: space-between;
+  width: 100%;
 
-export const ButtonWrapper = styled.div`
-  display: flex;
-  align-items: center;
-
-  h1 {
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: ${props => props.theme.color.primary_white};
+    border: none;
+    gap: 6px;
     display: flex;
     font-size: 24px;
     font-weight: 500;
@@ -43,20 +36,9 @@ export const ButtonWrapper = styled.div`
     position: relative;
 
     @media screen and (min-width: 834px) {
+      gap: 12px;
       font-size: 30px;
       line-height: 1.2;
-    }
-  }
-  button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
-    margin-left: 6px;
-
-    @media screen and (min-width: 834px) {
-      margin-left: 12px;
     }
   }
   svg {
@@ -74,6 +56,60 @@ export const ButtonWrapper = styled.div`
     svg {
       stroke: ${props => props.theme.color.primary_green_lite};
     }
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    padding-top: 12px;
+    gap: 6px;
+    width: 212px;
+    height: 144px;
+    border-radius: 12px;
+    background: ${props => props.theme.color.primary_black_2};
+    overflow-y: auto;
+    box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    z-index: 1;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  li {
+    font-weight: 400;
+    line-height: 20px;
+    cursor: pointer;
+  }
+
+  p {
+    color: ${props => props.theme.color.primary_grey};
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: start;
+    width: 100%;
+    padding-left: 16px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.03);
+      color: ${props => props.theme.color.primary_green_lite};
+    }
+
+    &:focus {
+      background: rgba(255, 255, 255, 0.03);
+      color: ${props => props.theme.color.primary_green_lite};
+    }
+  }
+
+  h2 {
+    display: flex;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
   }
 `;
 
@@ -108,62 +144,5 @@ export const BackLink = styled(NavLink)`
     svg {
       stroke: ${props => props.theme.color.primary_green_lite};
     }
-  }
-`;
-
-export const List = styled.ul`
-  .active {
-    display: flex;
-    flex-direction: column;
-    padding-top: 12px;
-    gap: 6px;
-    width: 212px;
-    height: 144px;
-    border-radius: 12px;
-    background: ${props => props.theme.color.primary_black_2};
-    overflow-y: auto;
-    position: absolute;
-    box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 0;
-    visibility: 1;
-    opacity: 1;
-
-    li {
-      font-weight: 400;
-      line-height: 20px;
-      cursor: pointer;
-    }
-
-    p {
-      color: ${props => props.theme.color.primary_grey};
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 1.4;
-      text-align: start;
-      width: 100%;
-      padding-left: 16px;
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.03);
-        color: ${props => props.theme.color.primary_green_lite};
-      }
-
-      &:focus {
-        background: rgba(255, 255, 255, 0.03);
-        color: ${props => props.theme.color.primary_green_lite};
-      }
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-    }
-  }
-
-  .hidden {
-    z-index: -1;
-    /* visibility: none; */
-    opacity: 0;
   }
 `;
