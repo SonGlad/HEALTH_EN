@@ -1,19 +1,18 @@
 {
   "files": {
     "main.css": "/HEALTH_EN/static/css/main.1a24fdc4.css",
-    "main.js": "/HEALTH_EN/static/js/main.3bcd4987.js",
+    "main.js": "/HEALTH_EN/static/js/main.fd834dfa.js",
     "static/js/952.e20f1b68.chunk.js": "/HEALTH_EN/static/js/952.e20f1b68.chunk.js",
-    "static/js/788.24b41351.chunk.js": "/HEALTH_EN/static/js/788.24b41351.chunk.js",
-    "static/js/859.94f09301.chunk.js": "/HEALTH_EN/static/js/859.94f09301.chunk.js",
-    "static/js/152.a6b9116f.chunk.js": "/HEALTH_EN/static/js/152.a6b9116f.chunk.js",
+    "static/js/788.9ac03972.chunk.js": "/HEALTH_EN/static/js/788.9ac03972.chunk.js",
+    "static/js/859.355f1075.chunk.js": "/HEALTH_EN/static/js/859.355f1075.chunk.js",
+    "static/js/152.9be2f2b6.chunk.js": "/HEALTH_EN/static/js/152.9be2f2b6.chunk.js",
     "static/js/605.8dd5dc07.chunk.js": "/HEALTH_EN/static/js/605.8dd5dc07.chunk.js",
     "static/js/757.26b7646d.chunk.js": "/HEALTH_EN/static/js/757.26b7646d.chunk.js",
     "static/js/414.1c51feca.chunk.js": "/HEALTH_EN/static/js/414.1c51feca.chunk.js",
-    "static/js/975.4dbf0da9.chunk.js": "/HEALTH_EN/static/js/975.4dbf0da9.chunk.js",
-    "static/js/705.d21fc592.chunk.js": "/HEALTH_EN/static/js/705.d21fc592.chunk.js",
-    "static/js/7.86313a09.chunk.js": "/HEALTH_EN/static/js/7.86313a09.chunk.js",
+    "static/js/975.3e2de619.chunk.js": "/HEALTH_EN/static/js/975.3e2de619.chunk.js",
+    "static/js/306.8f2a2322.chunk.js": "/HEALTH_EN/static/js/306.8f2a2322.chunk.js",
     "static/js/623.6be80e41.chunk.js": "/HEALTH_EN/static/js/623.6be80e41.chunk.js",
-    "static/js/936.0bbe725f.chunk.js": "/HEALTH_EN/static/js/936.0bbe725f.chunk.js",
+    "static/js/730.bc963239.chunk.js": "/HEALTH_EN/static/js/730.bc963239.chunk.js",
     "static/media/breakfast-image.svg": "/HEALTH_EN/static/media/breakfast-image.757cefa61c13942dffbdf20f2c19304b.svg",
     "static/media/snack-img.svg": "/HEALTH_EN/static/media/snack-img.117201468075748fa03c2f8dd9859dfb.svg",
     "static/media/snack-image.svg": "/HEALTH_EN/static/media/snack-image.a52f73890dfdeaafbe54a211e6abbca9.svg",
@@ -54,22 +53,21 @@
     "static/media/add.svg": "/HEALTH_EN/static/media/add.91852336d1463e57d73ca07de9666af8.svg",
     "static/media/ellipse.svg": "/HEALTH_EN/static/media/ellipse.0c3b26195344141055a912afab60b9a7.svg",
     "main.1a24fdc4.css.map": "/HEALTH_EN/static/css/main.1a24fdc4.css.map",
-    "main.3bcd4987.js.map": "/HEALTH_EN/static/js/main.3bcd4987.js.map",
+    "main.fd834dfa.js.map": "/HEALTH_EN/static/js/main.fd834dfa.js.map",
     "952.e20f1b68.chunk.js.map": "/HEALTH_EN/static/js/952.e20f1b68.chunk.js.map",
-    "788.24b41351.chunk.js.map": "/HEALTH_EN/static/js/788.24b41351.chunk.js.map",
-    "859.94f09301.chunk.js.map": "/HEALTH_EN/static/js/859.94f09301.chunk.js.map",
-    "152.a6b9116f.chunk.js.map": "/HEALTH_EN/static/js/152.a6b9116f.chunk.js.map",
+    "788.9ac03972.chunk.js.map": "/HEALTH_EN/static/js/788.9ac03972.chunk.js.map",
+    "859.355f1075.chunk.js.map": "/HEALTH_EN/static/js/859.355f1075.chunk.js.map",
+    "152.9be2f2b6.chunk.js.map": "/HEALTH_EN/static/js/152.9be2f2b6.chunk.js.map",
     "605.8dd5dc07.chunk.js.map": "/HEALTH_EN/static/js/605.8dd5dc07.chunk.js.map",
     "757.26b7646d.chunk.js.map": "/HEALTH_EN/static/js/757.26b7646d.chunk.js.map",
     "414.1c51feca.chunk.js.map": "/HEALTH_EN/static/js/414.1c51feca.chunk.js.map",
-    "975.4dbf0da9.chunk.js.map": "/HEALTH_EN/static/js/975.4dbf0da9.chunk.js.map",
-    "705.d21fc592.chunk.js.map": "/HEALTH_EN/static/js/705.d21fc592.chunk.js.map",
-    "7.86313a09.chunk.js.map": "/HEALTH_EN/static/js/7.86313a09.chunk.js.map",
+    "975.3e2de619.chunk.js.map": "/HEALTH_EN/static/js/975.3e2de619.chunk.js.map",
+    "306.8f2a2322.chunk.js.map": "/HEALTH_EN/static/js/306.8f2a2322.chunk.js.map",
     "623.6be80e41.chunk.js.map": "/HEALTH_EN/static/js/623.6be80e41.chunk.js.map",
-    "936.0bbe725f.chunk.js.map": "/HEALTH_EN/static/js/936.0bbe725f.chunk.js.map"
+    "730.bc963239.chunk.js.map": "/HEALTH_EN/static/js/730.bc963239.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1a24fdc4.css",
-    "static/js/main.3bcd4987.js"
+    "static/js/main.fd834dfa.js"
   ]
 }
