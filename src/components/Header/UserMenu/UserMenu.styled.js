@@ -16,8 +16,15 @@ export const Info = styled.div`
 
   .mega-div {
     display: none;
+
     @media screen and (min-width: 834px) {
       display: block;
+      margin-left: auto;
+      margin-right: 75px;
+    }
+    
+    @media screen and (min-width: 1440px) {
+    margin-right: 125px;
     }
   }
 `;

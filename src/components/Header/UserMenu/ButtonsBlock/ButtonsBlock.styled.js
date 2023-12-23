@@ -9,15 +9,7 @@ export const InfoOptions = styled.div`
     border-radius: 12px;
     box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
     flex-direction: column;
-
     background-color: ${props => props.theme.color.primary_black_2};
-  }
-  @media screen and (min-width: 834px) {
-    margin-left: auto;
-    margin-right: 73px;
-  }
-  @media screen and (min-width: 834px) {
-    margin-right: 124px;
   }
 `;
 
