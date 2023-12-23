@@ -10,9 +10,9 @@ export const selectUserGender = state => state.auth.genderAgeForm.gender;
 
 export const selectUserAge = state => state.auth.genderAgeForm.age;
 
-export const selectUserHeight = state => state.auth.bodyParamForm.height;
+export const selectUserHeight = state => state.auth.bodyParamFormHeight.height;
 
-export const selectUserWeight = state => state.auth.bodyParamForm.weight;
+export const selectUserWeight = state => state.auth.bodyParamFormWeight.weight;
 
 export const selectUserActivity = state => state.auth.activityForm.activity;
 

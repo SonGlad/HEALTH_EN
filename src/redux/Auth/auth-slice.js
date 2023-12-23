@@ -23,9 +23,11 @@ const initialState = {
     gender: null,
     age: null,
   },
-  bodyParamForm: {
-    height: null,
+  bodyParamFormWeight: {
     weight: null,
+  },
+  bodyParamFormHeight: {
+    height: null,
   },
   activityForm: {
     activity: null,
@@ -96,7 +98,7 @@ const authSlice = createSlice({
       state.goalForm = {
         goal: payload.data.goal,
       };
-      state.bodyParamForm = {
+      state.bodyParamFormWeight = {
         weight: payload.data.weight,
       };
       state.avatarURL = payload.data.avatarURL;
@@ -124,7 +126,7 @@ const authSlice = createSlice({
       state.userForm = {
         name: payload.data.name,
       };
-      state.bodyParamForm = {
+      state.bodyParamFormWeight = {
         weight: payload.data.weight,
       };
       state.goalForm = {
@@ -154,9 +156,8 @@ const authSlice = createSlice({
         gender: payload.data.gender,
         age: payload.data.age,
       };
-      state.bodyParamForm = {
+      state.bodyParamFormHeight = {
         height: payload.data.height,
-        weight: payload.data.weight,
       };
       state.activityForm = {
         activity: payload.data.activity,
@@ -189,8 +190,10 @@ const authSlice = createSlice({
         gender: null,
         age: null,
       };
-      state.bodyParamForm = {
+      state.bodyParamFormHeight = {
         height: null,
+      };
+      state.bodyParamFormWeight = {
         weight: null,
       };
       state.activityForm = {
@@ -227,8 +230,10 @@ const authSlice = createSlice({
         gender: payload.data.gender,
         age: payload.data.age,
       };
-      state.bodyParamForm = {
+      state.bodyParamFormHeight = {
         height: payload.data.height,
+      };
+      state.bodyParamFormWeight = {
         weight: payload.data.weight,
       };
       state.activityForm = {
@@ -267,8 +272,10 @@ const authSlice = createSlice({
         gender: payload.data.gender,
         age: payload.data.age,
       };
-      state.bodyParamForm = {
+      state.bodyParamFormHeight = {
         height: payload.data.height,
+      };
+      state.bodyParamFormWeight = {
         weight: payload.data.weight,
       };
       state.activityForm = {
