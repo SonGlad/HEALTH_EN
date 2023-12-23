@@ -11,7 +11,7 @@ export const Dishes = ({ mealItems }) => (
   <div>
     <DishesWrapper>
       {mealItems &&
-        mealItems.map(item => (
+        mealItems.map((item, index) => (
           <li key={nanoid()}>
             <DishTitle>{item.dish}</DishTitle>
             <Nutrients>
@@ -37,7 +37,7 @@ export const Dishes = ({ mealItems }) => (
           </li>
         ))}
 
-      {mealItems && mealItems.length < 4 && (
+      {mealItems && (mealItems.length === 0 || mealItems.length > 1) && (
         <li key={nanoid()}>
           <AddButton>
             <AddIcon alt="Add icon" />

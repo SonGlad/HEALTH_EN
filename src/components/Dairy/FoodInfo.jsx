@@ -87,10 +87,14 @@ export const FoodInfo = () => {
                 Edit
               </EditButton>
               <Numbers>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
+                {Array.from({
+                  length: Math.max(
+                    4,
+                    meal.items ? Math.max(meal.items.length, 0) : 0
+                  ),
+                }).map((_, index) => (
+                  <li key={nanoid()}>{index + 1}</li>
+                ))}
               </Numbers>
               <Dishes mealItems={meal.items} />
             </DishesWrapper>

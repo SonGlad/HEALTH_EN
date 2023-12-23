@@ -94,6 +94,12 @@ export const DishesWrapper = styled.div`
   background: ${props => props.theme.color.primary_black_2};
   padding: 16px 12px;
   position: relative;
+  overflow-y: auto;
+  height: 240px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @media screen and (min-width: 834px) {
     padding: 32px 60px 32px 14px;
