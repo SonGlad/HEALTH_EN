@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/HEALTH_EN/static/css/main.1a24fdc4.css",
-    "main.js": "/HEALTH_EN/static/js/main.f79ccf07.js",
+    "main.js": "/HEALTH_EN/static/js/main.73092545.js",
     "static/js/7.9cf10839.chunk.js": "/HEALTH_EN/static/js/7.9cf10839.chunk.js",
     "static/js/788.9ac03972.chunk.js": "/HEALTH_EN/static/js/788.9ac03972.chunk.js",
     "static/js/859.355f1075.chunk.js": "/HEALTH_EN/static/js/859.355f1075.chunk.js",
     "static/js/152.9be2f2b6.chunk.js": "/HEALTH_EN/static/js/152.9be2f2b6.chunk.js",
-    "static/js/161.7864ee08.chunk.js": "/HEALTH_EN/static/js/161.7864ee08.chunk.js",
-    "static/js/504.aaefdd0b.chunk.js": "/HEALTH_EN/static/js/504.aaefdd0b.chunk.js",
+    "static/js/90.2cdcd7cc.chunk.js": "/HEALTH_EN/static/js/90.2cdcd7cc.chunk.js",
+    "static/js/504.50002b5b.chunk.js": "/HEALTH_EN/static/js/504.50002b5b.chunk.js",
     "static/js/414.1c51feca.chunk.js": "/HEALTH_EN/static/js/414.1c51feca.chunk.js",
     "static/js/975.3e2de619.chunk.js": "/HEALTH_EN/static/js/975.3e2de619.chunk.js",
     "static/js/306.8f2a2322.chunk.js": "/HEALTH_EN/static/js/306.8f2a2322.chunk.js",
@@ -48,7 +48,6 @@
     "static/media/arrow-left.svg": "/HEALTH_EN/static/media/arrow-left.d83f2da68a3f119c6c553c0110084034.svg",
     "static/media/eye.svg": "/HEALTH_EN/static/media/eye.8c80d662bba4fd9d7b96345f55e44dfe.svg",
     "static/media/arrow-right.svg": "/HEALTH_EN/static/media/arrow-right.a0dbdf3bb87e1d8a8d0981a24c457a96.svg",
-    "static/media/arrow-up.svg": "/HEALTH_EN/static/media/arrow-up.4b3200f7b71074d065bf6a4f3a5450b3.svg",
     "static/media/add-icon.svg": "/HEALTH_EN/static/media/add-icon.74f5dc67c2e1ad24e05e595b5aed8227.svg",
     "static/media/arrow-right-icon.svg": "/HEALTH_EN/static/media/arrow-right-icon.3de19dffade623385752ad3f3804c425.svg",
     "static/media/correct.svg": "/HEALTH_EN/static/media/correct.f951abc33a082eef0ae77b954eda0542.svg",
@@ -57,13 +56,13 @@
     "static/media/add.svg": "/HEALTH_EN/static/media/add.91852336d1463e57d73ca07de9666af8.svg",
     "static/media/ellipse.svg": "/HEALTH_EN/static/media/ellipse.0c3b26195344141055a912afab60b9a7.svg",
     "main.1a24fdc4.css.map": "/HEALTH_EN/static/css/main.1a24fdc4.css.map",
-    "main.f79ccf07.js.map": "/HEALTH_EN/static/js/main.f79ccf07.js.map",
+    "main.73092545.js.map": "/HEALTH_EN/static/js/main.73092545.js.map",
     "7.9cf10839.chunk.js.map": "/HEALTH_EN/static/js/7.9cf10839.chunk.js.map",
     "788.9ac03972.chunk.js.map": "/HEALTH_EN/static/js/788.9ac03972.chunk.js.map",
     "859.355f1075.chunk.js.map": "/HEALTH_EN/static/js/859.355f1075.chunk.js.map",
     "152.9be2f2b6.chunk.js.map": "/HEALTH_EN/static/js/152.9be2f2b6.chunk.js.map",
-    "161.7864ee08.chunk.js.map": "/HEALTH_EN/static/js/161.7864ee08.chunk.js.map",
-    "504.aaefdd0b.chunk.js.map": "/HEALTH_EN/static/js/504.aaefdd0b.chunk.js.map",
+    "90.2cdcd7cc.chunk.js.map": "/HEALTH_EN/static/js/90.2cdcd7cc.chunk.js.map",
+    "504.50002b5b.chunk.js.map": "/HEALTH_EN/static/js/504.50002b5b.chunk.js.map",
     "414.1c51feca.chunk.js.map": "/HEALTH_EN/static/js/414.1c51feca.chunk.js.map",
     "975.3e2de619.chunk.js.map": "/HEALTH_EN/static/js/975.3e2de619.chunk.js.map",
     "306.8f2a2322.chunk.js.map": "/HEALTH_EN/static/js/306.8f2a2322.chunk.js.map",
@@ -73,6 +72,6 @@
   },
   "entrypoints": [
     "static/css/main.1a24fdc4.css",
-    "static/js/main.f79ccf07.js"
+    "static/js/main.73092545.js"
   ]
 }
