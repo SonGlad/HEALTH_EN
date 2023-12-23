@@ -39,6 +39,14 @@
             "Protein": 8,
             "Fat": 3
           }
+        },
+        {
+          "dish": "Greek Yogurt with Berries",
+          "data": {
+            "Carbohydrates": 15,
+            "Protein": 8,
+            "Fat": 3
+          }
         }
       ]
     },
