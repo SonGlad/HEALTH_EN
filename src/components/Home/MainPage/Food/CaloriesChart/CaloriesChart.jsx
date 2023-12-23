@@ -1,11 +1,17 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { ChartWrapper } from './CaloriesChart.styled';
+import { useData } from 'hooks/useUserData';
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+
 export const CaloriesChart = () => {
-  const goalQuantity = 1450;
+  const {dailyCalories} = useData();
+
+
+  const goalQuantity = dailyCalories;
   const addedQuantity = 500;
   const leftQuantity = goalQuantity - addedQuantity;
 

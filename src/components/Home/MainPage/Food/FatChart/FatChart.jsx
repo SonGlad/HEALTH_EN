@@ -1,11 +1,17 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { ChartWrapper, InfoWrapper } from './FatChart.styled';
+import { useData } from 'hooks/useUserData';
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+
 export const FatChart = () => {
-  const goalQuantity = 50;
+  const {dailyFat} = useData();
+
+
+  const goalQuantity = dailyFat;
   const addedQuantity = 30;
   const leftQuantity = Math.max(0, goalQuantity - addedQuantity);
   const leftPercent = Math.round((addedQuantity * 100) / goalQuantity);

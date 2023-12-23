@@ -1,11 +1,17 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { ChartWrapper, InfoWrapper } from './ProteinChart.styled';
+import { useData } from 'hooks/useUserData';
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+
 export const ProteinChart = () => {
-  const goalQuantity = 90;
+  const {dailyProtein} = useData();
+
+
+  const goalQuantity = dailyProtein;
   const addedQuantity = 78.5;
   const leftQuantity = Math.max(0, goalQuantity - addedQuantity);
   const leftPercent = Math.round((addedQuantity * 100) / goalQuantity);

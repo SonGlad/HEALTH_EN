@@ -324,7 +324,6 @@ export const {
   updateGenderAgeForm,
   updateBodyParamForm,
   updateActivityForm,
-  updateUserData,
 
 } = authSlice.actions;
 
