@@ -3,11 +3,12 @@ import { NavLink } from "react-router-dom";
 import { DivForgotPassword, SingInText } from "./ForgotPassword.styled";
 import { ForgotPasswordSchema } from "utils/validationSchemas";
 import { ShowRules } from "utils/showRules";
-// import { useDispatch } from "react-redux";
-// import { forgotPassword } from "../../../redux/Auth/auth-operations";
+import { useDispatch } from "react-redux";
+import { forgotPassword } from "../../redux/Auth/auth-operations";
+
 
 export const ForgotPassword = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const {
     isValid,
@@ -21,11 +22,12 @@ export const ForgotPassword = () => {
     initialValues: {
       email: "",
     },
+
     validationSchema: ForgotPasswordSchema,
 
     onSubmit: (values) => {
-      // dispatch(saveSignUpForm(values));
-      // onNext();
+      dispatch(forgotPassword (values));
+
     },
   });
 
@@ -57,12 +59,10 @@ export const ForgotPassword = () => {
             />
             {getInputAlert("email")}
           </div>
-
           <button className="Button" type="submit" disabled={!isValid}>
             Send
           </button>
         </form>
-
         <div className="DivContainerSingIn">
           <SingInText>Do you already have an account?</SingInText>
           <div className="LinkToSingIn">

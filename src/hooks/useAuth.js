@@ -3,7 +3,6 @@ import {
     selectUserName,
     selectUserEmail,
     selectUserPassword,
-    selectUserNewPassword,
     selectUserGoal,
     selectUserGender,
     selectUserAge,
@@ -26,7 +25,6 @@ export const useAuth = () => {
     const userName = useSelector(selectUserName);
     const userEmail = useSelector(selectUserEmail);
     const userPassword = useSelector(selectUserPassword);
-    const userNewPassword = useSelector(selectUserNewPassword);
     const userGoal = useSelector(selectUserGoal);
     const userGender = useSelector(selectUserGender);
     const userAge = useSelector(selectUserAge);
@@ -44,7 +42,6 @@ export const useAuth = () => {
         userName,
         userEmail,
         userPassword,
-        userNewPassword,
         userGoal,
         userGender,
         userAge,
