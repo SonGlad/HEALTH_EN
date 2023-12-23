@@ -8,11 +8,12 @@ import {
     selectUserAge,
     selectUserHeight,
     selectUserWeight,
-    selectUserWeightCurrentDate,
     selectUserActivity,
+    selectUserAvatarURL,
     selectLoggedUser,
     selectLoading,
     selectRefreshing,
+    selectInitial,
 } from "../redux/Auth/auth-selectors";
 
 
@@ -20,6 +21,7 @@ export const useAuth = () => {
     const isLoadingAuth = useSelector(selectLoading);
     const isLoggedIn = useSelector(selectLoggedUser);
     const isRefreshing = useSelector(selectRefreshing);
+    const isInitial = useSelector(selectInitial);
     const userName = useSelector(selectUserName);
     const userEmail = useSelector(selectUserEmail);
     const userPassword = useSelector(selectUserPassword);
@@ -28,14 +30,15 @@ export const useAuth = () => {
     const userAge = useSelector(selectUserAge);
     const userHeight = useSelector(selectUserHeight);
     const userWeight = useSelector(selectUserWeight);
-    const userWeightCurrentDate = useSelector(selectUserWeightCurrentDate);
-    const userActivity = useSelector(selectUserActivity); 
+    const userActivity = useSelector(selectUserActivity);
+    const userAvatarURL = useSelector(selectUserAvatarURL); 
 
 
     return {
         isLoadingAuth,
         isLoggedIn,
         isRefreshing,
+        isInitial,
         userName,
         userEmail,
         userPassword,
@@ -44,7 +47,7 @@ export const useAuth = () => {
         userAge,
         userHeight,
         userWeight,
-        userWeightCurrentDate,
         userActivity,
+        userAvatarURL,
     };
 };

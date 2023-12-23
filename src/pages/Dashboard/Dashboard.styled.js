@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-export const Title = styled.h1`
-  opacity: 0;
-  position: absolute;
-`;
-
 export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;

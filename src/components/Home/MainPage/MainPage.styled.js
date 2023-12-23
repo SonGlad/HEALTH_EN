@@ -58,7 +58,7 @@ export const DashboardLink = styled(NavLink)`
   line-height: 1.4;
   justify-content: center;
   align-items: center;
-  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media screen and (min-width: 834px) {
     font-size: 16px;
@@ -73,9 +73,16 @@ export const DashboardLink = styled(NavLink)`
   }
 
   &:hover {
-    color: ${props => props.theme.color.primary_lite_green};
+    color: ${props => props.theme.color.primary_green_lite};
     & svg {
-      stroke: ${props => props.theme.color.primary_lite_green};
+      stroke: ${props => props.theme.color.primary_green_lite};
+    }
+  }
+
+  &:focus {
+    color: ${props => props.theme.color.primary_green_lite};
+    & svg {
+      stroke: ${props => props.theme.color.primary_green_lite};
     }
   }
 `;
@@ -107,6 +114,7 @@ export const GoalsContainer = styled.div`
 export const GoalItem = styled.div`
   flex: 1;
   width: 100%;
+
   @media screen and (min-width: 834px) and (max-width: 1439px) {
     &:nth-child(2),
     &:nth-child(3) {

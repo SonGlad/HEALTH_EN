@@ -10,6 +10,7 @@ import {
   EditSvg,
 } from './ButtonsBlock.styled';
 
+
 import { TargetModal } from 'components/Header/UserMenu/ButtonsBlock/TargetModal/TargetModal';
 import { WeightModal } from '../../UserMenu/ButtonsBlock/ WeightModal/ WeightModal';
 import { ReactComponent as CloseIcon } from '../../../../images/icons-linear/close-circle.svg';
@@ -118,6 +119,7 @@ export const ButtonsBlock = () => {
     };
   }, []);
 
+
   return (
     <InfoOptions>
       {' '}
@@ -159,7 +161,7 @@ export const ButtonsBlock = () => {
         <TextContainer>
           <InfoBlockName>Weight</InfoBlockName>
           <InfoBlockText>
-            {0}
+            {userWeight}
             <WeightKg>kg</WeightKg>
             <EditSvg src={edit} alt="edit" />
           </InfoBlockText>

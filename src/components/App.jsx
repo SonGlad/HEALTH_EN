@@ -1,15 +1,13 @@
 import { SharedLayout } from "./Shared.Layout";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { lazy } from "react";
-// import { lazy, useEffect } from "react";
-// import { useDispatch } from "react-redux";
-// import { PrivateRoute } from "./PrivateRoute";
-// import { RestrictedRoute } from "./RestrictedRoute";
-// import { RefreshLoading } from "./CustomLoaders/CustomLoaders";
-// import { Toaster } from "./ToastContainer/ToastContainer";
-// import { refreshCurrentUser } from "redux/Auth/auth-operations";
-// import { useAuth } from "hooks/useAuth";
-
+import { lazy, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { PrivateRoute } from "./PrivateRoute";
+import { RestrictedRoute } from "./RestrictedRoute";
+import { RefreshLoading } from "../components/CustomLoaders/CustomLoaders";
+import { Toaster } from "./ToastContainer/ToastContainer";
+import { refreshCurrentUser } from "../redux/Auth/auth-operations";
+import { useAuth } from "../hooks/useAuth";
 
 
 
@@ -24,25 +22,49 @@ const SettingsPage = lazy(() => import('../pages/Settings/Settings'));
 
 
 
-
-
 export const App = () => {
+  const dispatch = useDispatch();
+  const {isRefreshing} = useAuth();
 
 
-  return (
-    <Routes>
-      <Route path="/" element={<SharedLayout/>}>
-        <Route index element={<HomePage/>}/>
-        <Route path="*" element={<Navigate to="/"/>}/>
-        <Route path="/signup" element={<RegisterPage/>}/>
-        <Route path="/signin" element={<LoginPage/>}/>
-        <Route path="/forgot-password" element={<ForgotPasswordPage/>}/>
-        <Route path="/dashboard" element={<DashboardPage/>}/>
-        <Route path="/diary" element={<DiaryPage/>}/>
-        <Route path="/recommended-food" element={<RecommendedFoodPage/>}/>
-        <Route path="/settings" element={<SettingsPage/>}/>
-      </Route>
-    </Routes>
+  useEffect(() => {
+    dispatch(refreshCurrentUser());
+  }, [dispatch]);
+
+
+  return isRefreshing ? (
+    <RefreshLoading/>
+    ) : (
+    <>
+      <Toaster/>
+      <Routes>
+        <Route path="/" element={<SharedLayout/>}>
+          <Route index element={<HomePage/>}/>
+          <Route path="*" element={<Navigate to="/"/>}/>
+          <Route path="/signup" element={
+            <RestrictedRoute redirectTo="/" component={<RegisterPage/>} />
+          }/>
+          <Route path="/signin" element={
+            <RestrictedRoute redirectTo="/" component={<LoginPage/>} />
+          }/>
+          <Route path="/forgot-password" element={
+            <RestrictedRoute redirectTo="/signin" component={<ForgotPasswordPage/>} />
+          }/>
+          <Route path="/dashboard" element={
+            <PrivateRoute redirectTo="/signin" component={<DashboardPage/>}/>
+          }/>
+          <Route path="/diary" element={
+            <PrivateRoute redirectTo="/signin" component={<DiaryPage/>}/>
+          }/>
+          <Route path="/recommended-food" element={
+            <PrivateRoute redirectTo="/signin" component={<RecommendedFoodPage/>}/>
+          }/>
+          <Route path="/settings" element={
+            <PrivateRoute redirectTo="/signin" component={<SettingsPage/>}/>
+          }/>
+        </Route>
+      </Routes>
+    </>
   );
 };
 

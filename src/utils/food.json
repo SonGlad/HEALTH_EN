@@ -1,0 +1,115 @@
+{
+  "meals": [
+    {
+      "name": "Breakfast",
+      "data": {
+        "Carbohydrates": 0,
+        "Protein": 0,
+        "Fat": 0
+      },
+      "items": [
+        {
+          "dish": "Omelette",
+          "data": {
+            "Carbohydrates": 10,
+            "Protein": 20,
+            "Fat": 15
+          }
+        },
+        {
+          "dish": "Toast with Peanut Butter",
+          "data": {
+            "Carbohydrates": 30,
+            "Protein": 8,
+            "Fat": 12
+          }
+        },
+        {
+          "dish": "Almonds",
+          "data": {
+            "Carbohydrates": 5,
+            "Protein": 6,
+            "Fat": 15
+          }
+        },
+        {
+          "dish": "Greek Yogurt with Berries",
+          "data": {
+            "Carbohydrates": 15,
+            "Protein": 8,
+            "Fat": 3
+          }
+        },
+        {
+          "dish": "Greek Yogurt with Berries",
+          "data": {
+            "Carbohydrates": 15,
+            "Protein": 8,
+            "Fat": 3
+          }
+        }
+      ]
+    },
+    {
+      "name": "Lunch",
+      "data": {
+        "Carbohydrates": 0,
+        "Protein": 0,
+        "Fat": 0
+      },
+      "items": [
+        {
+          "dish": "Chicken Salad",
+          "data": {
+            "Carbohydrates": 15,
+            "Protein": 25,
+            "Fat": 10
+          }
+        },
+        {
+          "dish": "Vegetable Wrap",
+          "data": {
+            "Carbohydrates": 20,
+            "Protein": 12,
+            "Fat": 8
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dinner",
+      "data": {
+        "Carbohydrates": 0,
+        "Protein": 0,
+        "Fat": 0
+      },
+      "items": [
+        {
+          "dish": "Grilled Salmon",
+          "data": {
+            "Carbohydrates": 5,
+            "Protein": 30,
+            "Fat": 18
+          }
+        },
+        {
+          "dish": "Quinoa with Roasted Vegetables",
+          "data": {
+            "Carbohydrates": 25,
+            "Protein": 10,
+            "Fat": 8
+          }
+        }
+      ]
+    },
+    {
+      "name": "Snack",
+      "data": {
+        "Carbohydrates": 0,
+        "Protein": 0,
+        "Fat": 0
+      },
+      "items": []
+    }
+  ]
+}

@@ -56,10 +56,19 @@ export const DairyLink = styled(NavLink)`
   font-size: 14px;
   line-height: 1.4;
   font-weight: 500;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media screen and (min-width: 834px) {
     font-size: 16px;
     line-height: 1.8;
+  }
+
+  &:hover {
+    color: ${props => props.theme.color.primary_green_lite};
+  }
+
+  &:focus {
+    color: ${props => props.theme.color.primary_green_lite};
   }
 `;
 
@@ -80,7 +89,7 @@ export const AddButton = styled.button`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.4;
-  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   svg {
     width: 16px;
@@ -90,9 +99,16 @@ export const AddButton = styled.button`
   }
 
   &:hover {
-    color: ${props => props.theme.color.primary_lite_green};
+    color: ${props => props.theme.color.primary_green_lite};
     & svg {
-      stroke: ${props => props.theme.color.primary_lite_green};
+      stroke: ${props => props.theme.color.primary_green_lite};
+    }
+  }
+
+  &:focus {
+    color: ${props => props.theme.color.primary_green_lite};
+    & svg {
+      stroke: ${props => props.theme.color.primary_green_lite};
     }
   }
 `;

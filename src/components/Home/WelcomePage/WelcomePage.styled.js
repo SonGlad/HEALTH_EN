@@ -106,6 +106,7 @@ export const Wrapper = styled.div`
     flex-direction: column;
     gap: 16px;
     max-width: 444px;
+    align-items: flex-start;
 
     @media screen and (min-width: 834px) {
       flex-direction: row;
@@ -117,12 +118,16 @@ export const Wrapper = styled.div`
       flex-direction: column;
     }
 
-    img {
-      width: 8px;
-    }
     li {
       display: flex;
+      justify-content: center;
+      align-items: center;
       gap: 8px;
+    }
+    svg {
+      width: 8px;
+      height: 8px;
+      fill: ${props => props.theme.color.primary_green_lite};
     }
   }
 `;
@@ -138,9 +143,18 @@ export const SingInLink = styled(NavLink)`
   line-height: 1.4;
   justify-content: center;
   color: ${props => props.theme.color.primary_black_2};
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media screen and (min-width: 834px) {
     width: 212px;
+  }
+
+  &:hover {
+    color: ${props => props.theme.color.primary_grey};
+  }
+
+  &:focus {
+    color: ${props => props.theme.color.primary_grey};
   }
 `;
 
@@ -152,4 +166,13 @@ export const SingUpLink = styled(NavLink)`
   font-weight: 500;
   line-height: 1.4;
   color: ${props => props.theme.color.primary_white};
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    color: ${props => props.theme.color.primary_green_lite};
+  }
+
+  &:focus {
+    color: ${props => props.theme.color.primary_green_lite};
+  }
 `;

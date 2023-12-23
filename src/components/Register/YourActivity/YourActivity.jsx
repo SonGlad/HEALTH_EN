@@ -18,21 +18,19 @@ export const YourActivity = ({ onBack }) => {
     userAge,
     userHeight,
     userWeight,
-    userWeightCurrentDate,
   } = useAuth();
-  const { touched, values, handleBlur, handleChange, handleSubmit } = useFormik(
-    {
-      initialValues: {
-        activity: userActivity?.activity || "",
-      },
 
-      validationSchema: YourActivitySchema,
+  const { values, handleBlur, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      activity: userActivity?.activity || "",
+    },
 
-      onSubmit: (values) => {
-        dispatch(updateActivityForm(values));
-      },
-    }
-  );
+    validationSchema: YourActivitySchema,
+
+    onSubmit: (values) => {
+      dispatch(updateActivityForm(values));
+    },
+  });
 
   const handleSecondSubmit = (event) => {
     event.preventDefault();
@@ -45,10 +43,7 @@ export const YourActivity = ({ onBack }) => {
         gender: userGender,
         age: userAge,
         height: userHeight,
-        weight: {
-          kg: userWeight,
-          createdAt: userWeightCurrentDate,
-        },
+        weight: userWeight,
         activity: values.activity || userActivity,
       })
     );

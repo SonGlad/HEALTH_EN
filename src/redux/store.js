@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { authReducer } from './Auth/auth-slice';
-// import { dataReducer } from './Data/data-slice';
+import { dataReducer } from './Data/data-slice';
 import { 
   persistStore, 
   persistReducer, 
@@ -19,25 +19,33 @@ const authPersistConfig = {
   storage,
   whitelist: [
     'token', 
-    'userForm', 
-    'goalForm', 
-    'genderAgeForm', 
-    'bodyParamForm',
-    'activityForm',
+    // 'userForm', 
+    // 'goalForm', 
+    // 'genderAgeForm', 
+    // 'bodyParamForm',
+    // 'activityForm',
+    // 'isInitial',
   ],
 };
 
 
-// const dataPersistConfig = {
-//   key: 'data',
-//   storage,
-//   whitelist: [],
-// };
+const dataPersistConfig = {
+  key: 'data',
+  storage,
+  whitelist: [
+    'dailyCalories',
+    'dailyWater',
+    'dailyNutrition',
+    'isLoading',
+    'userCurrentWater',
+    'userAddedWater',
+  ],
+};
 
 
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
-//   data: persistReducer(dataPersistConfig, dataReducer)
+  data: persistReducer(dataPersistConfig, dataReducer)
 })
 
 

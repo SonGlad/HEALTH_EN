@@ -102,9 +102,16 @@ export const FoodLink = styled(NavLink)`
   }
 
   &:hover {
-    color: ${props => props.theme.color.primary_lite_green};
+    color: ${props => props.theme.color.primary_green_lite};
     & svg {
-      stroke: ${props => props.theme.color.primary_lite_green};
+      stroke: ${props => props.theme.color.primary_green_lite};
+    }
+  }
+
+  &:focus {
+    color: ${props => props.theme.color.primary_green_lite};
+    & svg {
+      stroke: ${props => props.theme.color.primary_green_lite};
     }
   }
 `;

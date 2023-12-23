@@ -1,6 +1,18 @@
 import styled from 'styled-components';
 
 export const InfoOptions = styled.div`
+  display: flex;
+
+  @media screen and (max-width: 833px) {
+    width: 300px;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
+    flex-direction: column;
+    background-color: ${props => props.theme.color.primary_black_2};
+  }
+
+
   padding: 24px;
   box-shadow: 0 4px 14px 0 rgba(227, 255, 168, 0.2);
   background-color: ${props => props.theme.color.primary_black_2};
@@ -12,9 +24,10 @@ export const InfoOptions = styled.div`
     box-shadow: none;
     border-radius: none;
   }
+  
   @media screen and (min-width: 834px) {
     margin-right: 124px;
-  }
+
 `;
 
 export const InfoBlock = styled.div`
@@ -118,27 +131,35 @@ export const InfoBlock = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
+
   position: relative;
 
   margin-bottom: 12px;
+
+  &:nth-child(1) {
+    margin-bottom: 40px;
+  }
+
 
   @media screen and (min-width: 834px) {
     display: flex;
     &:nth-child(1) {
       margin-right: 40px;
+      margin-bottom: 0px;
     }
   }
   @media screen and (min-width: 1440px) {
     display: flex;
     &:nth-child(1) {
       margin-right: 80px;
+      margin-bottom: 0px;
     }
   }
 `;
 export const IconContainer = styled.div`
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.01);
-  border: 1px solid ${props => props.theme.color.primary_grey}; //боред колір на макеті інший(не доданий в теми)
+  border: 1px solid ${props => props.theme.color.primary_grey};
   border-radius: 12px;
   width: 48px;
   height: 48px;
