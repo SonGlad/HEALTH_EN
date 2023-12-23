@@ -12,65 +12,50 @@ import {
   LeftInfo,
   TotalInfo,
 } from './Water.styled';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useData } from '../../../../hooks/useUserData';
-// import {addWaterIntake, deleteWaterIntake} from "../../../../redux/Data/data-operations";
-
+import {
+  addWaterIntake,
+  deleteWaterIntake,
+} from '../../../../redux/Data/data-operations';
 
 export const Water = () => {
-  // const dispatch = useDispatch();
-  const {dailyWater} = useData();
-  // const {currentWater, addedWater} = useData();
-
-
+  const dispatch = useDispatch();
+  const { dailyWater, currentWater } = useData();
+  // const { currentWater } = useData();
 
   // THE CODE BELOW FOR TESTING TO CHECK HOW IS RESPONCE GOING/////
 
-  // console.log("currentWater", currentWater);
-  // console.log("addedWater", addedWater);
-  // const water = "1000";
-  // const handleWaterDispatch = () =>{
-  //   console.log("Sending to server:", water);
-  //   dispatch(addWaterIntake({
-  //     water: water,
-  //   }))
-  // }
-  // const handleWaterDelete = () =>{
-  //   dispatch(deleteWaterIntake())
-  // }
+  // console.log('currentWater', currentWater);
+  // console.log('addedWater', addedWater);
 
+  const water = '1000';
+  const handleWaterDispatch = () => {
+    console.log('Sending to server:', water);
+    dispatch(
+      addWaterIntake({
+        water: water,
+      })
+    );
+  };
+  const handleWaterDelete = () => {
+    dispatch(deleteWaterIntake());
+  };
 
   const waterGoal = dailyWater;
-  const initialAddedQuantity = 300;
 
-  const [total, setTotal] = useState(initialAddedQuantity);
   const [dailyWaterLimit, setDailyWaterLimit] = useState(0);
 
-  const addWater = () => {
-    setTotal(prevTotal => prevTotal + initialAddedQuantity);
-  };
-
   const calculatePercent = useCallback(() => {
-    const newDailyWater = Math.round((total / waterGoal) * 100);
+    const newDailyWater = Math.round((currentWater / waterGoal) * 100);
     setDailyWaterLimit(newDailyWater >= 100 ? 100 : newDailyWater);
-  }, [total, waterGoal]);
-
-  const onClick = () => {
-    addWater();
-    setDailyWaterLimit(0);
-    calculatePercent();
-  };
-
-  const clear = () => {
-    setTotal(0);
-    setDailyWaterLimit(0);
-  };
+  }, [currentWater, waterGoal]);
 
   useEffect(() => {
     calculatePercent();
-  }, [total, calculatePercent]);
+  }, [currentWater, calculatePercent]);
 
-  const leftWater = Math.max(0, waterGoal - total);
+  const leftWater = Math.max(0, waterGoal - currentWater);
 
   return (
     <Section>
@@ -80,7 +65,9 @@ export const Water = () => {
           <p
             style={{
               color:
-                dailyWaterLimit <= 80 ? 'rgb(182, 195, 255)' : 'rgb(15, 15, 15)',
+                dailyWaterLimit <= 80
+                  ? 'rgb(182, 195, 255)'
+                  : 'rgb(15, 15, 15)',
             }}
           >
             {dailyWaterLimit}%
@@ -88,22 +75,29 @@ export const Water = () => {
           <ColoredArea
             height={dailyWaterLimit}
             style={{
-              height: total >= waterGoal ? '100%' : `${dailyWaterLimit}%`,
+              height:
+                currentWater >= waterGoal ? '100%' : `${dailyWaterLimit}%`,
             }}
           />
         </ChartWrapper>
 
         <div>
           <h3>Water consumption</h3>
-          <ClearButton 
-            onClick={clear}
-          // onClick={handleWaterDelete}
-          >
+          <ClearButton onClick={handleWaterDelete}>
             <ClearIcon alt="Clear icon" />
           </ClearButton>
           <InfoWrapper>
             <TotalInfo>
-              {total} <span>ml</span>
+              {currentWater ? (
+                <TotalInfo>
+                  {currentWater}
+                  <span>ml</span>
+                </TotalInfo>
+              ) : (
+                <TotalInfo>
+                  0<span>ml</span>
+                </TotalInfo>
+              )}
             </TotalInfo>
             <LeftInfo>
               left:<p>{leftWater}</p>
@@ -111,10 +105,7 @@ export const Water = () => {
             </LeftInfo>
           </InfoWrapper>
 
-          <AddButton  
-            onClick={onClick}
-          // onClick={handleWaterDispatch}
-          >
+          <AddButton onClick={handleWaterDispatch}>
             <AddIcon alt="Add icon" />
             Add water intake
           </AddButton>
