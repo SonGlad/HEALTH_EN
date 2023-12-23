@@ -86,11 +86,12 @@ export const MenuButton = styled.button`
   margin-left: 8px;
   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  .menu-icon{
-    stroke: ${(props) => props.theme.color.primary_green_lite};
+  .menu-icon {
+    stroke: ${props => props.theme.color.primary_green_lite};
 
-    &:hover, &:focus{
-    stroke: ${(props) => props.theme.color.primary_white};
+    &:hover,
+    &:focus {
+      stroke: ${props => props.theme.color.primary_white};
     }
   }
 `;
@@ -119,7 +120,7 @@ export const UserBlock = styled.div`
     transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .for-user-avater{
+  .for-user-avater {
     width: 24px;
     height: 24px;
     border-radius: 50%;
@@ -132,23 +133,112 @@ export const UserBlock = styled.div`
     }
   }
 
-  .arrow-svg{
-    stroke: ${(props) => props.theme.color.primary_green_lite};
+  .arrow-svg {
+    stroke: ${props => props.theme.color.primary_green_lite};
+  }
+
+  .arrow-svg-close {
+    transform: rotate(180deg);
   }
 
   .user-menu-btn:hover .arrow-svg,
   .user-menu-btn:focus .arrow-svg {
-    stroke: ${(props) => props.theme.color.primary_white};
+    stroke: ${props => props.theme.color.primary_white};
   }
 `;
 
 export const AvaImg = styled.img`
- display: block;
- width: 100%;
- height: 100%;
- object-fit: cover;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 export const ArrowSvg = styled.img`
   width: 14px;
+`;
+
+export const UserInfoContainer = styled.div`
+  position: absolute;
+  width: 158px;
+  height: auto;
+  background-color: red;
+  top: 54px;
+  right: 0px;
+
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  transform: scaleY(0);
+  transition: opacity 0.5s ease,
+    transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), visibility 0.5s ease;
+
+  border-radius: 12px;
+  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
+  flex-direction: column;
+
+  @media screen and (min-width: 834px) {
+    top: 80px;
+  }
+  &.show-info-container {
+    opacity: 1;
+    visibility: visible;
+    transform: scaleY(1);
+  }
+
+  .list-user-menu {
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    padding: 24px;
+    width: 100%;
+    gap: 24px;
+    background-color: ${props => props.theme.color.primary_black_2};
+    box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
+
+    .item-user-menu {
+      display: flex;
+      align-items: center;
+
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.4;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: ${props => props.theme.color.primary_green_lite};
+      }
+
+      .setting-icon,
+      .logout-icon {
+        margin-right: 8px;
+        stroke: ${props => props.theme.color.primary_white};
+        transition: stroke 0.3s ease;
+
+        &:hover,
+        &:focus {
+          cursor: pointer;
+          stroke: ${props => props.theme.color.primary_green_lite};
+        }
+      }
+
+      .link-setting,
+      .button-link-logout {
+        display: flex;
+        align-items: center;
+        color: inherit;
+      }
+      .button-link-logout {
+        background-color: transparent;
+        border-color: transparent;
+        cursor: pointer;
+        /* font-size: 14px;
+        font-weight: 500;
+        line-height: 1.4;
+        color: ${props => props.theme.color.primary_white}; */
+
+        padding: 0;
+      }
+    }
+  }
 `;
