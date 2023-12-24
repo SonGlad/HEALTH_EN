@@ -7,6 +7,7 @@ import {
 import {
     addWaterIntake, 
     deleteWaterIntake,
+    getAllRecommendedFood,
     updateGoal,
     updateWeight,
 } from "./data-operations";
@@ -24,6 +25,8 @@ const initialState = {
         protein: null,
         fat: null,
     },
+    recommendedFood: [],
+    
     error: null,
     isLoading: false,
     isLogin: false,// For SignIn Only (GET api/user/current-data)///
@@ -185,10 +188,24 @@ const dataSlice = createSlice({
             state.isLoading = false;
             state.error = payload;
         })
+            
+       //receiving recommended food     
+        .addCase(getAllRecommendedFood.pending, state => {
+      state.isLoading = true;
+      state.error = null;
+    })
+    .addCase(getAllRecommendedFood.fulfilled, (state, {payload}) => {
+      state.isLoading = false;
+      state.recommendedFood = payload;
+      state.error = null;
+    })
+    .addCase(getAllRecommendedFood.rejected,(state, {payload}) => {
+      state.isLoading = false;
+      state.error = payload; 
+    })
 
     }
 });
-
 
 
 export const dataReducer = dataSlice.reducer;

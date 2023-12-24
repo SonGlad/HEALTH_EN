@@ -53,16 +53,32 @@ export const updateGoal = createAsyncThunk(
 );
 
 
- export const updateWeight = createAsyncThunk(
+export const updateWeight = createAsyncThunk(
   'api/user/update-weight',
   async (valueWeight, thunkApi) => {
     try {
-     const response = await axios.put(`api/user/weight`, valueWeight );
+      const response = await axios.put(`api/user/weight`, valueWeight);
       toast.success('Your weight information has been successfully updated');
-       console.log("SERVER RESPOnce", response.data);
-    return response.data;
-  } catch (error) {
+      console.log("SERVER RESPOnce", response.data);
+      return response.data;
+    } catch (error) {
+      toast.error('Oops. Something went wrong. Please try again.');
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getAllRecommendedFood = createAsyncThunk(
+  'api/user/recommended-food',
+  async (_, thunkApi) => {
+    try {
+      const response = await axios.get('api/recommended-food');
+      toast.success(`Recommended products successfully loaded.`)
+      console.log("SERVER RESPOnce", response.data);
+      return response.data;
+    } catch (error) {
        toast.error('Oops. Something went wrong. Please try again.');
-            return thunkApi.rejectWithValue(error.message);
-  } }
-)
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
