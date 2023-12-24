@@ -4,49 +4,37 @@ import { ReactComponent as ArrowIcon } from '../../../../images/icons-linear/arr
 import SnacksImg from '../../../../images/svgIcon/snack-img.svg';
 
 import { Container, ContentWrapper, FoodLink } from './RecommendedFood.styled';
+import { useDispatch } from 'react-redux';
+import { useData } from '../../../../hooks/useUserData';
+import { useEffect } from 'react';
+import { getAllRecommendedFood } from '../../../../redux/Data/data-operations';
 
 export const RecommendedFood = () => {
+  const { recommendedFood } = useData()
+  const dispatch = useDispatch()
+   useEffect(() => {
+      dispatch(getAllRecommendedFood());
+    
+  }, [dispatch]);
   return (
     <Section>
       <Container>
         <h2>Recommended food</h2>
         <ul>
+          {recommendedFood.slice(0, 4).map(({_id, amount, calories, img, name}) =>(
           <li>
-            <img src={SnacksImg} alt="Recommended food" />
+              <img src={img} alt="Recommended food" onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = SnacksImg;
+              }} />
             <ContentWrapper>
-              <h3>Title</h3>
+              <h3>{name}</h3>
               <p>
-                100 g<span>200 calories</span>
+                {amount}<span>{calories} calories</span>
               </p>
             </ContentWrapper>
-          </li>
-          <li>
-            <img src={SnacksImg} alt="Recommended food" />
-            <ContentWrapper>
-              <h3>Title</h3>
-              <p>
-                100 g<span>200 calories</span>
-              </p>
-            </ContentWrapper>
-          </li>
-          <li>
-            <img src={SnacksImg} alt="Recommended food" />
-            <ContentWrapper>
-              <h3>Title</h3>
-              <p>
-                100 g<span>200 calories</span>
-              </p>
-            </ContentWrapper>
-          </li>
-          <li>
-            <img src={SnacksImg} alt="Recommended food" />
-            <ContentWrapper>
-              <h3>Title</h3>
-              <p>
-                100 g<span>200 calories</span>
-              </p>
-            </ContentWrapper>
-          </li>
+          </li>))}
+          
         </ul>
         <FoodLink to={'/recommended-food'}>
           See more

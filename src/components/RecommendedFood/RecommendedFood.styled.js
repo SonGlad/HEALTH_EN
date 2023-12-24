@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 
 export const Container = styled.div`
+
+
   h2 {
     font-size: 18px;
     font-weight: 400;
@@ -24,6 +26,16 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 20px;
     margin-bottom: 16px;
+    height: 1040px; 
+  overflow-y: auto;
+  scrollbar-width: thin; 
+  scrollbar-color: transparent transparent; 
+  &::-webkit-scrollbar {
+    width: 6px; 
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent; 
+  }
     
 
     & > :nth-last-child(-n + 2) {
@@ -33,6 +45,7 @@ export const Container = styled.div`
     @media screen and (min-width: 834px) {
       flex-direction: row;
       flex-wrap: wrap;
+      height: 510px; 
       gap: 20px;
       & > :nth-last-child(-n + 2) {
         display: flex;
@@ -44,6 +57,7 @@ export const Container = styled.div`
       line-height: 1.5;
       width: 676px;
       display: flex;
+      
      
     }
   }
@@ -93,9 +107,11 @@ export const ContentWrapper = styled.div`
 
 export const DesctopContainer = styled.div`
   padding-top: 16px;
+  padding-bottom: 60px;
 
   @media (min-width: 834px) {
     padding-top: 20px;
+    padding-bottom: 60px;
   }
   @media (min-width: 1440px) {
     padding-top: 0;
@@ -138,6 +154,7 @@ export const ProductsList = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     flex-direction: row;
+    
   }
   @media (min-width: 1440px) {
     width: 680px;
