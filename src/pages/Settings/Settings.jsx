@@ -9,7 +9,7 @@ import { ValidationSchema } from "../../utils/validationSchemas";
 import { ShowRules } from "utils/showRules";
 import { useAuth } from "hooks/useAuth";
 import { useDispatch } from "react-redux";
-import { updateUserData } from "../../redux/Auth/auth-slice"
+import { updateUserInfo, updateUserAvatar } from "../../redux/Auth/auth-operations";
 
 
 const SettingsPage = () => {
@@ -20,7 +20,7 @@ const SettingsPage = () => {
     userGender, 
     userHeight, 
     userWeight,
-    userActivity 
+    userActivity, 
   } = useAuth();
 
 
@@ -33,10 +33,12 @@ const SettingsPage = () => {
     handleChange,
     handleSubmit,
     resetForm,
+    setValues,
   } = useFormik({
+
+
     initialValues: {
       name: userName || '',
-      // photo: userAvatarURL || '',
       age: userAge || '',
       gender: userGender || '',
       height: userHeight || '',
@@ -44,10 +46,11 @@ const SettingsPage = () => {
       activity: userActivity || '',
       newPassword: "",
       confirmPassword: "",
+      photo: undefined,
     },
-
+    
     validationSchema: ValidationSchema,
-
+  
     onSubmit: (values) => {
       const isNewPasswordEmpty = !values.newPassword.trim();
       const dataToSend = {
@@ -58,13 +61,21 @@ const SettingsPage = () => {
         weight: values.weight,
         activity: values.activity,
       };
-    
       if (!isNewPasswordEmpty) {
         dataToSend.newPassword = values.newPassword;
       }
-    
-      dispatch(updateUserData(dataToSend));
-      console.log(dataToSend);
+      dispatch(updateUserInfo(dataToSend));     
+
+
+
+      const formData = new FormData();
+      const avatarFile = values.photo;
+      if (!avatarFile) {
+        // console.log("No file selected");
+      } else {
+        formData.append('avatarURL', avatarFile);
+        dispatch(updateUserAvatar(formData));
+      }
     },
   });
 
@@ -113,9 +124,12 @@ const SettingsPage = () => {
                 name="photo"
                 type="file"
                 id="photo"
-                accept="image/*"
-                onChange={handleChange}
-                // value={values.photo}
+                accept="image/jpeg,image/png,image/jpg"
+                onChange={(event) => {
+                  handleChange(event);
+                  const file = event.currentTarget.files[0];
+                  setValues((prevValues) => ({ ...prevValues, photo: file }));
+                }}
                 onBlur={handleBlur}
               />
               <label className="Label label-for-avatar" htmlFor="photo">

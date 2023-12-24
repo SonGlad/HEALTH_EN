@@ -117,31 +117,33 @@ export const refreshCurrentUser = createAsyncThunk(
 export const updateUserInfo = createAsyncThunk(
     'api/user/update',
     async (userData, thunkApi) => {
-      try {
-        const response = await axios.put(`api/user/update`, userData);
-        toast.success('Your User information has been successfully updated');
-        return response.data;
-      } catch (error) {
-        toast.error('Oops. Something went wrong. Please try again.');
-        return thunkApi.rejectWithValue(error.message);
-      }
+        try {
+            const response = await axios.put(`api/user/update`, userData);
+            toast.success('Your User information has been successfully updated');
+            return response.data;
+        } catch (error) {
+            toast.error('Oops. Something went wrong. Please try again.');
+            return thunkApi.rejectWithValue(error.message);
+        }
     }
 );
 
 
-
-// LOGOUT BUTTON FOR USER MENU/////
-/* <button onClick={() => dispatch(logOut())}>LOGOUT</button> */
-
-
-// const handleSubmit = (event) => {
-//     event.preventDefault();
-//     const form = event.currentTarget;
-//     dispatch(
-//       forgotPassword({
-//         email: form.elements.email.value.toString(),
-//       })
-//     );
-//     form.reset();
-//   };
+export const updateUserAvatar = createAsyncThunk(
+    'api/user/update-avatar',
+    async (formData, thunkApi) => {
+      try {
+        const response = await axios.put(`api/user/update-avatar`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+            toast.success('Your User avatar has been successfully updated');
+            return response.data;
+        } catch (error) {
+            toast.error('Oops. Something went wrong. Please try again.');
+            return thunkApi.rejectWithValue(error.message);
+        }
+    }
+);
 

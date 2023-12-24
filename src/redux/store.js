@@ -1,44 +1,59 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { authReducer } from "./Auth/auth-slice";
-// import { dataReducer } from './Data/data-slice';
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
+
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { modalReducer } from "./Modal/modal-slice";
+import { authReducer } from './Auth/auth-slice';
+import { dataReducer } from './Data/data-slice';
+import { 
+  persistStore, 
+  persistReducer, 
+  FLUSH, 
+  REHYDRATE, 
+  PAUSE, 
+  PERSIST, 
+  PURGE, 
+  REGISTER 
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
 
 const authPersistConfig = {
   key: "auth",
   storage,
   whitelist: [
-    "token",
-    "userForm",
-    "goalForm",
-    "genderAgeForm",
-    "bodyParamForm",
-    "activityForm",
-    "isInitial",
+    'token', 
+    // 'userForm', 
+    'goalForm', 
+    'bodyParamFormWeight',
+    // 'genderAgeForm', 
+    // 'bodyParamForm',
+    // 'activityForm',
+    // 'isInitial',
   ],
 };
 
-// const dataPersistConfig = {
-//   key: 'data',
-//   storage,
-//   whitelist: [],
-// };
+
+const dataPersistConfig = {
+  key: 'data',
+  storage,
+  whitelist: [
+    'dailyNutritionLimit',
+    'dailyCaloriesLimit',
+    'dailyWaterLimit',
+    'dailyCalories',
+    'dailyWater',
+    'dailyNutrition',
+    'isLoading',
+    'userCurrentWater',
+    'userAddedWater',
+  ],
+};
 
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
-  //   data: persistReducer(dataPersistConfig, dataReducer)
+  data: persistReducer(dataPersistConfig, dataReducer),
   modal: modalReducer,
-});
+})
+
 
 export const store = configureStore({
   reducer: rootReducer,

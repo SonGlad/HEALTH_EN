@@ -10,7 +10,14 @@ export const Container = styled.div`
   width: 100%;
 
   @media screen and (min-width: 834px) {
-    padding: 36px 40px;
+    padding: 36px;
+    padding-left: 40px;
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 36px 86px 36px 40px;
     flex-direction: row;
     gap: 40px;
   }

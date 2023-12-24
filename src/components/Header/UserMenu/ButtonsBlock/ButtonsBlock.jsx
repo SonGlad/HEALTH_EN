@@ -1,6 +1,7 @@
 import {
   InfoOptions,
-  InfoBlock,
+  InfoBlockTarget,
+  InfoBlockWeight,
   IconContainer,
   TextContainer,
   InfoBlockName,
@@ -9,6 +10,9 @@ import {
   WeightKg,
   EditSvg,
 } from './ButtonsBlock.styled';
+// import { TargetDrop } from './TargetDrop/TargetDrop';
+// import { WeightDrop } from './WeightDrop/WeightDrop';
+// import { ReactComponent as CloseIcon } from '../../../../images/icons-linear/close-circle.svg';
 import weightIcon from '../../../../images/images/headreImg/Waight-image.svg';
 import edit from '../../../../images/images/headreImg/edit-2.svg';
 import fatMen from '../../../../images/images/headreImg/Lose-fat-image-men.svg';
@@ -30,7 +34,7 @@ export const ButtonsBlock = () => {
   return (
     <InfoOptions>
       {' '}
-      <InfoBlock>
+      <InfoBlockTarget>
         <IconContainer>
           <img src={fatMen} alt="goal icon" width={28} />
         </IconContainer>
@@ -41,8 +45,14 @@ export const ButtonsBlock = () => {
             <ArrowSvg src={arrowDown} alt="arrow down" />
           </InfoBlockText>
         </TextContainer>
-      </InfoBlock>
-      <InfoBlock>
+      </InfoBlockTarget>
+      {/* <div className='target-dropdown'>
+        <TargetDrop/>
+        <button className='target-close-btn' type='button'>
+          <CloseIcon className="close-target-icon" width={'16px'} />
+        </button>
+      </div> */}
+      <InfoBlockWeight>
         <IconContainer>
           <img src={weightIcon} alt="weight" width={28} />
         </IconContainer>
@@ -54,7 +64,13 @@ export const ButtonsBlock = () => {
             <EditSvg src={edit} alt="edit" />
           </InfoBlockText>
         </TextContainer>
-      </InfoBlock>
+      </InfoBlockWeight>
+      {/* <div className='weight-dropdown'>
+        <button className='weight-close-btn' type='button'>
+          <CloseIcon className="close-weight-icon" width={'16px'} />
+        </button>
+        <WeightDrop/>
+      </div> */}
     </InfoOptions>
   );
 };

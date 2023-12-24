@@ -1,5 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, logIn, logOut, refreshCurrentUser, initialDataUserInfo } from "./auth-operations";
+import { 
+register, 
+logIn, 
+logOut,
+initialDataUserInfo,
+refreshCurrentUser,
+updateUserInfo,
+updateUserAvatar, 
+} from "./auth-operations";
+import { updateGoal, updateWeight } from "../Data/data-operations";
 
 
 const initialState = {
@@ -7,7 +16,6 @@ const initialState = {
     name: null,
     email: null,
     password: null,
-    newPassword: null,
   },
   goalForm: {
     goal: null,
@@ -16,9 +24,11 @@ const initialState = {
     gender: null,
     age: null,
   },
-  bodyParamForm: {
-    height: null,
+  bodyParamFormWeight: {
     weight: null,
+  },
+  bodyParamFormHeight: {
+    height: null,
   },
   activityForm: {
     activity: null,
@@ -72,27 +82,6 @@ const authSlice = createSlice({
         activity: action.payload,
       }
     },
-    updateUserData: (state, action) => {
-      state.userForm = {
-        ...state.userForm,
-        name: action.payload.name,
-        newPassword: action.payload.newPassword,
-      };
-      state.genderAgeForm = {
-        ...state.genderAgeForm,
-        gender: action.payload.gender,
-        age: action.payload.age,
-      }
-      state.bodyParamForm ={
-        ...state.bodyParamForm,
-        height: action.payload.height,
-        weight: action.payload.weight,
-      }
-      state.activityForm = {
-        ...state.activityForm,
-        activity: action.payload.activity,
-      }
-    }
   },
 
   extraReducers: builder => {
@@ -110,7 +99,7 @@ const authSlice = createSlice({
       state.goalForm = {
         goal: payload.data.goal,
       };
-      state.bodyParamForm = {
+      state.bodyParamFormWeight = {
         weight: payload.data.weight,
       };
       state.avatarURL = payload.data.avatarURL;
@@ -128,7 +117,7 @@ const authSlice = createSlice({
     })
 
 
-      //LOGIN/////////////// 
+    //LOGIN/////////////// 
     .addCase(logIn.pending, state => {
       state.isLoading = true;
       state.error = null;
@@ -138,7 +127,7 @@ const authSlice = createSlice({
       state.userForm = {
         name: payload.data.name,
       };
-      state.bodyParamForm = {
+      state.bodyParamFormWeight = {
         weight: payload.data.weight,
       };
       state.goalForm = {
@@ -168,9 +157,8 @@ const authSlice = createSlice({
         gender: payload.data.gender,
         age: payload.data.age,
       };
-      state.bodyParamForm = {
+      state.bodyParamFormHeight = {
         height: payload.data.height,
-        weight: payload.data.weight,
       };
       state.activityForm = {
         activity: payload.data.activity,
@@ -185,7 +173,7 @@ const authSlice = createSlice({
     })
 
 
-      // LOGOUT////////
+    // LOGOUT////////
     .addCase(logOut.pending, state =>{
       state.isLoading = true;
       state.error = null;
@@ -203,8 +191,10 @@ const authSlice = createSlice({
         gender: null,
         age: null,
       };
-      state.bodyParamForm = {
+      state.bodyParamFormHeight = {
         height: null,
+      };
+      state.bodyParamFormWeight = {
         weight: null,
       };
       state.activityForm = {
@@ -223,7 +213,7 @@ const authSlice = createSlice({
     })
 
 
-      // REFRESH CURRENT USER////////
+    // REFRESH CURRENT USER////////
     .addCase(refreshCurrentUser.pending, state => {
       state.isLoading = true;
       state.isRefreshing = true;
@@ -241,8 +231,10 @@ const authSlice = createSlice({
         gender: payload.data.gender,
         age: payload.data.age,
       };
-      state.bodyParamForm = {
+      state.bodyParamFormHeight = {
         height: payload.data.height,
+      };
+      state.bodyParamFormWeight = {
         weight: payload.data.weight,
       };
       state.activityForm = {
@@ -261,7 +253,103 @@ const authSlice = createSlice({
       state.isInitial = false;
       state.error = payload;
     })
+
+
+    // UPDATE USER INORMATION////////
+    .addCase(updateUserInfo.pending, state => {
+      state.isLoading = true;
+      state.isInitial = false;
+    })
+    .addCase(updateUserInfo.fulfilled, (state, { payload }) => {
+      state.userForm = {
+        name: payload.data.name,
+        email: payload.data.email,
+        password: payload.data.password,
+      };
+      state.goalForm = {
+        goal: payload.data.goal,
+      };
+      state.genderAgeForm = {
+        gender: payload.data.gender,
+        age: payload.data.age,
+      };
+      state.bodyParamFormHeight = {
+        height: payload.data.height,
+      };
+      state.bodyParamFormWeight = {
+        weight: payload.data.weight,
+      };
+      state.activityForm = {
+        activity: payload.data.activity,
+      };
+      state.avatarURL = payload.data.avatarURL;
+      state.isLoggedIn = true;
+      state.isLoading = false;
+      state.isInitial = false;
+      state.error = null;
+    })
+    .addCase(updateUserInfo.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      state.isInitial = false;
+      state.error = payload;
+    })
+
+
+    // UPDATE AVATAR/////
+    .addCase(updateUserAvatar.pending, state => {
+      state.isLoading = true;
+      state.isInitial = false;
+    })
+    .addCase(updateUserAvatar.fulfilled, (state, { payload }) => {
+      state.avatarURL = payload.avatarURL;
+      state.isLoggedIn = true;
+      state.isLoading = false;
+      state.isInitial = false;
+      state.error = null;
+    })
+    .addCase(updateUserAvatar.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      state.isInitial = false;
+      state.error = payload;
+    })
+      
+      // UPDATE USER GOAL////////
+    .addCase( updateGoal.pending, state => {
+      state.isLoading = true;
+      state.error = null;
+    })
+    .addCase( updateGoal.fulfilled, (state, { payload }) => {
+      state.goalForm = {
+        goal: payload.data.goal,
+      };
+      state.isLoggedIn = true;
+      state.isLoading = false;
+      state.error = null;
+    })
+    .addCase(updateGoal.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    })
+      
+    // UPDATE USER WEIGHT////////
+    .addCase( updateWeight.pending, state => {
+      state.isLoading = true;
+    state.error = null;
+    })
+    .addCase( updateWeight.fulfilled, (state, { payload }) => {
+      state.bodyParamFormWeight = {
+        weight: payload.data.weight,
+      };
+      state.isLoggedIn = true;
+      state.isLoading = false;
+      state.error = null;
+    })
+    .addCase(updateWeight.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    })
   } 
+  
 }); 
 
 
@@ -274,7 +362,6 @@ export const {
   updateGenderAgeForm,
   updateBodyParamForm,
   updateActivityForm,
-  updateUserData,
 
 } = authSlice.actions;
 

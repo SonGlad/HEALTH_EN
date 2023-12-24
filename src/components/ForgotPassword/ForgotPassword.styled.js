@@ -197,8 +197,9 @@ export const DivForgotPassword = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: 20px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    &:active,
+    &:focus,
     &:hover {
       color: ${(props) => props.theme.color.primary_grey};
     }
@@ -233,11 +234,19 @@ export const DivForgotPassword = styled.div`
     font-size: 14px;
     line-height: 20px;
     margin-top: 16px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:focus,
+    &:hover {
+      color: ${(props) => props.theme.color.primary_green_lite};
+    }
+
     @media only screen and (min-width: 834px) {
       margin-top: 0;
     }
   }
 `;
+
 export const SingInText = styled.p`
   font-size: 14px;
   color: ${(props) => props.theme.color.primary_grey};

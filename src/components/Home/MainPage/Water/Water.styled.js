@@ -4,11 +4,17 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   border-radius: 12px;
-  padding: 16px 22px 16px 12px;
+  padding: 12px 12px 16px 12px;
   background: ${props => props.theme.color.primary_black_2};
   gap: 20px;
-  position: relative;
   width: 100%;
+
+  .water-cons-cont{
+    height: 192px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
 
   @media screen and (min-width: 834px) {
     padding: 24px 22px;
@@ -17,11 +23,11 @@ export const Container = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    padding: 24px 68px 24px 40px;
+    padding: 24px 24px 24px 40px;
   }
 
   h3 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     line-height: 1.4;
     margin-bottom: 12px;
@@ -36,19 +42,19 @@ export const Container = styled.div`
 
 export const ChartWrapper = styled.div`
   display: flex;
-  align-items: end;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 6px;
   border-radius: 20px;
   border: 1px solid #292928;
   background: ${props => props.theme.color.primary_black_2};
-  width: 80px;
+  min-width: 80px;
   height: 192px;
   padding: 8px;
-  position: relative;
+  
 
   p {
-    position: absolute;
-    top: 28px;
     color: ${props => props.theme.color.primary_violet};
     height: ${props => props.height}%;
     text-align: center;
@@ -68,17 +74,18 @@ export const ColoredArea = styled.div`
   transition: height 0.5s ease-in-out;
 `;
 
+
 export const ClearButton = styled.button`
+  cursor: pointer;
   border: none;
   background: transparent;
-  position: absolute;
-  right: 12px;
-  top: 12px;
+  margin-bottom: 6px;
+  margin-left: auto;
 
   @media screen and (min-width: 834px) {
-    right: 24px;
-    top: 24px;
+    margin-bottom: 13px;
   }
+
 
   svg {
     width: 20px;
@@ -104,6 +111,11 @@ export const InfoWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    gap: 40px;
+    justify-content: left;
   }
 `;
 
@@ -159,6 +171,7 @@ export const LeftInfo = styled.div`
 `;
 
 export const AddButton = styled.button`
+  cursor: pointer;
   display: flex;
   padding: 8px 10px;
   justify-content: center;
