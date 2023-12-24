@@ -8,6 +8,7 @@ import {
     addWaterIntake, 
     deleteWaterIntake,
     updateGoal,
+    updateWeight,
 } from "./data-operations";
 
 
@@ -151,6 +152,25 @@ const dataSlice = createSlice({
             state.error = null;
         })
         .addCase(updateGoal.fulfilled, (state, { payload }) => {
+            state.dailyNutritionLimit ={
+                carbonohidrates: Math.round(payload.data.dailyNutrition.carbohydrates),
+                protein: Math.round(payload.data.dailyNutrition.protein),
+                fat: Math.round(payload.data.dailyNutrition.fat),
+            }
+            state.isLoading = false;
+            state.error = null;
+        })
+        .addCase(updateGoal.rejected, (state, { payload }) => {
+            state.isLoading = false;
+            state.error = payload;
+        })
+        
+         // UPDATE USER WEIGHT
+            .addCase(updateWeight.pending, state => {
+            state.isLoading = true;
+            state.error = null;
+        })
+        .addCase(updateWeight.fulfilled, (state, { payload }) => {
             state.dailyCaloriesLimit = Math.round(payload.data.dailyCalories);
             state.dailyWaterLimit = Math.round(payload.data.dailyWater);
             state.dailyNutritionLimit ={
@@ -161,7 +181,7 @@ const dataSlice = createSlice({
             state.isLoading = false;
             state.error = null;
         })
-        .addCase(updateGoal.rejected, (state, { payload }) => {
+        .addCase(updateWeight.rejected, (state, { payload }) => {
             state.isLoading = false;
             state.error = payload;
         })
