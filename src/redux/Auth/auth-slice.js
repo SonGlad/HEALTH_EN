@@ -8,7 +8,7 @@ refreshCurrentUser,
 updateUserInfo,
 updateUserAvatar, 
 } from "./auth-operations";
-import { updateGoal } from "../Data/data-operations";
+import { updateGoal, updateWeight } from "../Data/data-operations";
 
 
 const initialState = {
@@ -316,7 +316,7 @@ const authSlice = createSlice({
       // UPDATE USER GOAL////////
     .addCase( updateGoal.pending, state => {
       state.isLoading = true;
-      state.isInitial = false;
+      state.error = null;
     })
     .addCase( updateGoal.fulfilled, (state, { payload }) => {
       state.goalForm = {
@@ -324,12 +324,28 @@ const authSlice = createSlice({
       };
       state.isLoggedIn = true;
       state.isLoading = false;
-      state.isInitial = false;
       state.error = null;
     })
     .addCase(updateGoal.rejected, (state, { payload }) => {
       state.isLoading = false;
-      state.isInitial = false;
+      state.error = payload;
+    })
+      
+    // UPDATE USER WEIGHT////////
+    .addCase( updateWeight.pending, state => {
+      state.isLoading = true;
+    state.error = null;
+    })
+    .addCase( updateWeight.fulfilled, (state, { payload }) => {
+      state.bodyParamFormWeight = {
+        weight: payload.data.weight,
+      };
+      state.isLoggedIn = true;
+      state.isLoading = false;
+      state.error = null;
+    })
+    .addCase(updateWeight.rejected, (state, { payload }) => {
+      state.isLoading = false;
       state.error = payload;
     })
   } 
