@@ -1,25 +1,31 @@
 import { createPortal } from "react-dom";
 import { BackdropModalStyle } from "./Modals.styled";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useCallback } from "react";
 import { WaterintakeModal } from "./WaterIntakeModal/WaterIntakeModal";
 import { RecordDiaryModal } from "./RecordDiaryModal/RecordDiaryModal";
+import { useDispatch } from "react-redux";
+import {
+  closeModalRecord,
+  closeModalWater,
+} from "../../redux/Modal/modal-slice";
+import { useModal } from "hooks/useModal";
 
 const modalRoot = document.querySelector("#modal-root");
 
 export const Modal = () => {
-  const [showModalWater, setShowModalWater] = useState(false);
-  const [showModalRecord, setShowModalRecord] = useState(false);
-  const modalRef = useRef(null);
+  const dispatch = useDispatch();
+  const { isModalOpenWater, isModalOpenRecord } = useModal();
 
-  const preventScroll = (e) => {
-    e.preventDefault();
-  };
+  const handleClickClose = useCallback(() => {
+    dispatch(closeModalRecord());
+    dispatch(closeModalWater());
+  }, [dispatch]);
 
-  const handleClickClose = () => {
-    setShowModalWater(false);
-    setShowModalRecord(false);
-    console.log("close");
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      handleClickClose();
+    }
   };
 
   useEffect(() => {
@@ -29,37 +35,23 @@ export const Modal = () => {
       }
     };
 
-    const handleBackdropClick = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        handleClickClose();
-      }
-    };
-    console.log(showModalWater);
-    if (showModalWater || showModalRecord) {
-      document.addEventListener("click", handleBackdropClick);
-      document.addEventListener("keydown", handleKeyDown);
-      window.addEventListener("wheel", preventScroll, { passive: false });
-      window.addEventListener("touchmove", preventScroll, { passive: false });
-    }
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.cssText = `overflow: hidden; `;
 
     return () => {
-      document.removeEventListener("click", handleBackdropClick);
       document.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("wheel", preventScroll, { passive: false });
-      window.removeEventListener("touchmove", preventScroll, {
-        passive: false,
-      });
+      document.body.style.cssText = `overflow: auto; `;
     };
-  }, [showModalWater, showModalRecord]);
+  }, [isModalOpenWater, isModalOpenRecord, handleClickClose, dispatch]);
 
   return createPortal(
-    (showModalRecord || showModalWater) && (
-      <BackdropModalStyle>
-        <div ref={modalRef}>
-          {showModalRecord && (
+    (isModalOpenWater || isModalOpenRecord) && (
+      <BackdropModalStyle onClick={handleBackdropClick}>
+        <div>
+          {isModalOpenRecord && (
             <RecordDiaryModal handleClickClose={handleClickClose} />
           )}
-          {showModalWater && (
+          {isModalOpenWater && (
             <WaterintakeModal handleClickClose={handleClickClose} />
           )}
         </div>
