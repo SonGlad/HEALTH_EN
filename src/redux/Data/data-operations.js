@@ -12,7 +12,6 @@ export const addWaterIntake = createAsyncThunk(
       try {
         const response = await axios.post(`api/user/water-intake`, water);
         toast.success('Water intake has been successfully added');
-        console.log("SERVER RESPOnce", response.data);
         return response.data;
       } catch (error) {
         toast.error('Oops. Something went wrong. Please try again.');
@@ -29,7 +28,6 @@ export const deleteWaterIntake = createAsyncThunk(
       try {
         const response = await axios.delete(`api/user/water-intake`, waterData);
         toast.success('Water intake has been successfully deleted');
-        console.log("SERVER RESPOnce", response.data);
         return response.data;
       } catch (error) {
         toast.error('Oops. Something went wrong. Please try again.');

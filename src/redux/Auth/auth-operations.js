@@ -120,7 +120,6 @@ export const updateUserInfo = createAsyncThunk(
         try {
             const response = await axios.put(`api/user/update`, userData);
             toast.success('Your User information has been successfully updated');
-            // console.log(response.data);
             return response.data;
         } catch (error) {
             toast.error('Oops. Something went wrong. Please try again.');
@@ -140,7 +139,6 @@ export const updateUserAvatar = createAsyncThunk(
           },
         });
             toast.success('Your User avatar has been successfully updated');
-            // console.log(response.data);
             return response.data;
         } catch (error) {
             toast.error('Oops. Something went wrong. Please try again.');
@@ -148,9 +146,4 @@ export const updateUserAvatar = createAsyncThunk(
         }
     }
 );
-
-
-
-// LOGOUT BUTTON FOR USER MENU/////
-/* <button onClick={() => dispatch(logOut())}>LOGOUT</button> */
 

@@ -142,14 +142,16 @@ export const UserBlock = styled.div`
 
   .arrow-svg {
     stroke: ${props => props.theme.color.primary_green_lite};
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   }
 
   .arrow-svg-close {
     transform: rotate(180deg);
   }
 
-  .user-menu-btn:hover .arrow-svg,
-  .user-menu-btn:focus .arrow-svg {
+  .user-menu-btn:hover > .arrow-svg,
+  .user-menu-btn:focus > .arrow-svg {
     stroke: ${props => props.theme.color.primary_white};
   }
 `;
@@ -206,46 +208,47 @@ export const UserInfoContainer = styled.div`
     .item-user-menu {
       display: flex;
       align-items: center;
-
       font-size: 14px;
       font-weight: 500;
       line-height: 1.4;
       transition: color 0.3s ease;
-
-      &:hover {
-        color: ${props => props.theme.color.primary_green_lite};
-      }
-
-      .setting-icon,
-      .logout-icon {
-        margin-right: 8px;
-        stroke: ${props => props.theme.color.primary_white};
-        transition: stroke 0.3s ease;
-
-        &:hover,
-        &:focus {
-          cursor: pointer;
-          stroke: ${props => props.theme.color.primary_green_lite};
-        }
-      }
-
-      .link-setting,
-      .button-link-logout {
-        display: flex;
-        align-items: center;
-        color: inherit;
-      }
-      .button-link-logout {
-        background-color: transparent;
-        border-color: transparent;
-        cursor: pointer;
-        /* font-size: 14px;
-        font-weight: 500;
-        line-height: 1.4;
-        color: ${props => props.theme.color.primary_white}; */
-
-        padding: 0;
-      }
     }
+
+    .setting-icon,
+    .logout-icon {
+      margin-right: 8px;
+      stroke: ${props => props.theme.color.primary_white};
+    }
+
+    .link-setting,
+    .button-link-logout {
+      display: flex;
+      align-items: center;
+      color: ${props => props.theme.color.primary_white};
+      transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    
+    .link-setting:hover,
+    .link-setting:focus,
+    .button-link-logout:hover,
+    .button-link-logout:focus{
+      color: ${(props) => props.theme.color.primary_green_lite};
+    }
+    .link-setting:hover > .setting-icon,
+    .link-setting:focus > .setting-icon,
+    .button-link-logout:hover > .logout-icon,
+    .button-link-logout:focus > .logout-icon{
+      stroke: ${(props) => props.theme.color.primary_green_lite};
+    }
+
+
+    .button-link-logout {
+      background-color: transparent;
+      border-color: transparent;
+      cursor: pointer;
+      padding: 0;
+    }
+    
   }
 `;

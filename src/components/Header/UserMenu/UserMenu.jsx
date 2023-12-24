@@ -137,7 +137,8 @@ export const UserMenu = () => {
           >
             <ul className="list-user-menu">
               <li className="item-user-menu">
-                <NavLink className="link-setting" to="/settings">
+                <NavLink className="link-setting" to="/settings"
+                onClick={() => setIsOpenUserInfoContainer(false)}>
                   <SettingIcon2 className="setting-icon" />
                   Setting
                 </NavLink>

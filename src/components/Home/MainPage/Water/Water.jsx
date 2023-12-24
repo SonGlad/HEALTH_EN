@@ -22,12 +22,8 @@ import {
 export const Water = () => {
   const dispatch = useDispatch();
   const { dailyWater, currentWater } = useData();
-  // const { currentWater } = useData();
 
   // THE CODE BELOW FOR TESTING TO CHECK HOW IS RESPONCE GOING/////
-
-  // console.log('currentWater', currentWater);
-  // console.log('addedWater', addedWater);
 
   const water = '1000';
   const handleWaterDispatch = () => {
@@ -38,11 +34,15 @@ export const Water = () => {
       })
     );
   };
+
+ // THE CODE ABOVE FOR TESTING TO CHECK HOW IS RESPONCE GOING/////
+
   const handleWaterDelete = () => {
     dispatch(deleteWaterIntake());
   };
 
   const waterGoal = dailyWater;
+  
 
   const [dailyWaterLimit, setDailyWaterLimit] = useState(0);
 
@@ -81,13 +81,12 @@ export const Water = () => {
           />
         </ChartWrapper>
 
-        <div>
-          <h3>Water consumption</h3>
+        <div className='water-cons-cont'>
           <ClearButton onClick={handleWaterDelete}>
             <ClearIcon alt="Clear icon" />
           </ClearButton>
+          <h3>Water consumption</h3>
           <InfoWrapper>
-            <TotalInfo>
               {currentWater ? (
                 <TotalInfo>
                   {currentWater}
@@ -98,7 +97,6 @@ export const Water = () => {
                   0<span>ml</span>
                 </TotalInfo>
               )}
-            </TotalInfo>
             <LeftInfo>
               left:<p>{leftWater}</p>
               <span>ml</span>
