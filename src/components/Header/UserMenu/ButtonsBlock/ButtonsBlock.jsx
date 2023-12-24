@@ -54,6 +54,21 @@ export const ButtonsBlock = () => {
     toggleShowWeightSelection ? 'show-weight-selection' : '';
 
   useEffect(() => {
+    const handleKeyDown = event => {
+      if (event.key === 'Escape') {
+        setToggleShowTargetSelection(false);
+        setToggleShowWeightSelection(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  useEffect(() => {
     const handleClickOutside = event => {
       if (
         infoBlockGoal.current &&
