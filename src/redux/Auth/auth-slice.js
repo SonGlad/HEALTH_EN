@@ -8,6 +8,7 @@ refreshCurrentUser,
 updateUserInfo,
 updateUserAvatar, 
 } from "./auth-operations";
+import { updateGoal } from "../Data/data-operations";
 
 
 const initialState = {
@@ -311,7 +312,28 @@ const authSlice = createSlice({
       state.isInitial = false;
       state.error = payload;
     })
+      
+      // UPDATE USER GOAL////////
+    .addCase( updateGoal.pending, state => {
+      state.isLoading = true;
+      state.isInitial = false;
+    })
+    .addCase( updateGoal.fulfilled, (state, { payload }) => {
+      state.goalForm = {
+        goal: payload.data.goal,
+      };
+      state.isLoggedIn = true;
+      state.isLoading = false;
+      state.isInitial = false;
+      state.error = null;
+    })
+    .addCase(updateGoal.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      state.isInitial = false;
+      state.error = payload;
+    })
   } 
+  
 }); 
 
 
