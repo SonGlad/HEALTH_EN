@@ -20,7 +20,7 @@ const authPersistConfig = {
   whitelist: [
     'token', 
     // 'userForm', 
-    // 'goalForm', 
+    'goalForm', 
     // 'genderAgeForm', 
     // 'bodyParamForm',
     // 'activityForm',
@@ -36,6 +36,7 @@ const dataPersistConfig = {
     'dailyCalories',
     'dailyWater',
     'dailyNutrition',
+    'dailyNutritionLimit',
     'isLoading',
     'userCurrentWater',
     'userAddedWater',
