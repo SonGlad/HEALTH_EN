@@ -10,12 +10,37 @@ import {
   WeightFormBtn,
   WeightFormInput,
 } from './WeightDrop.styled';
-import { useFormik, Formik } from 'formik';
+import { useFormik } from 'formik';
+import { useDispatch } from "react-redux";
+import { ShowRules } from "../../../../../utils/showRules";
+import { WeightParametrsSchema } from "../../../../../utils/validationSchemas";
+import { updateWeight } from "../../../../../redux/Data/data-operations";
+
 
 export const WeightDrop = () => {
-  const handleClickInsideModal = event => {
-    event.stopPropagation();
-  };
+  const dispatch = useDispatch();
+  const {
+    values,
+    errors,
+    touched,
+    isValid,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+  } = useFormik({
+    initialValues: {
+      weight: "",
+    },
+
+    validationSchema: WeightParametrsSchema,
+
+    onSubmit: (values) => {
+      dispatch(updateWeight(values));
+    },
+  });
+
+  const { getInputClass, getInputAlert} = ShowRules(values, touched, errors);
+
 
   function getCurrentDateFormatted() {
     const currentDate = new Date();
@@ -25,15 +50,10 @@ export const WeightDrop = () => {
     return `${day}.${month}.${year}`;
   }
   const formattedDate = getCurrentDateFormatted();
-  const { handleChange } = useFormik({
-    initialValues: {
-      gender: '',
-      age: '',
-    },
-  });
 
+    
   return (
-    <ModalWrapper onClick={handleClickInsideModal}>
+    <ModalWrapper>
       <Modal>
         <ModalTitle>Enter your current weight</ModalTitle>
         <ModalText>You can record your weight once a day</ModalText>
@@ -41,31 +61,32 @@ export const WeightDrop = () => {
           <DateText>Today</DateText>
           <DateDay>{formattedDate}</DateDay>
         </DateContainer>
-        <Formik>
-          <WeightForm>
-            <div>
-              <label>
-                <WeightFormInput
-                  id="weight"
-                  name="weight"
-                  placeholder="Enter your weight"
-                  type="weight"
-                  onChange={handleChange}
-                  // value={values.email}
-                  // onBlur={handleBlur}
-                  // checked={values.goal === 'maintain'}
-                ></WeightFormInput>
-              </label>
-            </div>
-            <WeightFormBtn
-              className="ButtonConfirm"
-              type="submit"
-              name="BtnConfirm"
-            >
-              Confirm
-            </WeightFormBtn>
-          </WeightForm>
-        </Formik>
+        <WeightForm onSubmit={handleSubmit}>
+          <div>
+            <label>
+              <WeightFormInput
+                className={getInputClass("weight")}
+                placeholder="Enter your weight"
+                id="Weight"
+                name="weight"
+                type="text"
+                onChange={handleChange}
+                value={values.weight}
+                onBlur={handleBlur}
+              >
+              </WeightFormInput>
+              {getInputAlert("weight")}
+            </label>
+          </div>
+          <WeightFormBtn
+            className="ButtonConfirm"
+            type="submit"
+            name="BtnConfirm"
+            disabled={!values.weight || !isValid}
+          >
+            Confirm
+          </WeightFormBtn>
+        </WeightForm>
       </Modal>
     </ModalWrapper>
   );

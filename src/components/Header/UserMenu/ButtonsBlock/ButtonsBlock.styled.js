@@ -14,6 +14,7 @@ export const InfoOptions = styled.div`
 
   .target-dropdown {
     position: absolute;
+    border-radius: 12px;
     z-index: 2;
     top: 80px;
     box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
@@ -66,6 +67,7 @@ export const InfoOptions = styled.div`
 
   .weight-dropdown {
     position: absolute;
+    border-radius: 12px;
     z-index: 2;
     top: 165px;
     box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
@@ -183,12 +185,18 @@ export const IconContainer = styled.div`
   height: 48px;
   margin-right: 12px;
 `;
+
 export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding: 3px 0 3px 0;
+
+  &.goal-text-cont{
+  width: 116px;
+  }
 `;
+
 
 export const InfoBlockName = styled.p`
   color: ${p => p.theme.color.primary_white};

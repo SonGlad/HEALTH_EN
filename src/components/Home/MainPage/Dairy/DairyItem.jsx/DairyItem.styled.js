@@ -30,6 +30,8 @@ export const ItemWrapper = styled.div`
 `;
 
 export const ClearButton = styled.button`
+  cursor: pointer;
+  padding: 0;
   border: none;
   background: transparent;
 

@@ -12,7 +12,6 @@ export const selectUserDailyFat = state => state.data.dailyNutritionLimit.fat;
 
 export const selectUserCurrentWater = state => state.data.userCurrentWater;
 
-export const selectUserAddedWater = state => state.data.userAddedWater;
-
+export const selectRecommendedFood = state => state.data.recommendedFood;
 
 

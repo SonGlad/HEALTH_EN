@@ -7,6 +7,9 @@ import {
 import {
     addWaterIntake, 
     deleteWaterIntake,
+    updateGoal,
+    updateWeight,
+    getAllRecommendedFood,
 } from "./data-operations";
 
 
@@ -16,12 +19,13 @@ const initialState = {
     dailyCaloriesLimit: null,
     dailyWaterLimit: null,
     userCurrentWater: null,
-    userAddedWater: null,
     dailyNutritionLimit: {
         carbonohidrates: null,
         protein: null,
         fat: null,
     },
+    recommendedFood: [],
+    
     error: null,
     isLoading: false,
     isLogin: false,// For SignIn Only (GET api/user/current-data)///
@@ -143,9 +147,67 @@ const dataSlice = createSlice({
             state.isLoading = false;
             state.error = payload;
         })
+
+            
+        // UPDATE USER GOAL////////
+        .addCase(updateGoal.pending, state => {
+            state.isLoading = true;
+            state.error = null;
+        })
+        .addCase(updateGoal.fulfilled, (state, { payload }) => {
+            state.dailyNutritionLimit ={
+                carbonohidrates: Math.round(payload.data.dailyNutrition.carbohydrates),
+                protein: Math.round(payload.data.dailyNutrition.protein),
+                fat: Math.round(payload.data.dailyNutrition.fat),
+            }
+            state.isLoading = false;
+            state.error = null;
+        })
+        .addCase(updateGoal.rejected, (state, { payload }) => {
+            state.isLoading = false;
+            state.error = payload;
+        })
+
+        
+        // UPDATE USER WEIGHT////////
+        .addCase(updateWeight.pending, state => {
+            state.isLoading = true;
+            state.error = null;
+        })
+        .addCase(updateWeight.fulfilled, (state, { payload }) => {
+            state.dailyCaloriesLimit = Math.round(payload.data.dailyCalories);
+            state.dailyWaterLimit = Math.round(payload.data.dailyWater);
+            state.dailyNutritionLimit ={
+                carbonohidrates: Math.round(payload.data.dailyNutrition.carbohydrates),
+                protein: Math.round(payload.data.dailyNutrition.protein),
+                fat: Math.round(payload.data.dailyNutrition.fat),
+            }
+            state.isLoading = false;
+            state.error = null;
+        })
+        .addCase(updateWeight.rejected, (state, { payload }) => {
+            state.isLoading = false;
+            state.error = payload;
+        })
+
+            
+        //RECEIVING REMMENDED FOOD////////    
+        .addCase(getAllRecommendedFood.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+        })
+        .addCase(getAllRecommendedFood.fulfilled, (state, {payload}) => {
+        state.isLoading = false;
+        state.recommendedFood = payload;
+        state.error = null;
+        })
+        .addCase(getAllRecommendedFood.rejected,(state, {payload}) => {
+        state.isLoading = false;
+        state.error = payload; 
+        })
+
     }
 });
-
 
 
 export const dataReducer = dataSlice.reducer;

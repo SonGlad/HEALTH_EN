@@ -24,10 +24,10 @@ export const ModalContainer = styled.div`
     font-weight: 500;
     line-height: 30px;
 
-      @media only screen and (min-width: 834px) {
-font-size: 30px;
-line-height: 36px;
-  }
+    @media only screen and (min-width: 834px) {
+      font-size: 30px;
+      line-height: 36px;
+    }
   }
 
   .DinerContainer {
@@ -49,35 +49,89 @@ line-height: 36px;
     font-weight: 400;
     line-height: 26px;
 
-          @media only screen and (min-width: 834px) {
-font-size: 22px;
-line-height: 32px;
-  }
+    @media only screen and (min-width: 834px) {
+      font-size: 22px;
+      line-height: 32px;
+    }
   }
 
-  .ListContainer {
+  .FormContainer {
+    height: 252px;
+    overflow-y: scroll;
+    row-gap: 16px;
+    display: grid;
     margin-top: 16px;
+    @media only screen and (min-width: 834px) {
+      height: 150px;
+    }
   }
 
-  .List{
+  .FormAddFood {
+    /* margin-top: 16px; */
+    grid-gap: 8px;
+    row-gap: 16px;
     display: flex;
     flex-wrap: wrap;
-    column-gap: 8px;
-    grid-gap: 16px;
     align-items: center;
+
+    @media only screen and (min-width: 834px) {
+      grid-gap: 12px;
+    }
   }
 
-  .Element{
-display: flex;
-padding: 8px 10px;
-flex-direction: column;
-align-items: flex-start;
-    border: 1px solid ${(props) => props.theme.color.primary_green_lite};
+  input {
+    height: 36px;
+    padding: 8px 10px;
     border-radius: 12px;
-font-size: 14px;
-font-weight: 400;
-line-height: 20px;
-color: ${(props) => props.theme.color.primary_grey};
+    border: 1px solid ${(props) => props.theme.color.primary_green_lite};
+    background: ${(props) => props.theme.color.primary_black_2};
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: ${(props) => props.theme.color.primary_white};
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    &::placeholder {
+      color: ${(props) => props.theme.color.primary_grey};
+    }
+  }
+
+  input[id="nameproduct"] {
+    width: 276px;
+    @media only screen and (min-width: 834px) {
+      width: 255px;
+    }
+  }
+
+  input[id="carbonoh"] {
+    width: 276px;
+    @media only screen and (min-width: 834px) {
+      width: 100px;
+    }
+  }
+
+  input[id="protein"] {
+    width: 276px;
+    @media only screen and (min-width: 834px) {
+      width: 86px;
+    }
+  }
+
+  input[id="fat"] {
+    width: 120px;
+    @media only screen and (min-width: 834px) {
+      width: 61px;
+    }
+  }
+
+  input[id="calories"] {
+    width: 120px;
+    @media only screen and (min-width: 834px) {
+      width: 78px;
+    }
   }
 
   .ButtonDelete {
@@ -85,10 +139,18 @@ color: ${(props) => props.theme.color.primary_grey};
     height: 20px;
     cursor: pointer;
     background-image: url(${trash});
+
+    &:hover {
+      filter: invert(50%);
+    }
+    &:active {
+      filter: invert(50%);
+    }
   }
 
   .ButtonAdd {
-    margin-top: 40px;
+    width: 144px;
+    margin-top: 24px;
     display: flex;
     gap: 6px;
 
@@ -101,19 +163,12 @@ color: ${(props) => props.theme.color.primary_grey};
     cursor: pointer;
     align-items: center;
 
-    /* &:hover {
-      background-color: transparent;
-      color: ${(props) => props.theme.color.primary_grey};
+    &:hover {
+      filter: invert(50%);
     }
     &:active {
-      background-color: transparent;
-      color: ${(props) => props.theme.color.primary_grey};
+      filter: invert(50%);
     }
-    &:disabled {
-      background-color: transparent;
-      color: ${(props) => props.theme.color.primary_green_lite};
-      pointer-events: none;
-    } */
   }
 
   .ImgAdd {
@@ -122,23 +177,22 @@ color: ${(props) => props.theme.color.primary_grey};
     background-image: url(${add});
   }
 
-  .ButtonContainer{
-    margin-top: 64px;
-        display: grid;
+  .ButtonContainer {
+    margin-top: 60px;
+    display: grid;
     justify-content: center;
 
-              @media only screen and (min-width: 834px) {
-display: flex;
-    justify-content: end;
-    align-items: baseline;
-    margin-top: 105px;
+    @media only screen and (min-width: 834px) {
+      display: flex;
+      justify-content: end;
+      align-items: baseline;
+      margin-bottom: 0px;
+    }
   }
 
-  }
-
-  .ButtonConfirm{
+  .ButtonConfirm {
     width: 276px;
-            border-radius: 12px;
+    border-radius: 12px;
     color: ${(props) => props.theme.color.primary_black_2};
     background: ${(props) => props.theme.color.primary_green_lite};
     padding: 8px 10px;
@@ -146,20 +200,21 @@ display: flex;
     font-size: 14px;
     line-height: 20px;
     cursor: pointer;
+    border: none;
 
     &:active,
     &:hover {
       color: ${(props) => props.theme.color.primary_grey};
     }
 
-          @media only screen and (min-width: 834px) {
-width: 212px;
-order: 2;
-  }
+    @media only screen and (min-width: 834px) {
+      width: 212px;
+      order: 2;
+    }
   }
 
-  .ButtonCancel{
-        margin-top: 16px;
+  .ButtonCancel {
+    margin-top: 16px;
 
     color: ${(props) => props.theme.color.primary_grey};
     border: none;
@@ -185,10 +240,9 @@ order: 2;
       pointer-events: none;
     }
 
-      @media only screen and (min-width: 834px) {
-        width: 212px;
-order: 1;
+    @media only screen and (min-width: 834px) {
+      width: 212px;
+      order: 1;
+    }
   }
-  }
-
 `;

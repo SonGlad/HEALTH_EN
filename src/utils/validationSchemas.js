@@ -97,6 +97,14 @@ const ForgotPasswordSchema = Yup.object({
   email: Yup.string().email("Invalid email").required("Required"),
 });
 
+const WeightParametrsSchema = Yup.object().shape({
+  weight: Yup.number()
+    .typeError("Weight must be a number")
+    .min(4, "Too Light!")
+    .max(300, "Too Heavy!")
+    .required("Required"),
+});
+
 export {
   SignupSchema,
   SigninSchema,
@@ -106,4 +114,5 @@ export {
   YourActivitySchema,
   ValidationSchema,
   ForgotPasswordSchema,
+  WeightParametrsSchema
 };

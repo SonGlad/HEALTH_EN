@@ -1,10 +1,10 @@
-import { Section } from 'components/Section/Section';
+import { Section } from "components/Section/Section";
 
-import { ReactComponent as AddIcon } from '../../../../images/svgIcon/add-icon.svg';
-import { ReactComponent as BreakfastImg } from '../../../../images/icons-illustration/breakfast-image.svg';
-import { ReactComponent as LunchImg } from '../../../../images/icons-illustration/lunch-image.svg';
-import { ReactComponent as DinnerImg } from '../../../../images/icons-illustration/dinner-image.svg';
-import { ReactComponent as SnacksImg } from '../../../../images/icons-illustration/snack-image.svg';
+import { ReactComponent as AddIcon } from "../../../../images/svgIcon/add-icon.svg";
+import { ReactComponent as BreakfastImg } from "../../../../images/icons-illustration/breakfast-image.svg";
+import { ReactComponent as LunchImg } from "../../../../images/icons-illustration/lunch-image.svg";
+import { ReactComponent as DinnerImg } from "../../../../images/icons-illustration/dinner-image.svg";
+import { ReactComponent as SnacksImg } from "../../../../images/icons-illustration/snack-image.svg";
 
 import {
   AddButton,
@@ -13,16 +13,26 @@ import {
   DairyList,
   ListTitle,
   TitleWrapper,
-} from './Dairy.styled';
-import { DairyItem } from './DairyItem.jsx/DairyItem';
+} from "./Dairy.styled";
+import { DairyItem } from "./DairyItem.jsx/DairyItem";
+import { useDispatch, useSelector } from "react-redux";
+import { openModalRecord } from "../../../../redux/Modal/modal-slice";
+import { Modal } from "components/Modals/Modals";
 
 export const Dairy = () => {
+  const dispatch = useDispatch();
+  const showModalRecord = useSelector((state) => state.modal.isModalOpenRecord);
+
+  const handleOpenModalRecord = () => {
+    dispatch(openModalRecord());
+  };
+
   return (
     <Section>
       <Container>
         <TitleWrapper>
           <h2>Dairy</h2>
-          <DairyLink to={'/diary'}>See more</DairyLink>
+          <DairyLink to={"/diary"}>See more</DairyLink>
         </TitleWrapper>
         <DairyList>
           <li>
@@ -52,13 +62,14 @@ export const Dairy = () => {
               <h3>Snack</h3>
             </ListTitle>
 
-            <AddButton>
+            <AddButton onClick={handleOpenModalRecord}>
               <AddIcon alt="Add icon" />
               Record your meal
             </AddButton>
           </li>
         </DairyList>
       </Container>
+      {showModalRecord && <Modal />}
     </Section>
   );
 };
