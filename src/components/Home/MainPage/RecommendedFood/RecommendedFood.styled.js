@@ -88,6 +88,7 @@ export const FoodLink = styled(NavLink)`
   line-height: 1.4;
   align-items: center;
   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 110px;
 
   @media screen and (min-width: 834px) {
     font-size: 16px;
@@ -115,3 +116,50 @@ export const FoodLink = styled(NavLink)`
     }
   }
 `;
+
+// export const FoodLink = styled(NavLink)`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   color: ${props => props.theme.color.primary_grey};
+//   font-size: 14px;
+//   font-weight: 500;
+//   text-align: center;
+//   width: 140px;
+//   height: 22px;
+
+//   @media screen and (min-width: 834px) {
+//     font-size: 16px;
+//   }
+
+//   &::after {
+//     content: '\u2192';
+//     font-size: 22px;
+//     margin-left: 18px;
+//     opacity: 0;
+//     transform: translateX(-20px);
+//     transition: opacity 0.3s, transform 0.3s;
+//     animation: arrowAnimation 2s infinite;
+//   }
+
+//   &:hover {
+//     color: ${props => props.theme.color.primary_green_lite};
+
+//     &::after {
+//       opacity: 1;
+//       transform: translateX(0);
+//     }
+//   }
+
+//   @keyframes arrowAnimation {
+//     0%,
+//     100% {
+//       opacity: 0;
+//       transform: translateX(-20px);
+//     }
+//     50% {
+//       opacity: 1;
+//       transform: translateX(0);
+//     }
+//   }
+// `;

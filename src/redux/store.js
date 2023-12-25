@@ -1,6 +1,6 @@
 
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { modalReducer } from "./Modal/modal-slice";
+import { modalReducer } from '../redux/Modal/modal-slice';
 import { authReducer } from './Auth/auth-slice';
 import { dataReducer } from './Data/data-slice';
 import { 
@@ -22,8 +22,9 @@ const authPersistConfig = {
   whitelist: [
     'token', 
     // 'userForm', 
-    'goalForm', 
-    'bodyParamFormWeight',
+    // 'goalForm', 
+    // 'bodyParamFormWeight',
+    // 'bodyParamFormHeight',
     // 'genderAgeForm', 
     // 'bodyParamForm',
     // 'activityForm',
@@ -36,15 +37,23 @@ const dataPersistConfig = {
   key: 'data',
   storage,
   whitelist: [
-    'dailyNutritionLimit',
-    'dailyCaloriesLimit',
-    'dailyWaterLimit',
-    'dailyCalories',
-    'dailyWater',
-    'dailyNutrition',
-    'isLoading',
-    'userCurrentWater',
-    'userAddedWater',
+     // 'dailyNutritionLimit',
+    // 'dailyCaloriesLimit',
+    // 'dailyWaterLimit',
+    // 'dailyCalories',
+    // 'dailyWater',
+    // 'dailyNutrition',
+    // 'isLoading',
+    // 'userCurrentWater',
+    // 'userAddedWater',
+    'dailyTotalCalories',
+    'dailyTotalFat',
+    'dailyTotalCarbonohidretes',
+    'dailyTotalProtein',
+    'breakfast',
+    'lunch',
+    'dinner',
+    'snack',
   ],
 };
 

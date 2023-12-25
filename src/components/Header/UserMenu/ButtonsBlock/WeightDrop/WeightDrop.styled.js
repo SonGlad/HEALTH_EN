@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import error from "../../../../../images/svgIcon/error.svg";
+import correct from "../../../../../images/svgIcon/correct.svg";
 
 
 export const ModalWrapper = styled.div`
@@ -30,6 +32,77 @@ export const Modal = styled.div`
     width: 392px;
     height: auto;
   }
+
+
+  .ErrorInput {
+    border: 1px solid #e74a3b;
+  }
+
+  .SuccessInput {
+    border: 1px solid #3cbc81;
+  }
+
+  .ImgError {
+    position: absolute;
+    right: 20px;
+    top: 141px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-image: url(${error});
+
+    @media only screen and (min-width: 834px) {
+      right: 54%;
+      top: 139px;
+    }
+  }
+
+  .ImgCorrect {
+    position: absolute;
+    right: 20px;
+    top: 141px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-image: url(${correct});
+
+    @media only screen and (min-width: 834px) {
+      right: 54%;
+      top: 139px;
+    }
+  }
+
+  .ErrorText {
+    margin-top: -10px;
+    margin-bottom: 12px;
+    margin-left: 10px;
+    color: #e74a3b;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+
+    @media only screen and (min-width: 834px) {
+      max-width: 200px;
+      margin-top: 4px;
+      margin-bottom: -18px;
+    }
+  }
+
+  .SuccessText {
+    margin-top: -10px;
+    margin-bottom: 12px;
+    margin-left: 10px;
+    color: #3cbc81;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+
+    @media only screen and (min-width: 834px) {
+      max-width: 200px;
+      margin-top: 4px;
+      margin-bottom: -18px;
+    }
+  }
 `;
 
 export const ModalTitle = styled.h3`
@@ -38,28 +111,37 @@ export const ModalTitle = styled.h3`
   font-weight: 500;
   margin-bottom: 16px;
 `;
+
 export const ModalText = styled.p`
   color: ${props => props.theme.color.primary_grey};
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
   margin-bottom: 16px;
+
+  @media screen and (min-width: 834px) {
+    font-size: 14px;
+  }  
 `;
+
 export const DateContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 6px;
   margin-bottom: 16px;
 `;
+
 export const DateText = styled.p`
   color: ${props => props.theme.color.primary_white};
   font-size: 14px;
   font-weight: 400;
 `;
+
 export const DateDay = styled.p`
   color: ${props => props.theme.color.primary_grey};
   font-size: 14px;
   font-weight: 500;
 `;
+
 export const WeightForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -75,6 +157,7 @@ export const WeightForm = styled.form`
     justify-content: space-between;
   }
 `;
+
 export const WeightFormInput = styled.input`
   outline: none;
   height: 36px;
@@ -96,6 +179,7 @@ export const WeightFormInput = styled.input`
     width: 166px;
     margin-bottom: 0;
   }
+
 `;
 
 export const WeightFormBtn = styled.button`
@@ -112,6 +196,10 @@ export const WeightFormBtn = styled.button`
 
   &:hover, &:focus{
   color: ${props => props.theme.color.primary_grey};
+  }
+  &:disabled {
+    color: ${(props) => props.theme.color.primary_grey};
+    pointer-events: none;
   }
 
   @media screen and (min-width: 835px) {

@@ -1,11 +1,33 @@
 import { ModalBtn, ModalWrapper } from './TargetDrop.styled';
-import looseFatIcon from '../../../../../images/icons-emoji/Lose fat image girl.png';
-import maintainIcon from '../../../../../images/icons-emoji/Maintake image girl.png';
 import muscleIcon from '../../../../../images/icons-emoji/Gain muscle.png';
+import looseFatIconGirl from '../../../../../images/icons-emoji/Lose fat image girl.png';
+import looseFatIconMen from '../../../../../images/icons-emoji/Lose fat image men.png';
+import MaintakeIconGirl from '../../../../../images/icons-emoji/Maintake image girl.png';
+import MaintakeIconMen from '../../../../../images/icons-emoji/Maintake image men.png';
+import { useFormik } from "formik";
+import { YourGoalSchema } from "../../../../../utils/validationSchemas";
+import { useDispatch } from "react-redux";
+import { useAuth } from "hooks/useAuth";
+import { updateGoal } from '../../../../../redux/Data/data-operations';
 
 
 
 export const TargetDrop = () => {
+  const dispatch = useDispatch();
+  const { userGoal, userGender } = useAuth();
+
+  const { values, handleBlur, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      goal: userGoal || "",
+    },
+
+    validationSchema: YourGoalSchema,
+
+    onSubmit: (values) => {
+      console.log(values);
+      dispatch(updateGoal(values));
+    },
+  });
 
 
 
@@ -18,60 +40,73 @@ export const TargetDrop = () => {
             The service will adjust your calorie intake to your goal
           </p>
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <ul>
             <li>
               <div className="hover">
-                <label>
+                <label className='label'>
                   <input
                     className="radio_input"
-                    type="radio"
+                    id="LoseFatDrop"
                     name="goal"
-                    id="loseFat"
-                    value="Lose fat"
+                    type="radio"
+                    onChange={handleChange}
+                    value="lose fat"
+                    onBlur={handleBlur}
+                    checked={values.goal === "lose fat"}
                   />
                   <div className="img_border">
-                    <img src={looseFatIcon} alt="goal check lose fat" />
+                    <img src={userGender === "male" ? looseFatIconMen : looseFatIconGirl} 
+                    alt="goal check lose fat" 
+                    />
                   </div>
-                  Lose Fat
+                  <span className='label-text'>Lose Fat</span> 
                 </label>
               </div>
             </li>
             <li>
               <div className="hover">
-                <label>
+                <label className='label'>
                   <input
                     className="radio_input"
-                    type="radio"
+                    id="MaintainDrop"
                     name="goal"
-                    value="Maintain"
-                    id="maintain"
+                    type="radio"
+                    onChange={handleChange}
+                    value="maintain"
+                    onBlur={handleBlur}
+                    checked={values.goal === "maintain"}
                   />
                   <div className="img_border">
-                    <img src={maintainIcon} alt="goal check maintain" />
+                    <img src={userGender === "male" ? MaintakeIconMen : MaintakeIconGirl} 
+                    alt="goal check maintain" 
+                    />
                   </div>
-                  Maintain
+                  <span className='label-text'>Maintain</span>
                 </label>
               </div>
             </li>
             <div className="hover">
-              <label>
+              <label className='label'>
                 <input
                   className="radio_input"
-                  type="radio"
+                  id="GainMuscleDrop"
                   name="goal"
-                  value="Gain Muscle"
-                  id="gainMuscle"
+                  type="radio"
+                  onChange={handleChange}
+                  value="gain muscle"
+                  onBlur={handleBlur}
+                  checked={values.goal === "gain muscle"}
                 />
                 <div className="img_border">
                   <img src={muscleIcon} alt="goal check gain muscle" />
                 </div>
-                Gain muscle
+                <span className='label-text'>Gain muscle</span> 
               </label>
             </div>
           </ul>
-        </form>
         <ModalBtn type="submit">Confirm</ModalBtn>
+        </form>
       </div>
     </ModalWrapper>
   );

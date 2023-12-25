@@ -1,6 +1,5 @@
 import { createPortal } from "react-dom";
 import { BackdropModalStyle } from "./Modals.styled";
-
 import { useEffect, useCallback } from "react";
 import { WaterintakeModal } from "./WaterIntakeModal/WaterIntakeModal";
 import { RecordDiaryModal } from "./RecordDiaryModal/RecordDiaryModal";

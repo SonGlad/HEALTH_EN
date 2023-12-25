@@ -5,6 +5,7 @@ const modalSlice = createSlice({
   initialState: {
     isModalOpenRecord: false,
     isModalOpenWater: false,
+    mealTypeBreakfast: null,
   },
   reducers: {
     openModalRecord: (state) => {
@@ -19,6 +20,9 @@ const modalSlice = createSlice({
     closeModalWater: (state) => {
       state.isModalOpenWater = false;
     },
+    showMealType: (state, action) => {
+      state.mealTypeBreakfast = action.payload;
+    },
   },
 });
 
@@ -29,4 +33,5 @@ export const {
   closeModalRecord,
   openModalWater,
   closeModalWater,
+  showMealType,
 } = modalSlice.actions;
