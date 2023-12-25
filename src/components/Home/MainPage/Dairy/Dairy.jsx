@@ -14,17 +14,22 @@ import {
   ListTitle,
   TitleWrapper,
 } from "./Dairy.styled";
-import { DairyItem } from "./DairyItem.jsx/DairyItem";
-import { useDispatch, useSelector } from "react-redux";
-import { openModalRecord } from "../../../../redux/Modal/modal-slice";
+// import { DairyItem } from "./DairyItem.jsx/DairyItem";
+import { useDispatch } from "react-redux";
+import {
+  openModalRecord,
+  showMealType,
+} from "../../../../redux/Modal/modal-slice";
 import { Modal } from "components/Modals/Modals";
+import { useModal } from "hooks/useModal";
 
 export const Dairy = () => {
   const dispatch = useDispatch();
-  const showModalRecord = useSelector((state) => state.modal.isModalOpenRecord);
+  const { isModalOpenRecord } = useModal();
 
-  const handleOpenModalRecord = () => {
+  const handleOpenModalRecord = (id) => {
     dispatch(openModalRecord());
+    dispatch(showMealType(id));
   };
 
   return (
@@ -40,21 +45,42 @@ export const Dairy = () => {
               <BreakfastImg alt="Breakfast icon" />
               <h3>Breakfast</h3>
             </ListTitle>
-            <DairyItem />
+            <AddButton
+              id="breakfast"
+              onClick={() => handleOpenModalRecord("breakfast")}
+            >
+              <AddIcon alt="Add icon" />
+              Record your meal
+            </AddButton>
+            {/* <DairyItem /> */}
           </li>
           <li>
             <ListTitle>
               <LunchImg alt="Lunch Icon" />
               <h3>Lunch</h3>
             </ListTitle>
-            <DairyItem />
+            <AddButton
+              id="lunch"
+              onClick={() => handleOpenModalRecord("lunch")}
+            >
+              <AddIcon alt="Add icon" />
+              Record your meal
+            </AddButton>
+            {/* <DairyItem /> */}
           </li>
           <li>
             <ListTitle>
               <DinnerImg alt="Dinner icon" />
               <h3>Dinner</h3>
             </ListTitle>
-            <DairyItem />
+            <AddButton
+              id="dinner"
+              onClick={() => handleOpenModalRecord("dinner")}
+            >
+              <AddIcon alt="Add icon" />
+              Record your meal
+            </AddButton>
+            {/* <DairyItem /> */}
           </li>
           <li>
             <ListTitle>
@@ -62,14 +88,17 @@ export const Dairy = () => {
               <h3>Snack</h3>
             </ListTitle>
 
-            <AddButton onClick={handleOpenModalRecord}>
+            <AddButton
+              id="snack"
+              onClick={() => handleOpenModalRecord("snack")}
+            >
               <AddIcon alt="Add icon" />
               Record your meal
             </AddButton>
           </li>
         </DairyList>
       </Container>
-      {showModalRecord && <Modal />}
+      {isModalOpenRecord && <Modal />}
     </Section>
   );
 };
