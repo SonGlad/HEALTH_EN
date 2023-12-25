@@ -51,9 +51,14 @@ export const WeightDrop = () => {
   }
   const formattedDate = getCurrentDateFormatted();
 
+
+  const handleClickInsideModal = event => {
+    event.stopPropagation();
+  };
+
     
   return (
-    <ModalWrapper>
+    <ModalWrapper onClick={handleClickInsideModal}>
       <Modal>
         <ModalTitle>Enter your current weight</ModalTitle>
         <ModalText>You can record your weight once a day</ModalText>
