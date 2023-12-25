@@ -13,15 +13,22 @@ export const InfoOptions = styled.div`
   }
 
   .target-dropdown {
-    display: none;
-
     position: absolute;
     z-index: 2;
     top: 80px;
     box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
 
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    transform: scaleY(0);
+    transition: opacity 0.5s ease,
+      transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), visibility 0.5s ease;
+
     &.show-target-selection {
-      display: flex;
+      opacity: 1;
+      visibility: visible;
+      transform: scaleY(1);
     }
 
     @media screen and (min-width: 320px) and (max-width: 834px) {
@@ -58,13 +65,22 @@ export const InfoOptions = styled.div`
   }
 
   .weight-dropdown {
-    display: none;
     position: absolute;
     z-index: 2;
     top: 165px;
     box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
+
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    transform: scaleY(0);
+    transition: opacity 0.5s ease,
+      transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), visibility 0.5s ease;
+
     &.show-weight-selection {
-      display: flex;
+      opacity: 1;
+      visibility: visible;
+      transform: scaleY(1);
     }
 
     @media screen and (min-width: 320px) and (max-width: 834px) {
@@ -80,8 +96,8 @@ export const InfoOptions = styled.div`
     .weight-close-btn {
       cursor: pointer;
       position: absolute;
-      top: 20px;
-      right: 32px;
+      top: 19px;
+      right: 19px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -90,6 +106,7 @@ export const InfoOptions = styled.div`
       border: none;
       outline: none;
       background-color: transparent;
+      z-index: 3;
     }
 
     .close-weight-icon {

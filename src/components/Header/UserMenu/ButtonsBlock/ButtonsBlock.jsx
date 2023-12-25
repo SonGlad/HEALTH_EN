@@ -150,7 +150,7 @@ export const ButtonsBlock = () => {
         <button className="weight-close-btn" type="button">
           <CloseIcon className="close-weight-icon" width={'16px'} />
         </button>
-        <WeightDrop />
+        <WeightDrop onClose={() => setToggleShowWeightSelection(false)} />
       </div>
     </InfoOptions>
   );
