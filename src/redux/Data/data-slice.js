@@ -7,9 +7,9 @@ import {
 import {
     addWaterIntake, 
     deleteWaterIntake,
-    getAllRecommendedFood,
     updateGoal,
     updateWeight,
+    getAllRecommendedFood,
 } from "./data-operations";
 
 
@@ -150,7 +150,7 @@ const dataSlice = createSlice({
         })
 
             
-        // UPDATE USER GOAL
+        // UPDATE USER GOAL////////
         .addCase(updateGoal.pending, state => {
             state.isLoading = true;
             state.error = null;
@@ -170,7 +170,7 @@ const dataSlice = createSlice({
         })
 
         
-         // UPDATE USER WEIGHT
+        // UPDATE USER WEIGHT////////
         .addCase(updateWeight.pending, state => {
             state.isLoading = true;
             state.error = null;
@@ -190,21 +190,22 @@ const dataSlice = createSlice({
             state.isLoading = false;
             state.error = payload;
         })
+
             
-       //receiving recommended food     
+        //RECEIVING REMMENDED FOOD////////    
         .addCase(getAllRecommendedFood.pending, state => {
-      state.isLoading = true;
-      state.error = null;
-    })
-    .addCase(getAllRecommendedFood.fulfilled, (state, {payload}) => {
-      state.isLoading = false;
-      state.recommendedFood = payload;
-      state.error = null;
-    })
-    .addCase(getAllRecommendedFood.rejected,(state, {payload}) => {
-      state.isLoading = false;
-      state.error = payload; 
-    })
+        state.isLoading = true;
+        state.error = null;
+        })
+        .addCase(getAllRecommendedFood.fulfilled, (state, {payload}) => {
+        state.isLoading = false;
+        state.recommendedFood = payload;
+        state.error = null;
+        })
+        .addCase(getAllRecommendedFood.rejected,(state, {payload}) => {
+        state.isLoading = false;
+        state.error = payload; 
+        })
 
     }
 });
