@@ -5,7 +5,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-
 export const addWaterIntake = createAsyncThunk(
   'api/user/add-water-intake',
   async (water, thunkApi) => {
@@ -58,7 +57,7 @@ export const updateWeight = createAsyncThunk(
     try {
       const response = await axios.put(`api/user/weight`, valueWeight);
       toast.success('Your weight information has been successfully updated');
-    return response.data;
+      return response.data;
     } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');
       return thunkApi.rejectWithValue(error.message);
@@ -72,8 +71,7 @@ export const getAllRecommendedFood = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const response = await axios.get('api/recommended-food');
-      toast.success(`Recommended products successfully loaded.`)
-      console.log("SERVER RESPOnce", response.data);
+      // toast.success(`Recommended products successfully loaded.`);
       return response.data;
     } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');

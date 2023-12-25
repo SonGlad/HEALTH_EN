@@ -40,7 +40,6 @@ export const RecommendedFood = () => {
                   </p>
                 </ContentWrapper>
               </li>))}
-            
             </ul>
           </ProductsList>
         </DesctopContainer>
