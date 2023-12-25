@@ -47,7 +47,7 @@ export const TargetDrop = () => {
                 <label className='label'>
                   <input
                     className="radio_input"
-                    id="LoseFat"
+                    id="LoseFatDrop"
                     name="goal"
                     type="radio"
                     onChange={handleChange}
@@ -69,7 +69,7 @@ export const TargetDrop = () => {
                 <label className='label'>
                   <input
                     className="radio_input"
-                    id="Maintain"
+                    id="MaintainDrop"
                     name="goal"
                     type="radio"
                     onChange={handleChange}
@@ -90,7 +90,7 @@ export const TargetDrop = () => {
               <label className='label'>
                 <input
                   className="radio_input"
-                  id="GainMuscle"
+                  id="GainMuscleDrop"
                   name="goal"
                   type="radio"
                   onChange={handleChange}
