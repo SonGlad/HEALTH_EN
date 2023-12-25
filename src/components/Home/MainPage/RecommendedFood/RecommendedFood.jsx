@@ -22,7 +22,7 @@ export const RecommendedFood = () => {
         <h2>Recommended food</h2>
         <ul>
           {recommendedFood.slice(0, 4).map(({_id, amount, calories, img, name}) =>(
-          <li>
+          <li key={_id}>
               <img src={img} alt="Recommended food" onError={(e) => {
                 e.target.onerror = null;
                 e.target.src = SnacksImg;
