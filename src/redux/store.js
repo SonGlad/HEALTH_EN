@@ -1,4 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+// import { modalReducer } from “./Modal/modal-slice”;
 import { authReducer } from './Auth/auth-slice';
 import { dataReducer } from './Data/data-slice';
 import { 
@@ -49,7 +50,8 @@ const dataPersistConfig = {
 
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
-  data: persistReducer(dataPersistConfig, dataReducer)
+  data: persistReducer(dataPersistConfig, dataReducer),
+  // modal: modalReducer,
 })
 
 

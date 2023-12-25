@@ -14,13 +14,19 @@ import {
 // import { WeightDrop } from './WeightDrop/WeightDrop';
 // import { ReactComponent as CloseIcon } from '../../../../images/icons-linear/close-circle.svg';
 import weightIcon from '../../../../images/images/headreImg/Waight-image.svg';
+import muscleIcon from '../../../../images/icons-emoji/Gain muscle.png';
+import looseFatIconGirl from '../../../../images/icons-emoji/Lose fat image girl.png';
+import looseFatIconMen from '../../../../images/icons-emoji/Lose fat image men.png';
+import MaintakeIconGirl from '../../../../images/icons-emoji/Maintake image girl.png';
+import MaintakeIconMen from '../../../../images/icons-emoji/Maintake image men.png';
 import edit from '../../../../images/images/headreImg/edit-2.svg';
-import fatMen from '../../../../images/images/headreImg/Lose-fat-image-men.svg';
 import arrowDown from '../../../../images/images/headreImg/arrow-down.svg';
 import { useAuth } from '../../../../hooks/useAuth';
 
+
+
 export const ButtonsBlock = () => {
-  const { userGoal, userWeight } = useAuth();
+  const { userGoal, userWeight, userGender } = useAuth();
 
   function capitalizeWords(str) {
     if (!str) {
@@ -31,14 +37,31 @@ export const ButtonsBlock = () => {
   const inputString = userGoal;
   const result = capitalizeWords(inputString);
 
+
+  const getGoalImage = (userGoal, userGender) => {
+    if (userGoal === 'gain muscle') {
+      return muscleIcon;
+    } else if (userGoal === 'maintain' && userGender === 'male') {
+      return MaintakeIconMen;
+    } else if (userGoal === 'maintain' && userGender === 'female') {
+      return MaintakeIconGirl;
+    } else if (userGoal === 'lose fat' && userGender === 'male') {
+      return looseFatIconMen;
+    } else if (userGoal === 'lose fat' && userGender === 'female') {
+      return looseFatIconGirl;
+    } else {
+      return muscleIcon;
+    }
+  };
+
   return (
     <InfoOptions>
       {' '}
       <InfoBlockTarget>
         <IconContainer>
-          <img src={fatMen} alt="goal icon" width={28} />
+          <img src={getGoalImage(userGoal, userGender)} alt="goal icon" width={28} />
         </IconContainer>
-        <TextContainer>
+        <TextContainer className='goal-text-cont'>
           <InfoBlockName>Goal</InfoBlockName>
           <InfoBlockText>
             {result}

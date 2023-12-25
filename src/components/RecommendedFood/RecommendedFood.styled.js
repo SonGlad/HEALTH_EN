@@ -143,6 +143,6 @@ export const ProductsList = styled.div`
     width: 680px;
     padding: 0;
     display: flex;
-
+    align-items: flex-start;
   }
 `;

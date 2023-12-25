@@ -81,6 +81,7 @@ export const ClearButton = styled.button`
   background: transparent;
   margin-bottom: 6px;
   margin-left: auto;
+  padding: 0;
 
   @media screen and (min-width: 834px) {
     margin-bottom: 13px;

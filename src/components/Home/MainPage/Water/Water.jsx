@@ -13,6 +13,9 @@ import {
   TotalInfo,
 } from './Water.styled';
 import { useDispatch } from 'react-redux';
+// import { Modal } from “components/Modals/Modals”;
+// import { openModalWater } from “../../../../redux/Modal/modal-slice”;
+// import { useModal } from “hooks/useModal”;
 import { useData } from '../../../../hooks/useUserData';
 import {
   addWaterIntake,
@@ -22,6 +25,12 @@ import {
 export const Water = () => {
   const dispatch = useDispatch();
   const { dailyWater, currentWater } = useData();
+
+
+  // const { isModalOpenWater } = useModal();
+  // const handleOpenModalWater = () => {
+  //   dispatch(openModalWater());
+  // };
 
   // THE CODE BELOW FOR TESTING TO CHECK HOW IS RESPONCE GOING/////
 
@@ -103,12 +112,15 @@ export const Water = () => {
             </LeftInfo>
           </InfoWrapper>
 
-          <AddButton onClick={handleWaterDispatch}>
+          <AddButton onClick={handleWaterDispatch}
+          // onClick={handleOpenModalWater}
+          >
             <AddIcon alt="Add icon" />
             Add water intake
           </AddButton>
         </div>
       </Container>
+      {/* {isModalOpenWater && <Modal />} */}
     </Section>
   );
 };

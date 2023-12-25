@@ -145,9 +145,10 @@ const dataSlice = createSlice({
             state.isLoading = false;
             state.error = payload;
         })
+
             
         // UPDATE USER GOAL
-            .addCase(updateGoal.pending, state => {
+        .addCase(updateGoal.pending, state => {
             state.isLoading = true;
             state.error = null;
         })
@@ -164,9 +165,10 @@ const dataSlice = createSlice({
             state.isLoading = false;
             state.error = payload;
         })
+
         
          // UPDATE USER WEIGHT
-            .addCase(updateWeight.pending, state => {
+        .addCase(updateWeight.pending, state => {
             state.isLoading = true;
             state.error = null;
         })
