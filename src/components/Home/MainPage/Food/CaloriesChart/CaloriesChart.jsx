@@ -3,9 +3,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { ChartWrapper } from './CaloriesChart.styled';
 import { useData } from 'hooks/useUserData';
 
-
 ChartJS.register(ArcElement, Tooltip, Legend);
-
 
 export const CaloriesChart = () => {
   const {dailyCaloriesLimit} = useData();
@@ -44,7 +42,7 @@ export const CaloriesChart = () => {
       <ChartWrapper>
         <Doughnut data={data} options={options} />
         <div>
-          <p>{goalQuantity}</p>
+          <p>{addedQuantity}</p>
           <span>calories</span>
         </div>
       </ChartWrapper>

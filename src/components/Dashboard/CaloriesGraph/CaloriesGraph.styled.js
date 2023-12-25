@@ -38,6 +38,11 @@ export const TitleWrapper = styled.div`
 export const GraphWrapper = styled.div`
   overflow-x: auto;
 
+  #chart-tooltip {
+    weight: 150px;
+    color: red;
+  }
+
   &::-webkit-scrollbar {
     height: 8px;
   }
@@ -56,16 +61,46 @@ export const GraphWrapper = styled.div`
   div {
     width: 676px;
     height: 382px;
+    padding: 24px 14px;
     border-radius: 12px;
     background: ${props => props.theme.color.primary_black_2};
     margin-bottom: 8px;
 
     @media screen and (min-width: 834px) {
       width: 780px;
+      height: 430px;
     }
 
     @media screen and (min-width: 1440px) {
       width: 676px;
+      height: 382px;
     }
+  }
+`;
+
+export const TooltipContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+  opacity: 0;
+  position: absolute;
+  background: ${props => props.theme.color.primary_black_2};
+  padding: 8px 6px;
+  border-radius: 8px;
+  width: 86px;
+  height: 76px;
+  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
+
+  p {
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  span {
+    color: ${props => props.theme.color.primary_grey};
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
   }
 `;
