@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../api/axiosSettings";
+import { token } from "../../api/axiosSettings";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -77,5 +78,45 @@ export const getAllRecommendedFood = createAsyncThunk(
       toast.error('Oops. Something went wrong. Please try again.');
       return thunkApi.rejectWithValue(error.message);
     } 
+  }
+);
+
+
+export const addFood = createAsyncThunk(
+  'api/user/food-intake',
+  async (data, thunkApi) => {
+    try {
+      const response = await axios.post('api/user/food-intake', data);
+      toast.success(`
+      The information about the consumed food has been successfully added.`)
+      console.log("SERVER RESPOnce", response.data);
+      return response.data;
+    } catch (error) {
+      toast.error('Oops. Something went wrong. Please try again.');
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+
+export const dataСurrentDay = createAsyncThunk(
+'api/user/current-data',
+  async (_, thunkApi) => {
+    const state = thunkApi.getState();
+    const persistedToken = state.auth.token;
+    if(persistedToken === null){
+      return thunkApi.rejectWithValue('Unable to fetch user');
+    }
+
+    try{
+      token.set(persistedToken);
+      const response = await axios.get('api/user/current-data');
+      toast.success(`Received data on consumed food for the current day.`);
+      return response.data;
+    }
+    catch(error){
+      toast.error('Oops. Something went wrong. Please try again.');
+      return thunkApi.rejectWithValue(error.message);
+    }
   }
 );

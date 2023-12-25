@@ -8,10 +8,10 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 export const CarbonohidratesChart = () => {
-  const {dailyCarbonohidrates} = useData();
+  const {dailyCarbonohidratesLimit} = useData();
 
 
-  const goalQuantity = dailyCarbonohidrates;
+  const goalQuantity = dailyCarbonohidratesLimit;
   const addedQuantity = 250;
   const leftQuantity = Math.max(0, goalQuantity - addedQuantity);
   const leftPercent = Math.round((addedQuantity * 100) / goalQuantity);

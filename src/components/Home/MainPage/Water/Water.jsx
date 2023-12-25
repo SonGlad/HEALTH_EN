@@ -22,7 +22,7 @@ import { deleteWaterIntake } from '../../../../redux/Data/data-operations';
 
 export const Water = () => {
   const dispatch = useDispatch();
-  const { dailyWater, currentWater } = useData();
+  const { userDailyWaterLimit, currentWater } = useData();
 
 
   const { isModalOpenWater } = useModal();
@@ -35,7 +35,7 @@ export const Water = () => {
     dispatch(deleteWaterIntake());
   };
 
-  const waterGoal = dailyWater;
+  const waterGoal = userDailyWaterLimit;
 
   const [dailyWaterLimit, setDailyWaterLimit] = useState(0);
 

@@ -45,30 +45,30 @@ export const Modal = styled.div`
   .ImgError {
     position: absolute;
     right: 20px;
-    top: 55%;
+    top: 141px;
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
     background-image: url(${error});
 
     @media only screen and (min-width: 834px) {
-      right: 53%;
-      top: 70%;
+      right: 54%;
+      top: 139px;
     }
   }
 
   .ImgCorrect {
     position: absolute;
     right: 20px;
-    top: 55%;
+    top: 141px;
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
     background-image: url(${correct});
 
     @media only screen and (min-width: 834px) {
-      right: 53%;
-      top: 70%;
+      right: 54%;
+      top: 139px;
     }
   }
 

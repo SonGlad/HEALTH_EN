@@ -7,7 +7,7 @@ import { useData } from "../../../../hooks/useUserData";
 
 
 export const DailyGoal = () => {
-  const {dailyCalories, dailyWater} = useData();
+  const {dailyCaloriesLimit, userDailyWaterLimit} = useData();
 
 
   return (
@@ -19,7 +19,7 @@ export const DailyGoal = () => {
             <BubbleIcon alt="Bubbles" />
             <div>
               <h3>Calories</h3>
-              <p>{dailyCalories}</p>
+              <p>{dailyCaloriesLimit}</p>
             </div>
           </li>
           <li>
@@ -27,7 +27,7 @@ export const DailyGoal = () => {
             <div>
               <h3>Water</h3>
               <p>
-                {dailyWater}<span>ml</span>
+                {userDailyWaterLimit}<span>ml</span>
               </p>
             </div>
           </li>

@@ -8,10 +8,10 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 export const CaloriesChart = () => {
-  const {dailyCalories} = useData();
+  const {dailyCaloriesLimit} = useData();
 
 
-  const goalQuantity = dailyCalories;
+  const goalQuantity = dailyCaloriesLimit;
   const addedQuantity = 500;
   const leftQuantity = goalQuantity - addedQuantity;
 
