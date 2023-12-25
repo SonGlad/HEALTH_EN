@@ -1,16 +1,31 @@
 import { useFormik } from "formik";
 import { WaterModalContainer } from "./WaterIntakeModal.styled";
+import { addWaterIntake } from "../../../redux/Data/data-operations";
+import { useData } from "hooks/useUserData";
+import { useDispatch } from "react-redux";
+
 
 export const WaterintakeModal = ({ handleClickClose }) => {
+  const dispatch = useDispatch();
+  const {currentWater} = useData();
   const { values, handleBlur, handleChange, handleSubmit } = useFormik({
+
     initialValues: {
       water: "",
     },
 
     onSubmit: (values) => {
-      console.log(values.water);
+      const currentWaterValue = currentWater !== null ? currentWater : 0;
+      const newWater = parseInt(values.water, 10) + currentWaterValue;
+      dispatch(
+        addWaterIntake({
+          water: newWater,
+        })
+      )
+      handleClickClose();
     },
   });
+
 
   return (
     <WaterModalContainer>
@@ -28,7 +43,11 @@ export const WaterintakeModal = ({ handleClickClose }) => {
             onBlur={handleBlur}
           ></input>
         </label>
-        <button className="ButtonConfirm" type="submit">
+        <button
+          className="ButtonConfirm"
+          type="submit"
+          disabled={!values.water}
+        >
           Confirm
         </button>
       </form>

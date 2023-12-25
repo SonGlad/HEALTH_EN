@@ -7,7 +7,6 @@ import {
     selectUserDailyProtein,
     selectUserDailyFat, 
     selectUserCurrentWater,
-    selectUserAddedWater,
     selectRecommendedFood,
     selectDailyTotalCalories,
     selectDailyTotalFat,
@@ -65,14 +64,12 @@ export const useData = () => {
     const dinnerTotalFat = useSelector(selectDinnerTotalFat);
     const dinnerTotalCarbonohidretes = useSelector(selectDinnerhTotalCarbonohidretes);
     const dinnerTotalProtein = useSelector(selectDinnerTotalProtein);
-    
-
-
     const snackMeals = useSelector(selectSnackMeals);
     const snackTotalCalories = useSelector(selectSnackTotalCalories);
     const snackTotalFat = useSelector(selectSnackTotalFat);
     const snackTotalCarbonohidretes = useSelector(selectSnackhTotalCarbonohidretes);
     const snackTotalProtein = useSelector(selectSnackTotalProtein);
+  
     
     return {
         isLoadingData,
@@ -82,7 +79,6 @@ export const useData = () => {
         dailyProtein,
         dailyFat,
         currentWater,
-        addedWater,
         recommendedFood,
         dailyTotalCalories,
         dailyTotalFat,

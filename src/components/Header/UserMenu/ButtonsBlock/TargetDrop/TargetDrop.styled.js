@@ -39,6 +39,14 @@ export const ModalWrapper = styled.div`
       height: auto;
     }
   }
+
+  form{
+    width: 100%;
+    @media screen and (min-width: 834px) {
+      width: 166px;
+    }
+  }
+
   label {
     display: flex;
     align-items: center;
@@ -46,32 +54,40 @@ export const ModalWrapper = styled.div`
     cursor: pointer;
     font-size: 14px;
     font-weight: 400;
+    max-width: 145px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
+
   .radio_input {
     position: absolute;
     appearance: none;
   }
-  .container li label :hover {
-    color: ${props => props.theme.color.primary_violet};
-  }
-  .container li input [type='radio']:checked + label {
-    border: 1px solid ${props => props.theme.primary_violet};
-    color: ${props => props.theme.color.primary_violet};
-  }
+
   .img_border {
     width: 40px;
     height: 40px;
     padding: 10px;
     margin-right: 12px;
-    border: 1px solid ${props => props.theme.color.primary_white};
+    border: 1px solid ${props => props.theme.color.secondary_color_grey_1};
     border-radius: 12px;
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .img_border:hover {
-    border: 1px solid ${props => props.theme.primary_violet};
-  }
-  .hover:hover {
+
+  .hover:hover .label,
+  .hover:focus .label{
     color: ${props => props.theme.color.primary_violet};
   }
+  .hover:hover .label > .img_border,
+  .hover:focus .label > .img_border {
+    border-color: ${props => props.theme.color.primary_violet};
+  }
+  .label > .radio_input:checked + .img_border {
+    border-color: ${props => props.theme.color.primary_violet};
+  }
+  .label > .radio_input:checked ~ .label-text{
+    color: ${props => props.theme.color.primary_violet};
+  }
+
   @media screen and (min-width: 834px) {
     top: 80px;
     width: 392px;
@@ -84,8 +100,8 @@ export const ModalWrapper = styled.div`
 
 export const ModalBtn = styled.button`
 cursor: pointer;
+  width: 100%;
   height: 36px;
-  width: 166px;
   border: none;
   border-radius: 12px;
   background-color: ${props => props.theme.color.primary_green_lite};

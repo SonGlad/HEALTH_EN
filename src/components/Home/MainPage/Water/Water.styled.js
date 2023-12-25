@@ -61,6 +61,15 @@ export const ChartWrapper = styled.div`
     font-size: 16px;
     font-weight: 600;
     line-height: 1.4;
+    position: absolute;
+    top: 520px;
+
+    @media screen and (min-width: 834px) {
+      top: 350px;
+    }
+    @media screen and (min-width: 1440px) {
+      top: 340px;
+    }
   }
 `;
 
@@ -81,6 +90,7 @@ export const ClearButton = styled.button`
   background: transparent;
   margin-bottom: 6px;
   margin-left: auto;
+  padding: 0;
 
   @media screen and (min-width: 834px) {
     margin-bottom: 13px;

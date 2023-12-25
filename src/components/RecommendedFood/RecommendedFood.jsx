@@ -19,30 +19,30 @@ export const RecommendedFood = () => {
   return (
     <Section>
       <Container>
-              <h2>Recommended food</h2>
-              <DesctopContainer>
-                  <StyledImg
+        <h2>Recommended food</h2>
+        <DesctopContainer>
+          <StyledImg
           src={RecommendedFoodPhoto}
           alt="Profile Setting Photo"
-        />
-              <ProductsList>
-        <ul>
-        {recommendedFood.map(({_id, amount, calories, img, name}) =>(<li key={_id}>
-            <img src={img} alt="Recommended food" onError={(e) => {
-          e.target.onerror = null; 
-          e.target.src = SnacksImg; 
-        }}/>
-            <ContentWrapper>
-              <h3>{name}</h3>
-              <p>
-                {amount}<span>{calories} calories</span>
-              </p>
-            </ContentWrapper>
-        </li>))}
-           
-                  </ul>
-              </ProductsList>
-                </DesctopContainer>
+          />
+          <ProductsList>
+            <ul>
+            {recommendedFood.map(({_id, amount, calories, img, name}) =>(
+              <li key={_id}>
+                  <img src={img} alt="Recommended food" onError={(e) => {
+                e.target.onerror = null; 
+                e.target.src = SnacksImg; 
+              }}/>
+                <ContentWrapper>
+                  <h3>{name}</h3>
+                  <p>
+                    {amount}<span>{calories} calories</span>
+                  </p>
+                </ContentWrapper>
+              </li>))}
+            </ul>
+          </ProductsList>
+        </DesctopContainer>
       </Container>
     </Section>
   );

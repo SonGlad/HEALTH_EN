@@ -8,9 +8,9 @@ import {
     addFood,
     addWaterIntake, 
     deleteWaterIntake,
-    getAllRecommendedFood,
     updateGoal,
     updateWeight,
+    getAllRecommendedFood,
 } from "./data-operations";
 
 
@@ -20,7 +20,6 @@ const initialState = {
     dailyCaloriesLimit: null,
     dailyWaterLimit: null,
     userCurrentWater: null,
-    userAddedWater: null,
     dailyNutritionLimit: {
         carbonohidrates: null,
         protein: null,
@@ -180,9 +179,10 @@ const dataSlice = createSlice({
             state.isLoading = false;
             state.error = payload;
         })
+
             
-        // UPDATE USER GOAL
-            .addCase(updateGoal.pending, state => {
+        // UPDATE USER GOAL////////
+        .addCase(updateGoal.pending, state => {
             state.isLoading = true;
             state.error = null;
         })
@@ -199,9 +199,10 @@ const dataSlice = createSlice({
             state.isLoading = false;
             state.error = payload;
         })
+
         
-         // UPDATE USER WEIGHT
-            .addCase(updateWeight.pending, state => {
+        // UPDATE USER WEIGHT////////
+        .addCase(updateWeight.pending, state => {
             state.isLoading = true;
             state.error = null;
         })
@@ -220,8 +221,9 @@ const dataSlice = createSlice({
             state.isLoading = false;
             state.error = payload;
         })
+
             
-       //receiving recommended food     
+        //RECEIVING REMMENDED FOOD////////    
         .addCase(getAllRecommendedFood.pending, state => {
       state.isLoading = true;
       state.error = null;
@@ -280,7 +282,6 @@ const dataSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     })
-
     }
 });
 

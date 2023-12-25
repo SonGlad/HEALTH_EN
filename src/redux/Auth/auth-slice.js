@@ -312,8 +312,9 @@ const authSlice = createSlice({
       state.isInitial = false;
       state.error = payload;
     })
+    
       
-      // UPDATE USER GOAL////////
+    // UPDATE USER GOAL////////
     .addCase( updateGoal.pending, state => {
       state.isLoading = true;
       state.error = null;
@@ -330,11 +331,12 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     })
+
       
     // UPDATE USER WEIGHT////////
     .addCase( updateWeight.pending, state => {
       state.isLoading = true;
-    state.error = null;
+      state.error = null;
     })
     .addCase( updateWeight.fulfilled, (state, { payload }) => {
       state.bodyParamFormWeight = {
