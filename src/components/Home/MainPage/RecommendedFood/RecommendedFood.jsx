@@ -47,7 +47,7 @@ export const RecommendedFood = () => {
         </ul>
         <FoodLink to={'/recommended-food'}>
           See more
-          <ArrowIcon alt="Arrow Icon" />
+          <ArrowIcon className="arrow-see-more" alt="Arrow Icon" />
         </FoodLink>
       </Container>
     </Section>

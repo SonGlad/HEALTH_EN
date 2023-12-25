@@ -12,15 +12,25 @@ export const InfoOptions = styled.div`
     background-color: ${props => props.theme.color.primary_black_2};
   }
 
-
-
-  .target-dropdown{
+  .target-dropdown {
     position: absolute;
     border-radius: 12px;
     z-index: 2;
-    top:80px;
-    box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.20);
+    top: 80px;
+    box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
 
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    transform: scaleY(0);
+    transition: opacity 0.5s ease,
+      transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), visibility 0.5s ease;
+
+    &.show-target-selection {
+      opacity: 1;
+      visibility: visible;
+      transform: scaleY(1);
+    }
 
     @media screen and (min-width: 320px) and (max-width: 834px) {
       left: 0;
@@ -29,12 +39,11 @@ export const InfoOptions = styled.div`
       top: 115px;
     }
 
-
-    .target-close-btn{
+    .target-close-btn {
       cursor: pointer;
       position: absolute;
-      top: 20px;
-      right: 32px;
+      top: 19px;
+      right: 19px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -45,26 +54,36 @@ export const InfoOptions = styled.div`
       background-color: transparent;
     }
 
-    .close-target-icon{
+    .close-target-icon {
       stroke: ${props => props.theme.color.primary_white};
       transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
+
     .close-target-icon:hover,
     .close-target-icon:focus {
       stroke: ${props => props.theme.color.primary_green_lite};
     }
-    
   }
 
-
-  .weight-dropdown{
+  .weight-dropdown {
     position: absolute;
     border-radius: 12px;
     z-index: 2;
     top: 165px;
-    box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.20);
+    box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
 
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    transform: scaleY(0);
+    transition: opacity 0.5s ease,
+      transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), visibility 0.5s ease;
+
+    &.show-weight-selection {
+      opacity: 1;
+      visibility: visible;
+      transform: scaleY(1);
+    }
 
     @media screen and (min-width: 320px) and (max-width: 834px) {
       left: 0;
@@ -76,11 +95,11 @@ export const InfoOptions = styled.div`
       right: 0;
     }
 
-    .weight-close-btn{
+    .weight-close-btn {
       cursor: pointer;
       position: absolute;
-      top: 20px;
-      right: 32px;
+      top: 19px;
+      right: 19px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -89,19 +108,18 @@ export const InfoOptions = styled.div`
       border: none;
       outline: none;
       background-color: transparent;
+      z-index: 3;
     }
 
-    .close-weight-icon{
+    .close-weight-icon {
       stroke: ${props => props.theme.color.primary_white};
       transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
     }
-    
+
     .close-weight-icon:hover,
     .close-weight-icon:focus {
       stroke: ${props => props.theme.color.primary_green_lite};
     }
-    
   }
 `;
 
@@ -116,7 +134,6 @@ export const InfoBlockTarget = styled.div`
     margin-bottom: 40px;
   }
 
-
   @media screen and (min-width: 834px) {
     display: flex;
     &:nth-child(1) {
@@ -132,9 +149,6 @@ export const InfoBlockTarget = styled.div`
     }
   }
 `;
-
-
-
 
 export const InfoBlockWeight = styled.div`
   background-color: inherit;
@@ -146,7 +160,6 @@ export const InfoBlockWeight = styled.div`
     margin-bottom: 40px;
   }
 
-
   @media screen and (min-width: 834px) {
     display: flex;
     &:nth-child(1) {
@@ -162,7 +175,6 @@ export const InfoBlockWeight = styled.div`
     }
   }
 `;
-
 
 export const IconContainer = styled.div`
   padding: 10px;
