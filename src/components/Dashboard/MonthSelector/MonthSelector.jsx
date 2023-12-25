@@ -11,6 +11,10 @@ export const MonthSelector = () => {
   const dropdownRef = useRef(null);
   const optionListRef = useRef(null);
 
+  //  const handleWaterDelete = () => {
+  //   dispatch(getStatistics("December"))
+  // };
+
   const handleMonthSelect = month => {
     setSelectedMonth(month);
     setIsOpen(false);
