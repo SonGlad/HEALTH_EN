@@ -9,6 +9,7 @@ export const WaterintakeModal = ({ handleClickClose }) => {
 
     onSubmit: (values) => {
       console.log(values.water);
+      handleClickClose();
     },
   });
 
@@ -28,7 +29,11 @@ export const WaterintakeModal = ({ handleClickClose }) => {
             onBlur={handleBlur}
           ></input>
         </label>
-        <button className="ButtonConfirm" type="submit">
+        <button
+          className="ButtonConfirm"
+          type="submit"
+          disabled={!values.water}
+        >
           Confirm
         </button>
       </form>
