@@ -56,16 +56,39 @@ export const GraphWrapper = styled.div`
   div {
     width: 1372px;
     height: 110px;
+    padding: 24px 36px;
     border-radius: 12px;
     background: ${props => props.theme.color.primary_black_2};
     margin-bottom: 8px;
 
     @media screen and (min-width: 834px) {
-      width: 780px;
+      width: 100%;
     }
 
     @media screen and (min-width: 1440px) {
       width: 1372px;
     }
+  }
+`;
+
+export const ValuesList = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  span {
+    color: ${props => props.theme.color.primary_grey};
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.4;
   }
 `;
