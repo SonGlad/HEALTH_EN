@@ -35,7 +35,6 @@ export const WeightDrop = () => {
     validationSchema: WeightParametrsSchema,
 
     onSubmit: (values) => {
-      console.log(values);
       dispatch(updateWeight(values));
     },
   });

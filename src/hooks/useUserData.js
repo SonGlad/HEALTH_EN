@@ -7,7 +7,6 @@ import {
     selectUserDailyProtein,
     selectUserDailyFat, 
     selectUserCurrentWater,
-    selectUserAddedWater,
     selectRecommendedFood,
 } from "../redux/Data/data-selectors.js"
 
@@ -20,8 +19,7 @@ export const useData = () => {
     const dailyProtein = useSelector(selectUserDailyProtein);
     const dailyFat = useSelector(selectUserDailyFat);
     const currentWater = useSelector(selectUserCurrentWater);
-    const addedWater = useSelector(selectUserAddedWater);
-     const recommendedFood = useSelector(selectRecommendedFood);
+    const recommendedFood = useSelector(selectRecommendedFood);
     
 
     return {
@@ -32,7 +30,6 @@ export const useData = () => {
         dailyProtein,
         dailyFat,
         currentWater,
-        addedWater,
         recommendedFood,
     }
 };

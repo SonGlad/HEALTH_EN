@@ -44,7 +44,6 @@ const dataPersistConfig = {
     'dailyNutrition',
     'isLoading',
     'userCurrentWater',
-    'userAddedWater',
   ],
 };
 

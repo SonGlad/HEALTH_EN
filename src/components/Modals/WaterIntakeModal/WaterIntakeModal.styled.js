@@ -82,10 +82,17 @@ export const WaterModalContainer = styled.div`
     font-size: 14px;
     line-height: 20px;
     cursor: pointer;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 
     &:active,
-    &:hover {
+    &:hover,
+    &:focus {
       color: ${(props) => props.theme.color.primary_grey};
+    }
+    &:disabled {
+      color: ${(props) => props.theme.color.primary_grey};
+      pointer-events: none;
     }
   }
 
@@ -101,19 +108,14 @@ export const WaterModalContainer = styled.div`
     cursor: pointer;
     text-align: center;
     display: inline;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    &:hover {
+
+    &:active,
+    &:hover,
+    &:focus {
       background-color: transparent;
       color: ${(props) => props.theme.color.primary_green_lite};
-    }
-    &:active {
-      background-color: transparent;
-      color: ${(props) => props.theme.color.primary_green_lite};
-    }
-    &:disabled {
-      background-color: transparent;
-      color: ${(props) => props.theme.color.primary_grey};
-      pointer-events: none;
     }
   }
 `;

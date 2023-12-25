@@ -4,6 +4,10 @@ import { NavLink } from 'react-router-dom';
 export const Container = styled.div`
   margin-bottom: 20px;
 
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 0px;
+  }
+
   h2 {
     font-size: 18px;
     font-weight: 400;

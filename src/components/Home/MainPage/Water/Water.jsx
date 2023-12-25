@@ -13,45 +13,29 @@ import {
   TotalInfo,
 } from './Water.styled';
 import { useDispatch } from 'react-redux';
-// import { Modal } from “components/Modals/Modals”;
-// import { openModalWater } from “../../../../redux/Modal/modal-slice”;
-// import { useModal } from “hooks/useModal”;
+import { Modal } from '../../../Modals/Modals';
+import { openModalWater } from '../../../../redux/Modal/modal-slice';
+import { useModal } from '../../../../hooks/useModal';
 import { useData } from '../../../../hooks/useUserData';
-import {
-  addWaterIntake,
-  deleteWaterIntake,
-} from '../../../../redux/Data/data-operations';
+import { deleteWaterIntake } from '../../../../redux/Data/data-operations';
+
 
 export const Water = () => {
   const dispatch = useDispatch();
   const { dailyWater, currentWater } = useData();
 
 
-  // const { isModalOpenWater } = useModal();
-  // const handleOpenModalWater = () => {
-  //   dispatch(openModalWater());
-  // };
-
-  // THE CODE BELOW FOR TESTING TO CHECK HOW IS RESPONCE GOING/////
-
-  const water = '1000';
-  const handleWaterDispatch = () => {
-    console.log('Sending to server:', water);
-    dispatch(
-      addWaterIntake({
-        water: water,
-      })
-    );
+  const { isModalOpenWater } = useModal();
+  const handleOpenModalWater = () => {
+    dispatch(openModalWater());
   };
 
- // THE CODE ABOVE FOR TESTING TO CHECK HOW IS RESPONCE GOING/////
 
   const handleWaterDelete = () => {
     dispatch(deleteWaterIntake());
   };
 
   const waterGoal = dailyWater;
-  
 
   const [dailyWaterLimit, setDailyWaterLimit] = useState(0);
 
@@ -66,6 +50,7 @@ export const Water = () => {
 
   const leftWater = Math.max(0, waterGoal - currentWater);
 
+
   return (
     <Section>
       <h2>Water</h2>
@@ -74,7 +59,7 @@ export const Water = () => {
           <p
             style={{
               color:
-                dailyWaterLimit <= 80
+                dailyWaterLimit <= 50
                   ? 'rgb(182, 195, 255)'
                   : 'rgb(15, 15, 15)',
             }}
@@ -89,7 +74,6 @@ export const Water = () => {
             }}
           />
         </ChartWrapper>
-
         <div className='water-cons-cont'>
           <ClearButton onClick={handleWaterDelete}>
             <ClearIcon alt="Clear icon" />
@@ -111,16 +95,13 @@ export const Water = () => {
               <span>ml</span>
             </LeftInfo>
           </InfoWrapper>
-
-          <AddButton onClick={handleWaterDispatch}
-          // onClick={handleOpenModalWater}
-          >
+          <AddButton onClick={handleOpenModalWater}>
             <AddIcon alt="Add icon" />
             Add water intake
           </AddButton>
         </div>
       </Container>
-      {/* {isModalOpenWater && <Modal />} */}
+      {isModalOpenWater && <Modal />}
     </Section>
   );
 };

@@ -19,7 +19,6 @@ const initialState = {
     dailyCaloriesLimit: null,
     dailyWaterLimit: null,
     userCurrentWater: null,
-    userAddedWater: null,
     dailyNutritionLimit: {
         carbonohidrates: null,
         protein: null,

@@ -126,10 +126,16 @@ export const GoalItem = styled.div`
 export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  padding-bottom: 80px;
+
+  @media screen and (min-width: 1440px) {
+    padding-bottom: 40px;
+  }
 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     justify-content: space-between;
     gap: 138px;
+    padding-bottom: 55px;
   }
 `;
