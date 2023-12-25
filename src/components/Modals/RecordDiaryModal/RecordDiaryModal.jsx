@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import { ModalContainer } from "./RecordDiaryModal.styled";
 import { useFormik } from "formik";
 import { nanoid } from "nanoid";
+import { useModal } from "hooks/useModal";
+import { ReactComponent as BreakfastImg } from "../../../images/icons-illustration/breakfast-image.svg";
+import { ReactComponent as LunchImg } from "../../../images/icons-illustration/lunch-image.svg";
+import { ReactComponent as DinnerImg } from "../../../images/icons-illustration/dinner-image.svg";
+import { ReactComponent as SnacksImg } from "../../../images/icons-illustration/snack-image.svg";
 
 export const RecordDiaryModal = ({ handleClickClose }) => {
   const [forms, setForms] = useState(["o_PCLpz7Og2qwYnO9QBir"]);
-  const [items] = useState({});
+  const { mealType } = useModal();
+  // const [items] = useState({});
 
   const handleAddForm = () => {
     const id = nanoid();
@@ -17,36 +23,72 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
   };
 
   const { values, isValid, handleBlur, handleChange, resetForm } = useFormik({
-    initialValues: {
-      // nameproduct: "",
-      // carbonoh: "",
-      // protein: "",
-      // fat: "",
-      // calories: "",
+    initialValues: {},
+    validate: (values) => {
+      const errors = {};
+      forms.forEach((formId) => {
+        if (!values[`name${formId}`]) {
+          errors[`name${formId}`] = "Required";
+        }
+        if (!values[`carbohydrates${formId}`]) {
+          errors[`carbohydrates${formId}`] = "Required";
+        }
+        if (!values[`protein${formId}`]) {
+          errors[`protein${formId}`] = "Required";
+        }
+        if (!values[`fat${formId}`]) {
+          errors[`fat${formId}`] = "Required";
+        }
+        if (!values[`calories${formId}`]) {
+          errors[`calories${formId}`] = "Required";
+        }
+      });
+      return errors;
     },
   });
 
   const handleConfirm = () => {
-    forms.forEach((formId) => {
-      const formDataForForm = {};
+    const meals = forms.map((formId) => {
+      const formDataForForm = { mealId: formId };
       Object.keys(values).forEach((key) => {
         if (key.includes(formId)) {
           formDataForForm[key.replace(`${formId}`, "")] = values[key];
         }
       });
-      items[formId] = formDataForForm;
+      return formDataForForm;
     });
-    console.log(items);
+    console.log("meals:", meals);
     resetForm();
     handleClickClose();
+  };
+
+  function capitalizeWords(str) {
+    if (!str) {
+      return str;
+    }
+    return str.replace(/\b\w/g, (match) => match.toUpperCase());
+  }
+  const inputString = mealType;
+  const result = capitalizeWords(inputString);
+
+  const getGoalImage = (mealType) => {
+    if (mealType === "breakfast") {
+      return <BreakfastImg className="Img" />;
+    } else if (mealType === "lunch") {
+      return <LunchImg className="Img" />;
+    } else if (mealType === "dinner") {
+      return <DinnerImg className="Img" />;
+    } else if (mealType === "snack") {
+      return <SnacksImg className="Img" />;
+    }
   };
 
   return (
     <ModalContainer>
       <h2 className="H2">Record your meal</h2>
       <div className="DinerContainer">
-        <div className="Img" />
-        <h3 className="Title">Breakfast</h3>
+        {getGoalImage(mealType)}
+        <h3 className={"Title"}>{result}</h3>
       </div>
       <div className="FormContainer">
         {forms.map((formId) => (
@@ -54,9 +96,9 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
             <input
               id="nameproduct"
               type="text"
-              name={`nameproduct${formId}`}
+              name={`name${formId}`}
               onChange={handleChange}
-              value={values[`nameproduct${formId}`] || ""}
+              value={values[`name${formId}`] || ""}
               onBlur={handleBlur}
               placeholder="The name of the product or dish"
               required
@@ -64,9 +106,9 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
             <input
               id="carbonoh"
               type="text"
-              name={`carbonoh${formId}`}
+              name={`carbohydrates${formId}`}
               onChange={handleChange}
-              value={values[`carbonoh${formId}`] || ""}
+              value={values[`carbohydrates${formId}`] || ""}
               onBlur={handleBlur}
               placeholder="Carbonoh."
               required
