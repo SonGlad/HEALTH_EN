@@ -1,7 +1,6 @@
 import React from 'react';
 import food from '../../utils/food.json';
 import { nanoid } from 'nanoid';
-
 import {
   DishesWrapper,
   EditButton,
@@ -19,6 +18,7 @@ import { ReactComponent as DinnerImg } from '../../images/icons-illustration/din
 import { ReactComponent as SnackImg } from '../../images/icons-illustration/snack-image.svg';
 import { ReactComponent as EditIcon } from '../../images/icons-linear/edit.svg';
 import { Dishes } from './Dishes/Dishes';
+
 
 const sumNutrients = (items, nutrient) => {
   return items.reduce((sum, item) => sum + item.data[nutrient], 0);

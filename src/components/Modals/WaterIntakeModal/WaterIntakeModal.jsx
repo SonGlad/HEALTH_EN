@@ -34,13 +34,19 @@ export const WaterintakeModal = ({ handleClickClose }) => {
         <label className="LabelInput">
           How much water
           <input
-            className="Input"
+            className="water-input"
             name="water"
-            type="text"
+            type="number"
             placeholder="Enter milliliters"
             onChange={handleChange}
             value={values.water}
             onBlur={handleBlur}
+            onKeyPress={(e) => {
+              if (e.key === "-" || e.key === "e") {
+                e.preventDefault();
+              }
+            }}
+            min="0"
           ></input>
         </label>
         <button

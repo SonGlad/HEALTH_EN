@@ -92,6 +92,7 @@ export const ModalContainer = styled.div`
     font-weight: 400;
     line-height: 20px;
     color: ${(props) => props.theme.color.primary_white};
+
     &:focus {
       outline: none;
       box-shadow: none;
@@ -135,6 +136,12 @@ export const ModalContainer = styled.div`
     @media only screen and (min-width: 834px) {
       width: 78px;
     }
+  }
+
+  .rec-diar-mod-inp[type="number"]::-webkit-inner-spin-button,
+  .rec-diar-mod-inp[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 
   .ButtonDelete {

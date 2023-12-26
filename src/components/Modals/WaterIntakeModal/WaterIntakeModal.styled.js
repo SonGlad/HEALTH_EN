@@ -52,7 +52,7 @@ export const WaterModalContainer = styled.div`
     }
   }
 
-  .Input {
+  .water-input {
     margin-top: 12px;
     padding: 8px 10px;
     border-radius: 12px;
@@ -70,6 +70,12 @@ export const WaterModalContainer = styled.div`
     &::placeholder {
       color: ${(props) => props.theme.color.primary_grey};
     }
+  }
+
+  .water-input[type="number"]::-webkit-inner-spin-button,
+  .water-input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 
   .ButtonConfirm {

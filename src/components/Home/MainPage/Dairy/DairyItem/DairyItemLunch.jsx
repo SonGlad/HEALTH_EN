@@ -1,10 +1,18 @@
 import { ReactComponent as ClearIcon } from '../../../../../images/icons-linear/trash.svg';
 import { ClearButton, ItemWrapper } from './DairyItem.styled';
 import { useData } from 'hooks/useUserData';
+import { useDispatch } from 'react-redux';
+import { deleteFoodType } from "../../../../../redux/Data/data-operations";
 
 
 export const DairyItemLunch = () => {
+  const dispatch = useDispatch();
   const {lunchTotalFat, lunchTotalCarbonohidretes, lunchTotalProtein} = useData();
+
+
+  const handleDeleteClick = () => {
+    dispatch(deleteFoodType('lunch'));
+  };
 
   
   return (
@@ -25,7 +33,7 @@ export const DairyItemLunch = () => {
             Fat:<span>{lunchTotalFat}</span>
           </p>
         </li>
-        <ClearButton>
+        <ClearButton id="lunch" onClick={handleDeleteClick}>
           <ClearIcon alt="Clear icon" />
         </ClearButton>
       </ul>

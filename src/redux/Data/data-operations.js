@@ -83,7 +83,6 @@ export const addFood = createAsyncThunk(
   'api/user/food-intake',
   async (data, thunkApi) => {
     try {
-      console.log(data);
       const response = await axios.post('api/user/food-intake', data);
       toast.success(`
       The information about the consumed food has been successfully added.`)

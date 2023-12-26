@@ -8,12 +8,14 @@ import { ReactComponent as LunchImg } from "../../../images/icons-illustration/l
 import { ReactComponent as DinnerImg } from "../../../images/icons-illustration/dinner-image.svg";
 import { ReactComponent as SnacksImg } from "../../../images/icons-illustration/snack-image.svg";
 import { useDispatch } from "react-redux";
-import {
-  deliverMealsBreakfast,
-  deliverMealsLunch,
-  deliverMealsDinner,
-  deliverMealsSnack,
-} from "../../../redux/Data/data-slice";
+// import {
+//   deliverMealsBreakfast,
+//   deliverMealsLunch,
+//   deliverMealsDinner,
+//   deliverMealsSnack,
+// } from "../../../redux/Data/data-slice";
+import {addFood} from "../../../redux/Data/data-operations";
+
 
 export const RecordDiaryModal = ({ handleClickClose }) => {
   const dispatch = useDispatch();
@@ -25,10 +27,10 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
     const id = nanoid();
     setForms((prevForms) => [...prevForms, id]);
   };
-
   const handleRemoveForm = (id) => {
     setForms((prevForms) => prevForms.filter((formId) => formId !== id));
   };
+
 
   const { values, isValid, handleBlur, handleChange, resetForm } = useFormik({
     initialValues: {},
@@ -55,6 +57,7 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
     },
   });
 
+
   const handleConfirm = () => {
     const meals = forms.map((formId) => {
       const formDataForForm = { mealId: formId };
@@ -72,19 +75,19 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
     const snack = { snack: { meals } };
 
     if (mealType === "breakfast") {
-      dispatch(deliverMealsBreakfast(breakfast));
+      dispatch(addFood(breakfast));
       resetForm();
       handleClickClose();
     } else if (mealType === "lunch") {
-      dispatch(deliverMealsLunch(lunch));
+      dispatch(addFood(lunch));
       resetForm();
       handleClickClose();
     } else if (mealType === "dinner") {
-      dispatch(deliverMealsDinner(dinner));
+      dispatch(addFood(dinner));
       resetForm();
       handleClickClose();
     } else if (mealType === "snack") {
-      dispatch(deliverMealsSnack(snack));
+      dispatch(addFood(snack));
       resetForm();
       handleClickClose();
     }
@@ -131,45 +134,69 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
               placeholder="The name of the product or dish"
               required
             />
-            <input
+            <input className="rec-diar-mod-inp"
               id="carbonoh"
-              type="text"
+              type="number"
               name={`carbohydrates${formId}`}
               onChange={handleChange}
               value={values[`carbohydrates${formId}`] || ""}
               onBlur={handleBlur}
               placeholder="Carbonoh."
               required
+              onKeyPress={(e) => {
+                if (e.key === "-" || e.key === "e") {
+                  e.preventDefault();
+                }
+              }}
+              min="0"
             />
-            <input
+            <input className="rec-diar-mod-inp"
               id="protein"
-              type="text"
+              type="number"
               name={`protein${formId}`}
               onChange={handleChange}
               value={values[`protein${formId}`] || ""}
               onBlur={handleBlur}
               placeholder="Protein"
               required
+              onKeyPress={(e) => {
+                if (e.key === "-" || e.key === "e") {
+                  e.preventDefault();
+                }
+              }}
+              min="0"
             />
-            <input
+            <input className="rec-diar-mod-inp"
               id="fat"
-              type="text"
+              type="number"
               name={`fat${formId}`}
               onChange={handleChange}
               value={values[`fat${formId}`] || ""}
               onBlur={handleBlur}
               placeholder="Fat"
               required
+              onKeyPress={(e) => {
+                if (e.key === "-" || e.key === "e") {
+                  e.preventDefault();
+                }
+              }}
+              min="0"
             />
-            <input
+            <input className="rec-diar-mod-inp"
               id="calories"
-              type="text"
+              type="number"
               name={`calories${formId}`}
               onChange={handleChange}
               value={values[`calories${formId}`] || ""}
               onBlur={handleBlur}
               placeholder="Calories"
               required
+              onKeyPress={(e) => {
+                if (e.key === "-" || e.key === "e") {
+                  e.preventDefault();
+                }
+              }}
+              min="0"
             />
             <div
               className="ButtonDelete"
@@ -178,7 +205,6 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
             ></div>
           </form>
         ))}
-
         <button className="ButtonAdd" type="button" onClick={handleAddForm}>
           <div className="ImgAdd" />
           Add more
