@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { 
-register, 
-logIn, 
-logOut,
-initialDataUserInfo,
-refreshCurrentUser,
-updateUserInfo,
-updateUserAvatar, 
+  register, 
+  logIn, 
+  logOut,
+  initialDataUserInfo,
+  refreshCurrentUser,
+  updateUserInfo,
+  updateUserAvatar, 
 } from "./auth-operations";
 import { updateGoal, updateWeight } from "../Data/data-operations";
 
@@ -69,11 +69,16 @@ const authSlice = createSlice({
         age: action.payload.age,
       }
     },
-    updateBodyParamForm: (state, action) => {
-      state.bodyParamForm ={
-        ...state.bodyParamForm,
-        height: action.payload.height,
-        weight: action.payload.weight,
+    updateBodyParamFormWeight: (state, action) => {
+      state.bodyParamFormWeight ={
+        ...state.bodyParamFormWeight,
+        weight: action.payload,
+      }
+    },
+    updateBodyParamFormHeight: (state, action) => {
+      state.bodyParamFormHeight ={
+        ...state.bodyParamFormHeight,
+        height: action.payload,
       }
     },
     updateActivityForm: (state, action) => {
@@ -362,7 +367,8 @@ export const {
   saveSignUpForm,
   updateGoalForm,
   updateGenderAgeForm,
-  updateBodyParamForm,
+  updateBodyParamFormHeight,
+  updateBodyParamFormWeight,
   updateActivityForm,
 
 } = authSlice.actions;

@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import { DivBodyParametrs } from "./BodyParametrs.styled";
 import { BodyParametrsSchema } from "../../../utils/validationSchemas";
-import { updateBodyParamForm } from "../../../redux/Auth/auth-slice";
+import { updateBodyParamFormHeight, updateBodyParamFormWeight} from "../../../redux/Auth/auth-slice";
 import { useDispatch } from "react-redux";
 import { useAuth } from "hooks/useAuth";
 import { ShowRules } from "utils/showRules";
@@ -26,7 +26,8 @@ export const BodyParametrs = ({ onNext, onBack }) => {
     validationSchema: BodyParametrsSchema,
 
     onSubmit: (values) => {
-      dispatch(updateBodyParamForm(values));
+      dispatch(updateBodyParamFormHeight(values.height));
+      dispatch(updateBodyParamFormWeight(values.weight));
     },
   });
 

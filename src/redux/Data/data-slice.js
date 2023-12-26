@@ -11,8 +11,12 @@ import {
     updateGoal,
     updateWeight,
     getAllRecommendedFood,
+    getStatistics,
+    updateFoodId,
+    getUserDailyCurrentData,
+    deleteFoodId,
+    deleteFoodType
 } from "./data-operations";
-
 
 
 
@@ -59,11 +63,14 @@ const initialState = {
         snackTotalCarbonohidretes: null,
         snackTotalProtein: null,
     },
-    
+    statisticPerDate: {
+        statisticsWater: [],
+        statisticsWeight: [],
+        statisticsCalories: [],
+    },
+
     error: null,
     isLoading: false,
-    isLogin: false,// For SignIn Only (GET api/user/current-data)///
-
 };
 
 
@@ -72,13 +79,33 @@ const dataSlice = createSlice({
     initialState,
 
     reducers:{
-        PokaNi4egoNePiwem: (state, action) => {
-            // state.userForm = {
-            //   ...state.userForm,
-            //   name: action.payload.name,
-            //   email: action.payload.email,
-            //   password: action.payload.password,
-            // };
+        deliverMealsBreakfast: (state, action) => {
+            const { breakfast } = action.payload;
+            state.breakfast = {
+              ...state.breakfast,
+              breakfastMeals: breakfast,
+            };
+        },
+        deliverMealsLunch: (state, action) => {
+            const { lunch } = action.payload;
+            state.lunch = {
+                ...state.lunch,
+                lunchMeals: lunch,
+             };
+        },
+        deliverMealsDinner: (state, action) => {
+            const { dinner } = action.payload;
+            state.dinner = {
+              ...state.dinner,
+              dinnerMeals: dinner,
+            };
+        },
+        deliverMealsSnack: (state, action) => {
+            const { snack } = action.payload;
+            state.snack = {
+              ...state.snack,
+              snackMeals: snack,
+            };
         },
     },
 
@@ -225,7 +252,7 @@ const dataSlice = createSlice({
         })
 
             
-        //RECEIVING REMMENDED FOOD////////    
+        //RECEIVING RECOMMENDED FOOD////////    
         .addCase(getAllRecommendedFood.pending, state => {
             state.isLoading = true;
             state.error = null;
@@ -249,34 +276,34 @@ const dataSlice = createSlice({
         .addCase(addFood.fulfilled, (state, { payload }) => {
             state.dailyTotalCalories = payload.data.totalCalories;
             state.dailyTotalFat = payload.data.totalFat;
-            state.dailyTotalCarbonohidretes = payload.data.totalCarbonohidretes;
+            state.dailyTotalCarbonohidretes = payload.data.totalCarbohydrates;
             state.dailyTotalProtein = payload.data.totalProtein;
             state.breakfast = {
                 breakfastMeals: payload.data.breakfast.meals,
                 breakfastTotalCalories: payload.data.breakfast.totalCalories,
                 breakfastTotalFat: payload.data.breakfast.totalFat,
-                breakfastTotalCarbonohidretes: payload.data.breakfast.totalCarbonohidretes,
+                breakfastTotalCarbonohidretes: payload.data.breakfast.totalCarbohydrates,
                 breakfastTotalProtein: payload.data.breakfast.totalProtein,
             };
             state.lunch = {
                 lunchMeals: payload.data.lunch.meals,
                 lunchTotalCalories: payload.data.lunch.totalCalories,
                 lunchTotalFat: payload.data.lunch.totalFat,
-                lunchTotalCarbonohidretes: payload.data.lunch.totalCarbonohidretes,
+                lunchTotalCarbonohidretes: payload.data.lunch.totalCarbohydrates,
                 lunchTotalProtein: payload.data.lunch.totalProtein,
             };
             state.dinner = {
                 dinnerMeals: payload.data.dinner.meals,
                 dinnerTotalCalories: payload.data.dinner.totalCalories,
                 dinnerTotalFat: payload.data.dinner.totalFat,
-                dinnerTotalCarbonohidretes: payload.data.dinner.totalCarbonohidretes,
+                dinnerTotalCarbonohidretes: payload.data.dinner.totalCarbohydrates,
                 dinnerTotalProtein: payload.data.dinner.totalProtein,
             };
             state.snack = {
                 snackMeals: payload.data.snack.meals,
                 snackTotalCalories: payload.data.snack.totalCalories,
                 snackTotalFat: payload.data.snack.totalFat,
-                snackTotalCarbonohidretes: payload.data.snack.totalCarbonohidretes,
+                snackTotalCarbonohidretes: payload.data.snack.totalCarbohydrates,
                 snackTotalProtein: payload.data.snack.totalProtein,
             };
             state.isLoading = false;
@@ -287,6 +314,214 @@ const dataSlice = createSlice({
             state.error = payload;
         })
 
+
+        //GET STATISTICS////////
+         .addCase(getStatistics.pending, state => {
+            state.isLoading = true;
+            state.error = null;
+        })
+        .addCase(getStatistics.fulfilled, (state, {payload}) => {
+            state.isLoading = false;
+            state.statisticPerDate = {
+                statisticsWater: payload.data.water,
+                statisticsWeight: payload.data.weight,
+                statisticsCalories: payload.data.calories,
+                };
+            state.error = null;
+        })
+        .addCase(getStatistics.rejected,(state, {payload}) => {
+            state.isLoading = false;
+            state.error = payload; 
+        })
+
+            
+        // UPDATE BY ID
+        .addCase(updateFoodId.pending, state =>{
+            state.isLoading = true;
+            state.error = null;
+        })
+        .addCase(updateFoodId.fulfilled, (state, { payload }) => {
+            state.dailyTotalCalories = payload.data.totalCalories;
+            state.dailyTotalFat = payload.data.totalFat;
+            state.dailyTotalCarbonohidretes = payload.data.totalCarbohydrates;
+            state.dailyTotalProtein = payload.data.totalProtein;
+            state.breakfast = {
+                breakfastMeals: payload.data.breakfast.meals,
+                breakfastTotalCalories: payload.data.breakfast.totalCalories,
+                breakfastTotalFat: payload.data.breakfast.totalFat,
+                breakfastTotalCarbonohidretes: payload.data.breakfast.totalCarbohydrates,
+                breakfastTotalProtein: payload.data.breakfast.totalProtein,
+            };
+            state.lunch = {
+                lunchMeals: payload.data.lunch.meals,
+                lunchTotalCalories: payload.data.lunch.totalCalories,
+                lunchTotalFat: payload.data.lunch.totalFat,
+                lunchTotalCarbonohidretes: payload.data.lunch.totalCarbohydrates,
+                lunchTotalProtein: payload.data.lunch.totalProtein,
+            };
+            state.dinner = {
+                dinnerMeals: payload.data.dinner.meals,
+                dinnerTotalCalories: payload.data.dinner.totalCalories,
+                dinnerTotalFat: payload.data.dinner.totalFat,
+                dinnerTotalCarbonohidretes: payload.data.dinner.totalCarbohydrates,
+                dinnerTotalProtein: payload.data.dinner.totalProtein,
+            };
+            state.snack = {
+                snackMeals: payload.data.snack.meals,
+                snackTotalCalories: payload.data.snack.totalCalories,
+                snackTotalFat: payload.data.snack.totalFat,
+                snackTotalCarbonohidretes: payload.data.snack.totalCarbohydrates,
+                snackTotalProtein: payload.data.snack.totalProtein,
+            };
+            state.isLoading = false;
+            state.error = null;
+        })
+        .addCase(updateFoodId.rejected, (state, {payload}) => {
+            state.isLoading = false;
+            state.error = payload;
+        })
+
+
+        //GET USER DAILY CURRENT DATA////////
+        .addCase(getUserDailyCurrentData.pending, state =>{
+            state.isLoading = true;
+            state.error = null;
+        })
+        .addCase(getUserDailyCurrentData.fulfilled, (state, { payload }) => {
+            state.userCurrentWater = payload.data.water;
+            state.dailyTotalCalories = payload.data.food.totalCalories;
+            state.dailyTotalFat = payload.data.food.totalFat;
+            state.dailyTotalCarbonohidretes = payload.data.food.totalCarbohydrates;
+            state.dailyTotalProtein = payload.data.food.totalProtein;
+            state.breakfast = {
+                breakfastMeals: payload.data.food.breakfast.meals,
+                breakfastTotalCalories: payload.data.food.breakfast.totalCalories,
+                breakfastTotalFat: payload.data.food.breakfast.totalFat,
+                breakfastTotalCarbonohidretes: payload.data.food.breakfast.totalCarbohydrates,
+                breakfastTotalProtein: payload.data.food.breakfast.totalProtein,
+            };
+            state.lunch = {
+                lunchMeals: payload.data.food.lunch.meals,
+                lunchTotalCalories: payload.data.food.lunch.totalCalories,
+                lunchTotalFat: payload.data.food.lunch.totalFat,
+                lunchTotalCarbonohidretes: payload.data.food.lunch.totalCarbohydrates,
+                lunchTotalProtein: payload.data.food.lunch.totalProtein,
+            };
+            state.dinner = {
+                dinnerMeals: payload.data.food.dinner.meals,
+                dinnerTotalCalories: payload.data.food.dinner.totalCalories,
+                dinnerTotalFat: payload.data.food.dinner.totalFat,
+                dinnerTotalCarbonohidretes: payload.data.food.dinner.totalCarbohydrates,
+                dinnerTotalProtein: payload.data.food.dinner.totalProtein,
+            };
+            state.snack = {
+                snackMeals: payload.data.food.snack.meals,
+                snackTotalCalories: payload.data.food.snack.totalCalories,
+                snackTotalFat: payload.data.food.snack.totalFat,
+                snackTotalCarbonohidretes: payload.data.food.snack.totalCarbohydrates,
+                snackTotalProtein: payload.data.food.snack.totalProtein,
+            };
+            state.isLoading = false;
+            state.error = null;
+        })
+        .addCase(getUserDailyCurrentData.rejected, (state, {payload}) => {
+            state.isLoading = false;
+            state.error = payload;
+        })
+
+
+        // DELETE BY ID////////
+        .addCase(deleteFoodId.pending, state =>{
+            state.isLoading = true;
+            state.error = null;
+        })
+        .addCase(deleteFoodId.fulfilled, (state, { payload }) => {
+            state.dailyTotalCalories = payload.data.totalCalories;
+            state.dailyTotalFat = payload.data.totalFat;
+            state.dailyTotalCarbonohidretes = payload.data.totalCarbohydrates;
+            state.dailyTotalProtein = payload.data.totalProtein;
+            state.breakfast = {
+                breakfastMeals: payload.data.breakfast.meals,
+                breakfastTotalCalories: payload.data.breakfast.totalCalories,
+                breakfastTotalFat: payload.data.breakfast.totalFat,
+                breakfastTotalCarbonohidretes: payload.data.breakfast.totalCarbohydrates,
+                breakfastTotalProtein: payload.data.breakfast.totalProtein,
+            };
+            state.lunch = {
+                lunchMeals: payload.data.lunch.meals,
+                lunchTotalCalories: payload.data.lunch.totalCalories,
+                lunchTotalFat: payload.data.lunch.totalFat,
+                lunchTotalCarbonohidretes: payload.data.lunch.totalCarbohydrates,
+                lunchTotalProtein: payload.data.lunch.totalProtein,
+            };
+            state.dinner = {
+                dinnerMeals: payload.data.dinner.meals,
+                dinnerTotalCalories: payload.data.dinner.totalCalories,
+                dinnerTotalFat: payload.data.dinner.totalFat,
+                dinnerTotalCarbonohidretes: payload.data.dinner.totalCarbohydrates,
+                dinnerTotalProtein: payload.data.dinner.totalProtein,
+            };
+            state.snack = {
+                snackMeals: payload.data.snack.meals,
+                snackTotalCalories: payload.data.snack.totalCalories,
+                snackTotalFat: payload.data.snack.totalFat,
+                snackTotalCarbonohidretes: payload.data.snack.totalCarbohydrates,
+                snackTotalProtein: payload.data.snack.totalProtein,
+            };
+            state.isLoading = false;
+            state.error = null;
+        })
+        .addCase(deleteFoodId.rejected, (state, {payload}) => {
+            state.isLoading = false;
+            state.error = payload;
+        })
+
+
+        // DELETE BY   TYPE////////
+        .addCase(deleteFoodType.pending, state =>{
+            state.isLoading = true;
+            state.error = null;
+        })
+        .addCase(deleteFoodType.fulfilled, (state, { payload }) => {
+            state.dailyTotalCalories = payload.data.totalCalories;
+            state.dailyTotalFat = payload.data.totalFat;
+            state.dailyTotalCarbonohidretes = payload.data.totalCarbohydrates;
+            state.dailyTotalProtein = payload.data.totalProtein;
+            state.breakfast = {
+                breakfastMeals: payload.data.breakfast.meals,
+                breakfastTotalCalories: payload.data.breakfast.totalCalories,
+                breakfastTotalFat: payload.data.breakfast.totalFat,
+                breakfastTotalCarbonohidretes: payload.data.breakfast.totalCarbohydrates,
+                breakfastTotalProtein: payload.data.breakfast.totalProtein,
+            };
+            state.lunch = {
+                lunchMeals: payload.data.lunch.meals,
+                lunchTotalCalories: payload.data.lunch.totalCalories,
+                lunchTotalFat: payload.data.lunch.totalFat,
+                lunchTotalCarbonohidretes: payload.data.lunch.totalCarbohydrates,
+                lunchTotalProtein: payload.data.lunch.totalProtein,
+            };
+            state.dinner = {
+                dinnerMeals: payload.data.dinner.meals,
+                dinnerTotalCalories: payload.data.dinner.totalCalories,
+                dinnerTotalFat: payload.data.dinner.totalFat,
+                dinnerTotalCarbonohidretes: payload.data.dinner.totalCarbohydrates,
+                dinnerTotalProtein: payload.data.dinner.totalProtein,
+            };
+            state.snack = {
+                snackMeals: payload.data.snack.meals,
+                snackTotalCalories: payload.data.snack.totalCalories,
+                snackTotalFat: payload.data.snack.totalFat,
+                snackTotalCarbonohidretes: payload.data.snack.totalCarbohydrates,
+                snackTotalProtein: payload.data.snack.totalProtein,
+            };
+            state.isLoading = false;
+            state.error = null;
+        })
+        .addCase(deleteFoodType.rejected, (state, {payload}) => {
+            state.isLoading = false;
+            state.error = payload;
+        })
     }
 });
 
@@ -295,6 +530,9 @@ export const dataReducer = dataSlice.reducer;
 
 
 export const { 
-    PokaNi4egoNePiwem,
+    deliverMealsBreakfast,
+    deliverMealsLunch,
+    deliverMealsDinner,
+    deliverMealsSnack,
 
 } = dataSlice.actions;

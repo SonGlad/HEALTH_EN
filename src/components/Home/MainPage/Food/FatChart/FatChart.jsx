@@ -8,11 +8,11 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 export const FatChart = () => {
-  const {dailyFatLimit} = useData();
+  const {dailyFatLimit, dailyTotalFat} = useData();
 
 
   const goalQuantity = dailyFatLimit;
-  const addedQuantity = 30;
+  const addedQuantity = Math.round(dailyTotalFat);
   const leftQuantity = Math.max(0, goalQuantity - addedQuantity);
   const leftPercent = Math.round((addedQuantity * 100) / goalQuantity);
 

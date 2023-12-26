@@ -41,7 +41,7 @@ export const ModalContainer = styled.div`
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background-image: url(${breakfast});
+    /* background-image: url(${breakfast}); */
   }
 
   .Title {
