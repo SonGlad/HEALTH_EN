@@ -1,43 +1,40 @@
-
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { modalReducer } from '../redux/Modal/modal-slice';
-import { authReducer } from './Auth/auth-slice';
-import { dataReducer } from './Data/data-slice';
-import { 
-  persistStore, 
-  persistReducer, 
-  FLUSH, 
-  REHYDRATE, 
-  PAUSE, 
-  PERSIST, 
-  PURGE, 
-  REGISTER 
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { modalReducer } from "../redux/Modal/modal-slice";
+import { authReducer } from "./Auth/auth-slice";
+import { dataReducer } from "./Data/data-slice";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 const authPersistConfig = {
   key: "auth",
   storage,
   whitelist: [
-    'token', 
-    // 'userForm', 
-    // 'goalForm', 
+    "token",
+    // 'userForm',
+    // 'goalForm',
     // 'bodyParamFormWeight',
     // 'bodyParamFormHeight',
-    // 'genderAgeForm', 
+    // 'genderAgeForm',
     // 'bodyParamForm',
     // 'activityForm',
     // 'isInitial',
   ],
 };
 
-
 const dataPersistConfig = {
-  key: 'data',
+  key: "data",
   storage,
   whitelist: [
-     // 'dailyNutritionLimit',
+    // 'dailyNutritionLimit',
     // 'dailyCaloriesLimit',
     // 'dailyWaterLimit',
     // 'dailyCalories',
@@ -46,14 +43,14 @@ const dataPersistConfig = {
     // 'isLoading',
     // 'userCurrentWater',
     // 'userAddedWater',
-    'dailyTotalCalories',
-    'dailyTotalFat',
-    'dailyTotalCarbonohidretes',
-    'dailyTotalProtein',
-    'breakfast',
-    'lunch',
-    'dinner',
-    'snack',
+    "dailyTotalCalories",
+    "dailyTotalFat",
+    "dailyTotalCarbonohidretes",
+    "dailyTotalProtein",
+    "breakfast",
+    "lunch",
+    "dinner",
+    "snack",
   ],
 };
 
@@ -61,8 +58,7 @@ const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   data: persistReducer(dataPersistConfig, dataReducer),
   modal: modalReducer,
-})
-
+});
 
 export const store = configureStore({
   reducer: rootReducer,

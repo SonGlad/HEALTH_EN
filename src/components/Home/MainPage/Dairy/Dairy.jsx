@@ -14,7 +14,10 @@ import {
   ListTitle,
   TitleWrapper,
 } from "./Dairy.styled";
-// import { DairyItem } from "./DairyItem.jsx/DairyItem";
+import { DairyItemBreakfast } from "./DairyItem/DairyItemBreakfast";
+import { DairyItemDinner } from "./DairyItem/DairyItemDinner";
+import { DairyItemLunch } from "./DairyItem/DairyItemLunch";
+import { DairyItemSnack } from "./DairyItem/DairyItemSnack";
 import { useDispatch } from "react-redux";
 import {
   openModalRecord,
@@ -22,10 +25,12 @@ import {
 } from "../../../../redux/Modal/modal-slice";
 import { Modal } from "components/Modals/Modals";
 import { useModal } from "hooks/useModal";
+import { useData } from "hooks/useUserData";
 
 export const Dairy = () => {
   const dispatch = useDispatch();
   const { isModalOpenRecord } = useModal();
+  const { breakfastMeals, lunchMeals, dinnerMeals, snackMeals } = useData();
 
   const handleOpenModalRecord = (id) => {
     dispatch(openModalRecord());
@@ -45,42 +50,51 @@ export const Dairy = () => {
               <BreakfastImg alt="Breakfast icon" />
               <h3>Breakfast</h3>
             </ListTitle>
-            <AddButton
-              id="breakfast"
-              onClick={() => handleOpenModalRecord("breakfast")}
-            >
-              <AddIcon alt="Add icon" />
-              Record your meal
-            </AddButton>
-            {/* <DairyItem /> */}
+            {breakfastMeals.length === 0 ? (
+              <AddButton
+                id="breakfast"
+                onClick={() => handleOpenModalRecord("breakfast")}
+              >
+                <AddIcon alt="Add icon" />
+                Record your meal
+              </AddButton>
+            ) : (
+              <DairyItemBreakfast />
+            )}
           </li>
           <li>
             <ListTitle>
               <LunchImg alt="Lunch Icon" />
               <h3>Lunch</h3>
             </ListTitle>
-            <AddButton
-              id="lunch"
-              onClick={() => handleOpenModalRecord("lunch")}
-            >
-              <AddIcon alt="Add icon" />
-              Record your meal
-            </AddButton>
-            {/* <DairyItem /> */}
+            {lunchMeals.length === 0 ? (
+              <AddButton
+                id="lunch"
+                onClick={() => handleOpenModalRecord("lunch")}
+              >
+                <AddIcon alt="Add icon" />
+                Record your meal
+              </AddButton>
+            ) : (
+              <DairyItemLunch />
+            )}
           </li>
           <li>
             <ListTitle>
               <DinnerImg alt="Dinner icon" />
               <h3>Dinner</h3>
             </ListTitle>
-            <AddButton
-              id="dinner"
-              onClick={() => handleOpenModalRecord("dinner")}
-            >
-              <AddIcon alt="Add icon" />
-              Record your meal
-            </AddButton>
-            {/* <DairyItem /> */}
+            {dinnerMeals.length === 0 ? (
+              <AddButton
+                id="dinner"
+                onClick={() => handleOpenModalRecord("dinner")}
+              >
+                <AddIcon alt="Add icon" />
+                Record your meal
+              </AddButton>
+            ) : (
+              <DairyItemDinner />
+            )}
           </li>
           <li>
             <ListTitle>
@@ -88,13 +102,17 @@ export const Dairy = () => {
               <h3>Snack</h3>
             </ListTitle>
 
-            <AddButton
-              id="snack"
-              onClick={() => handleOpenModalRecord("snack")}
-            >
-              <AddIcon alt="Add icon" />
-              Record your meal
-            </AddButton>
+            {snackMeals.length === 0 ? (
+              <AddButton
+                id="snack"
+                onClick={() => handleOpenModalRecord("snack")}
+              >
+                <AddIcon alt="Add icon" />
+                Record your meal
+              </AddButton>
+            ) : (
+              <DairyItemSnack />
+            )}
           </li>
         </DairyList>
       </Container>
