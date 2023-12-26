@@ -1,23 +1,30 @@
 import { ReactComponent as ClearIcon } from '../../../../../images/icons-linear/trash.svg';
 import { ClearButton, ItemWrapper } from './DairyItem.styled';
+import { useData } from 'hooks/useUserData';
+
+
 
 export const DairyItemDinner = () => {
+  const {dinnerTotalFat, dinnerTotalCarbonohidretes, dinnerTotalProtein} = useData();
+
+
+  
   return (
     <ItemWrapper>
       <ul>
         <li>
           <p>
-            Carbonohidrates:<span>60</span>
+            Carbonohidrates:<span>{dinnerTotalCarbonohidretes}</span>
           </p>
         </li>
         <li>
           <p>
-            Protein:<span>60</span>
+            Protein:<span>{dinnerTotalProtein}</span>
           </p>
         </li>
         <li>
           <p>
-            Fat:<span>60</span>
+            Fat:<span>{dinnerTotalFat}</span>
           </p>
         </li>
         <ClearButton>

@@ -2,22 +2,13 @@ import { Section } from 'components/Section/Section';
 import { Container, ContentWrapper, FoodLink } from './RecommendedFood.styled';
 import { ReactComponent as ArrowIcon } from '../../../../images/icons-linear/arrow-right.svg';
 import SnacksImg from '../../../../images/svgIcon/snack-img.svg';
-import { getAllRecommendedFood } from '../../../../redux/Data/data-operations';
-import { useDispatch } from 'react-redux';
 import { useData } from '../../../../hooks/useUserData';
 import { useEffect, useState } from 'react';
 
 
 export const RecommendedFood = () => {
   const { recommendedFood } = useData();
-  const dispatch = useDispatch();
   const [shuffledFood, setShuffledFood] = useState([]);
-
-
-  useEffect(() => {
-    dispatch(getAllRecommendedFood());
-  
-  }, [dispatch]);
 
 
   useEffect(() => {

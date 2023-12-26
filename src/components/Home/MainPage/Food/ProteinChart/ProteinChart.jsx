@@ -8,11 +8,11 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 export const ProteinChart = () => {
-  const {dailyProteinLimit} = useData();
+  const {dailyProteinLimit, dailyTotalProtein } = useData();
 
 
   const goalQuantity = dailyProteinLimit;
-  const addedQuantity = 78.5;
+  const addedQuantity = Math.round(dailyTotalProtein) ;
   const leftQuantity = Math.max(0, goalQuantity - addedQuantity);
   const leftPercent = Math.round((addedQuantity * 100) / goalQuantity);
 
