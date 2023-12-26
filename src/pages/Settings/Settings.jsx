@@ -71,7 +71,6 @@ const SettingsPage = () => {
       const formData = new FormData();
       const avatarFile = values.photo;
       if (!avatarFile) {
-        // console.log("No file selected");
       } else {
         formData.append('avatarURL', avatarFile);
         dispatch(updateUserAvatar(formData));

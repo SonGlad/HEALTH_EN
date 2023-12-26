@@ -61,3 +61,9 @@ export const selectSnackTotalFat = state => state.data.snack.snackTotalFat;
 export const selectSnackhTotalCarbonohidretes = state => state.data.snack.snackTotalCarbonohidretes;
 
 export const selectSnackTotalProtein = state => state.data.snack.snackTotalProtein;
+
+export const selectStatisticsWater = state => state.data.statisticPerDate.statisticsWater;
+
+export const selectStatisticsWeight = state => state.data.statisticPerDate.statisticsWeight;
+
+export const selectStatisticsCalories = state => state.data.statisticPerDate.statisticsCalories;

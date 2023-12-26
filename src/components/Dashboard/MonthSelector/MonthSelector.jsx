@@ -1,6 +1,5 @@
 import months from '../../../utils/months.json';
 import { useState, useEffect, useRef } from 'react';
-import { nanoid } from 'nanoid';
 import { BackLink, Container } from './MonthSelector.styled';
 import { ReactComponent as ArrowIcon } from '../../../images/icons-linear/arrow-left.svg';
 import { ReactComponent as ArrowDown } from '../../../images/icons-linear/arrow-down.svg';
@@ -10,6 +9,10 @@ export const MonthSelector = () => {
   const [selectedMonth, setSelectedMonth] = useState('December');
   const dropdownRef = useRef(null);
   const optionListRef = useRef(null);
+
+  //  const handleWaterDelete = () => {
+  //   dispatch(getStatistics("December"))
+  // };
 
   const handleMonthSelect = month => {
     setSelectedMonth(month);
@@ -55,7 +58,7 @@ export const MonthSelector = () => {
           </button>
           <ul ref={optionListRef} className={`list ${isOpen ? 'open' : ''}`}>
             {months.map(month => (
-              <li key={nanoid()}>
+              <li key={month}>
                 <p onClick={() => handleMonthSelect(month)}>{month}</p>
               </li>
             ))}
