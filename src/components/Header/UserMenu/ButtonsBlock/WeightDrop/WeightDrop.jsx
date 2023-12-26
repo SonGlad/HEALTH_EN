@@ -11,11 +11,11 @@ import {
   WeightFormInput,
 } from './WeightDrop.styled';
 import { useFormik } from 'formik';
-import { useDispatch } from "react-redux";
-import { ShowRules } from "../../../../../utils/showRules";
-import { WeightParametrsSchema } from "../../../../../utils/validationSchemas";
-import { updateWeight } from "../../../../../redux/Data/data-operations";
-
+import { useDispatch } from 'react-redux';
+import { ShowRules } from '../../../../../utils/showRules';
+import { WeightParametrsSchema } from '../../../../../utils/validationSchemas';
+import { updateWeight } from '../../../../../redux/Data/data-operations';
+import { closeModalWeight } from '../../../../../redux/Modal/modal-slice';
 
 export const WeightDrop = () => {
   const dispatch = useDispatch();
@@ -29,18 +29,18 @@ export const WeightDrop = () => {
     handleSubmit,
   } = useFormik({
     initialValues: {
-      weight: "",
+      weight: '',
     },
 
     validationSchema: WeightParametrsSchema,
 
-    onSubmit: (values) => {
+    onSubmit: values => {
       dispatch(updateWeight(values));
+      dispatch(closeModalWeight());
     },
   });
 
-  const { getInputClass, getInputAlert} = ShowRules(values, touched, errors);
-
+  const { getInputClass, getInputAlert } = ShowRules(values, touched, errors);
 
   function getCurrentDateFormatted() {
     const currentDate = new Date();
@@ -51,14 +51,8 @@ export const WeightDrop = () => {
   }
   const formattedDate = getCurrentDateFormatted();
 
-
-  const handleClickInsideModal = event => {
-    event.stopPropagation();
-  };
-
-    
   return (
-    <ModalWrapper onClick={handleClickInsideModal}>
+    <ModalWrapper>
       <Modal>
         <ModalTitle>Enter your current weight</ModalTitle>
         <ModalText>You can record your weight once a day</ModalText>
@@ -70,7 +64,7 @@ export const WeightDrop = () => {
           <div>
             <label>
               <WeightFormInput
-                className={getInputClass("weight")}
+                className={getInputClass('weight')}
                 placeholder="Enter your weight"
                 // id="WeightDrop"
                 name="weight"
@@ -78,9 +72,8 @@ export const WeightDrop = () => {
                 onChange={handleChange}
                 value={values.weight}
                 onBlur={handleBlur}
-              >
-              </WeightFormInput>
-              {getInputAlert("weight")}
+              ></WeightFormInput>
+              {getInputAlert('weight')}
             </label>
           </div>
           <WeightFormBtn
