@@ -15,8 +15,7 @@ import {
   Tooltip,
 } from 'chart.js';
 
-//********************************** */ json with data
-import statistics from '../../../utils/statistics';
+import { useData } from '../../../hooks/useUserData';
 
 ChartJS.register(
   CategoryScale,
@@ -27,26 +26,25 @@ ChartJS.register(
   Tooltip
 );
 
-//********************************** */ date - you have Hook
-const labels = statistics.data.water.map(entry => entry.date);
-
-// ********************************** waterValue
-const waterValues = statistics.data.water.map(entry => entry.water);
-
-// ********************************** value for <p>Average value:<span>{averageWater}ml</span></p>
-const validWaterValues = waterValues.filter(item => item !== 0);
-
-const averageValue = Math.round(
-  validWaterValues.reduce((sum, value) => sum + value, 0) /
-    validWaterValues.length
-);
-
 export const WaterGraph = () => {
+  const { statisticsWater } = useData();
+
+  const labels = statisticsWater.map(entry => entry.date);
+
+  const waterValues = statisticsWater.map(entry => entry.water);
+
+  const validWaterValues = waterValues.filter(item => item !== 0);
+
+  const averageValue = Math.round(
+    validWaterValues.reduce((sum, value) => sum + value, 0) /
+      validWaterValues.length
+  );
+
   const data = {
     labels,
     datasets: [
       {
-        data: waterValues, //************************add your data
+        data: waterValues,
         borderColor: 'rgba(227, 255, 168, 1)',
         borderWidth: 1,
         pointBorderColor: 'transparent',
@@ -103,10 +101,12 @@ export const WaterGraph = () => {
         alignToPixels: true,
         beginAtZero: false,
         align: 'center',
+
         ticks: {
           color: '#B6B6B6',
           offset: true,
           padding: 12,
+
           font: {
             family: 'Poppins',
             size: 10,
@@ -157,7 +157,10 @@ export const WaterGraph = () => {
         <TitleWrapper>
           <h2>Waters</h2>
           <p>
-            Average value: <span>{averageValue} ml</span>
+            Average value:
+            <span>
+              {validWaterValues.length > 0 ? `${averageValue} ml` : '0 ml'}
+            </span>
           </p>
         </TitleWrapper>
         <GraphWrapper>
