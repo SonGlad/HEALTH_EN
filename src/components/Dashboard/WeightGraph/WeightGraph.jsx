@@ -3,14 +3,12 @@ import { Section } from 'components/Section/Section';
 import { GraphWrapper, TitleWrapper, ValuesList } from './WeightGraph.styled';
 import { nanoid } from 'nanoid';
 
-//********************************** */ json with data
-import statistics from '../../../utils/statistics';
+import { useData } from '../../../hooks/useUserData';
 
-// ********************************** waterValue
 export const WeightGraph = () => {
-  const weightData = statistics.data.weight;
+  const { statisticsWeight } = useData();
 
-  const validWeightData = weightData.filter(item => item.weight !== 0);
+  const validWeightData = statisticsWeight.filter(item => item.weight !== 0);
   const values = validWeightData.map(entry => entry.weight);
 
   const averageValue = Math.round(
@@ -22,15 +20,12 @@ export const WeightGraph = () => {
       <div>
         <TitleWrapper>
           <h2>Weights</h2>
-          <p>
-            Average value: <span>{averageValue} kg</span>
-          </p>
+          <p>{validWeightData.length > 0 ? `${averageValue} kg` : '0 kg'}</p>
         </TitleWrapper>
         <GraphWrapper>
           <div>
             <ValuesList>
-              {/* add DATA ************************/}
-              {weightData.map(item => (
+              {statisticsWeight.map(item => (
                 <li key={nanoid()}>
                   <p>{item.weight}</p>
                   <span>{item.date}</span>

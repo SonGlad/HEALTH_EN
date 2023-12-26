@@ -16,8 +16,7 @@ import {
   Tooltip,
 } from 'chart.js';
 
-//********************************** */ json with data
-import statistics from '../../../utils/statistics';
+import { useData } from '../../../hooks/useUserData';
 
 ChartJS.register(
   CategoryScale,
@@ -28,24 +27,24 @@ ChartJS.register(
   Tooltip
 );
 
-//********************************** */ date - you have Hook
-const labels = statistics.data.calories.map(entry => entry.date);
-
-// ********************************** caloriesValue
-const values = statistics.data.calories.map(entry => entry.calories);
-
-// ********************************** value for <p>Average value:<span>{averageWater}ml</span></p>
-const validValues = values.filter(item => item !== 0);
-const averageValue = Math.round(
-  validValues.reduce((sum, value) => sum + value, 0) / validValues.length
-);
-
 export const CaloriesGraph = () => {
+  const { statisticsCalories } = useData();
+
+  const labels = statisticsCalories.map(entry => entry.date);
+
+  const values = statisticsCalories.map(entry => entry.calories);
+
+  const validValues = values.filter(item => item !== 0);
+
+  const averageValue = Math.round(
+    validValues.reduce((sum, value) => sum + value, 0) / validValues.length
+  );
+
   const data = {
     labels,
     datasets: [
       {
-        data: values, //************************add your data
+        data: values,
         borderColor: 'rgba(227, 255, 168, 1)',
         borderWidth: 1,
         pointBorderColor: 'transparent',
@@ -84,7 +83,7 @@ export const CaloriesGraph = () => {
           ) {
             const value = context.tooltip.body[0].lines[0].trim();
             const cleanedValue = parseFloat(value.replace(/\D/g, ''));
-            tooltipEl.innerHTML = `<p>${cleanedValue}</p><span>milliliters</span>`;
+            tooltipEl.innerHTML = `<p>${cleanedValue}</p><span>calories</span>`;
             tooltipEl.style.opacity = 1;
             tooltipEl.style.left =
               context.chart.canvas.offsetLeft + context.tooltip.caretX + 'px';
@@ -156,7 +155,10 @@ export const CaloriesGraph = () => {
         <TitleWrapper>
           <h2>Calories</h2>
           <p>
-            Average value: <span>{averageValue} cal</span>
+            Average value:{' '}
+            <span>
+              {validValues.length > 0 ? `${averageValue} cal` : '0 cal'}
+            </span>
           </p>
         </TitleWrapper>
         <GraphWrapper>

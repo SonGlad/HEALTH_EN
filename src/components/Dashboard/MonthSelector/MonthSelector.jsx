@@ -3,19 +3,19 @@ import { useState, useEffect, useRef } from 'react';
 import { BackLink, Container } from './MonthSelector.styled';
 import { ReactComponent as ArrowIcon } from '../../../images/icons-linear/arrow-left.svg';
 import { ReactComponent as ArrowDown } from '../../../images/icons-linear/arrow-down.svg';
+import { useDispatch } from 'react-redux';
+import { getStatistics } from '../../../redux/Data/data-operations';
 
 export const MonthSelector = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState('December');
+  const dispatch = useDispatch();
   const dropdownRef = useRef(null);
   const optionListRef = useRef(null);
 
-  //  const handleWaterDelete = () => {
-  //   dispatch(getStatistics("December"))
-  // };
-
   const handleMonthSelect = month => {
     setSelectedMonth(month);
+    dispatch(getStatistics(month));
     setIsOpen(false);
   };
 

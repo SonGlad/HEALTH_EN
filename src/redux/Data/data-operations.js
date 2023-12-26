@@ -1,10 +1,8 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "../../api/axiosSettings";
-import { token } from "../../api/axiosSettings";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from '../../api/axiosSettings';
+import { token } from '../../api/axiosSettings';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
 
 export const addWaterIntake = createAsyncThunk(
   'api/user/add-water-intake',
@@ -20,8 +18,6 @@ export const addWaterIntake = createAsyncThunk(
   }
 );
 
-
-
 export const deleteWaterIntake = createAsyncThunk(
   'api/user/delete-water-intake',
   async (waterData, thunkApi) => {
@@ -35,7 +31,6 @@ export const deleteWaterIntake = createAsyncThunk(
     }
   }
 );
-
 
 export const updateGoal = createAsyncThunk(
   'api/user/update-goal',
@@ -51,7 +46,6 @@ export const updateGoal = createAsyncThunk(
   }
 );
 
-
 export const updateWeight = createAsyncThunk(
   'api/user/update-weight',
   async (valueWeight, thunkApi) => {
@@ -62,10 +56,9 @@ export const updateWeight = createAsyncThunk(
     } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');
       return thunkApi.rejectWithValue(error.message);
-    } 
+    }
   }
 );
-
 
 export const getAllRecommendedFood = createAsyncThunk(
   'api/user/recommended-food',
@@ -77,21 +70,19 @@ export const getAllRecommendedFood = createAsyncThunk(
     } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');
       return thunkApi.rejectWithValue(error.message);
-    } 
+    }
   }
 );
-
 
 export const addFood = createAsyncThunk(
   'api/user/food-intake',
   async (data, thunkApi) => {
-  
     try {
-      console.log(data)
+      console.log(data);
       const response = await axios.post('api/user/food-intake', data);
       toast.success(`
-      The information about the consumed food has been successfully added.`)
-      console.log("SERVER RESPOnce", response.data);
+      The information about the consumed food has been successfully added.`);
+      console.log('SERVER RESPOnce', response.data);
       return response.data;
     } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');
@@ -100,23 +91,21 @@ export const addFood = createAsyncThunk(
   }
 );
 
-
 export const dataСurrentDay = createAsyncThunk(
-'api/user/current-data',
+  'api/user/current-data',
   async (_, thunkApi) => {
     const state = thunkApi.getState();
     const persistedToken = state.auth.token;
-    if(persistedToken === null){
+    if (persistedToken === null) {
       return thunkApi.rejectWithValue('Unable to fetch user');
     }
 
-    try{
+    try {
       token.set(persistedToken);
       const response = await axios.get('api/user/current-data');
       toast.success(`Received data on consumed food for the current day.`);
       return response.data;
-    }
-    catch(error){
+    } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');
       return thunkApi.rejectWithValue(error.message);
     }
@@ -128,9 +117,9 @@ export const getStatistics = createAsyncThunk(
     try {
       const response = await axios.get(`api/user/statistics/${month}`);
       toast.success(`Received statistics.`);
-      console.log(response.data)
+      // console.log(response.data);
       return response.data;
-    } catch(error){
+    } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');
       return thunkApi.rejectWithValue(error.message);
     }
@@ -139,7 +128,7 @@ export const getStatistics = createAsyncThunk(
 
 export const updateFoodId = createAsyncThunk(
   'api/user/food-intake/id',
-  async ({id, data}, thunkApi) => {
+  async ({ id, data }, thunkApi) => {
     try {
       const response = await axios.put(`api/user/food-intake/${id}`, data);
       toast.success('Data updated successfully');
@@ -147,5 +136,6 @@ export const updateFoodId = createAsyncThunk(
     } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');
       return thunkApi.rejectWithValue(error.message);
-    } 
-  })
+    }
+  }
+);
