@@ -14,6 +14,8 @@ import {
   TitleWrapper,
 } from './MainPage.styled';
 import { initialDataUserInfo } from '../../../redux/Auth/auth-operations';
+import { getUserDailyCurrentData } from "../../../redux/Data/data-operations";
+import { getAllRecommendedFood } from '../../../redux/Data/data-operations';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth } from "../../../hooks/useAuth";
@@ -21,12 +23,14 @@ import { useAuth } from "../../../hooks/useAuth";
 
 export const MainPage = () => {
   const dispatch = useDispatch();
-  const {isInitial} = useAuth();
+  const {isInitial,} = useAuth();
 
 
   useEffect(() => {
     if (isInitial) {
       dispatch(initialDataUserInfo());
+      dispatch(getUserDailyCurrentData());
+      dispatch( getAllRecommendedFood());
     }
   }, [dispatch, isInitial]);
 

@@ -7,6 +7,8 @@ import { RestrictedRoute } from "./RestrictedRoute";
 import { RefreshLoading } from "../components/CustomLoaders/CustomLoaders";
 import { Toaster } from "./ToastContainer/ToastContainer";
 import { refreshCurrentUser } from "../redux/Auth/auth-operations";
+import {getUserDailyCurrentData} from "../redux/Data/data-operations";
+import {getAllRecommendedFood} from "../redux/Data/data-operations";
 import { useAuth } from "../hooks/useAuth";
 
 
@@ -29,6 +31,8 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(refreshCurrentUser());
+    dispatch(getUserDailyCurrentData());
+    dispatch(getAllRecommendedFood());
   }, [dispatch]);
 
 
