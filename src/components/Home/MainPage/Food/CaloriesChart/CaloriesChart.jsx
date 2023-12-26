@@ -6,6 +6,7 @@ import { useData } from 'hooks/useUserData';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const CaloriesChart = () => {
+
   const {dailyCaloriesLimit, dailyTotalCalories} = useData();
 
 
