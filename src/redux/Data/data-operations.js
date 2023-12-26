@@ -168,3 +168,18 @@ export const getUserDailyCurrentData = createAsyncThunk(
     } 
   }
 );
+
+
+export const deleteFoodId = createAsyncThunk(
+  'api/user/food-intake-id',
+  async (id, thunkApi) => {
+    try {
+      const response = await axios.delete(`api/user/food-intake/${id}` );
+      toast.success('Food intake has been successfully deleted');
+      return response.data;
+    } catch (error) {
+      toast.error('Oops. Something went wrong. Please try again.');
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
