@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import breakfast from "../../../images/svgIcon/breakfast-icon.svg";
 import trash from "../../../images/svgIcon/trash-modal.svg";
 import add from "../../../images/svgIcon/add-modal.svg";
+
 
 export const ModalContainer = styled.div`
   display: flex;
@@ -43,7 +43,6 @@ export const ModalContainer = styled.div`
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    /* background-image: url(${breakfast}); */
   }
 
   .Title {
@@ -72,7 +71,6 @@ export const ModalContainer = styled.div`
   }
 
   .FormAddFood {
-    /* margin-top: 16px; */
     grid-gap: 8px;
     row-gap: 16px;
     display: flex;
@@ -143,7 +141,8 @@ export const ModalContainer = styled.div`
     width: 20px;
     height: 20px;
     cursor: pointer;
-    background-image: url(${trash});
+    background-image: url(${trash});  
+    transition: filter 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
       filter: invert(50%);
@@ -156,7 +155,6 @@ export const ModalContainer = styled.div`
   .ButtonAdd {
     width: 144px;
     margin-bottom: 15px;
-    /* margin-top: 24px; */
     display: flex;
     gap: 6px;
     color: ${(props) => props.theme.color.primary_green_lite};
@@ -166,7 +164,8 @@ export const ModalContainer = styled.div`
     font-weight: 500;
     line-height: 20px;
     cursor: pointer;
-    align-items: center;
+    align-items: center;  
+    transition: filter 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     @media only screen and (min-width: 834px) {
       height: 20px;
@@ -188,7 +187,6 @@ export const ModalContainer = styled.div`
   }
 
   .ButtonContainer {
-    /* margin-top: 60px; */
     margin-top: auto;
     display: grid;
     justify-content: center;
@@ -212,6 +210,7 @@ export const ModalContainer = styled.div`
     line-height: 20px;
     cursor: pointer;
     border: none;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:active,
     &:hover {
@@ -226,7 +225,6 @@ export const ModalContainer = styled.div`
 
   .ButtonCancel {
     margin-top: 16px;
-
     color: ${(props) => props.theme.color.primary_grey};
     border: none;
     background-color: transparent;
@@ -236,6 +234,7 @@ export const ModalContainer = styled.div`
     cursor: pointer;
     text-align: center;
     display: inline;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     @media only screen and (min-width: 834px) {
       margin-top: 0px;
