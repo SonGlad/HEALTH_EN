@@ -14,7 +14,8 @@ import {
     getStatistics,
     updateFoodId,
     getUserDailyCurrentData,
-    deleteFoodId 
+    deleteFoodId, 
+    deleteFoodType
 } from "./data-operations";
 
 
@@ -474,7 +475,52 @@ const dataSlice = createSlice({
             state.isLoading = false;
             state.error = payload;
         })
-
+        
+         // DELETE BY ID////////
+        .addCase(deleteFoodType.pending, state =>{
+            state.isLoading = true;
+            state.error = null;
+        })
+        .addCase(deleteFoodType.fulfilled, (state, { payload }) => {
+            state.dailyTotalCalories = payload.data.totalCalories;
+            state.dailyTotalFat = payload.data.totalFat;
+            state.dailyTotalCarbonohidretes = payload.data.totalCarbonohidretes;
+            state.dailyTotalProtein = payload.data.totalProtein;
+            state.breakfast = {
+                breakfastMeals: payload.data.breakfast.meals,
+                breakfastTotalCalories: payload.data.breakfast.totalCalories,
+                breakfastTotalFat: payload.data.breakfast.totalFat,
+                breakfastTotalCarbonohidretes: payload.data.breakfast.totalCarbonohidretes,
+                breakfastTotalProtein: payload.data.breakfast.totalProtein,
+            };
+            state.lunch = {
+                lunchMeals: payload.data.lunch.meals,
+                lunchTotalCalories: payload.data.lunch.totalCalories,
+                lunchTotalFat: payload.data.lunch.totalFat,
+                lunchTotalCarbonohidretes: payload.data.lunch.totalCarbonohidretes,
+                lunchTotalProtein: payload.data.lunch.totalProtein,
+            };
+            state.dinner = {
+                dinnerMeals: payload.data.dinner.meals,
+                dinnerTotalCalories: payload.data.dinner.totalCalories,
+                dinnerTotalFat: payload.data.dinner.totalFat,
+                dinnerTotalCarbonohidretes: payload.data.dinner.totalCarbonohidretes,
+                dinnerTotalProtein: payload.data.dinner.totalProtein,
+            };
+            state.snack = {
+                snackMeals: payload.data.snack.meals,
+                snackTotalCalories: payload.data.snack.totalCalories,
+                snackTotalFat: payload.data.snack.totalFat,
+                snackTotalCarbonohidretes: payload.data.snack.totalCarbonohidretes,
+                snackTotalProtein: payload.data.snack.totalProtein,
+            };
+            state.isLoading = false;
+            state.error = null;
+        })
+        .addCase(deleteFoodType.rejected, (state, {payload}) => {
+            state.isLoading = false;
+            state.error = payload;
+        })
     }
 });
 
