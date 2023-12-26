@@ -22,82 +22,81 @@ import MaintakeIconMen from '../../../../images/icons-emoji/Maintake image men.p
 import edit from '../../../../images/images/headreImg/edit-2.svg';
 import arrowDown from '../../../../images/images/headreImg/arrow-down.svg';
 import { useAuth } from '../../../../hooks/useAuth';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 
-
+import { useModal } from '../../../../hooks/useModal';
+import { openModalGoal } from '../../../../redux/Modal/modal-slice';
+import { closeModalGoal } from '../../../../redux/Modal/modal-slice';
+import { openModalWeight } from '../../../../redux/Modal/modal-slice';
+import { closeModalWeight } from '../../../../redux/Modal/modal-slice';
 
 export const ButtonsBlock = () => {
+  const dispatch = useDispatch();
+  const { isModalShowGoal } = useModal();
+  const { isModalShowWeight } = useModal();
+
   const { userGoal, userWeight, userGender } = useAuth();
 
   const targetDropdown = useRef(null);
   const infoBlockGoal = useRef(null);
   const weightDropdown = useRef(null);
 
-  const [toggleShowTargetSelection, setToggleShowTargetSelection] =
-    useState(false);
-  const [toggleShowWeightSelection, setToggleShowWeightSelection] =
-    useState(false);
-
-  const handleTargetCloseClick = event => {
-    event.stopPropagation();
-    setToggleShowTargetSelection(false);
-  };
-
+  // Обробник кліків на цільовому блоку
   const handleClickBlockGoal = () => {
-    setToggleShowTargetSelection(prevState => !prevState);
-    setToggleShowWeightSelection(false);
+    if (!isModalShowGoal) {
+      dispatch(openModalGoal());
+      dispatch(closeModalWeight());
+    } else {
+      dispatch(closeModalGoal());
+    }
   };
 
+  // Обробник кліків на блоку зміни ваги
   const handleClickChangeWeight = () => {
-    setToggleShowWeightSelection(prevState => !prevState);
-    setToggleShowTargetSelection(false);
+    if (!isModalShowWeight) {
+      dispatch(openModalWeight());
+      dispatch(closeModalGoal());
+    } else {
+      dispatch(closeModalWeight());
+    }
   };
 
-  const showTargetSelection = () =>
-    toggleShowTargetSelection ? 'show-target-selection' : '';
+  // Обробник кліків на кнопці закриття цільового блоку
+  const handleClickCloseGoal = () => {
+    dispatch(closeModalGoal());
+  };
+  const handleClickCloseWeight = () => {
+    dispatch(closeModalWeight());
+  };
 
+  // Визначення класу для цільового блоку
+  const showTargetSelection = () =>
+    isModalShowGoal ? 'show-target-selection' : '';
+
+  // Визначення класу для блоку ваги
   const showWeightSelection = () =>
-    toggleShowWeightSelection ? 'show-weight-selection' : '';
+    isModalShowWeight ? 'show-weight-selection' : '';
+
+  const handleKeyDown = useCallback(
+    event => {
+      if (event.key === 'Escape') {
+        dispatch(closeModalGoal());
+        dispatch(closeModalWeight());
+      }
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
-    const handleKeyDown = event => {
-      if (event.key === 'Escape') {
-        setToggleShowTargetSelection(false);
-        setToggleShowWeightSelection(false);
-      }
-    };
-
     document.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [handleKeyDown]);
 
-  useEffect(() => {
-    const handleClickOutside = event => {
-      if (
-        infoBlockGoal.current &&
-        !infoBlockGoal.current.contains(event.target) &&
-        !targetDropdown.current.contains(event.target) &&
-        !event.target.classList.contains('arrow-down') &&
-        !event.target.classList.contains('close-target-icon') &&
-        weightDropdown.current &&
-        !weightDropdown.current.contains(event.target) &&
-        !event.target.classList.contains('handle-change-weight')
-      ) {
-        setToggleShowTargetSelection(false);
-        setToggleShowWeightSelection(false);
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [infoBlockGoal, targetDropdown, weightDropdown]);
-
+  // Функція для перетворення слова, робить першу літеру великою
   function capitalizeWords(str) {
     if (!str) {
       return str;
@@ -105,10 +104,11 @@ export const ButtonsBlock = () => {
     return str.replace(/\b\w/g, match => match.toUpperCase());
   }
 
+  // Виклик функції capitalizeWords зі словом користувача
   const inputString = userGoal;
   const result = capitalizeWords(inputString);
 
-
+  // Визначення шляху до іконки цілі на основі цілі та статі користувача
   const getGoalImage = (userGoal, userGender) => {
     if (userGoal === 'gain muscle') {
       return muscleIcon;
@@ -129,9 +129,13 @@ export const ButtonsBlock = () => {
     <InfoOptions>
       <InfoBlockTarget onClick={handleClickBlockGoal} ref={infoBlockGoal}>
         <IconContainer>
-          <img src={getGoalImage(userGoal, userGender)} alt="goal icon" width={28} />
+          <img
+            src={getGoalImage(userGoal, userGender)}
+            alt="goal icon"
+            width={28}
+          />
         </IconContainer>
-        <TextContainer className='goal-text-cont'>
+        <TextContainer className="goal-text-cont">
           <InfoBlockName>Goal</InfoBlockName>
           <InfoBlockText>
             {result}
@@ -147,7 +151,7 @@ export const ButtonsBlock = () => {
         <button
           className="target-close-btn"
           type="button"
-          onClick={handleTargetCloseClick}
+          onClick={handleClickCloseGoal}
         >
           <CloseIcon className="close-target-icon" width={'16px'} />
         </button>
@@ -170,10 +174,14 @@ export const ButtonsBlock = () => {
         </TextContainer>
       </InfoBlockWeight>
       <div className={`weight-dropdown ${showWeightSelection()}`}>
-        <button className="weight-close-btn" type="button">
+        <button
+          className="weight-close-btn"
+          type="button"
+          onClick={handleClickCloseWeight}
+        >
           <CloseIcon className="close-weight-icon" width={'16px'} />
         </button>
-        <WeightDrop onClose={() => setToggleShowWeightSelection(false)} />
+        <WeightDrop />
       </div>
     </InfoOptions>
   );
