@@ -79,13 +79,33 @@ const dataSlice = createSlice({
     initialState,
 
     reducers:{
-        PokaNi4egoNePiwem: (state, action) => {
-            // state.userForm = {
-            //   ...state.userForm,
-            //   name: action.payload.name,
-            //   email: action.payload.email,
-            //   password: action.payload.password,
-            // };
+        deliverMealsBreakfast: (state, action) => {
+            const { breakfast } = action.payload;
+            state.breakfast = {
+              ...state.breakfast,
+              breakfastMeals: breakfast,
+            };
+        },
+        deliverMealsLunch: (state, action) => {
+            const { lunch } = action.payload;
+            state.lunch = {
+                ...state.lunch,
+                lunchMeals: lunch,
+             };
+        },
+        deliverMealsDinner: (state, action) => {
+            const { dinner } = action.payload;
+            state.dinner = {
+              ...state.dinner,
+              dinnerMeals: dinner,
+            };
+        },
+        deliverMealsSnack: (state, action) => {
+            const { snack } = action.payload;
+            state.snack = {
+              ...state.snack,
+              snackMeals: snack,
+            };
         },
     },
 
@@ -367,6 +387,9 @@ export const dataReducer = dataSlice.reducer;
 
 
 export const { 
-    PokaNi4egoNePiwem,
+    deliverMealsBreakfast,
+    deliverMealsLunch,
+    deliverMealsDinner,
+    deliverMealsSnack,
 
 } = dataSlice.actions;

@@ -1,7 +1,7 @@
 import { ReactComponent as ClearIcon } from '../../../../../images/icons-linear/trash.svg';
 import { ClearButton, ItemWrapper } from './DairyItem.styled';
 
-export const DairyItem = () => {
+export const DairyItemBreakfast = () => {
   return (
     <ItemWrapper>
       <ul>
