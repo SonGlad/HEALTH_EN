@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
   margin-bottom: 20px;
@@ -56,7 +56,7 @@ export const DairyList = styled.div`
 `;
 
 export const DairyLink = styled(NavLink)`
-  color: ${(props) => props.theme.color.primary_grey};
+  color: ${props => props.theme.color.primary_grey};
   font-size: 14px;
   line-height: 1.4;
   font-weight: 500;
@@ -68,11 +68,11 @@ export const DairyLink = styled(NavLink)`
   }
 
   &:hover {
-    color: ${(props) => props.theme.color.primary_green_lite};
+    color: ${props => props.theme.color.primary_green_lite};
   }
 
   &:focus {
-    color: ${(props) => props.theme.color.primary_green_lite};
+    color: ${props => props.theme.color.primary_green_lite};
   }
 `;
 
@@ -84,13 +84,12 @@ export const ListTitle = styled.div`
 `;
 
 export const AddButton = styled.button`
-  padding: 0;
   display: flex;
   align-items: center;
   gap: 8px;
   border: none;
   background-color: transparent;
-  color: ${(props) => props.theme.color.primary_white};
+  color: ${props => props.theme.color.primary_white};
   font-size: 14px;
   font-weight: 500;
   line-height: 1.4;
@@ -99,21 +98,21 @@ export const AddButton = styled.button`
   svg {
     width: 16px;
     height: 16px;
-    stroke: ${(props) => props.theme.color.primary_white};
+    stroke: ${props => props.theme.color.primary_white};
     transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover {
-    color: ${(props) => props.theme.color.primary_green_lite};
+    color: ${props => props.theme.color.primary_green_lite};
     & svg {
-      stroke: ${(props) => props.theme.color.primary_green_lite};
+      stroke: ${props => props.theme.color.primary_green_lite};
     }
   }
 
   &:focus {
-    color: ${(props) => props.theme.color.primary_green_lite};
+    color: ${props => props.theme.color.primary_green_lite};
     & svg {
-      stroke: ${(props) => props.theme.color.primary_green_lite};
+      stroke: ${props => props.theme.color.primary_green_lite};
     }
   }
 `;
