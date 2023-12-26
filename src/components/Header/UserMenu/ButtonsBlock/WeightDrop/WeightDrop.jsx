@@ -72,7 +72,7 @@ export const WeightDrop = () => {
               <WeightFormInput
                 className={getInputClass("weight")}
                 placeholder="Enter your weight"
-                id="WeightDrop"
+                // id="WeightDrop"
                 name="weight"
                 type="text"
                 onChange={handleChange}
