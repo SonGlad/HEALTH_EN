@@ -6,6 +6,9 @@ const modalSlice = createSlice({
     isModalOpenRecord: false,
     isModalOpenWater: false,
     mealTypeBreakfast: null,
+    isModalCloseUserMenu: false,
+    isModalShowGoal: false,
+    isModalShowWeight: false,
   },
   reducers: {
     openModalRecord: (state) => {
@@ -23,6 +26,24 @@ const modalSlice = createSlice({
     showMealType: (state, action) => {
       state.mealTypeBreakfast = action.payload;
     },
+    openModalUserMenu: state => {
+      state.isModalCloseUserMenu = true;
+    },
+    closeModalUserMenu: state => {
+      state.isModalCloseUserMenu = false;
+    },
+    openModalGoal: state => {
+      state.isModalShowGoal = true;
+    },
+    closeModalGoal: state => {
+      state.isModalShowGoal = false;
+    },
+    openModalWeight: state => {
+      state.isModalShowWeight = true;
+    },
+    closeModalWeight: state => {
+      state.isModalShowWeight = false;
+    },
   },
 });
 
@@ -34,4 +55,10 @@ export const {
   openModalWater,
   closeModalWater,
   showMealType,
+  openModalUserMenu,
+  closeModalUserMenu,
+  openModalGoal,
+  closeModalGoal,
+  openModalWeight,
+  closeModalWeight,
 } = modalSlice.actions;

@@ -4,12 +4,12 @@ import looseFatIconGirl from '../../../../../images/icons-emoji/Lose fat image g
 import looseFatIconMen from '../../../../../images/icons-emoji/Lose fat image men.png';
 import MaintakeIconGirl from '../../../../../images/icons-emoji/Maintake image girl.png';
 import MaintakeIconMen from '../../../../../images/icons-emoji/Maintake image men.png';
-import { useFormik } from "formik";
-import { YourGoalSchema } from "../../../../../utils/validationSchemas";
-import { useDispatch } from "react-redux";
-import { useAuth } from "hooks/useAuth";
+import { useFormik } from 'formik';
+import { YourGoalSchema } from '../../../../../utils/validationSchemas';
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks/useAuth';
 import { updateGoal } from '../../../../../redux/Data/data-operations';
-
+import { closeModalGoal } from '../../../../../redux/Modal/modal-slice';
 
 
 export const TargetDrop = () => {
@@ -18,17 +18,16 @@ export const TargetDrop = () => {
 
   const { values, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues: {
-      goal: userGoal || "",
+      goal: userGoal || '',
     },
 
     validationSchema: YourGoalSchema,
 
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: values => {
       dispatch(updateGoal(values));
+      dispatch(closeModalGoal());
     },
   });
-
 
 
   return (
@@ -44,68 +43,78 @@ export const TargetDrop = () => {
           <ul>
             <li>
               <div className="hover">
-                <label className='label'>
+                <label className="label">
                   <input
                     className="radio_input"
-                    // id="LoseFatDrop"
+                    // id="LoseFat"
                     name="goal"
                     type="radio"
                     onChange={handleChange}
                     value="lose fat"
                     onBlur={handleBlur}
-                    checked={values.goal === "lose fat"}
+                    checked={values.goal === 'lose fat'}
                   />
                   <div className="img_border">
-                    <img src={userGender === "male" ? looseFatIconMen : looseFatIconGirl} 
-                    alt="goal check lose fat" 
+                    <img
+                      src={
+                        userGender === 'male'
+                          ? looseFatIconMen
+                          : looseFatIconGirl
+                      }
+                      alt="goal check lose fat"
                     />
                   </div>
-                  <span className='label-text'>Lose Fat</span> 
+                  <span className="label-text">Lose Fat</span>
                 </label>
               </div>
             </li>
             <li>
               <div className="hover">
-                <label className='label'>
+                <label className="label">
                   <input
                     className="radio_input"
-                    // id="MaintainDrop"
+                    // id="Maintain"
                     name="goal"
                     type="radio"
                     onChange={handleChange}
                     value="maintain"
                     onBlur={handleBlur}
-                    checked={values.goal === "maintain"}
+                    checked={values.goal === 'maintain'}
                   />
                   <div className="img_border">
-                    <img src={userGender === "male" ? MaintakeIconMen : MaintakeIconGirl} 
-                    alt="goal check maintain" 
+                    <img
+                      src={
+                        userGender === 'male'
+                          ? MaintakeIconMen
+                          : MaintakeIconGirl
+                      }
+                      alt="goal check maintain"
                     />
                   </div>
-                  <span className='label-text'>Maintain</span>
+                  <span className="label-text">Maintain</span>
                 </label>
               </div>
             </li>
             <div className="hover">
-              <label className='label'>
+              <label className="label">
                 <input
                   className="radio_input"
-                  // id="GainMuscleDrop"
+                  // id="GainMuscle"
                   name="goal"
                   type="radio"
                   onChange={handleChange}
                   value="gain muscle"
                   onBlur={handleBlur}
-                  checked={values.goal === "gain muscle"}
+                  checked={values.goal === 'gain muscle'}
                 />
                 <div className="img_border">
                   <img src={muscleIcon} alt="goal check gain muscle" />
                 </div>
-                <span className='label-text'>Gain muscle</span> 
+                <span className="label-text">Gain muscle</span>
               </label>
             </div>
           </ul>
-        <ModalBtn type="submit">Confirm</ModalBtn>
+          <ModalBtn type="submit">Confirm</ModalBtn>
         </form>
       </div>
     </ModalWrapper>

@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { 
     initialDataUserInfo, 
     refreshCurrentUser, 
-    updateUserInfo
+    updateUserInfo,
+    logOut,
 } from "../Auth/auth-operations";
 import {
     addFood,
@@ -134,7 +135,7 @@ const dataSlice = createSlice({
         })
 
 
-        // REGRESH CURRENT USER DATA////////
+        // REFRESH CURRENT USER DATA////////
         .addCase(refreshCurrentUser.pending, state => {
             state.isLoading = true;
             state.error = null;
@@ -389,38 +390,40 @@ const dataSlice = createSlice({
         })
         .addCase(getUserDailyCurrentData.fulfilled, (state, { payload }) => {
             state.userCurrentWater = payload.data.water;
-            state.dailyTotalCalories = payload.data.food.totalCalories;
-            state.dailyTotalFat = payload.data.food.totalFat;
-            state.dailyTotalCarbonohidretes = payload.data.food.totalCarbohydrates;
-            state.dailyTotalProtein = payload.data.food.totalProtein;
-            state.breakfast = {
-                breakfastMeals: payload.data.food.breakfast.meals,
-                breakfastTotalCalories: payload.data.food.breakfast.totalCalories,
-                breakfastTotalFat: payload.data.food.breakfast.totalFat,
-                breakfastTotalCarbonohidretes: payload.data.food.breakfast.totalCarbohydrates,
-                breakfastTotalProtein: payload.data.food.breakfast.totalProtein,
-            };
-            state.lunch = {
-                lunchMeals: payload.data.food.lunch.meals,
-                lunchTotalCalories: payload.data.food.lunch.totalCalories,
-                lunchTotalFat: payload.data.food.lunch.totalFat,
-                lunchTotalCarbonohidretes: payload.data.food.lunch.totalCarbohydrates,
-                lunchTotalProtein: payload.data.food.lunch.totalProtein,
-            };
-            state.dinner = {
-                dinnerMeals: payload.data.food.dinner.meals,
-                dinnerTotalCalories: payload.data.food.dinner.totalCalories,
-                dinnerTotalFat: payload.data.food.dinner.totalFat,
-                dinnerTotalCarbonohidretes: payload.data.food.dinner.totalCarbohydrates,
-                dinnerTotalProtein: payload.data.food.dinner.totalProtein,
-            };
-            state.snack = {
-                snackMeals: payload.data.food.snack.meals,
-                snackTotalCalories: payload.data.food.snack.totalCalories,
-                snackTotalFat: payload.data.food.snack.totalFat,
-                snackTotalCarbonohidretes: payload.data.food.snack.totalCarbohydrates,
-                snackTotalProtein: payload.data.food.snack.totalProtein,
-            };
+            if (Object.keys(payload.data.food).length > 0) {
+                state.dailyTotalCalories = payload.data.food.totalCalories;
+                state.dailyTotalFat = payload.data.food.totalFat;
+                state.dailyTotalCarbonohidretes = payload.data.food.totalCarbohydrates;
+                state.dailyTotalProtein = payload.data.food.totalProtein;
+                state.breakfast = {
+                    breakfastMeals: payload.data.food.breakfast.meals,
+                    breakfastTotalCalories: payload.data.food.breakfast.totalCalories,
+                    breakfastTotalFat: payload.data.food.breakfast.totalFat,
+                    breakfastTotalCarbonohidretes: payload.data.food.breakfast.totalCarbohydrates,
+                    breakfastTotalProtein: payload.data.food.breakfast.totalProtein,
+                };
+                state.lunch = {
+                    lunchMeals: payload.data.food.lunch.meals,
+                    lunchTotalCalories: payload.data.food.lunch.totalCalories,
+                    lunchTotalFat: payload.data.food.lunch.totalFat,
+                    lunchTotalCarbonohidretes: payload.data.food.lunch.totalCarbohydrates,
+                    lunchTotalProtein: payload.data.food.lunch.totalProtein,
+                };
+                state.dinner = {
+                    dinnerMeals: payload.data.food.dinner.meals,
+                    dinnerTotalCalories: payload.data.food.dinner.totalCalories,
+                    dinnerTotalFat: payload.data.food.dinner.totalFat,
+                    dinnerTotalCarbonohidretes: payload.data.food.dinner.totalCarbohydrates,
+                    dinnerTotalProtein: payload.data.food.dinner.totalProtein,
+                };
+                state.snack = {
+                    snackMeals: payload.data.food.snack.meals,
+                    snackTotalCalories: payload.data.food.snack.totalCalories,
+                    snackTotalFat: payload.data.food.snack.totalFat,
+                    snackTotalCarbonohidretes: payload.data.food.snack.totalCarbohydrates,
+                    snackTotalProtein: payload.data.food.snack.totalProtein,
+                };
+            }
             state.isLoading = false;
             state.error = null;
         })
@@ -521,6 +524,54 @@ const dataSlice = createSlice({
         .addCase(deleteFoodType.rejected, (state, {payload}) => {
             state.isLoading = false;
             state.error = payload;
+        })
+
+
+        //LOG OUT USER////////
+        .addCase(logOut.pending, state =>{
+            state.isLoading = true;
+            state.error = null;
+        })
+        .addCase(logOut.fulfilled, (state, { payload }) => {
+            state.userCurrentWater = null;
+            state.dailyTotalCalories = null;
+            state.dailyTotalFat = null;
+            state.dailyTotalCarbonohidretes = null;
+            state.dailyTotalProtein = null;
+            state.breakfast = {
+                breakfastMeals: [],
+                breakfastTotalCalories: null,
+                breakfastTotalFat: null,
+                breakfastTotalCarbonohidretes: null,
+                breakfastTotalProtein: null,
+            };
+            state.lunch = {
+                lunchMeals: [],
+                lunchTotalCalories: null,
+                lunchTotalFat: null,
+                lunchTotalCarbonohidretes: null,
+                lunchTotalProtein: null,
+            };
+            state.dinner = {
+                dinnerMeals: [],
+                dinnerTotalCalories: null,
+                dinnerTotalFat: null,
+                dinnerTotalCarbonohidretes: null,
+                dinnerTotalProtein: null,
+            };
+            state.snack = {
+                snackMeals: [],
+                snackTotalCalories: null,
+                snackTotalFat: null,
+                snackTotalCarbonohidretes: null,
+                snackTotalProtein: null,
+            };
+            state.isLoading = false;
+            state.error = null;
+        })
+        .addCase(logOut.rejected, (state, {payload}) => {
+            state.isLoading = false;
+            state.error = null;
         })
     }
 });

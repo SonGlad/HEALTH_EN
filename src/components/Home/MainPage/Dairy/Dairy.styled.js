@@ -84,6 +84,8 @@ export const ListTitle = styled.div`
 `;
 
 export const AddButton = styled.button`
+  cursor: pointer;
+  padding: 0;
   display: flex;
   align-items: center;
   gap: 8px;

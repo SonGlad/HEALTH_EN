@@ -4,6 +4,8 @@ import trash from "../../../images/svgIcon/trash-modal.svg";
 import add from "../../../images/svgIcon/add-modal.svg";
 
 export const ModalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 300px;
   height: 546px;
   padding-top: 16px;
@@ -56,13 +58,16 @@ export const ModalContainer = styled.div`
   }
 
   .FormContainer {
-    height: 252px;
+    height: 270px;
     overflow-y: scroll;
-    row-gap: 16px;
+    row-gap: 40px;
     display: grid;
     margin-top: 16px;
+
     @media only screen and (min-width: 834px) {
-      height: 150px;
+      height: 190px;
+      display: flex;
+      flex-direction: column;
     }
   }
 
@@ -150,10 +155,10 @@ export const ModalContainer = styled.div`
 
   .ButtonAdd {
     width: 144px;
-    margin-top: 24px;
+    margin-bottom: 15px;
+    /* margin-top: 24px; */
     display: flex;
     gap: 6px;
-
     color: ${(props) => props.theme.color.primary_green_lite};
     border: none;
     background-color: transparent;
@@ -162,6 +167,11 @@ export const ModalContainer = styled.div`
     line-height: 20px;
     cursor: pointer;
     align-items: center;
+
+    @media only screen and (min-width: 834px) {
+      height: 20px;
+      margin-bottom: 18px;
+    }
 
     &:hover {
       filter: invert(50%);
@@ -178,14 +188,15 @@ export const ModalContainer = styled.div`
   }
 
   .ButtonContainer {
-    margin-top: 60px;
+    /* margin-top: 60px; */
+    margin-top: auto;
     display: grid;
     justify-content: center;
 
     @media only screen and (min-width: 834px) {
       display: flex;
       justify-content: end;
-      align-items: baseline;
+      align-items: center;
       margin-bottom: 0px;
     }
   }
@@ -226,6 +237,10 @@ export const ModalContainer = styled.div`
     text-align: center;
     display: inline;
 
+    @media only screen and (min-width: 834px) {
+      margin-top: 0px;
+    }
+
     &:hover {
       background-color: transparent;
       color: ${(props) => props.theme.color.primary_green_lite};
@@ -244,5 +259,13 @@ export const ModalContainer = styled.div`
       width: 212px;
       order: 1;
     }
+  }
+
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #fff;
   }
 `;

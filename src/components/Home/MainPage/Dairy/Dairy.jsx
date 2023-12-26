@@ -1,11 +1,9 @@
 import { Section } from "components/Section/Section";
-
 import { ReactComponent as AddIcon } from "../../../../images/svgIcon/add-icon.svg";
 import { ReactComponent as BreakfastImg } from "../../../../images/icons-illustration/breakfast-image.svg";
 import { ReactComponent as LunchImg } from "../../../../images/icons-illustration/lunch-image.svg";
 import { ReactComponent as DinnerImg } from "../../../../images/icons-illustration/dinner-image.svg";
 import { ReactComponent as SnacksImg } from "../../../../images/icons-illustration/snack-image.svg";
-
 import {
   AddButton,
   Container,
