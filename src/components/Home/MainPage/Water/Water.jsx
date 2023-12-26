@@ -19,15 +19,17 @@ import { useModal } from '../../../../hooks/useModal';
 import { useData } from '../../../../hooks/useUserData';
 import { deleteWaterIntake } from '../../../../redux/Data/data-operations';
 
+
 export const Water = () => {
   const dispatch = useDispatch();
   const { userDailyWaterLimit, currentWater } = useData();
 
-  const { isModalOpenWater } = useModal();
 
+  const { isModalOpenWater } = useModal();
   const handleOpenModalWater = () => {
     dispatch(openModalWater());
   };
+
 
   const handleWaterDelete = () => {
     dispatch(deleteWaterIntake());
@@ -47,6 +49,7 @@ export const Water = () => {
   }, [currentWater, calculatePercent]);
 
   const leftWater = Math.max(0, waterGoal - currentWater);
+
 
   return (
     <Section>
@@ -71,22 +74,22 @@ export const Water = () => {
             }}
           />
         </ChartWrapper>
-        <div className="water-cons-cont">
+        <div className='water-cons-cont'>
           <ClearButton onClick={handleWaterDelete}>
             <ClearIcon alt="Clear icon" />
           </ClearButton>
           <h3>Water consumption</h3>
           <InfoWrapper>
-            {currentWater ? (
-              <TotalInfo>
-                {currentWater}
-                <span>ml</span>
-              </TotalInfo>
-            ) : (
-              <TotalInfo>
-                0<span>ml</span>
-              </TotalInfo>
-            )}
+              {currentWater ? (
+                <TotalInfo>
+                  {currentWater}
+                  <span>ml</span>
+                </TotalInfo>
+              ) : (
+                <TotalInfo>
+                  0<span>ml</span>
+                </TotalInfo>
+              )}
             <LeftInfo>
               left:<p>{leftWater}</p>
               <span>ml</span>
