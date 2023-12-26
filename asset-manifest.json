@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/HEALTH_EN/static/css/main.1a24fdc4.css",
-    "main.js": "/HEALTH_EN/static/js/main.a037a956.js",
-    "static/js/842.316b21d6.chunk.js": "/HEALTH_EN/static/js/842.316b21d6.chunk.js",
+    "main.js": "/HEALTH_EN/static/js/main.a9b1950c.js",
+    "static/js/925.4086d24f.chunk.js": "/HEALTH_EN/static/js/925.4086d24f.chunk.js",
     "static/js/788.7d020db1.chunk.js": "/HEALTH_EN/static/js/788.7d020db1.chunk.js",
     "static/js/859.f0eadf4c.chunk.js": "/HEALTH_EN/static/js/859.f0eadf4c.chunk.js",
     "static/js/152.54d4679e.chunk.js": "/HEALTH_EN/static/js/152.54d4679e.chunk.js",
@@ -14,7 +14,6 @@
     "static/js/693.b18f418a.chunk.js": "/HEALTH_EN/static/js/693.b18f418a.chunk.js",
     "static/js/353.d53b4725.chunk.js": "/HEALTH_EN/static/js/353.d53b4725.chunk.js",
     "static/js/936.0bbe725f.chunk.js": "/HEALTH_EN/static/js/936.0bbe725f.chunk.js",
-    "static/media/breakfast-icon.svg": "/HEALTH_EN/static/media/breakfast-icon.6cac0cdad80b0873f961909e9c66c36b.svg",
     "static/media/breakfast-image.svg": "/HEALTH_EN/static/media/breakfast-image.757cefa61c13942dffbdf20f2c19304b.svg",
     "static/media/snack-img.svg": "/HEALTH_EN/static/media/snack-img.117201468075748fa03c2f8dd9859dfb.svg",
     "static/media/snack-image.svg": "/HEALTH_EN/static/media/snack-image.a52f73890dfdeaafbe54a211e6abbca9.svg",
@@ -61,8 +60,8 @@
     "static/media/add-modal.svg": "/HEALTH_EN/static/media/add-modal.9569066a7c71bf08ffe95131a13966e2.svg",
     "static/media/ellipse.svg": "/HEALTH_EN/static/media/ellipse.0c3b26195344141055a912afab60b9a7.svg",
     "main.1a24fdc4.css.map": "/HEALTH_EN/static/css/main.1a24fdc4.css.map",
-    "main.a037a956.js.map": "/HEALTH_EN/static/js/main.a037a956.js.map",
-    "842.316b21d6.chunk.js.map": "/HEALTH_EN/static/js/842.316b21d6.chunk.js.map",
+    "main.a9b1950c.js.map": "/HEALTH_EN/static/js/main.a9b1950c.js.map",
+    "925.4086d24f.chunk.js.map": "/HEALTH_EN/static/js/925.4086d24f.chunk.js.map",
     "788.7d020db1.chunk.js.map": "/HEALTH_EN/static/js/788.7d020db1.chunk.js.map",
     "859.f0eadf4c.chunk.js.map": "/HEALTH_EN/static/js/859.f0eadf4c.chunk.js.map",
     "152.54d4679e.chunk.js.map": "/HEALTH_EN/static/js/152.54d4679e.chunk.js.map",
@@ -77,6 +76,6 @@
   },
   "entrypoints": [
     "static/css/main.1a24fdc4.css",
-    "static/js/main.a037a956.js"
+    "static/js/main.a9b1950c.js"
   ]
 }
