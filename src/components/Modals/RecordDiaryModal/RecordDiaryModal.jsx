@@ -7,30 +7,11 @@ import { ReactComponent as BreakfastImg } from "../../../images/icons-illustrati
 import { ReactComponent as LunchImg } from "../../../images/icons-illustration/lunch-image.svg";
 import { ReactComponent as DinnerImg } from "../../../images/icons-illustration/dinner-image.svg";
 import { ReactComponent as SnacksImg } from "../../../images/icons-illustration/snack-image.svg";
-import { useDispatch } from "react-redux";
-import {
-  deliverMealsBreakfast,
-  deliverMealsLunch,
-  deliverMealsDinner,
-  deliverMealsSnack,
-} from "../../../redux/Data/data-slice";
-import { useData } from "hooks/useUserData";
 
 export const RecordDiaryModal = ({ handleClickClose }) => {
-  const dispatch = useDispatch();
   const [forms, setForms] = useState(["o_PCLpz7Og2qwYnO9QBir"]);
   const { mealType } = useModal();
-  const { breakfastMeals, lunchMeals, dinnerMeals, snackMeals } = useData();
-  console.log(
-    "breakfastMeals",
-    breakfastMeals,
-    "lunchMeals",
-    lunchMeals,
-    "dinnerMeals",
-    dinnerMeals,
-    "snackMeals",
-    snackMeals
-  );
+  // const [items] = useState({});
 
   const handleAddForm = () => {
     const id = nanoid();
@@ -76,29 +57,9 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
       });
       return formDataForForm;
     });
-
-    const breakfast = { breakfast: { meals } };
-    const lunch = { lunch: { meals } };
-    const dinner = { dinner: { meals } };
-    const snack = { snack: { meals } };
-
-    if (mealType === "breakfast") {
-      dispatch(deliverMealsBreakfast(breakfast));
-      resetForm();
-      handleClickClose();
-    } else if (mealType === "lunch") {
-      dispatch(deliverMealsLunch(lunch));
-      resetForm();
-      handleClickClose();
-    } else if (mealType === "dinner") {
-      dispatch(deliverMealsDinner(dinner));
-      resetForm();
-      handleClickClose();
-    } else if (mealType === "snack") {
-      dispatch(deliverMealsSnack(snack));
-      resetForm();
-      handleClickClose();
-    }
+    console.log("meals:", meals);
+    resetForm();
+    handleClickClose();
   };
 
   function capitalizeWords(str) {
