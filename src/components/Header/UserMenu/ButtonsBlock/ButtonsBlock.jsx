@@ -22,7 +22,7 @@ import MaintakeIconMen from '../../../../images/icons-emoji/Maintake image men.p
 import edit from '../../../../images/images/headreImg/edit-2.svg';
 import arrowDown from '../../../../images/images/headreImg/arrow-down.svg';
 import { useAuth } from '../../../../hooks/useAuth';
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { useModal } from '../../../../hooks/useModal';
@@ -37,10 +37,6 @@ export const ButtonsBlock = () => {
   const { isModalShowWeight } = useModal();
 
   const { userGoal, userWeight, userGender } = useAuth();
-
-  const targetDropdown = useRef(null);
-  const infoBlockGoal = useRef(null);
-  const weightDropdown = useRef(null);
 
   // Обробник кліків на цільовому блоку
   const handleClickBlockGoal = () => {
@@ -127,7 +123,7 @@ export const ButtonsBlock = () => {
 
   return (
     <InfoOptions>
-      <InfoBlockTarget onClick={handleClickBlockGoal} ref={infoBlockGoal}>
+      <InfoBlockTarget onClick={handleClickBlockGoal}>
         <IconContainer>
           <img
             src={getGoalImage(userGoal, userGender)}
@@ -143,10 +139,7 @@ export const ButtonsBlock = () => {
           </InfoBlockText>
         </TextContainer>
       </InfoBlockTarget>
-      <div
-        ref={targetDropdown}
-        className={`target-dropdown ${showTargetSelection()}`}
-      >
+      <div className={`target-dropdown ${showTargetSelection()}`}>
         <TargetDrop />
         <button
           className="target-close-btn"
@@ -159,7 +152,6 @@ export const ButtonsBlock = () => {
       <InfoBlockWeight
         className="handle-change-weight"
         onClick={handleClickChangeWeight}
-        ref={weightDropdown}
       >
         <IconContainer>
           <img src={weightIcon} alt="weight" width={28} />

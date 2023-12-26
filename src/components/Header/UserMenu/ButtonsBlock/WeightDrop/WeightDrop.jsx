@@ -15,6 +15,7 @@ import { useDispatch } from 'react-redux';
 import { ShowRules } from '../../../../../utils/showRules';
 import { WeightParametrsSchema } from '../../../../../utils/validationSchemas';
 import { updateWeight } from '../../../../../redux/Data/data-operations';
+import { closeModalWeight } from '../../../../../redux/Modal/modal-slice';
 
 export const WeightDrop = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ export const WeightDrop = () => {
 
     onSubmit: values => {
       dispatch(updateWeight(values));
+      dispatch(closeModalWeight());
     },
   });
 
@@ -48,10 +50,6 @@ export const WeightDrop = () => {
     return `${day}.${month}.${year}`;
   }
   const formattedDate = getCurrentDateFormatted();
-
-  // const handleClickInsideModal = event => {
-  //   event.stopPropagation();
-  // };
 
   return (
     <ModalWrapper>
