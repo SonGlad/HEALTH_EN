@@ -1,5 +1,23 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import { NavLink } from 'react-router-dom';
+
+export const SlideDownAnimation = keyframes`
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+`;
+
+export const SlideUpAnimation = keyframes`
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+`;
 
 export const Container = styled.div`
   margin-bottom: 20px;
@@ -116,5 +134,11 @@ export const AddButton = styled.button`
     & svg {
       stroke: ${props => props.theme.color.primary_green_lite};
     }
+  }
+  &.slideUp {
+    animation: ${SlideUpAnimation} 0.5s ease-in-out forwards;
+  }
+  &.slideDown {
+    animation: ${SlideDownAnimation} 0.5s ease-in-out forwards;
   }
 `;

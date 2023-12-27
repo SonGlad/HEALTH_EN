@@ -1,5 +1,26 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
+export const slideUp = keyframes`
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
+
+export const slideDown = keyframes`
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+`; 
 export const ItemWrapper = styled.div`
   ul {
     display: flex;
@@ -26,6 +47,12 @@ export const ItemWrapper = styled.div`
     color: ${props => props.theme.color.primary_grey};
     font-weight: 500;
     width: 36px;
+  }
+   &.visible {
+    animation: ${slideUp} 0.5s forwards;
+  }
+  &.hidden {
+    animation: ${slideDown} 0.5s forwards;
   }
 `;
 
