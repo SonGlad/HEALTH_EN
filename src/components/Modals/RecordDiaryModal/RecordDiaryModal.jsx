@@ -8,18 +8,14 @@ import { ReactComponent as LunchImg } from "../../../images/icons-illustration/l
 import { ReactComponent as DinnerImg } from "../../../images/icons-illustration/dinner-image.svg";
 import { ReactComponent as SnacksImg } from "../../../images/icons-illustration/snack-image.svg";
 import { useDispatch } from "react-redux";
-// import {
-//   deliverMealsBreakfast,
-//   deliverMealsLunch,
-//   deliverMealsDinner,
-//   deliverMealsSnack,
-// } from "../../../redux/Data/data-slice";
 import { addFood } from "../../../redux/Data/data-operations";
+
 
 export const RecordDiaryModal = ({ handleClickClose }) => {
   const dispatch = useDispatch();
   const [forms, setForms] = useState([nanoid()]);
   const { mealType } = useModal();
+
 
   const handleAddForm = () => {
     const id = nanoid();
@@ -28,6 +24,7 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
   const handleRemoveForm = (id) => {
     setForms((prevForms) => prevForms.filter((formId) => formId !== id));
   };
+
 
   const {
     values,
@@ -61,6 +58,7 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
     },
   });
 
+
   const handleConfirm = () => {
     const meals = forms.map((formId) => {
       const formDataForForm = { mealId: formId };
@@ -72,10 +70,12 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
       return formDataForForm;
     });
 
+
     const breakfast = { breakfast: { meals } };
     const lunch = { lunch: { meals } };
     const dinner = { dinner: { meals } };
     const snack = { snack: { meals } };
+
 
     if (mealType === "breakfast") {
       dispatch(addFood(breakfast));
@@ -95,6 +95,7 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
       handleClickClose();
     }
   };
+
 
   function capitalizeWords(str) {
     if (!str) {
@@ -117,6 +118,7 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
     }
   };
 
+  
   return (
     <ModalContainer>
       <h2 className="H2">Record your meal</h2>

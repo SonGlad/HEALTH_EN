@@ -8,9 +8,10 @@ import {
   TotalNutrients,
 } from './FoodInfo.styled';
 import { ReactComponent as BreakfastImg } from '../../images/icons-illustration/breakfast-image.svg';
-
 import { BreakfastDishes } from './Dishes/BreakfastDishes';
 import { useData } from 'hooks/useUserData';
+
+
 
 export const Breakfast = () => {
   const {
@@ -18,6 +19,7 @@ export const Breakfast = () => {
     breakfastTotalCarbonohidretes,
     breakfasthTotalProtein,
   } = useData();
+
 
   return (
     <>

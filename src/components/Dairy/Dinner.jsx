@@ -7,15 +7,15 @@ import {
   Title,
   TotalNutrients,
 } from './FoodInfo.styled';
-
 import { ReactComponent as DinnerImg } from '../../images/icons-illustration/dinner-image.svg';
-
 import { useData } from 'hooks/useUserData';
 import { DinnerDishes } from './Dishes/DinnerDishes';
 
+
+
 export const Dinner = () => {
-  const { dinnerTotalCarbonohidretes, dinnerTotalFat, dinnerTotalProtein } =
-    useData();
+  const { dinnerTotalCarbonohidretes, dinnerTotalFat, dinnerTotalProtein } = useData();
+
 
   return (
     <>

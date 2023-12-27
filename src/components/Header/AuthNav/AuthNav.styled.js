@@ -25,7 +25,7 @@ export const AuthNavStyles = styled.div`
   }
 
   .link.active {
-    color: ${p => p.theme.color.primary_white_green_lite};
+    color: ${p => p.theme.color.primary_green_lite};
   }
 
   .header-span{

@@ -4,8 +4,6 @@ import { nanoid } from "nanoid";
 import { AddButton, EditButton, ListWrapper } from "./Dishes.styled";
 import { ReactComponent as EditIcon } from "../../../images/icons-linear/edit.svg";
 import { ReactComponent as AddIcon } from "../../../images/icons-linear/add.svg";
-import { Modal } from "components/Modals/Modals";
-import { useModal } from "hooks/useModal";
 import { useDispatch } from "react-redux";
 import {
   openModalRecord,
@@ -13,10 +11,11 @@ import {
   showMealType,
 } from "../../../redux/Modal/modal-slice";
 
+
 export const DinnerDishes = () => {
   const dispatch = useDispatch();
   const { dinnerMeals } = useData();
-  const { isModalOpenUpdateRecord, isModalOpenRecord } = useModal();
+
 
   const generateListItems = () => {
     const listItems = [];
@@ -29,15 +28,18 @@ export const DinnerDishes = () => {
     return listItems;
   };
 
+
   const handleOpenUpdateRecord = (id) => {
     dispatch(openUpdateRecord());
     dispatch(showMealType(id));
   };
 
+
   const handleOpenModalRecord = (id) => {
     dispatch(openModalRecord());
     dispatch(showMealType(id));
   };
+
 
   return (
     <ListWrapper>
@@ -82,7 +84,6 @@ export const DinnerDishes = () => {
           Record your meal
         </AddButton>
       </ul>
-      {(isModalOpenUpdateRecord || isModalOpenRecord) && <Modal />}
     </ListWrapper>
   );
 };

@@ -5,18 +5,17 @@ import { AddButton, EditButton, ListWrapper } from "./Dishes.styled";
 import { ReactComponent as EditIcon } from "../../../images/icons-linear/edit.svg";
 import { ReactComponent as AddIcon } from "../../../images/icons-linear/add.svg";
 import { useDispatch } from "react-redux";
-import { useModal } from "hooks/useModal";
 import {
   openModalRecord,
   openUpdateRecord,
   showMealType,
 } from "../../../redux/Modal/modal-slice";
-import { Modal } from "components/Modals/Modals";
+
 
 export const SnackDishes = () => {
   const dispatch = useDispatch();
   const { snackMeals } = useData();
-  const { isModalOpenUpdateRecord, isModalOpenRecord } = useModal();
+
 
   const generateListItems = () => {
     const listItems = [];
@@ -29,15 +28,18 @@ export const SnackDishes = () => {
     return listItems;
   };
 
+
   const handleOpenUpdateRecord = (id) => {
     dispatch(openUpdateRecord());
     dispatch(showMealType(id));
   };
 
+
   const handleOpenModalRecord = (id) => {
     dispatch(openModalRecord());
     dispatch(showMealType(id));
   };
+  
 
   return (
     <ListWrapper>
@@ -82,7 +84,6 @@ export const SnackDishes = () => {
           Record your meal
         </AddButton>
       </ul>
-      {(isModalOpenUpdateRecord || isModalOpenRecord) && <Modal />}
     </ListWrapper>
   );
 };
