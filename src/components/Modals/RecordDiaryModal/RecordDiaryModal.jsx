@@ -14,14 +14,12 @@ import { useDispatch } from "react-redux";
 //   deliverMealsDinner,
 //   deliverMealsSnack,
 // } from "../../../redux/Data/data-slice";
-import {addFood} from "../../../redux/Data/data-operations";
-
+import { addFood } from "../../../redux/Data/data-operations";
 
 export const RecordDiaryModal = ({ handleClickClose }) => {
   const dispatch = useDispatch();
-  const [forms, setForms] = useState(["o_PCLpz7Og2qwYnO9QBir"]);
+  const [forms, setForms] = useState([nanoid()]);
   const { mealType } = useModal();
-
 
   const handleAddForm = () => {
     const id = nanoid();
@@ -31,8 +29,14 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
     setForms((prevForms) => prevForms.filter((formId) => formId !== id));
   };
 
-
-  const { values, isValid, handleBlur, handleChange, resetForm } = useFormik({
+  const {
+    values,
+    isValid,
+    touched,
+    handleBlur,
+    handleChange,
+    resetForm,
+  } = useFormik({
     initialValues: {},
     validate: (values) => {
       const errors = {};
@@ -56,7 +60,6 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
       return errors;
     },
   });
-
 
   const handleConfirm = () => {
     const meals = forms.map((formId) => {
@@ -134,7 +137,8 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
               placeholder="The name of the product or dish"
               required
             />
-            <input className="rec-diar-mod-inp"
+            <input
+              className="rec-diar-mod-inp"
               id="carbonoh"
               type="number"
               name={`carbohydrates${formId}`}
@@ -150,7 +154,8 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
               }}
               min="0"
             />
-            <input className="rec-diar-mod-inp"
+            <input
+              className="rec-diar-mod-inp"
               id="protein"
               type="number"
               name={`protein${formId}`}
@@ -166,7 +171,8 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
               }}
               min="0"
             />
-            <input className="rec-diar-mod-inp"
+            <input
+              className="rec-diar-mod-inp"
               id="fat"
               type="number"
               name={`fat${formId}`}
@@ -182,7 +188,8 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
               }}
               min="0"
             />
-            <input className="rec-diar-mod-inp"
+            <input
+              className="rec-diar-mod-inp"
               id="calories"
               type="number"
               name={`calories${formId}`}
@@ -215,7 +222,7 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
           className="ButtonConfirm"
           type="button"
           onClick={handleConfirm}
-          disabled={!isValid}
+          disabled={!isValid && !touched}
         >
           Confirm
         </button>

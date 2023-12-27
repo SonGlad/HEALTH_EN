@@ -4,116 +4,76 @@ import { ReactComponent as LunchImg } from "../../../images/icons-illustration/l
 import { ReactComponent as DinnerImg } from "../../../images/icons-illustration/dinner-image.svg";
 import { ReactComponent as SnacksImg } from "../../../images/icons-illustration/snack-image.svg";
 import { ReactComponent as CloseIcon } from "../../../images/icons-linear/close-circle.svg";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useModal } from "hooks/useModal";
 import { useFormik } from "formik";
 import { useData } from "hooks/useUserData";
+import {
+  updateFoodId,
+  deleteFoodId,
+} from "../../../redux/Data/data-operations";
+import { ModalFoodSchema } from "utils/validationSchemas";
 
 export const UpdateRecordModal = ({ handleClickClose }) => {
-  //   const dispatch = useDispatch();
-  const {
-    breakfastMeals,
-    // lunchMeals,
-    // dinnerMeals,
-    // snackMeals,
-
-    // breakfastTotalFat,
-    // breakfastTotalCarbonohidretes,
-    // breakfasthTotalProtein,
-    // breakfastTotalCalories,
-
-    // lunchTotalCalories,
-    // lunchTotalFat,
-    // lunchTotalCarbonohidretes,
-    // lunchTotalProtein,
-
-    // dinnerTotalCalories,
-    // dinnerTotalFat,
-    // dinnerTotalCarbonohidretes,
-    // dinnerTotalProtein,
-
-    // snackTotalCalories,
-    // snackTotalFat,
-    // snackTotalCarbonohidretes,
-    // snackTotalProtein,
-  } = useData();
-  console.log(breakfastMeals);
+  const dispatch = useDispatch();
+  const { breakfastMeals, lunchMeals, dinnerMeals, snackMeals } = useData();
 
   const { mealType } = useModal();
 
-  const getGoalBreakfast = (mealType) => {
-    if (mealType === "breakfast") {
-      const foundObject = breakfastMeals.find(
-        (item) => item.mealId === "o_PCLpz7Og2qwYnO9QBir"
+  const getGoalMeals = (mealType) => {
+    if (mealType.mealType === "breakfast") {
+      const foundBreakfast = breakfastMeals.find(
+        (item) => item.mealId === mealType.mealId
       );
-      return foundObject;
+      return foundBreakfast;
+    } else if (mealType.mealType === "lunch") {
+      const foundLunch = lunchMeals.find(
+        (item) => item.mealId === mealType.mealId
+      );
+      return foundLunch;
+    } else if (mealType.mealType === "dinner") {
+      const foundDinner = dinnerMeals.find(
+        (item) => item.mealId === mealType.mealId
+      );
+      return foundDinner;
+    } else if (mealType.mealType === "snack") {
+      const foundSnack = snackMeals.find(
+        (item) => item.mealId === mealType.mealId
+      );
+      return foundSnack;
     }
-    // else if (mealType === "lunch") {
-    //   return lunchTotalCarbonohidretes;
-    // } else if (mealType === "dinner") {
-    //   return dinnerTotalCarbonohidretes;
-    // } else if (mealType === "snack") {
-    //   return snackTotalCarbonohidretes;
-    // }
   };
 
-  //     const getGoalProtein = (mealType) => {
-  //       if (mealType === "breakfast") {
-  //         return breakfasthTotalProtein;
-  //       } else if (mealType === "lunch") {
-  //         return lunchTotalProtein;
-  //       } else if (mealType === "dinner") {
-  //         return dinnerTotalProtein;
-  //       } else if (mealType === "snack") {
-  //         return snackTotalProtein;
-  //       }
-  //     };
-
-  //     const getGoalFat = (mealType) => {
-  //       if (mealType === "breakfast") {
-  //         return breakfastTotalFat;
-  //       } else if (mealType === "lunch") {
-  //         return lunchTotalFat;
-  //       } else if (mealType === "dinner") {
-  //         return dinnerTotalFat;
-  //       } else if (mealType === "snack") {
-  //         return snackTotalFat;
-  //       }
-  //     };
-
-  //     const getGoalCalories = (mealType) => {
-  //       if (mealType === "breakfast") {
-  //         return breakfastTotalCalories;
-  //       } else if (mealType === "lunch") {
-  //         return lunchTotalCalories;
-  //       } else if (mealType === "dinner") {
-  //         return dinnerTotalCalories;
-  //       } else if (mealType === "snack") {
-  //         return snackTotalCalories;
-  //       }
-  //     };
-
   const {
+    isValid,
     values,
-    // isValid,
     handleBlur,
     handleChange,
     resetForm,
     handleSubmit,
   } = useFormik({
     initialValues: {
-      name: getGoalBreakfast(mealType).name || "",
-      carbohydrates: getGoalBreakfast(mealType).fat || "",
-      //   protein: getGoalProtein(mealType) || "",
-      //   fat: getGoalFat(mealType) || "",
-      //   calories: getGoalCalories(mealType) || "",
+      name: getGoalMeals(mealType).name || "",
+      carbohydrates: getGoalMeals(mealType).carbohydrates || "",
+      protein: getGoalMeals(mealType).protein || "",
+      fat: getGoalMeals(mealType).fat || "",
+      calories: getGoalMeals(mealType).calories || "",
     },
 
+    validationSchema: ModalFoodSchema,
+
     onSubmit(values) {
-      //   dispatch();
+      const meals = { id: mealType.mealId, data: values };
+      dispatch(updateFoodId(meals));
       handleClickClose();
     },
   });
+
+  const handleDeleteById = () => {
+    const id = mealType.mealId;
+    dispatch(deleteFoodId(id));
+    handleClickClose();
+  };
 
   function capitalizeWords(str) {
     if (!str) {
@@ -121,17 +81,17 @@ export const UpdateRecordModal = ({ handleClickClose }) => {
     }
     return str.replace(/\b\w/g, (match) => match.toUpperCase());
   }
-  const inputString = mealType;
+  const inputString = mealType.mealType;
   const result = capitalizeWords(inputString);
 
   const getGoalImage = (mealType) => {
-    if (mealType === "breakfast") {
+    if (mealType.mealType === "breakfast") {
       return <BreakfastImg className="Img" />;
-    } else if (mealType === "lunch") {
+    } else if (mealType.mealType === "lunch") {
       return <LunchImg className="Img" />;
-    } else if (mealType === "dinner") {
+    } else if (mealType.mealType === "dinner") {
       return <DinnerImg className="Img" />;
-    } else if (mealType === "snack") {
+    } else if (mealType.mealType === "snack") {
       return <SnacksImg className="Img" />;
     }
   };
@@ -244,14 +204,14 @@ export const UpdateRecordModal = ({ handleClickClose }) => {
           className="ButtonConfirm"
           type="button"
           onClick={handleSubmit}
-          //   disabled={!isValid}
+          disabled={!isValid}
         >
           Update
         </button>
         <button
           className="ButtonCancel"
           type="button"
-          onClick={handleClickClose}
+          onClick={handleDeleteById}
         >
           Delete
         </button>

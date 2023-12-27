@@ -1,12 +1,22 @@
-import React from 'react';
-import { useData } from 'hooks/useUserData';
-import { nanoid } from 'nanoid';
-import { AddButton, EditButton, ListWrapper } from './Dishes.styled';
-import { ReactComponent as EditIcon } from '../../../images/icons-linear/edit.svg';
-import { ReactComponent as AddIcon } from '../../../images/icons-linear/add.svg';
+import React from "react";
+import { useData } from "hooks/useUserData";
+import { nanoid } from "nanoid";
+import { AddButton, EditButton, ListWrapper } from "./Dishes.styled";
+import { ReactComponent as EditIcon } from "../../../images/icons-linear/edit.svg";
+import { ReactComponent as AddIcon } from "../../../images/icons-linear/add.svg";
+import { useDispatch } from "react-redux";
+import { useModal } from "hooks/useModal";
+import {
+  openModalRecord,
+  openUpdateRecord,
+  showMealType,
+} from "../../../redux/Modal/modal-slice";
+import { Modal } from "components/Modals/Modals";
 
 export const LunchDishes = () => {
+  const dispatch = useDispatch();
   const { lunchMeals } = useData();
+  const { isModalOpenUpdateRecord, isModalOpenRecord } = useModal();
 
   const generateListItems = () => {
     const listItems = [];
@@ -19,11 +29,21 @@ export const LunchDishes = () => {
     return listItems;
   };
 
+  const handleOpenUpdateRecord = (id) => {
+    dispatch(openUpdateRecord());
+    dispatch(showMealType(id));
+  };
+
+  const handleOpenModalRecord = (id) => {
+    dispatch(openModalRecord());
+    dispatch(showMealType(id));
+  };
+
   return (
     <ListWrapper>
       <ul className="number-list">{generateListItems()}</ul>
       <ul className="dish">
-        {lunchMeals.map(item => (
+        {lunchMeals.map((item) => (
           <li className="list-item" key={item.mealId}>
             <div className="wrapper">
               <p className="dish-title">{item.name}</p>
@@ -39,17 +59,30 @@ export const LunchDishes = () => {
                 <p className="value">{item.fat}</p>
               </div>
             </div>
-            <EditButton className="edit-button">
+            <EditButton
+              className="edit-button"
+              onClick={() =>
+                handleOpenUpdateRecord({
+                  mealType: "lunch",
+                  mealId: item.mealId,
+                })
+              }
+            >
               <EditIcon />
               Edit
             </EditButton>
           </li>
         ))}
-        <AddButton>
+        <AddButton
+          alt="Add icon"
+          id="lunch"
+          onClick={() => handleOpenModalRecord("lunch")}
+        >
           <AddIcon alt="Add icon" />
           Record your meal
         </AddButton>
       </ul>
+      {(isModalOpenUpdateRecord || isModalOpenRecord) && <Modal />}
     </ListWrapper>
   );
 };
