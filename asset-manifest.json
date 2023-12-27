@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/HEALTH_EN/static/css/main.1a24fdc4.css",
-    "main.js": "/HEALTH_EN/static/js/main.93171105.js",
+    "main.js": "/HEALTH_EN/static/js/main.5e0ac2ca.js",
     "static/js/277.f0be2404.chunk.js": "/HEALTH_EN/static/js/277.f0be2404.chunk.js",
     "static/js/788.7d020db1.chunk.js": "/HEALTH_EN/static/js/788.7d020db1.chunk.js",
     "static/js/859.f0eadf4c.chunk.js": "/HEALTH_EN/static/js/859.f0eadf4c.chunk.js",
     "static/js/152.54d4679e.chunk.js": "/HEALTH_EN/static/js/152.54d4679e.chunk.js",
     "static/js/90.1ed91abc.chunk.js": "/HEALTH_EN/static/js/90.1ed91abc.chunk.js",
-    "static/js/672.6bba5a8b.chunk.js": "/HEALTH_EN/static/js/672.6bba5a8b.chunk.js",
+    "static/js/672.453cddbb.chunk.js": "/HEALTH_EN/static/js/672.453cddbb.chunk.js",
     "static/js/332.40351437.chunk.js": "/HEALTH_EN/static/js/332.40351437.chunk.js",
     "static/js/975.920b17e0.chunk.js": "/HEALTH_EN/static/js/975.920b17e0.chunk.js",
     "static/js/569.3f2af69f.chunk.js": "/HEALTH_EN/static/js/569.3f2af69f.chunk.js",
@@ -60,13 +60,13 @@
     "static/media/add-modal.svg": "/HEALTH_EN/static/media/add-modal.9569066a7c71bf08ffe95131a13966e2.svg",
     "static/media/ellipse.svg": "/HEALTH_EN/static/media/ellipse.0c3b26195344141055a912afab60b9a7.svg",
     "main.1a24fdc4.css.map": "/HEALTH_EN/static/css/main.1a24fdc4.css.map",
-    "main.93171105.js.map": "/HEALTH_EN/static/js/main.93171105.js.map",
+    "main.5e0ac2ca.js.map": "/HEALTH_EN/static/js/main.5e0ac2ca.js.map",
     "277.f0be2404.chunk.js.map": "/HEALTH_EN/static/js/277.f0be2404.chunk.js.map",
     "788.7d020db1.chunk.js.map": "/HEALTH_EN/static/js/788.7d020db1.chunk.js.map",
     "859.f0eadf4c.chunk.js.map": "/HEALTH_EN/static/js/859.f0eadf4c.chunk.js.map",
     "152.54d4679e.chunk.js.map": "/HEALTH_EN/static/js/152.54d4679e.chunk.js.map",
     "90.1ed91abc.chunk.js.map": "/HEALTH_EN/static/js/90.1ed91abc.chunk.js.map",
-    "672.6bba5a8b.chunk.js.map": "/HEALTH_EN/static/js/672.6bba5a8b.chunk.js.map",
+    "672.453cddbb.chunk.js.map": "/HEALTH_EN/static/js/672.453cddbb.chunk.js.map",
     "332.40351437.chunk.js.map": "/HEALTH_EN/static/js/332.40351437.chunk.js.map",
     "975.920b17e0.chunk.js.map": "/HEALTH_EN/static/js/975.920b17e0.chunk.js.map",
     "569.3f2af69f.chunk.js.map": "/HEALTH_EN/static/js/569.3f2af69f.chunk.js.map",
@@ -76,6 +76,6 @@
   },
   "entrypoints": [
     "static/css/main.1a24fdc4.css",
-    "static/js/main.93171105.js"
+    "static/js/main.5e0ac2ca.js"
   ]
 }
