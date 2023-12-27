@@ -7,18 +7,25 @@ import { useDispatch } from "react-redux";
 import {
   closeModalRecord,
   closeModalWater,
+  closeUpdateRecord,
 } from "../../redux/Modal/modal-slice";
 import { useModal } from "hooks/useModal";
+import { UpdateRecordModal } from "./UpdateRecordModal/UpdateRecordModal";
 
 const modalRoot = document.querySelector("#modal-root");
 
 export const Modal = () => {
   const dispatch = useDispatch();
-  const { isModalOpenWater, isModalOpenRecord } = useModal();
+  const {
+    isModalOpenWater,
+    isModalOpenRecord,
+    isModalOpenUpdateRecord,
+  } = useModal();
 
   const handleClickClose = useCallback(() => {
     dispatch(closeModalRecord());
     dispatch(closeModalWater());
+    dispatch(closeUpdateRecord());
   }, [dispatch]);
 
   const handleBackdropClick = (e) => {
@@ -41,10 +48,16 @@ export const Modal = () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.cssText = `overflow: auto; `;
     };
-  }, [isModalOpenWater, isModalOpenRecord, handleClickClose, dispatch]);
+  }, [
+    isModalOpenWater,
+    isModalOpenRecord,
+    isModalOpenUpdateRecord,
+    handleClickClose,
+    dispatch,
+  ]);
 
   return createPortal(
-    (isModalOpenWater || isModalOpenRecord) && (
+    (isModalOpenWater || isModalOpenRecord || isModalOpenUpdateRecord) && (
       <BackdropModalStyle onClick={handleBackdropClick}>
         <div>
           {isModalOpenRecord && (
@@ -52,6 +65,9 @@ export const Modal = () => {
           )}
           {isModalOpenWater && (
             <WaterintakeModal handleClickClose={handleClickClose} />
+          )}
+          {isModalOpenUpdateRecord && (
+            <UpdateRecordModal handleClickClose={handleClickClose} />
           )}
         </div>
       </BackdropModalStyle>
