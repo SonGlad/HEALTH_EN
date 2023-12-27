@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkhealth_en=self.webpackChunkhealth_en||[]).push([[760],{3760:function(e,a,s){s(2791);a.Z=s.p+"static/media/snack-img.117201468075748fa03c2f8dd9859dfb.svg"}}]);
+//# sourceMappingURL=760.56aabfb2.chunk.js.map
