@@ -1,89 +1,75 @@
 import styled from 'styled-components';
 
-export const ListWrapper = styled.div`
+export const DishesWrapper = styled.ul`
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-left: 16px;
 
-  .number-list {
+  @media screen and (min-width: 834px) {
+    gap: 32px;
+    justify-content: space-between;
+  }
+
+  li {
     display: flex;
     flex-direction: column;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.4;
-    gap: 40px;
-    margin-right: 16px;
+    gap: 6px;
 
     @media screen and (min-width: 834px) {
+      flex-direction: row;
+    }
+  }
+`;
+
+export const DishTitle = styled.p`
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  width: 260px;
+`;
+
+export const Nutrients = styled.ul`
+  display: flex;
+  gap: 12px;
+
+  @media screen and (min-width: 834px) {
+    margin-left: 110px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-left: 32px;
+  }
+
+  li {
+    display: flex;
+    @media screen and (min-width: 1440px) {
       gap: 32px;
     }
   }
 
-  .dish {
+  div {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
-    flex-grow: 1;
+    gap: 6px;
+  }
+  p {
+    color: ${props => props.theme.color.primary_grey};
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
 
     @media screen and (min-width: 834px) {
-      gap: 32px;
+      display: none;
     }
+  }
+  span {
+    color: ${props => props.theme.color.primary_white};
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
 
-    .list-item {
-      display: flex;
-    }
-
-    .dish-title {
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 1.4;
-    }
-
-    .wrapper {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-grow: 1;
-      gap: 6px;
-
-      @media screen and (min-width: 834px) {
-        flex-direction: row;
-      }
-    }
-
-    .nutrients-wrapper {
-      display: flex;
-      justify-content: end;
-      gap: 12px;
-      @media screen and (min-width: 834px) {
-        gap: 32px;
-      }
-
-      span {
-        display: flex;
-        color: ${props => props.theme.color.primary_grey};
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 1.5;
-
-        @media screen and (min-width: 834px) {
-          display: none;
-          gap: 0px;
-        }
-      }
-
-      .value {
-        display: flex;
-        gap: 6px;
-        color: ${props => props.theme.color.primary_white};
-        /* width: 30px; */
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 1.5;
-
-        @media screen and (min-width: 834px) {
-          width: 80px;
-        }
-      }
+    @media screen and (min-width: 834px) {
+      width: 80px;
     }
   }
 `;
@@ -95,7 +81,6 @@ export const AddButton = styled.button`
   padding: 0;
   border: none;
   background-color: transparent;
-  cursor: pointer;
   color: ${props => props.theme.color.primary_white};
   font-size: 14px;
   font-weight: 500;
@@ -121,46 +106,5 @@ export const AddButton = styled.button`
     & svg {
       stroke: ${props => props.theme.color.primary_green_lite};
     }
-  }
-`;
-
-export const EditButton = styled.button`
-  display: flex;
-  /* align-items: center; */
-  cursor: pointer;
-  padding: 0;
-  gap: 6px;
-  color: ${props => props.theme.color.primary_grey};
-  background: none;
-  border: none;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.4;
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  svg {
-    width: 16px;
-    height: 16px;
-    stroke: ${props => props.theme.color.primary_grey};
-    transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  &:hover {
-    color: ${props => props.theme.color.primary_green_lite};
-    & svg {
-      stroke: ${props => props.theme.color.primary_green_lite};
-    }
-  }
-
-  &:focus {
-    color: ${props => props.theme.color.primary_green_lite};
-    & svg {
-      stroke: ${props => props.theme.color.primary_green_lite};
-    }
-  }
-
-  @media screen and (min-width: 834px) {
-    top: 32px;
-    right: 14px;
   }
 `;

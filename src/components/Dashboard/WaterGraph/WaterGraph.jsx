@@ -155,7 +155,7 @@ export const WaterGraph = () => {
     <Section>
       <div>
         <TitleWrapper>
-          <h2>Water</h2>
+          <h2>Waters</h2>
           <p>
             Average value:
             <span>
