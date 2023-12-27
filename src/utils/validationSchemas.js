@@ -105,6 +105,14 @@ const WeightParametrsSchema = Yup.object().shape({
     .required("Required"),
 });
 
+const ModalFoodSchema = Yup.object({
+  name: Yup.string().required("Required"),
+  carbohydrates: Yup.number().required("Required"),
+  protein: Yup.number().required("Required"),
+  fat: Yup.number().required("Required"),
+  calories: Yup.number().required("Required"),
+});
+
 export {
   SignupSchema,
   SigninSchema,
@@ -114,5 +122,6 @@ export {
   YourActivitySchema,
   ValidationSchema,
   ForgotPasswordSchema,
-  WeightParametrsSchema
+  WeightParametrsSchema,
+  ModalFoodSchema,
 };
