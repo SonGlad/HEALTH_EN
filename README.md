@@ -86,8 +86,7 @@ also change their password. The page also has a function to update the avatar.
   <img alt="Formik" src="https://img.shields.io/badge/Formik-%23FF6C37.svg?style=for-the-badge&logo=formik&logoColor=white">&nbsp;
   <img alt="Nano ID" src="https://img.shields.io/badge/Nano_ID-%23FF6C37.svg?style=for-the-badge&logo=nano-id&logoColor=white">&nbsp;
   <img alt="Redux Toolkit" src="https://img.shields.io/badge/Redux_Toolkit-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white">&nbsp;
-
-<img alt="Axios" src="https://img.shields.io/badge/Axios-%23FF6C37.svg?style=for-the-badge&logo=axios&logoColor=white">&nbsp;
+  <img alt="Axios" src="https://img.shields.io/badge/Axios-%23FF6C37.svg?style=for-the-badge&logo=axios&logoColor=white">&nbsp;
 
 </p>
 
