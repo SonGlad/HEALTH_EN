@@ -17,7 +17,6 @@ export const Container = styled.div`
   }
 
   button {
-    cursor: pointer;
     min-width: 140px;
     display: flex;
     align-items: center;
@@ -87,7 +86,6 @@ export const Container = styled.div`
   }
 
   .list {
-    cursor: pointer;
     display: flex;
     flex-direction: column;
     padding-top: 12px;
