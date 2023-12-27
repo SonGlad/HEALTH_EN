@@ -38,11 +38,6 @@ export const TitleWrapper = styled.div`
 export const GraphWrapper = styled.div`
   overflow-x: auto;
 
-  #chart-tooltip {
-    weight: 150px;
-    color: red;
-  }
-
   &::-webkit-scrollbar {
     height: 8px;
   }
