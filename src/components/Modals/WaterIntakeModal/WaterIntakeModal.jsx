@@ -3,6 +3,8 @@ import { WaterModalContainer } from "./WaterIntakeModal.styled";
 import { addWaterIntake } from "../../../redux/Data/data-operations";
 import { useData } from "hooks/useUserData";
 import { useDispatch } from "react-redux";
+import { toast } from 'react-toastify';
+
 
 
 export const WaterintakeModal = ({ handleClickClose }) => {
@@ -17,11 +19,16 @@ export const WaterintakeModal = ({ handleClickClose }) => {
     onSubmit: (values) => {
       const currentWaterValue = currentWater !== null ? currentWater : 0;
       const newWater = parseInt(values.water, 10) + currentWaterValue;
-      dispatch(
-        addWaterIntake({
-          water: newWater,
-        })
-      )
+      if(newWater >= 10000){
+        toast.error("Sorry, But you have reached the Maximun Amount of Water! YOU ARE DRINKING TOO MUCH!!!!" );
+        handleClickClose();
+      } else{
+        dispatch(
+          addWaterIntake({
+            water: newWater,
+          })
+        )
+      }
       handleClickClose();
     },
   });
@@ -47,6 +54,7 @@ export const WaterintakeModal = ({ handleClickClose }) => {
               }
             }}
             min="0"
+            max="9999"
           ></input>
         </label>
         <button

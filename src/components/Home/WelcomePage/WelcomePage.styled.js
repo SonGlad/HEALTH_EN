@@ -143,7 +143,7 @@ export const SingInLink = styled(NavLink)`
   line-height: 1.4;
   justify-content: center;
   color: ${props => props.theme.color.primary_black_2};
-  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media screen and (min-width: 834px) {
     width: 212px;
@@ -166,7 +166,7 @@ export const SingUpLink = styled(NavLink)`
   font-weight: 500;
   line-height: 1.4;
   color: ${props => props.theme.color.primary_white};
-  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     color: ${props => props.theme.color.primary_green_lite};

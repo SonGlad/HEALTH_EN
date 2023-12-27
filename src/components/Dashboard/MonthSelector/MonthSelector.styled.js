@@ -25,12 +25,19 @@ export const Container = styled.div`
     background: transparent;
     color: ${props => props.theme.color.primary_white};
     border: none;
+    padding: 0;
     gap: 6px;
     display: flex;
     font-size: 24px;
     font-weight: 500;
     line-height: 1.6;
     position: relative;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 10px;
+
+    &:hover, &:focus{
+      color:${props => props.theme.color.primary_green_lite};
+    }
 
     @media screen and (min-width: 834px) {
       gap: 12px;
@@ -84,6 +91,10 @@ export const Container = styled.div`
       background: rgba(255, 255, 255, 0.03);
       color: ${props => props.theme.color.primary_green_lite};
     }
+
+    &:last-child {
+      margin-bottom: 10px;
+    }
   }
 
   .list {
@@ -120,7 +131,8 @@ export const Container = styled.div`
 
   .select .open {
     height: 144px;
-    top: 50%;
+    /* top: 50%; */
+    top: 25px;
     z-index: 1;
     visibility: visible;
     opacity: 1;

@@ -168,6 +168,7 @@ export const DivYourActivity = styled.div`
     display: flex;
     justify-content: center;
     border-radius: 12px;
+    color: ${props => props.theme.color.primary_black_2};
     background: ${props => props.theme.color.primary_green_lite};
     padding: 8px 10px;
     font-weight: 500;
@@ -176,10 +177,15 @@ export const DivYourActivity = styled.div`
     cursor: pointer;
     width: 100%;
     margin-bottom: 16px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:active,
     &:hover {
       color: ${(props) => props.theme.color.primary_grey};
+    }
+    &:disabled {
+      color: ${(props) => props.theme.color.primary_grey};
+      pointer-events: none;
     }
 
     @media only screen and (min-width: 834px) {
@@ -208,6 +214,7 @@ export const DivYourActivity = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
       background-color: transparent;
@@ -217,11 +224,6 @@ export const DivYourActivity = styled.div`
       background-color: transparent;
       color: ${(props) => props.theme.color.primary_green_lite};
 
-    }
-    &:disabled {
-      background-color: transparent;
-      color: ${props => props.theme.color.primary_grey};
-      pointer-events: none;
     }
 
     @media only screen and (min-width: 1440px) {

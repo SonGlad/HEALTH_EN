@@ -1,7 +1,6 @@
 import {
   DishesWrapper,
   ItemTitle,
-  MealsContainer,
   MealsInfo,
   NutrientsItem,
   Title,
@@ -19,39 +18,37 @@ export const Dinner = () => {
 
   return (
     <>
-      <MealsContainer>
-        <div>
-          <MealsInfo>
-            <Title>
-              <DinnerImg />
-              <h2>Dinner</h2>
-            </Title>
-            <TotalNutrients>
-              <NutrientsItem>
-                <ItemTitle>
-                  Carbohydrates:
-                  <span>{dinnerTotalCarbonohidretes}</span>
-                </ItemTitle>
-              </NutrientsItem>
-              <NutrientsItem>
-                <ItemTitle>
-                  Protein:
-                  <span>{dinnerTotalProtein}</span>
-                </ItemTitle>
-              </NutrientsItem>
-              <NutrientsItem>
-                <ItemTitle>
-                  Fat:
-                  <span>{dinnerTotalFat}</span>
-                </ItemTitle>
-              </NutrientsItem>
-            </TotalNutrients>
-          </MealsInfo>
-          <DishesWrapper>
-            <DinnerDishes />
-          </DishesWrapper>
-        </div>
-      </MealsContainer>
+      <div className='order-three'>
+        <MealsInfo>
+          <Title>
+            <DinnerImg />
+            <h2>Dinner</h2>
+          </Title>
+          <TotalNutrients>
+            <NutrientsItem>
+              <ItemTitle>
+                Carbohydrates:
+                <span>{dinnerTotalCarbonohidretes}</span>
+              </ItemTitle>
+            </NutrientsItem>
+            <NutrientsItem>
+              <ItemTitle>
+                Protein:
+                <span>{dinnerTotalProtein}</span>
+              </ItemTitle>
+            </NutrientsItem>
+            <NutrientsItem>
+              <ItemTitle>
+                Fat:
+                <span>{dinnerTotalFat}</span>
+              </ItemTitle>
+            </NutrientsItem>
+          </TotalNutrients>
+        </MealsInfo>
+        <DishesWrapper>
+          <DinnerDishes />
+        </DishesWrapper>
+      </div>
     </>
   );
 };

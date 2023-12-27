@@ -274,6 +274,17 @@ export const DivSelectGender = styled.div`
     width: 100%;
     margin-top: 40px;
     margin-bottom: 20px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:active,
+    &:hover {
+      color: ${(props) => props.theme.color.primary_grey};
+    }
+
+    &:disabled {
+      color: ${(props) => props.theme.color.primary_grey};
+      pointer-events: none;
+    }
 
     @media only screen and (min-width: 1440px) {
       width: 212px;
@@ -345,6 +356,7 @@ export const DivSelectGender = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
       background-color: transparent;
@@ -353,11 +365,6 @@ export const DivSelectGender = styled.div`
     &:active {
       background-color: transparent;
       color: ${(props) => props.theme.color.primary_green_lite};
-    }
-    &:disabled {
-      background-color: transparent;
-      color: ${(props) => props.theme.color.primary_grey};
-      pointer-events: none;
     }
 
     @media only screen and (min-width: 1440px) {

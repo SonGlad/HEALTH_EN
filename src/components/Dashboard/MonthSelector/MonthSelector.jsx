@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { getStatistics } from '../../../redux/Data/data-operations';
 import months from '../../../utils/months.json';
 
+
 export const MonthSelector = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState('');
@@ -13,15 +14,18 @@ export const MonthSelector = () => {
   const dropdownRef = useRef(null);
   const optionListRef = useRef(null);
 
+
   const handleMonthSelect = month => {
     setSelectedMonth(month);
     dispatch(getStatistics(month));
     setIsOpen(false);
   };
 
+
   const toggleButton = () => {
     setIsOpen(!isOpen);
   };
+
 
   const handleKeyPress = event => {
     if (event.key === 'Escape') {
@@ -29,11 +33,13 @@ export const MonthSelector = () => {
     }
   };
 
+
   const handleBackgroundClick = event => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsOpen(false);
     }
   };
+
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyPress);
@@ -43,7 +49,6 @@ export const MonthSelector = () => {
     const currentMonth = months[currentDate.getMonth()];
 
     setSelectedMonth(currentMonth);
-
     dispatch(getStatistics(currentMonth));
 
     return () => {
@@ -52,6 +57,7 @@ export const MonthSelector = () => {
     };
   }, [dispatch]);
 
+
   return (
     <Container>
       <div>
@@ -59,7 +65,7 @@ export const MonthSelector = () => {
           <ArrowIcon alt="Arrow Icon" />
         </BackLink>
         <div className="select" ref={dropdownRef}>
-          <button onClick={toggleButton}>
+          <button type="button" onClick={toggleButton}>
             Month
             <ArrowDown />
           </button>

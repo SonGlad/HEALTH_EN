@@ -116,10 +116,16 @@ export const DivSingUp = styled.div`
     font-size: 14px;
     line-height: 20px;
     cursor: pointer;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:active,
     &:hover {
       color: ${(props) => props.theme.color.primary_grey};
+    }
+
+    &:disabled {
+      color: ${(props) => props.theme.color.primary_grey};
+      pointer-events: none;
     }
   }
 
@@ -269,6 +275,7 @@ export const DivSingUp = styled.div`
     font-size: 14px;
     line-height: 20px;
     margin-top: 16px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:active,
     &:hover {

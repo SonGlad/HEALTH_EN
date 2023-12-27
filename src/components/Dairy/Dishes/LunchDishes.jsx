@@ -20,11 +20,26 @@ export const LunchDishes = () => {
 
   const generateListItems = () => {
     const listItems = [];
-    const totalItems = lunchMeals.length > 5 ? lunchMeals.length + 1 : 5;
 
-    for (let i = 1; i <= totalItems; i++) {
-      listItems.push(<li key={nanoid()}>{i}</li>);
-    }
+    if(lunchMeals.length < 4){
+      const totalItems = (lunchMeals.length + 4) - lunchMeals.length;
+
+      for (let i = 1; i <= totalItems; i++) {
+        listItems.push(<li key={nanoid()}>{i}</li>);
+      }
+    } else if(lunchMeals.length === 4){
+      const totalItems = lunchMeals.length + 1;
+
+      for (let i = 1; i <= totalItems; i++) {
+        listItems.push(<li key={nanoid()}>{i}</li>);
+      }
+    } else if(lunchMeals.length > 4){
+        const totalItems = lunchMeals.length + 1;
+
+        for (let i = 1; i <= totalItems; i++) {
+          listItems.push(<li key={nanoid()}>{i}</li>);
+        }
+      }
 
     return listItems;
   };

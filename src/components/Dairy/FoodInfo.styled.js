@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const MealsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,6 +12,19 @@ export const MealsContainer = styled.div`
     flex-wrap: wrap;
     gap: 20px;
     padding-bottom: 52px;
+
+   .order-one{
+      order: 1;
+    }
+    .order-two{
+      order: 3;
+    }
+    .order-three{
+      order: 2;
+    }
+    .order-four{
+      order: 4;
+    }
   }
 
   div {

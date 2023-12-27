@@ -40,7 +40,7 @@ export const Water = () => {
   const [dailyWaterLimit, setDailyWaterLimit] = useState(0);
 
   const calculatePercent = useCallback(() => {
-    const newDailyWater = Math.round((currentWater / waterGoal) * 100);
+    const newDailyWater = Math.round(((isNaN(currentWater) ? 0 : currentWater) / waterGoal) * 100);
     setDailyWaterLimit(newDailyWater >= 100 ? 100 : newDailyWater);
   }, [currentWater, waterGoal]);
 
@@ -48,6 +48,7 @@ export const Water = () => {
     calculatePercent();
   }, [currentWater, calculatePercent]);
 
+  const validCurrentWater = isNaN(currentWater) ? 0 : currentWater;
   const leftWater = Math.max(0, waterGoal - currentWater);
 
 
@@ -70,7 +71,7 @@ export const Water = () => {
             height={dailyWaterLimit}
             style={{
               height:
-                currentWater >= waterGoal ? '100%' : `${dailyWaterLimit}%`,
+              validCurrentWater >= waterGoal ? '100%' : `${dailyWaterLimit}%`,
             }}
           />
         </ChartWrapper>

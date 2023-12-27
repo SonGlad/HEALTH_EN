@@ -1,7 +1,6 @@
 import {
   DishesWrapper,
   ItemTitle,
-  MealsContainer,
   MealsInfo,
   NutrientsItem,
   Title,
@@ -23,39 +22,37 @@ export const Breakfast = () => {
 
   return (
     <>
-      <MealsContainer>
-        <div>
-          <MealsInfo>
-            <Title>
-              <BreakfastImg />
-              <h2>Breakfast</h2>
-            </Title>
-            <TotalNutrients>
-              <NutrientsItem>
-                <ItemTitle>
-                  Carbohydrates:
-                  <span>{breakfastTotalCarbonohidretes}</span>
-                </ItemTitle>
-              </NutrientsItem>
-              <NutrientsItem>
-                <ItemTitle>
-                  Protein:
-                  <span>{breakfasthTotalProtein}</span>
-                </ItemTitle>
-              </NutrientsItem>
-              <NutrientsItem>
-                <ItemTitle>
-                  Fat:
-                  <span>{breakfastTotalFat}</span>
-                </ItemTitle>
-              </NutrientsItem>
-            </TotalNutrients>
-          </MealsInfo>
-          <DishesWrapper>
-            <BreakfastDishes />
-          </DishesWrapper>
-        </div>
-      </MealsContainer>
+      <div className='order-one'>
+        <MealsInfo>
+          <Title>
+            <BreakfastImg />
+            <h2>Breakfast</h2>
+          </Title>
+          <TotalNutrients>
+            <NutrientsItem>
+              <ItemTitle>
+                Carbohydrates:
+                <span>{breakfastTotalCarbonohidretes}</span>
+              </ItemTitle>
+            </NutrientsItem>
+            <NutrientsItem>
+              <ItemTitle>
+                Protein:
+                <span>{breakfasthTotalProtein}</span>
+              </ItemTitle>
+            </NutrientsItem>
+            <NutrientsItem>
+              <ItemTitle>
+                Fat:
+                <span>{breakfastTotalFat}</span>
+              </ItemTitle>
+            </NutrientsItem>
+          </TotalNutrients>
+        </MealsInfo>
+        <DishesWrapper>
+          <BreakfastDishes />
+        </DishesWrapper>
+      </div>
     </>
   );
 };

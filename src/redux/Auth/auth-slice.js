@@ -168,7 +168,7 @@ const authSlice = createSlice({
       state.activityForm = {
         activity: payload.data.activity,
       };
-      state.isLoggedIn = true;
+      // state.isLoggedIn = true;
       state.isLoading = false;
       state.error = null;
     })
@@ -182,6 +182,8 @@ const authSlice = createSlice({
     .addCase(logOut.pending, state =>{
       state.isLoading = true;
       state.error = null;
+      state.isInitial = true;
+      state.isRefreshing = false;
     })
     .addCase(logOut.fulfilled, (state, { payload }) => {
       state.userForm = {
@@ -209,10 +211,12 @@ const authSlice = createSlice({
       state.token = null;
       state.isLoading = false;
       state.isLoggedIn = false;
-      state.error = null;
       state.isInitial = false;
+      state.error = null;
     })
     .addCase(logOut.rejected, (state, {payload}) => {
+      state.isLoggedIn = false;
+      state.isInitial = false;
       state.isLoading = false;
       state.error = payload;
     })
@@ -321,6 +325,7 @@ const authSlice = createSlice({
       
     // UPDATE USER GOAL////////
     .addCase( updateGoal.pending, state => {
+      state.isInitial = false;
       state.isLoading = true;
       state.error = null;
     })
@@ -328,11 +333,13 @@ const authSlice = createSlice({
       state.goalForm = {
         goal: payload.data.goal,
       };
+      state.isInitial = false;
       state.isLoggedIn = true;
       state.isLoading = false;
       state.error = null;
     })
     .addCase(updateGoal.rejected, (state, { payload }) => {
+      state.isInitial = false;
       state.isLoading = false;
       state.error = payload;
     })
@@ -340,6 +347,7 @@ const authSlice = createSlice({
       
     // UPDATE USER WEIGHT////////
     .addCase( updateWeight.pending, state => {
+      state.isInitial = false;
       state.isLoading = true;
       state.error = null;
     })
@@ -347,13 +355,15 @@ const authSlice = createSlice({
       state.bodyParamFormWeight = {
         weight: payload.data.weight,
       };
-      state.isLoggedIn = true;
+      // state.isLoggedIn = true;
+      state.isInitial = false;
       state.isLoading = false;
       state.error = null;
     })
     .addCase(updateWeight.rejected, (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
+      state.isInitial = false;
     })
   } 
   

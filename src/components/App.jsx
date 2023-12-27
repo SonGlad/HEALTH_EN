@@ -6,9 +6,8 @@ import { PrivateRoute } from "./PrivateRoute";
 import { RestrictedRoute } from "./RestrictedRoute";
 import { RefreshLoading } from "../components/CustomLoaders/CustomLoaders";
 import { Toaster } from "./ToastContainer/ToastContainer";
-import { refreshCurrentUser } from "../redux/Auth/auth-operations";
-import {getUserDailyCurrentData} from "../redux/Data/data-operations";
-import {getAllRecommendedFood} from "../redux/Data/data-operations";
+import {getUserDailyCurrentData, getAllRecommendedFood} from "../redux/Data/data-operations";
+import { initialDataUserInfo, refreshCurrentUser } from '../redux/Auth/auth-operations';
 import { useAuth } from "../hooks/useAuth";
 
 
@@ -26,14 +25,29 @@ const SettingsPage = lazy(() => import('../pages/Settings/Settings'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const {isRefreshing} = useAuth();
+  const {isRefreshing, isInitial, isLoggedIn} = useAuth();
 
 
   useEffect(() => {
-    dispatch(refreshCurrentUser());
-    dispatch(getUserDailyCurrentData());
-    dispatch(getAllRecommendedFood());
-  }, [dispatch]);
+    if(isInitial){
+      dispatch(initialDataUserInfo());
+    }
+  }, [dispatch, isInitial, isLoggedIn]);
+
+
+  useEffect(() => {
+    if(!isInitial){
+      dispatch(refreshCurrentUser());
+    }
+  }, [dispatch, isInitial]);
+  
+  
+  useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(getUserDailyCurrentData());
+      dispatch(getAllRecommendedFood());
+    }
+  }, [dispatch, isLoggedIn]);
 
 
   return isRefreshing ? (
