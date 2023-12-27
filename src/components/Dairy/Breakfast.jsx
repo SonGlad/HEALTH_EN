@@ -1,0 +1,59 @@
+import {
+  DishesWrapper,
+  ItemTitle,
+  MealsContainer,
+  MealsInfo,
+  NutrientsItem,
+  Title,
+  TotalNutrients,
+} from './FoodInfo.styled';
+import { ReactComponent as BreakfastImg } from '../../images/icons-illustration/breakfast-image.svg';
+
+import { BreakfastDishes, Dishes } from './Dishes/BreakfastDishes';
+import { useData } from 'hooks/useUserData';
+
+export const Breakfast = () => {
+  const {
+    breakfastTotalFat,
+    breakfastTotalCarbonohidretes,
+    breakfasthTotalProtein,
+  } = useData();
+
+  return (
+    <>
+      <MealsContainer>
+        <div>
+          <MealsInfo>
+            <Title>
+              <BreakfastImg />
+              <h2>Breakfast</h2>
+            </Title>
+            <TotalNutrients>
+              <NutrientsItem>
+                <ItemTitle>
+                  Carbohydrates:
+                  <span>{breakfastTotalCarbonohidretes}</span>
+                </ItemTitle>
+              </NutrientsItem>
+              <NutrientsItem>
+                <ItemTitle>
+                  Protein:
+                  <span>{breakfasthTotalProtein}</span>
+                </ItemTitle>
+              </NutrientsItem>
+              <NutrientsItem>
+                <ItemTitle>
+                  Fat:
+                  <span>{breakfastTotalFat}</span>
+                </ItemTitle>
+              </NutrientsItem>
+            </TotalNutrients>
+          </MealsInfo>
+          <DishesWrapper>
+            <BreakfastDishes />
+          </DishesWrapper>
+        </div>
+      </MealsContainer>
+    </>
+  );
+};
