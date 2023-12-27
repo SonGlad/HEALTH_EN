@@ -10,7 +10,6 @@ import {
 
 import { ReactComponent as LunchImg } from '../../images/icons-illustration/lunch-image.svg';
 
-// import { Dishes } from './Dishes/BreakfastDishes';
 import { useData } from 'hooks/useUserData';
 import { LunchDishes } from './Dishes/LunchDishes';
 

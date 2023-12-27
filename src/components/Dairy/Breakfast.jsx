@@ -9,7 +9,7 @@ import {
 } from './FoodInfo.styled';
 import { ReactComponent as BreakfastImg } from '../../images/icons-illustration/breakfast-image.svg';
 
-import { BreakfastDishes, Dishes } from './Dishes/BreakfastDishes';
+import { BreakfastDishes } from './Dishes/BreakfastDishes';
 import { useData } from 'hooks/useUserData';
 
 export const Breakfast = () => {
