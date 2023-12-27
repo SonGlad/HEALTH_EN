@@ -51,7 +51,7 @@ export const Dairy = () => {
             {breakfastMeals.length === 0 ? (
               <AddButton
                 id="breakfast"
-                onClick={() => handleOpenModalRecord("breakfast")}
+                onClick={() => handleOpenModalRecord("breakfast")} className="slideDown"
               >
                 <AddIcon alt="Add icon" />
                 Record your meal
@@ -68,7 +68,7 @@ export const Dairy = () => {
             {lunchMeals.length === 0 ? (
               <AddButton
                 id="lunch"
-                onClick={() => handleOpenModalRecord("lunch")}
+                onClick={() => handleOpenModalRecord("lunch")} className="slideDown"
               >
                 <AddIcon alt="Add icon" />
                 Record your meal
@@ -85,7 +85,7 @@ export const Dairy = () => {
             {dinnerMeals.length === 0 ? (
               <AddButton
                 id="dinner"
-                onClick={() => handleOpenModalRecord("dinner")}
+                onClick={() => handleOpenModalRecord("dinner")} className="slideDown"
               >
                 <AddIcon alt="Add icon" />
                 Record your meal
@@ -102,7 +102,7 @@ export const Dairy = () => {
             {snackMeals.length === 0 ? (
               <AddButton
                 id="snack"
-                onClick={() => handleOpenModalRecord("snack")}
+                onClick={() => handleOpenModalRecord("snack")} className="slideDown"
               >
                 <AddIcon alt="Add icon" />
                 Record your meal

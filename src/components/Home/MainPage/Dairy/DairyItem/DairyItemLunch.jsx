@@ -3,20 +3,24 @@ import { ClearButton, ItemWrapper } from './DairyItem.styled';
 import { useData } from 'hooks/useUserData';
 import { useDispatch } from 'react-redux';
 import { deleteFoodType } from "../../../../../redux/Data/data-operations";
+import { useState } from 'react';
 
 
 export const DairyItemLunch = () => {
   const dispatch = useDispatch();
   const {lunchTotalFat, lunchTotalCarbonohidretes, lunchTotalProtein} = useData();
-
+ const [isInfoVisible, setInfoVisible] = useState(true);
 
   const handleDeleteClick = () => {
     dispatch(deleteFoodType('lunch'));
+    setInfoVisible(false);
+    document.getElementById('lunch').classList.remove('slideDown');
+    document.getElementById('lunch').classList.add('slideUp');
   };
 
   
   return (
-    <ItemWrapper>
+    <ItemWrapper className={isInfoVisible ? 'visible' : 'hidden'}>
       <ul>
         <li>
           <p>
@@ -33,7 +37,7 @@ export const DairyItemLunch = () => {
             Fat:<span>{lunchTotalFat}</span>
           </p>
         </li>
-        <ClearButton id="lunch" onClick={handleDeleteClick}>
+        <ClearButton id="lunch" onClick={() => { handleDeleteClick(); document.getElementById('lunch').classList.add('slideUp'); }}>
           <ClearIcon alt="Clear icon" />
         </ClearButton>
       </ul>
