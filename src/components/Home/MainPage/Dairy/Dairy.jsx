@@ -25,19 +25,16 @@ import { Modal } from "components/Modals/Modals";
 import { useModal } from "hooks/useModal";
 import { useData } from "hooks/useUserData";
 
-
 export const Dairy = () => {
   const dispatch = useDispatch();
   const { isModalOpenRecord } = useModal();
   const { breakfastMeals, lunchMeals, dinnerMeals, snackMeals } = useData();
-
 
   const handleOpenModalRecord = (id) => {
     dispatch(openModalRecord());
     dispatch(showMealType(id));
   };
 
-  
   return (
     <Section>
       <Container>

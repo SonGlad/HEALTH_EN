@@ -6,6 +6,7 @@ import {
   getStatusModalUserMenu,
   getStatusModalGoal,
   getStatusModalWeight,
+  getShowModalUpdateRecord,
 } from "../redux/Modal/modal-selectors";
 
 export const useModal = () => {
@@ -15,13 +16,15 @@ export const useModal = () => {
   const isModalCloseUserMenu = useSelector(getStatusModalUserMenu);
   const isModalShowGoal = useSelector(getStatusModalGoal);
   const isModalShowWeight = useSelector(getStatusModalWeight);
+  const isModalOpenUpdateRecord = useSelector(getShowModalUpdateRecord);
 
-  return { 
-    isModalOpenWater, 
-    isModalOpenRecord, 
+  return {
+    isModalOpenWater,
+    isModalOpenRecord,
     mealType,
     isModalCloseUserMenu,
     isModalShowGoal,
-    isModalShowWeight, 
+    isModalShowWeight,
+    isModalOpenUpdateRecord,
   };
 };
