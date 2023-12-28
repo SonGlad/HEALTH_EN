@@ -244,15 +244,6 @@ export const ModalContainer = styled.div`
       border: 1px solid ${(props) => props.theme.color.primary_green_lite};
 
     }
-    /* &:active {
-      background-color: transparent;
-      color: ${(props) => props.theme.color.primary_green_lite};
-    }
-    &:disabled {
-      background-color: transparent;
-      color: ${(props) => props.theme.color.primary_grey};
-      pointer-events: none;
-    } */
 
     @media only screen and (min-width: 834px) {
       width: 212px;

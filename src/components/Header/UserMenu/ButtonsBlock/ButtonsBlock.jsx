@@ -36,6 +36,10 @@ export const ButtonsBlock = () => {
   const { isModalShowGoal, isModalShowWeight } = useModal();
   const { userGoal, userWeight, userGender } = useAuth();
   const weightDropdown = useRef(null);
+  const targetDropdown = useRef(null);
+
+
+
 
   // const [isModalShowGoal, setIsModalShowGoal] = useState(false);
   // const [isModalShowWeight, setIsModalShowWeight] = useState(false);
@@ -86,39 +90,6 @@ export const ButtonsBlock = () => {
     },
     [dispatch]
   );
-
-
- 
-  // const handleClickBackDrop = useCallback((e) => {
-    
-  //   const target = e.target;
-  //   console.log(target);
-  //   if (!target.classList.contains('weight-dropdown')) {
-  //     dispatch(closeModalGoal());
-  //     dispatch(closeModalWeight());
-  //   }
-  // }, [dispatch]);
-  
-  // useEffect(() => {
-  //   const handleClickBackDrop = (event) => {
-  //     console.log(isModalShowWeight);
-  //     event.stopPropagation();
-  //     if(isModalShowWeight){
-  //       if (weightDropdown.current && !weightDropdown.current.contains(event.target)) {
-  //         dispatch(closeModalWeight());
-  //         // dispatch(closeModalGoal());
-  //       }
-  //     };
-  //   }
-
-  //   document.addEventListener('keydown', handleKeyDown);
-  //   document.addEventListener('click', handleClickBackDrop);
-  
-  //   return () => {
-  //     document.removeEventListener('keydown', handleKeyDown);
-  //     document.removeEventListener('click', handleClickBackDrop);
-  //   };
-  // }, [dispatch, handleKeyDown, isModalShowWeight]);
 
 
   useEffect(() => {
@@ -188,7 +159,7 @@ export const ButtonsBlock = () => {
           </InfoBlockText>
         </TextContainer>
       </InfoBlockTarget>
-      <div className={`target-dropdown ${showTargetSelection()}`}>
+      <div className={`target-dropdown ${showTargetSelection()}`} ref={targetDropdown}>
         <TargetDrop />
         <button
           className="target-close-btn"
