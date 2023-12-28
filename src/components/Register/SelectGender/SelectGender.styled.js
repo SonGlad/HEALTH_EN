@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import SelectGenderMobile from "../../../images/images/SelectGenderMobile-min.png";
-import SelectGenderTablet from "../../../images/images/SelectGenderTablet-min.png";
-import SelectGenderComputer from "../../../images/images/SelectGenderComputer-min.png";
-import error from "../../../images/svgIcon/error.svg";
-import correct from "../../../images/svgIcon/correct.svg";
+import styled from 'styled-components';
+import SelectGenderMobile from '../../../images/images/SelectGenderMobile-min.png';
+import SelectGenderTablet from '../../../images/images/SelectGenderTablet-min.png';
+import SelectGenderComputer from '../../../images/images/SelectGenderComputer-min.png';
+import error from '../../../images/svgIcon/error.svg';
+import correct from '../../../images/svgIcon/correct.svg';
 
 export const DivSelectGender = styled.div`
   padding-bottom: 24px;
@@ -72,7 +72,7 @@ export const DivSelectGender = styled.div`
   }
 
   .TitleText {
-    color: ${(props) => props.theme.color.primary_grey};
+    color: ${props => props.theme.color.primary_grey};
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -133,7 +133,7 @@ export const DivSelectGender = styled.div`
 
   .LabelInput {
     margin-top: 24px;
-    color: ${(props) => props.theme.color.primary_white};
+    color: ${props => props.theme.color.primary_white};
     font-size: 14px;
     line-height: 20px;
   }
@@ -142,24 +142,24 @@ export const DivSelectGender = styled.div`
     position: relative;
   }
 
-  input[type="text"] {
+  input[type='text'] {
     width: 100%;
     margin-top: 12px;
     padding: 8px 10px;
     border-radius: 12px;
-    border: 1px solid ${(props) => props.theme.color.primary_green_lite};
-    background: ${(props) => props.theme.color.primary_black_2};
+    border: 1px solid ${props => props.theme.color.primary_green_lite};
+    background: ${props => props.theme.color.primary_black_2};
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-    color: ${(props) => props.theme.color.primary_white};
+    color: ${props => props.theme.color.primary_white};
     &:focus {
       outline: none;
       box-shadow: none;
     }
 
     @media only screen and (min-width: 1440px) {
-      width: 212px; 
+      width: 212px;
     }
   }
 
@@ -169,11 +169,11 @@ export const DivSelectGender = styled.div`
     margin-top: 12px;
     padding: 8px 10px;
     border-radius: 12px;
-    background: ${(props) => props.theme.color.primary_black_2};
+    background: ${props => props.theme.color.primary_black_2};
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-    color: ${(props) => props.theme.color.primary_white};
+    color: ${props => props.theme.color.primary_white};
     &:focus {
       outline: none;
       box-shadow: none;
@@ -190,11 +190,11 @@ export const DivSelectGender = styled.div`
     margin-top: 12px;
     padding: 8px 10px;
     border-radius: 12px;
-    background: ${(props) => props.theme.color.primary_black_2};
+    background: ${props => props.theme.color.primary_black_2};
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-    color: ${(props) => props.theme.color.primary_white};
+    color: ${props => props.theme.color.primary_white};
     &:focus {
       outline: none;
       box-shadow: none;
@@ -208,32 +208,33 @@ export const DivSelectGender = styled.div`
   .ImgError {
     position: absolute;
     right: 10px;
-    top: 57%;
+    top: 72%;
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
     background-image: url(${error});
 
     @media only screen and (min-width: 1440px) {
-      top: 66%;
+      top: 79%;
     }
   }
 
   .ImgCorrect {
     position: absolute;
     right: 10px;
-    top: 57%;
+    top: 72%;
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
     background-image: url(${correct});
 
     @media only screen and (min-width: 1440px) {
-      top: 66%;
+      top: 79%;
     }
   }
 
   .ErrorText {
+    position: absolute;
     margin-top: 4px;
     margin-left: 10px;
     color: #e74a3b;
@@ -247,6 +248,7 @@ export const DivSelectGender = styled.div`
   }
 
   .SuccessText {
+    position: absolute;
     margin-top: 4px;
     margin-left: 10px;
     color: #3cbc81;
@@ -260,12 +262,12 @@ export const DivSelectGender = styled.div`
   }
 
   input::placeholder {
-    color: ${(props) => props.theme.color.primary_grey};
+    color: ${props => props.theme.color.primary_grey};
   }
 
   .ButtonNext {
     border-radius: 12px;
-    background: ${(props) => props.theme.color.primary_green_lite};
+    background: ${props => props.theme.color.primary_green_lite};
     padding: 8px 10px;
     font-weight: 500;
     font-size: 14px;
@@ -278,11 +280,11 @@ export const DivSelectGender = styled.div`
 
     &:active,
     &:hover {
-      color: ${(props) => props.theme.color.primary_grey};
+      color: ${props => props.theme.color.primary_grey};
     }
 
     &:disabled {
-      color: ${(props) => props.theme.color.primary_grey};
+      color: ${props => props.theme.color.primary_grey};
       pointer-events: none;
     }
 
@@ -303,7 +305,7 @@ export const DivSelectGender = styled.div`
     margin-right: 8px;
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;
@@ -311,26 +313,26 @@ export const DivSelectGender = styled.div`
       height: 12px;
       border-radius: 50%;
       transform: translate(-50%, -50%);
-      background-color: ${(props) => props.theme.color.primary_black_2};
-      border: 1px solid ${(props) => props.theme.color.primary_grey};
+      background-color: ${props => props.theme.color.primary_black_2};
+      border: 1px solid ${props => props.theme.color.primary_grey};
     }
 
     &:checked::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background-color: ${(props) => props.theme.color.primary_green_lite};
+      background-color: ${props => props.theme.color.primary_green_lite};
       transform: translate(-50%, -50%);
       visibility: visible;
     }
   }
 
   .LabelGenderButton {
-    color: ${(props) => props.theme.color.primary_white};
+    color: ${props => props.theme.color.primary_white};
     font-size: 14px;
     line-height: 20px;
   }
@@ -345,7 +347,7 @@ export const DivSelectGender = styled.div`
   }
 
   .ButtonBack {
-    color: ${(props) => props.theme.color.primary_grey};
+    color: ${props => props.theme.color.primary_grey};
     border: none;
     background-color: transparent;
     font-size: 14px;
@@ -360,11 +362,11 @@ export const DivSelectGender = styled.div`
 
     &:hover {
       background-color: transparent;
-      color: ${(props) => props.theme.color.primary_green_lite};
+      color: ${props => props.theme.color.primary_green_lite};
     }
     &:active {
       background-color: transparent;
-      color: ${(props) => props.theme.color.primary_green_lite};
+      color: ${props => props.theme.color.primary_green_lite};
     }
 
     @media only screen and (min-width: 1440px) {

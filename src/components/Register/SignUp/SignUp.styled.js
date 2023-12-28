@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import register_mobile from "../../../images/images/register_mobile-min.png";
-import register_tablet from "../../../images/images/register_tablet-min.png";
-import register_computer from "../../../images/images/register_computer-min.png";
-import error from "../../../images/svgIcon/error.svg";
-import correct from "../../../images/svgIcon/correct.svg";
-import eye from "../../../images/svgIcon/eye.svg";
-import eye_off from "../../../images/svgIcon/eye-off.svg";
+import styled from 'styled-components';
+import register_mobile from '../../../images/images/register_mobile-min.png';
+import register_tablet from '../../../images/images/register_tablet-min.png';
+import register_computer from '../../../images/images/register_computer-min.png';
+import error from '../../../images/svgIcon/error.svg';
+import correct from '../../../images/svgIcon/correct.svg';
+import eye from '../../../images/svgIcon/eye.svg';
+import eye_off from '../../../images/svgIcon/eye-off.svg';
 
 export const DivSingUp = styled.div`
   padding-bottom: 40px;
@@ -65,7 +65,7 @@ export const DivSingUp = styled.div`
   }
 
   .TitleText {
-    color: ${(props) => props.theme.color.primary_grey};
+    color: ${props => props.theme.color.primary_grey};
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -109,8 +109,8 @@ export const DivSingUp = styled.div`
   .ButtonNext {
     margin-top: 12px;
     border-radius: 12px;
-    color: ${(props) => props.theme.color.primary_black_2};
-    background: ${(props) => props.theme.color.primary_green_lite};
+    color: ${props => props.theme.color.primary_black_2};
+    background: ${props => props.theme.color.primary_green_lite};
     padding: 8px 10px;
     font-weight: 500;
     font-size: 14px;
@@ -120,7 +120,7 @@ export const DivSingUp = styled.div`
 
     &:active,
     &:hover {
-      color: ${(props) => props.theme.color.primary_grey};
+      color: ${props => props.theme.color.primary_grey};
     }
 
     &:disabled {
@@ -138,12 +138,12 @@ export const DivSingUp = styled.div`
     width: 100%;
     padding: 8px 10px;
     border-radius: 12px;
-    border: 1px solid ${(props) => props.theme.color.primary_green_lite};
-    background: ${(props) => props.theme.color.primary_black_2};
+    border: 1px solid ${props => props.theme.color.primary_green_lite};
+    background: ${props => props.theme.color.primary_black_2};
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-    color: ${(props) => props.theme.color.primary_white};
+    color: ${props => props.theme.color.primary_white};
     &:focus {
       outline: none;
       box-shadow: none;
@@ -161,7 +161,7 @@ export const DivSingUp = styled.div`
   .ImgError {
     position: absolute;
     right: 10px;
-    top: 35%;
+    top: 50%;
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
@@ -171,7 +171,7 @@ export const DivSingUp = styled.div`
   .ImgCorrect {
     position: absolute;
     right: 10px;
-    top: 35%;
+    top: 50%;
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
@@ -179,6 +179,7 @@ export const DivSingUp = styled.div`
   }
 
   .ErrorText {
+    position: absolute;
     margin-top: 4px;
     margin-left: 10px;
     color: #e74a3b;
@@ -192,6 +193,7 @@ export const DivSingUp = styled.div`
   }
 
   .SuccessText {
+    position: absolute; //add
     margin-top: 4px;
     margin-left: 10px;
     color: #3cbc81;
@@ -209,14 +211,14 @@ export const DivSingUp = styled.div`
     display: block;
   }
 
-  .DivInput:hover input[name="password"] {
-    border: 1px solid ${(props) => props.theme.color.primary_green_lite};
+  .DivInput:hover input[name='password'] {
+    border: 1px solid ${props => props.theme.color.primary_green_lite};
   }
 
-  .DivInput[id="password"]:hover .ImgError,
-  .DivInput[id="password"]:hover .ImgCorrect,
-  .DivInput[id="password"]:hover .ErrorText,
-  .DivInput[id="password"]:hover .SuccessText {
+  .DivInput[id='password']:hover .ImgError,
+  .DivInput[id='password']:hover .ImgCorrect,
+  .DivInput[id='password']:hover .ErrorText,
+  .DivInput[id='password']:hover .SuccessText {
     display: none;
   }
 
@@ -243,7 +245,7 @@ export const DivSingUp = styled.div`
   }
 
   input::placeholder {
-    color: ${(props) => props.theme.color.primary_grey};
+    color: ${props => props.theme.color.primary_grey};
   }
 
   .DivContainerSingIn {
@@ -264,7 +266,7 @@ export const DivSingUp = styled.div`
   }
 
   .SingInText {
-    color: ${(props) => props.theme.color.primary_grey};
+    color: ${props => props.theme.color.primary_grey};
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
@@ -279,7 +281,7 @@ export const DivSingUp = styled.div`
 
     &:active,
     &:hover {
-      color: ${(props) => props.theme.color.primary_green_lite};
+      color: ${props => props.theme.color.primary_green_lite};
     }
   }
 `;

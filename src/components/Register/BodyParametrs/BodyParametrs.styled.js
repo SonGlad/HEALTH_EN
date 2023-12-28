@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import BodyParametersMobile from "../../../images/images/BodyParametersMobile-min.png";
-import BodyParametersTablet from "../../../images/images/BodyParametersTablet-min.png";
-import BodyParametersComputert from "../../../images/images/BodyParametersComputert-min.png";
-import error from "../../../images/svgIcon/error.svg";
-import correct from "../../../images/svgIcon/correct.svg";
+import styled from 'styled-components';
+import BodyParametersMobile from '../../../images/images/BodyParametersMobile-min.png';
+import BodyParametersTablet from '../../../images/images/BodyParametersTablet-min.png';
+import BodyParametersComputert from '../../../images/images/BodyParametersComputert-min.png';
+import error from '../../../images/svgIcon/error.svg';
+import correct from '../../../images/svgIcon/correct.svg';
 
 export const DivBodyParametrs = styled.div`
   padding-bottom: 24px;
@@ -66,7 +66,7 @@ export const DivBodyParametrs = styled.div`
   }
 
   .TitleText {
-    color: ${(props) => props.theme.color.primary_grey};
+    color: ${props => props.theme.color.primary_grey};
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -110,7 +110,7 @@ export const DivBodyParametrs = styled.div`
 
   .LabelInput {
     position: relative;
-    color: ${(props) => props.theme.color.primary_white};
+    color: ${props => props.theme.color.primary_white};
     font-size: 14px;
     line-height: 20px;
 
@@ -124,12 +124,12 @@ export const DivBodyParametrs = styled.div`
     margin-top: 12px;
     padding: 8px 10px;
     border-radius: 12px;
-    border: 1px solid ${(props) => props.theme.color.primary_green_lite};
-    background: ${(props) => props.theme.color.primary_black_2};
+    border: 1px solid ${props => props.theme.color.primary_green_lite};
+    background: ${props => props.theme.color.primary_black_2};
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-    color: ${(props) => props.theme.color.primary_white};
+    color: ${props => props.theme.color.primary_white};
     &:focus {
       outline: none;
       box-shadow: none;
@@ -151,7 +151,7 @@ export const DivBodyParametrs = styled.div`
   .ImgError {
     position: absolute;
     right: 10px;
-    top: 57%;
+    top: 73%;
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
@@ -165,7 +165,7 @@ export const DivBodyParametrs = styled.div`
   .ImgCorrect {
     position: absolute;
     right: 10px;
-    top: 57%;
+    top: 73%;
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
@@ -177,6 +177,7 @@ export const DivBodyParametrs = styled.div`
   }
 
   .ErrorText {
+    position: absolute;
     margin-top: 4px;
     margin-left: 10px;
     color: #e74a3b;
@@ -190,6 +191,7 @@ export const DivBodyParametrs = styled.div`
   }
 
   .SuccessText {
+    position: absolute;
     margin-top: 4px;
     margin-left: 10px;
     color: #3cbc81;
@@ -203,13 +205,13 @@ export const DivBodyParametrs = styled.div`
   }
 
   input::placeholder {
-    color: ${(props) => props.theme.color.primary_grey};
+    color: ${props => props.theme.color.primary_grey};
   }
 
   .ButtonNext {
     border-radius: 12px;
-    color: ${(props) => props.theme.color.primary_black_2};
-    background: ${(props) => props.theme.color.primary_green_lite};
+    color: ${props => props.theme.color.primary_black_2};
+    background: ${props => props.theme.color.primary_green_lite};
     padding: 8px 10px;
     font-weight: 500;
     font-size: 14px;
@@ -220,14 +222,13 @@ export const DivBodyParametrs = styled.div`
     margin-bottom: 20px;
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-
     &:active,
     &:hover {
-      color: ${(props) => props.theme.color.primary_grey};
+      color: ${props => props.theme.color.primary_grey};
     }
 
     &:disabled {
-      color: ${(props) => props.theme.color.primary_grey};
+      color: ${props => props.theme.color.primary_grey};
       pointer-events: none;
     }
 
@@ -237,7 +238,7 @@ export const DivBodyParametrs = styled.div`
   }
 
   .ButtonBack {
-    color: ${(props) => props.theme.color.primary_grey};
+    color: ${props => props.theme.color.primary_grey};
     border: none;
     background-color: transparent;
     font-weight: 400;
@@ -252,11 +253,11 @@ export const DivBodyParametrs = styled.div`
 
     &:hover {
       background-color: transparent;
-      color: ${(props) => props.theme.color.primary_green_lite};
+      color: ${props => props.theme.color.primary_green_lite};
     }
     &:active {
       background-color: transparent;
-      color: ${(props) => props.theme.color.primary_green_lite};
+      color: ${props => props.theme.color.primary_green_lite};
     }
 
     @media only screen and (min-width: 1440px) {
