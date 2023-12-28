@@ -95,18 +95,16 @@ export const WaterGraph = () => {
         },
       },
     },
-    indexAxis: 'x',
+    // indexAxis: 'x',
     scales: {
       x: {
         alignToPixels: true,
         beginAtZero: false,
         align: 'center',
-
         ticks: {
           color: '#B6B6B6',
           offset: true,
-          padding: 12,
-
+          padding: 6,
           font: {
             family: 'Poppins',
             size: 10,
@@ -125,14 +123,14 @@ export const WaterGraph = () => {
         alignToPixels: true,
         ticks: {
           alignToPixels: true,
-          padding: 16,
+          padding: 8,
           color: '#B6B6B6',
           stepSize: 1000,
           callback: function (value) {
             if (String(value).length === 1) {
               return value;
             }
-            return String(value).slice(0, 1) + 'L';
+            return String(value).slice(0, 1) + 'K';
           },
           font: {
             size: 10,

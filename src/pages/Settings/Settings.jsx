@@ -29,6 +29,7 @@ const SettingsPage = () => {
     errors,
     touched,
     isValid,
+    dirty,
     handleBlur,
     handleChange,
     handleSubmit,
@@ -53,25 +54,37 @@ const SettingsPage = () => {
   
     onSubmit: (values) => {
       const isNewPasswordEmpty = !values.newPassword.trim();
-      const dataToSend = {
-        name: values.name,
-        age: values.age,
-        gender: values.gender,
-        height: values.height,
-        weight: values.weight,
-        activity: values.activity,
-      };
+      const isWeightChanged = values.weight !== userWeight;
+      
+      let dataToSend;
+      if (isWeightChanged) {
+        dataToSend = {
+          name: values.name,
+          age: values.age,
+          gender: values.gender,
+          height: values.height,
+          weight: values.weight,
+          activity: values.activity,
+        };
+      } else {
+        dataToSend = {
+          name: values.name,
+          age: values.age,
+          gender: values.gender,
+          height: values.height,
+          activity: values.activity,
+        };
+      }
+    
       if (!isNewPasswordEmpty) {
         dataToSend.newPassword = values.newPassword;
       }
-      dispatch(updateUserInfo(dataToSend));     
-
-
-
+      dispatch(updateUserInfo(dataToSend));
+      
+    
       const formData = new FormData();
       const avatarFile = values.photo;
-      if (!avatarFile) {
-      } else {
+      if (avatarFile) {
         formData.append('avatarURL', avatarFile);
         dispatch(updateUserAvatar(formData));
       }
@@ -312,7 +325,7 @@ const SettingsPage = () => {
               <button
                 className="SaveButton"
                 type="submit"
-                disabled={!values.activity || !isValid}
+                disabled={!dirty || !values.activity || !isValid}
               >
                 Save
               </button>

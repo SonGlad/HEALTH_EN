@@ -95,7 +95,7 @@ export const CaloriesGraph = () => {
         },
       },
     },
-    indexAxis: 'x',
+    // indexAxis: 'x',
     scales: {
       x: {
         alignToPixels: true,

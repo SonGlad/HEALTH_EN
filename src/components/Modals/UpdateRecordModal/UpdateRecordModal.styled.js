@@ -21,6 +21,7 @@ export const ModalContainer = styled.div`
     top: 30px;
     right: 30px;
     cursor: pointer;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
       stroke: ${(props) => props.theme.color.primary_grey};
@@ -184,7 +185,7 @@ export const ModalContainer = styled.div`
 
     @media only screen and (min-width: 834px) {
       display: flex;
-      justify-content: end;
+      justify-content: space-between;
       align-items: center;
       margin-bottom: 0px;
     }
@@ -221,15 +222,17 @@ export const ModalContainer = styled.div`
   .ButtonCancel {
     margin-top: 16px;
     color: ${(props) => props.theme.color.primary_grey};
-    border: none;
+    border: 1px solid ${(props) => props.theme.color.primary_grey};
+    border-radius: 12px;
     background-color: transparent;
+    padding: 8px 10px;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
     cursor: pointer;
     text-align: center;
     display: inline;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     @media only screen and (min-width: 834px) {
       margin-top: 0px;
@@ -238,8 +241,10 @@ export const ModalContainer = styled.div`
     &:hover {
       background-color: transparent;
       color: ${(props) => props.theme.color.primary_green_lite};
+      border: 1px solid ${(props) => props.theme.color.primary_green_lite};
+
     }
-    &:active {
+    /* &:active {
       background-color: transparent;
       color: ${(props) => props.theme.color.primary_green_lite};
     }
@@ -247,7 +252,7 @@ export const ModalContainer = styled.div`
       background-color: transparent;
       color: ${(props) => props.theme.color.primary_grey};
       pointer-events: none;
-    }
+    } */
 
     @media only screen and (min-width: 834px) {
       width: 212px;
