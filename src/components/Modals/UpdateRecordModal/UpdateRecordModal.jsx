@@ -1,18 +1,18 @@
-import { ModalContainer } from "./UpdateRecordModal.styled";
-import { ReactComponent as BreakfastImg } from "../../../images/icons-illustration/breakfast-image.svg";
-import { ReactComponent as LunchImg } from "../../../images/icons-illustration/lunch-image.svg";
-import { ReactComponent as DinnerImg } from "../../../images/icons-illustration/dinner-image.svg";
-import { ReactComponent as SnacksImg } from "../../../images/icons-illustration/snack-image.svg";
-import { ReactComponent as CloseIcon } from "../../../images/icons-linear/close-circle.svg";
-import { useDispatch } from "react-redux";
-import { useModal } from "hooks/useModal";
-import { useFormik } from "formik";
-import { useData } from "hooks/useUserData";
+import { ModalContainer } from './UpdateRecordModal.styled';
+import { ReactComponent as BreakfastImg } from '../../../images/icons-illustration/breakfast-image.svg';
+import { ReactComponent as LunchImg } from '../../../images/icons-illustration/lunch-image.svg';
+import { ReactComponent as DinnerImg } from '../../../images/icons-illustration/dinner-image.svg';
+import { ReactComponent as SnacksImg } from '../../../images/icons-illustration/snack-image.svg';
+import { ReactComponent as CloseIcon } from '../../../images/icons-linear/close-circle.svg';
+import { useDispatch } from 'react-redux';
+import { useModal } from 'hooks/useModal';
+import { useFormik } from 'formik';
+import { useData } from 'hooks/useUserData';
 import {
   updateFoodId,
   deleteFoodId,
-} from "../../../redux/Data/data-operations";
-import { ModalFoodSchema } from "utils/validationSchemas";
+} from '../../../redux/Data/data-operations';
+import { ModalFoodSchema } from 'utils/validationSchemas';
 
 export const UpdateRecordModal = ({ handleClickClose }) => {
   const dispatch = useDispatch();
@@ -20,25 +20,25 @@ export const UpdateRecordModal = ({ handleClickClose }) => {
 
   const { mealType } = useModal();
 
-  const getGoalMeals = (mealType) => {
-    if (mealType.mealType === "breakfast") {
+  const getGoalMeals = mealType => {
+    if (mealType.mealType === 'breakfast') {
       const foundBreakfast = breakfastMeals.find(
-        (item) => item.mealId === mealType.mealId
+        item => item.mealId === mealType.mealId
       );
       return foundBreakfast;
-    } else if (mealType.mealType === "lunch") {
+    } else if (mealType.mealType === 'lunch') {
       const foundLunch = lunchMeals.find(
-        (item) => item.mealId === mealType.mealId
+        item => item.mealId === mealType.mealId
       );
       return foundLunch;
-    } else if (mealType.mealType === "dinner") {
+    } else if (mealType.mealType === 'dinner') {
       const foundDinner = dinnerMeals.find(
-        (item) => item.mealId === mealType.mealId
+        item => item.mealId === mealType.mealId
       );
       return foundDinner;
-    } else if (mealType.mealType === "snack") {
+    } else if (mealType.mealType === 'snack') {
       const foundSnack = snackMeals.find(
-        (item) => item.mealId === mealType.mealId
+        item => item.mealId === mealType.mealId
       );
       return foundSnack;
     }
@@ -54,11 +54,11 @@ export const UpdateRecordModal = ({ handleClickClose }) => {
     handleSubmit,
   } = useFormik({
     initialValues: {
-      name: getGoalMeals(mealType).name || "",
-      carbohydrates: getGoalMeals(mealType).carbohydrates || "",
-      protein: getGoalMeals(mealType).protein || "",
-      fat: getGoalMeals(mealType).fat || "",
-      calories: getGoalMeals(mealType).calories || "",
+      name: getGoalMeals(mealType).name || '',
+      carbohydrates: getGoalMeals(mealType).carbohydrates || '',
+      protein: getGoalMeals(mealType).protein || '',
+      fat: getGoalMeals(mealType).fat || '',
+      calories: getGoalMeals(mealType).calories || '',
     },
 
     validationSchema: ModalFoodSchema,
@@ -80,21 +80,29 @@ export const UpdateRecordModal = ({ handleClickClose }) => {
     if (!str) {
       return str;
     }
-    return str.replace(/\b\w/g, (match) => match.toUpperCase());
+    return str.replace(/\b\w/g, match => match.toUpperCase());
   }
   const inputString = mealType.mealType;
   const result = capitalizeWords(inputString);
 
-  const getGoalImage = (mealType) => {
-    if (mealType.mealType === "breakfast") {
+  const getGoalImage = mealType => {
+    if (mealType.mealType === 'breakfast') {
       return <BreakfastImg className="Img" />;
-    } else if (mealType.mealType === "lunch") {
+    } else if (mealType.mealType === 'lunch') {
       return <LunchImg className="Img" />;
-    } else if (mealType.mealType === "dinner") {
+    } else if (mealType.mealType === 'dinner') {
       return <DinnerImg className="Img" />;
-    } else if (mealType.mealType === "snack") {
+    } else if (mealType.mealType === 'snack') {
       return <SnacksImg className="Img" />;
     }
+  };
+
+  const handleInput = (e, maxDigits) => {
+    e.target.value = e.target.value.replace(/[^0-9]/g, '');
+    if (e.target.value.length > maxDigits) {
+      e.target.value = e.target.value.slice(0, maxDigits);
+    }
+    handleChange(e);
   };
 
   return (
@@ -103,7 +111,7 @@ export const UpdateRecordModal = ({ handleClickClose }) => {
       <h2 className="H2">Update your meal</h2>
       <div className="DinerContainer">
         {getGoalImage(mealType)}
-        <h3 className={"Title"}>Update {result}</h3>
+        <h3 className={'Title'}>Update {result}</h3>
       </div>
       <div className="FormContainer">
         <form className="FormAddFood" onSubmit={handleSubmit}>
@@ -122,19 +130,19 @@ export const UpdateRecordModal = ({ handleClickClose }) => {
             id="carbonoh"
             type="number"
             name="carbohydrates"
+            onInput={e => handleInput(e, 3)}
             onChange={handleChange}
             value={values.carbohydrates}
             onBlur={handleBlur}
             placeholder="Carbonoh."
             required
-            onKeyPress={(e) => {
-              if (e.key === "-" || e.key === "e") {
+            onKeyPress={e => {
+              if (e.key === '-' || e.key === 'e') {
                 e.preventDefault();
               }
             }}
             min="0"
-            max={999}
-            maxLength={3}
+            max="999"
           />
           <input
             className="rec-diar-mod-inp"
@@ -142,12 +150,13 @@ export const UpdateRecordModal = ({ handleClickClose }) => {
             type="number"
             name="protein"
             onChange={handleChange}
+            onInput={e => handleInput(e, 3)}
             value={values.protein}
             onBlur={handleBlur}
             placeholder="Protein"
             required
-            onKeyPress={(e) => {
-              if (e.key === "-" || e.key === "e") {
+            onKeyPress={e => {
+              if (e.key === '-' || e.key === 'e') {
                 e.preventDefault();
               }
             }}
@@ -161,12 +170,13 @@ export const UpdateRecordModal = ({ handleClickClose }) => {
             type="number"
             name="fat"
             onChange={handleChange}
+            onInput={e => handleInput(e, 3)}
             value={values.fat}
             onBlur={handleBlur}
             placeholder="Fat"
             required
-            onKeyPress={(e) => {
-              if (e.key === "-" || e.key === "e") {
+            onKeyPress={e => {
+              if (e.key === '-' || e.key === 'e') {
                 e.preventDefault();
               }
             }}
@@ -180,12 +190,13 @@ export const UpdateRecordModal = ({ handleClickClose }) => {
             type="number"
             name="calories"
             onChange={handleChange}
+            onInput={e => handleInput(e, 3)}
             value={values.calories}
             onBlur={handleBlur}
             placeholder="Calories"
             required
-            onKeyPress={(e) => {
-              if (e.key === "-" || e.key === "e") {
+            onKeyPress={e => {
+              if (e.key === '-' || e.key === 'e') {
                 e.preventDefault();
               }
             }}
@@ -198,11 +209,11 @@ export const UpdateRecordModal = ({ handleClickClose }) => {
             type="button"
             onClick={() =>
               resetForm(
-                (values.name = ""),
-                (values.carbohydrates = ""),
-                (values.protein = ""),
-                (values.fat = ""),
-                (values.calories = "")
+                (values.name = ''),
+                (values.carbohydrates = ''),
+                (values.protein = ''),
+                (values.fat = ''),
+                (values.calories = '')
               )
             }
           ></div>
