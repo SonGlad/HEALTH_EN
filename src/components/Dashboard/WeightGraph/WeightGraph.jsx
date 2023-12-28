@@ -20,7 +20,7 @@ export const WeightGraph = () => {
       <div>
         <TitleWrapper>
           <h2>Weights</h2>
-          <p>{validWeightData.length > 0 ? `${averageValue} kg` : '0 kg'}</p>
+          <p>Average value: <span>{validWeightData.length > 0 ? `${averageValue} kg` : '0 kg'}</span></p>
         </TitleWrapper>
         <GraphWrapper>
           <div>
