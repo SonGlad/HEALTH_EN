@@ -144,8 +144,8 @@ export const DivForgotPassword = styled.div`
 
   .ImgError {
     position: absolute;
-    right: 10px;
-    top: 35%;
+    right: 12px;
+    top: 19px;
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
@@ -154,8 +154,8 @@ export const DivForgotPassword = styled.div`
 
   .ImgCorrect {
     position: absolute;
-    right: 10px;
-    top: 35%;
+    right: 12px;
+    top: 19px;
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
@@ -164,6 +164,7 @@ export const DivForgotPassword = styled.div`
 
   .ErrorText {
     margin-top: 4px;
+    margin-bottom: -18px;
     margin-left: 10px;
     color: #e74a3b;
     font-size: 12px;
@@ -177,6 +178,7 @@ export const DivForgotPassword = styled.div`
 
   .SuccessText {
     margin-top: 4px;
+    margin-bottom: -18px;
     margin-left: 10px;
     color: #3cbc81;
     font-size: 12px;
@@ -192,6 +194,7 @@ export const DivForgotPassword = styled.div`
     padding: 8px 10px;
     border-radius: 12px;
     background: ${(props) => props.theme.color.primary_green_lite};
+    cursor: pointer;
     width: 100%;
     font-size: 14px;
     font-style: normal;

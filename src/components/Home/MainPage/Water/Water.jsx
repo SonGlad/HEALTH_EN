@@ -42,7 +42,7 @@ export const Water = () => {
   const calculatePercent = useCallback(() => {
     if (waterGoal > 0) {
       const newDailyWater = Math.round((currentWater / waterGoal) * 100);
-      setDailyWaterLimit(newDailyWater >= 100 ? 100 : newDailyWater);
+      setDailyWaterLimit(newDailyWater);
     } else {
       setDailyWaterLimit(0);
     }
