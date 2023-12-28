@@ -47,6 +47,7 @@ export const UpdateRecordModal = ({ handleClickClose }) => {
   const {
     isValid,
     values,
+    touched,
     handleBlur,
     handleChange,
     resetForm,
@@ -132,6 +133,8 @@ export const UpdateRecordModal = ({ handleClickClose }) => {
               }
             }}
             min="0"
+            max={999}
+            maxLength={3}
           />
           <input
             className="rec-diar-mod-inp"
@@ -149,6 +152,8 @@ export const UpdateRecordModal = ({ handleClickClose }) => {
               }
             }}
             min="0"
+            max={999}
+            maxLength={3}
           />
           <input
             className="rec-diar-mod-inp"
@@ -166,6 +171,8 @@ export const UpdateRecordModal = ({ handleClickClose }) => {
               }
             }}
             min="0"
+            max={999}
+            maxLength={3}
           />
           <input
             className="rec-diar-mod-inp"
@@ -183,6 +190,8 @@ export const UpdateRecordModal = ({ handleClickClose }) => {
               }
             }}
             min="0"
+            max={999}
+            maxLength={3}
           />
           <div
             className="ButtonDelete"
@@ -204,7 +213,7 @@ export const UpdateRecordModal = ({ handleClickClose }) => {
           className="ButtonConfirm"
           type="button"
           onClick={handleSubmit}
-          disabled={!isValid}
+          disabled={!isValid || !Object.keys(touched).length}
         >
           Update
         </button>

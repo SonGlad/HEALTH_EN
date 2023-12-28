@@ -168,7 +168,6 @@ const authSlice = createSlice({
       state.activityForm = {
         activity: payload.data.activity,
       };
-      // state.isLoggedIn = true;
       state.isLoading = false;
       state.error = null;
     })
@@ -181,9 +180,10 @@ const authSlice = createSlice({
     // LOGOUT////////
     .addCase(logOut.pending, state =>{
       state.isLoading = true;
-      state.error = null;
       state.isInitial = true;
       state.isRefreshing = false;
+      state.isLoggedIn = false;
+      state.error = null;
     })
     .addCase(logOut.fulfilled, (state, { payload }) => {
       state.userForm = {
@@ -355,7 +355,6 @@ const authSlice = createSlice({
       state.bodyParamFormWeight = {
         weight: payload.data.weight,
       };
-      // state.isLoggedIn = true;
       state.isInitial = false;
       state.isLoading = false;
       state.error = null;

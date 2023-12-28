@@ -223,6 +223,11 @@ export const ModalContainer = styled.div`
     &:hover {
       color: ${(props) => props.theme.color.primary_grey};
     }
+    &:disabled {
+      color: ${(props) => props.theme.color.primary_grey};
+      pointer-events: none;
+    }
+
 
     @media only screen and (min-width: 834px) {
       width: 212px;

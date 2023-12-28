@@ -9,7 +9,7 @@ export const addWaterIntake = createAsyncThunk(
   async (water, thunkApi) => {
     try {
       const response = await axios.post(`api/user/water-intake`, water);
-      toast.success('Water intake has been successfully added');
+      // toast.success('Water intake has been successfully added');
       return response.data;
     } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');
@@ -24,7 +24,7 @@ export const deleteWaterIntake = createAsyncThunk(
   async (waterData, thunkApi) => {
     try {
       const response = await axios.delete(`api/user/water-intake`, waterData);
-      toast.success('Water intake has been successfully deleted');
+      // toast.success('Water intake has been successfully deleted');
       return response.data;
     } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');
@@ -39,7 +39,7 @@ export const updateGoal = createAsyncThunk(
   async (selectedgoal, thunkApi) => {
     try {
       const response = await axios.put(`api/user/goal`, selectedgoal);
-      toast.success('Your goal information has been successfully updated');
+      // toast.success('Your goal information has been successfully updated');
       return response.data;
     } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');
@@ -54,7 +54,7 @@ export const updateWeight = createAsyncThunk(
   async (valueWeight, thunkApi) => {
     try {
       const response = await axios.put(`api/user/weight`, valueWeight);
-      toast.success('Your weight information has been successfully updated');
+      // toast.success('Your weight information has been successfully updated');
       return response.data;
     } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');
@@ -69,7 +69,7 @@ export const getAllRecommendedFood = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const response = await axios.get('api/recommended-food');
-      toast.success(`Recommended products successfully loaded.`);
+      // toast.success(`Recommended products successfully loaded.`);
       return response.data;
     } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');
@@ -84,8 +84,8 @@ export const addFood = createAsyncThunk(
   async (data, thunkApi) => {
     try {
       const response = await axios.post('api/user/food-intake', data);
-      toast.success(`
-      The information about the consumed food has been successfully added.`)
+      // toast.success(`
+      // The information about the consumed food has been successfully added.`)
       return response.data;
     } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');
@@ -100,7 +100,7 @@ export const getStatistics = createAsyncThunk(
   async (month, thunkApi) => {
     try {
       const response = await axios.get(`api/user/statistics/${month}`);
-      toast.success(`Received statistics.`);
+      // toast.success(`Received statistics.`);
       return response.data;
     } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');
@@ -115,7 +115,7 @@ export const updateFoodId = createAsyncThunk(
   async ({ id, data }, thunkApi) => {
     try {
       const response = await axios.put(`api/user/food-intake/${id}`, data);
-      toast.success('Data updated successfully');
+      // toast.success('Data updated successfully');
       return response.data;
     } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');
@@ -130,7 +130,7 @@ export const getUserDailyCurrentData = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const response = await axios.get('api/user/current-data');
-      toast.success(`CURRENT user daily data successfully loaded.`);
+      // toast.success(`CURRENT user daily data successfully loaded.`);
       return response.data;
     } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');
@@ -145,7 +145,7 @@ export const deleteFoodId = createAsyncThunk(
   async (id, thunkApi) => {
     try {
       const response = await axios.delete(`api/user/food-intake/${id}` );
-      toast.success('Food intake has been successfully deleted');
+      // toast.success('Food intake has been successfully deleted');
       return response.data;
     } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');
@@ -160,7 +160,7 @@ export const deleteFoodType = createAsyncThunk(
   async (type, thunkApi) => {
     try {
       const response = await axios.delete(`api/user/reset-meals/${type}` );
-      toast.success('Food intake has been successfully deleted type');
+      // toast.success('Food intake has been successfully deleted type');
       return response.data;
     } catch (error) {
       toast.error('Oops. Something went wrong. Please try again.');

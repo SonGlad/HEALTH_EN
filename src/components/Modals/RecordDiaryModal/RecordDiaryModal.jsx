@@ -155,6 +155,8 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
                 }
               }}
               min="0"
+              max={999}
+              maxLength={3}
             />
             <input
               className="rec-diar-mod-inp"
@@ -172,6 +174,8 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
                 }
               }}
               min="0"
+              max={999}
+              maxLength={3}
             />
             <input
               className="rec-diar-mod-inp"
@@ -189,6 +193,8 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
                 }
               }}
               min="0"
+              max={999}
+              maxLength={3}
             />
             <input
               className="rec-diar-mod-inp"
@@ -206,6 +212,8 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
                 }
               }}
               min="0"
+              max={999}
+              maxLength={3}
             />
             <div
               className="ButtonDelete"
@@ -224,7 +232,7 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
           className="ButtonConfirm"
           type="button"
           onClick={handleConfirm}
-          disabled={!isValid && !touched}
+          disabled={!isValid || !Object.keys(touched).length}
         >
           Confirm
         </button>

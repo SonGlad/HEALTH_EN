@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const InfoOptions = styled.div`
   display: flex;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 
   @media screen and (max-width: 833px) {
     width: 300px;
@@ -130,8 +132,19 @@ export const InfoBlockTarget = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
+  color: ${props => props.theme.color.primary_white};
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   &:nth-child(1) {
     margin-bottom: 40px;
+  }
+
+  .goal-text-cont:hover > .goal-text {
+    color: ${props => props.theme.color.primary_green_lite};
+  }
+
+  .goal-text-cont .arrow-down {
+    color: ${props => props.theme.color.primary_green_lite};
   }
 
   @media screen and (min-width: 834px) {
@@ -156,8 +169,14 @@ export const InfoBlockWeight = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   &:nth-child(1) {
     margin-bottom: 40px;
+  }
+
+  .weight-text-cont:hover > .weight-text {
+    color: ${props => props.theme.color.primary_green_lite};
   }
 
   @media screen and (min-width: 834px) {
@@ -215,6 +234,11 @@ export const InfoBlockText = styled.p`
 export const ArrowSvg = styled.img`
   width: 14px;
   margin-left: 12px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &.arrow-down.show-arrow-top {
+    transform: rotate(180deg);
+    }
 `;
 
 export const WeightKg = styled.span`

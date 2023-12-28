@@ -128,8 +128,8 @@ export const ProfileContainer = styled.div`
 
   .ImgError {
     position: absolute;
-    right: 10px;
-    top: 50%;
+    right: 14px;
+    top: 50px;
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
@@ -138,8 +138,8 @@ export const ProfileContainer = styled.div`
 
   .ImgCorrect {
     position: absolute;
-    right: 10px;
-    top: 50%;
+    right: 14px;
+    top: 50px;
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
@@ -147,7 +147,8 @@ export const ProfileContainer = styled.div`
   }
 
   .ErrorText {
-    margin-top: 4px;
+    margin-top: -10px;
+    margin-bottom: -16px;
     margin-left: 10px;
     color: #e74a3b;
     font-size: 12px;
@@ -160,7 +161,8 @@ export const ProfileContainer = styled.div`
   }
 
   .SuccessText {
-    margin-top: 4px;
+    margin-top: -10px;
+    margin-bottom: -16px;
     margin-left: 10px;
     color: #3cbc81;
     font-size: 12px;

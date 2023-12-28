@@ -27,7 +27,7 @@ export const logIn = createAsyncThunk(
         try{
             const response = await axios.post('api/auth/signin', credentials);
             token.set(response.data.token);
-            toast.success(`Welcome!`);
+            // toast.success(`Welcome!`);
             return response.data;
         }
         catch(error){
@@ -66,7 +66,7 @@ export const initialDataUserInfo = createAsyncThunk(
         try{
             token.set(persistedToken);
             const response = await axios.get('api/user/current');
-            toast.success(`YOUR INITIAL DATA LOADED!!!`);
+            // toast.success(`YOUR INITIAL DATA LOADED!!!`);
             return response.data;
         }
         catch(error){
@@ -103,7 +103,7 @@ export const refreshCurrentUser = createAsyncThunk(
         try{
             token.set(persistedToken);
             const response = await axios.get('api/user/current');
-            toast.success(`Welcome Back`);
+            // toast.success(`Welcome Back`);
             return response.data;
         }
         catch(error){

@@ -96,7 +96,7 @@ export const AddButton = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
-  color: ${props => props.theme.color.primary_white};
+  color: ${props => props.theme.color.primary_green_lite};
   font-size: 14px;
   font-weight: 500;
   line-height: 1.4;
@@ -105,21 +105,21 @@ export const AddButton = styled.button`
   svg {
     width: 16px;
     height: 16px;
-    stroke: ${props => props.theme.color.primary_white};
+    stroke: ${props => props.theme.color.primary_green_lite};
     transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover {
-    color: ${props => props.theme.color.primary_green_lite};
+    color: ${props => props.theme.color.primary_grey};
     & svg {
-      stroke: ${props => props.theme.color.primary_green_lite};
+      stroke: ${props => props.theme.color.primary_grey};
     }
   }
 
   &:focus {
-    color: ${props => props.theme.color.primary_green_lite};
+    color: ${props => props.theme.color.primary_grey};
     & svg {
-      stroke: ${props => props.theme.color.primary_green_lite};
+      stroke: ${props => props.theme.color.primary_grey};
     }
   }
 `;

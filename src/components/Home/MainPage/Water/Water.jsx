@@ -60,7 +60,7 @@ export const Water = () => {
           <p
             style={{
               color:
-                dailyWaterLimit <= 50
+                dailyWaterLimit <= 64
                   ? 'rgb(182, 195, 255)'
                   : 'rgb(15, 15, 15)',
             }}

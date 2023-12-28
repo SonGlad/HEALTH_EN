@@ -22,7 +22,7 @@ import MaintakeIconMen from '../../../../images/icons-emoji/Maintake image men.p
 import edit from '../../../../images/images/headreImg/edit-2.svg';
 import arrowDown from '../../../../images/images/headreImg/arrow-down.svg';
 import { useAuth } from '../../../../hooks/useAuth';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../../../hooks/useModal';
 import { openModalGoal } from '../../../../redux/Modal/modal-slice';
@@ -33,9 +33,13 @@ import { closeModalWeight } from '../../../../redux/Modal/modal-slice';
 
 export const ButtonsBlock = () => {
   const dispatch = useDispatch();
-  const { isModalShowGoal } = useModal();
-  const { isModalShowWeight } = useModal();
+  const { isModalShowGoal, isModalShowWeight } = useModal();
   const { userGoal, userWeight, userGender } = useAuth();
+  const weightDropdown = useRef(null);
+
+  // const [isModalShowGoal, setIsModalShowGoal] = useState(false);
+  // const [isModalShowWeight, setIsModalShowWeight] = useState(false);
+
 
   // Обробник кліків на цільовому блоку
   const handleClickBlockGoal = () => {
@@ -84,6 +88,39 @@ export const ButtonsBlock = () => {
   );
 
 
+ 
+  // const handleClickBackDrop = useCallback((e) => {
+    
+  //   const target = e.target;
+  //   console.log(target);
+  //   if (!target.classList.contains('weight-dropdown')) {
+  //     dispatch(closeModalGoal());
+  //     dispatch(closeModalWeight());
+  //   }
+  // }, [dispatch]);
+  
+  // useEffect(() => {
+  //   const handleClickBackDrop = (event) => {
+  //     console.log(isModalShowWeight);
+  //     event.stopPropagation();
+  //     if(isModalShowWeight){
+  //       if (weightDropdown.current && !weightDropdown.current.contains(event.target)) {
+  //         dispatch(closeModalWeight());
+  //         // dispatch(closeModalGoal());
+  //       }
+  //     };
+  //   }
+
+  //   document.addEventListener('keydown', handleKeyDown);
+  //   document.addEventListener('click', handleClickBackDrop);
+  
+  //   return () => {
+  //     document.removeEventListener('keydown', handleKeyDown);
+  //     document.removeEventListener('click', handleClickBackDrop);
+  //   };
+  // }, [dispatch, handleKeyDown, isModalShowWeight]);
+
+
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
 
@@ -91,6 +128,7 @@ export const ButtonsBlock = () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [handleKeyDown]);
+
 
   // Функція для перетворення слова, робить першу літеру великою
   function capitalizeWords(str) {
@@ -103,6 +141,7 @@ export const ButtonsBlock = () => {
   // Виклик функції capitalizeWords зі словом користувача
   const inputString = userGoal;
   const result = capitalizeWords(inputString);
+
 
   // Визначення шляху до іконки цілі на основі цілі та статі користувача
   const getGoalImage = (userGoal, userGender) => {
@@ -122,6 +161,15 @@ export const ButtonsBlock = () => {
   };
 
 
+
+
+
+
+
+  // Визначення класу положення стрілки
+  const toggleArrowSvg = () => (isModalShowGoal ? 'show-arrow-top' : '');
+
+
   return (
     <InfoOptions>
       <InfoBlockTarget onClick={handleClickBlockGoal}>
@@ -133,10 +181,10 @@ export const ButtonsBlock = () => {
           />
         </IconContainer>
         <TextContainer className="goal-text-cont">
-          <InfoBlockName>Goal</InfoBlockName>
-          <InfoBlockText>
+          <InfoBlockName className='goal-text'>Goal</InfoBlockName>
+          <InfoBlockText className='goal-text'>
             {result}
-            <ArrowSvg src={arrowDown} alt="arrow down" className="arrow-down" />
+            <ArrowSvg src={arrowDown} alt="arrow down" className={`arrow-down ${toggleArrowSvg()}`} />
           </InfoBlockText>
         </TextContainer>
       </InfoBlockTarget>
@@ -157,16 +205,16 @@ export const ButtonsBlock = () => {
         <IconContainer>
           <img src={weightIcon} alt="weight" width={28} />
         </IconContainer>
-        <TextContainer>
-          <InfoBlockName>Weight</InfoBlockName>
-          <InfoBlockText>
+        <TextContainer className='weight-text-cont'>
+          <InfoBlockName className='weight-text'>Weight</InfoBlockName>
+          <InfoBlockText className='weight-text'>
             {userWeight}
             <WeightKg>kg</WeightKg>
             <EditSvg src={edit} alt="edit" />
           </InfoBlockText>
         </TextContainer>
       </InfoBlockWeight>
-      <div className={`weight-dropdown ${showWeightSelection()}`}>
+      <div className={`weight-dropdown ${showWeightSelection()}`} ref={weightDropdown}>
         <button
           className="weight-close-btn"
           type="button"
