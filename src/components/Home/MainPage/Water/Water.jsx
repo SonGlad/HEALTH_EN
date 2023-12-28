@@ -40,13 +40,17 @@ export const Water = () => {
   const [dailyWaterLimit, setDailyWaterLimit] = useState(0);
 
   const calculatePercent = useCallback(() => {
-    const newDailyWater = Math.round(((isNaN(currentWater) ? 0 : currentWater) / waterGoal) * 100);
-    setDailyWaterLimit(newDailyWater >= 100 ? 100 : newDailyWater);
+    if (waterGoal > 0) {
+      const newDailyWater = Math.round((currentWater / waterGoal) * 100);
+      setDailyWaterLimit(newDailyWater >= 100 ? 100 : newDailyWater);
+    } else {
+      setDailyWaterLimit(0);
+    }
   }, [currentWater, waterGoal]);
 
   useEffect(() => {
     calculatePercent();
-  }, [currentWater, calculatePercent]);
+  }, [currentWater, waterGoal ,calculatePercent]);
 
   const validCurrentWater = isNaN(currentWater) ? 0 : currentWater;
   const leftWater = Math.max(0, waterGoal - currentWater);

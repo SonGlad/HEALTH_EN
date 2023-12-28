@@ -29,7 +29,7 @@ export const App = () => {
 
 
   useEffect(() => {
-    if(isInitial){
+    if(isLoggedIn && isInitial){
       dispatch(initialDataUserInfo());
     }
   }, [dispatch, isInitial, isLoggedIn]);

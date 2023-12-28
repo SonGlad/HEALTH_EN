@@ -45,7 +45,7 @@ export const Modal = styled.div`
   .ImgError {
     position: absolute;
     right: 20px;
-    top: 141px;
+    top: 142px;
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
@@ -60,7 +60,7 @@ export const Modal = styled.div`
   .ImgCorrect {
     position: absolute;
     right: 20px;
-    top: 141px;
+    top: 142px;
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
@@ -73,8 +73,8 @@ export const Modal = styled.div`
   }
 
   .ErrorText {
-    margin-top: -10px;
-    margin-bottom: 12px;
+    margin-top: -14px;
+    margin-bottom: 0px;
     margin-left: 10px;
     color: #e74a3b;
     font-size: 12px;
@@ -89,8 +89,8 @@ export const Modal = styled.div`
   }
 
   .SuccessText {
-    margin-top: -10px;
-    margin-bottom: 12px;
+    margin-top: -14px;
+    margin-bottom: 0px;
     margin-left: 10px;
     color: #3cbc81;
     font-size: 12px;
@@ -169,7 +169,7 @@ export const WeightFormInput = styled.input`
   font-size: 14px;
   font-weight: 400;
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 
   @media screen and (min-width: 835px) {
     width: 166px;
